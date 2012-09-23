@@ -5,7 +5,7 @@
     <string name="edit_message">Ange meddelande</string>
     <string name="button_send">Skicka</string>
     <string name="menu_settings">Inställningar</string>
-    <string name="title_activity_main">Pubrundan</string>
+    <string name="title_activity_main">Hem</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_display_message">Mitt meddelande</string>
 
