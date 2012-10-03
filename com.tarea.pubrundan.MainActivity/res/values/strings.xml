@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">MapOverlayDemo</string>
-    <string name="app_name">Map Overlay Demo</string>
+
+    <string name="hello">Chalmers pubrunda</string>
+    <string name="app_name">Pubrundan</string>
     <string name="goLabel">Show the Map</string>
-    <string name="change_campus">Byt campus</string>
-    <string name="list_label">Lista</string>
+
 </resources>

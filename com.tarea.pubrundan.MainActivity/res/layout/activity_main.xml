@@ -9,21 +9,21 @@
         android:id="@+id/getLocationButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:src="@drawable/icon_location_search"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+        android:layout_marginTop="2dp"
         android:onClick="getLocationButton"
-   		android:layout_alignParentLeft="true"/>
+        android:src="@drawable/icon_location_search" />
 
     <ImageButton
         android:id="@+id/listViewButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:src="@drawable/icon_list_view"
+        android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
+        android:layout_marginTop="2dp"
         android:onClick="listViewButton"
-   		android:layout_alignParentRight="true"/>
+        android:src="@drawable/icon_list_view" />
 
     <Button
         android:layout_width="120dp"

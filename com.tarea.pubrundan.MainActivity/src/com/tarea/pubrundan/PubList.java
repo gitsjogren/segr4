@@ -8,24 +8,24 @@ import android.view.Window;
 import android.widget.Button;
 
 public class PubList extends Activity {
-	
+
 	private Button goBackToMapButton;
-	
+
 	@Override
-    protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            requestWindowFeature(Window.FEATURE_NO_TITLE);  // Suppress title bar for more space
-            setContentView(R.layout.publist);
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE); // Suppress title bar for
+														// more space
+		setContentView(R.layout.publist);
 
-            // Button to control access overlay
-            goBackToMapButton = (Button)findViewById(R.id.pubList);
-            goBackToMapButton.setOnClickListener(new OnClickListener(){
-            	public void onClick(View v) {	
-                     onBackPressed();       
-                }
-            });
+		// Button, go back to map
+		goBackToMapButton = (Button) findViewById(R.id.backToMap);
+		goBackToMapButton.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				onBackPressed(); // put user to previous activity, acts the same
+									// as back button on phone
+			}
+		});
 	}
-	
-}
 
-// super.onBackPressed(); // back button OR finish()
+}
