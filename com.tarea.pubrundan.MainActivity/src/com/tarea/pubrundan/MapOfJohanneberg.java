@@ -14,7 +14,7 @@ public class MapOfJohanneberg extends MapActivity {
 		super.onCreate(savedInstanceState); 
         setContentView(R.layout.main);
 		
-        mapView = (MapView) findViewById(R.id.mapView);
+        //mapView = (MapView) findViewById(R.id.mapView);
         mapView.setSatellite(true); // Changes the default map to satellite mode
         mapView.setBuiltInZoomControls(true); // Adding possibility to zoom in/out
 	}

@@ -3,17 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
-    
-        <view android:id="@+id/mv"
-            class="com.google.android.maps.MapView"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1" 
-            android:clickable="true"
-            android:apiKey="0n_WUXbhVEKfU4SZhO9Hhixy7M617h_k4iBRiSA"
-            />
-            
-            <!-- Must replace apiKey above with appropriate one for your development machine  -->
                 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:orientation="horizontal"
@@ -43,7 +32,7 @@
             android:layout_marginRight="30dp"
             android:layout_weight="1.0"
             android:textSize="12sp" 
-            android:text="Lista" />
+            android:text="Karta" />
                         
         </LinearLayout>
                     

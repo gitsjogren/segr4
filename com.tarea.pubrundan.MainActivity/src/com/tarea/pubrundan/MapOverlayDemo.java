@@ -27,7 +27,7 @@ public class MapOverlayDemo extends Activity implements OnClickListener {
 
     }
 
-    public void onClick(View v) {
+    public void onClick(View v) {  // coordinates for johanneberg
         double lat = 57.689034;
         double lon = 11.976468;
         switch(v.getId()){

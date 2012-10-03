@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
@@ -32,7 +33,7 @@ public class ShowTheMap extends MapActivity {
     private MapController mc;
     private GeoPoint gp;
     private MapView mapView;
-    private Button overlayButton, accessButton;
+    private Button getThePositionButton, changeCampusButton, goToPubListButton;
     private MyLocationOverlay myLocationOverlay;
 
     private List<Overlay> mapOverlays;
@@ -41,71 +42,59 @@ public class ShowTheMap extends MapActivity {
     
     private final CharSequence[] differentViews = {"Street", "Satellite", "Traffic"};  // selectable map views
     
-    // Define an array containing the food overlay items for the pubs of Lindholmen
-    
-    private OverlayItem [] pubsOfLindholmen = {
-        new OverlayItem( new GeoPoint(5770618,1193680178), "11:an", "Vänster om SVEA")
-    };
-    
-    // Define an array containing the  access overlay items for the pubs of Johanneberg
-    
-    private OverlayItem [] pubsOfJohanneberg = {
-        new OverlayItem( new GeoPoint(5768874, 11975162), "Access Title 1", "Access snippet 1"),
-        new OverlayItem( new GeoPoint(5769874, 11978162), "Access Title 2", "Access snippet 2"),
-        new OverlayItem( new GeoPoint(5770874, 11979162), "Access Title 3", "Access snippet 3"),
-        new OverlayItem( new GeoPoint(5768875, 11980162), "Access Title 4", "Access snippet 4") 
+    // Define an array containing the access overlay items for all of the pubs of Johanneberg and Lindholmen
+    // Coordinates need to be converted into integers, by default they are displayed in microdegrees
+    private OverlayItem [] allPubsArray = {
+    		new OverlayItem( new GeoPoint((int)(57.688999*1E6),(int)(11.973979*1E6)), "Access Title 1", "Access snippet 1"),
+            new OverlayItem( new GeoPoint((int)(57.687738*1E6),(int)(11.975974*1E6)), "Access Title 2", "Access snippet 2"),
+            new OverlayItem( new GeoPoint((int)(57.688885*1E6),(int)(11.975481*1E6)), "Access Title 3", "Access snippet 3"),
+            new OverlayItem( new GeoPoint((int)(57.706089*1E6),(int)(11.936669*1E6)), "11:an", "Vänster om SVEA")
     };
 
-
+    // standard onCreate method
     public void onCreate(Bundle savedInstanceState) {
+    	
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);  // Suppress title bar for more space
-        setContentView(R.layout.showthemap);
+        setContentView(R.layout.showthemap);	// Use xml-layout showtomap.xml
         
         // Add map controller with zoom controls
         mapView = (MapView) findViewById(R.id.mv);
-        mapView.setSatellite(true);
+        mapView.setSatellite(true);	// Satellite is set by default
         mapView.setBuiltInZoomControls(true);   // Set android:clickable=true in main.xml 
-        // get the users location
-        myLocationOverlay = new MyLocationOverlay(this, mapView);
-        myLocationOverlay.enableMyLocation();
-        mapView.getOverlays().add(myLocationOverlay);
+
+        myLocationOverlay = new MyLocationOverlay(this, mapView);  // Creates a new MyLocationOverlay for later use in the code
         
-        mc = mapView.getController();;
+        mc = mapView.getController();
         // Convert lat/long in degrees into integers in microdegrees
         latE6 =  (int) (lat*1e6);
         lonE6 = (int) (lon*1e6);
-        gp = new GeoPoint(latE6, lonE6);
-        mc.animateTo(gp);
-        mc.setZoom(17);
-        
-        // Create itemizedOverlay2 if it doesn't exist
-        if(itemizedOverlay2 == null ){
-        mapOverlays = mapView.getOverlays();	
-        drawable2 = this.getResources().getDrawable(R.drawable.ic_launcher);
-        itemizedOverlay2 = new MyItemizedOverlay(drawable2);
-        }     
-        for(int i = 0; i < pubsOfJohanneberg.length; i++){
-        	
-        		itemizedOverlay2.addOverlay(pubsOfJohanneberg[i]); 	
-                mapOverlays.add(itemizedOverlay2);      
-        }
-        // Added symbols will be displayed when map is redrawn so force redraw now
-        mapView.postInvalidate();
+        gp = new GeoPoint(latE6, lonE6);  // Creates new Geopoint with coordinates passed from MapOverlayDemo class
+        mc.animateTo(gp);  // Move the map using Mapcontroller object mc to Geopoint object gp
+        showThePubs();  // Displaying all pubs as overlay in maps, see method for more info
+        mc.setZoom(17);  // Set the zoom level (int value from 1 to 21) to 17 for behavior view
 
         // Button for get my location
-        overlayButton = (Button)findViewById(R.id.doGetPosition);
-        overlayButton.setOnClickListener(new OnClickListener(){      
+        getThePositionButton = (Button)findViewById(R.id.getPosition);
+        getThePositionButton.setOnClickListener(new OnClickListener(){      
             public void onClick(View v) {	
                  setOverlay1();     
             }
         });
         
         // Button to control access overlay
-        accessButton = (Button)findViewById(R.id.doAccess);
-        accessButton.setOnClickListener(new OnClickListener(){      
+        changeCampusButton = (Button)findViewById(R.id.changeCampus);
+        changeCampusButton.setOnClickListener(new OnClickListener(){      
             public void onClick(View v) {	
                  setOverlay2();       
+            }
+        });
+        
+     // Button to control access overlay
+        goToPubListButton = (Button)findViewById(R.id.pubList);
+        goToPubListButton.setOnClickListener(new OnClickListener(){      
+            public void onClick(View v) {	
+                 startPubList();       
             }
         });
 
@@ -138,24 +127,41 @@ public class ShowTheMap extends MapActivity {
      	        });
     }
     
-    // Display accessibility overlay.  If not already displayed, successive button clicks display each of
-    // the three icons successively, then the next removes them all.  This illustrates the ability to add
-    // individual overlay items dynamically at runtime
-    
-    public void setOverlay2(){	
-        // Create itemizedOverlay2 if it doesn't exist
+    public void showThePubs(){
+    	
+    	// Create itemizedOverlay2 if it doesn't exist
         if(itemizedOverlay2 == null ){
         mapOverlays = mapView.getOverlays();	
         drawable2 = this.getResources().getDrawable(R.drawable.ic_launcher);
         itemizedOverlay2 = new MyItemizedOverlay(drawable2);
         }     
-        for(int i = 0; i < pubsOfJohanneberg.length; i++){
+        for(int i = 0; i < allPubsArray.length; i++){
         	
-        		itemizedOverlay2.addOverlay(pubsOfJohanneberg[i]); 	
+        		itemizedOverlay2.addOverlay(allPubsArray[i]); 	
                 mapOverlays.add(itemizedOverlay2);      
         }
         // Added symbols will be displayed when map is redrawn so force redraw now
-        mapView.postInvalidate();
+        mapView.postInvalidate();    
+    }
+    
+    // Display accessibility overlay.  If not already displayed, successive button clicks display each of
+    // the three icons successively, then the next removes them all.  This illustrates the ability to add
+    // individual overlay items dynamically at runtime
+    
+    public void setOverlay2(){	
+    	
+    	mc = mapView.getController();
+        gp = new GeoPoint(57705947, 11936642);
+        mc.animateTo(gp);
+        showThePubs();
+        mc.setZoom(17); 
+    }
+    
+    
+    public void startPubList(){
+    	
+    	Intent i = new Intent(this, PubList.class);
+        startActivity(i);
     }
 
     // Method to insert latitude and longitude in degrees
