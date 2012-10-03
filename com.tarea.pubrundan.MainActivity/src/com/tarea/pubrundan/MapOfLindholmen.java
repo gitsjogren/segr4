@@ -1,19 +1,12 @@
-
 package com.tarea.pubrundan;
 
 import java.util.List;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Point;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
@@ -21,12 +14,11 @@ import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
 import com.google.android.maps.Overlay;
  
-public class MapOfJohanneberg extends MapActivity
+public class MapOfLindholmen extends MapActivity 
 {    
     MapView mapView;
     MapController mc;
     GeoPoint p;  // object p represent a geographical location
-    final CharSequence[] items = {"Street", "Satellite", "Traffic"}; // selectable map views
     
     class MapOverlay extends com.google.android.maps.Overlay
     {
@@ -56,12 +48,12 @@ public class MapOfJohanneberg extends MapActivity
         super.onCreate(savedInstanceState); 
         setContentView(R.layout.main);
         
-        mapView = (MapView) findViewById(R.id.mapView);
-        mapView.setSatellite(true); // Changes the default map to satellite mode by default
+        //mapView = (MapView) findViewById(R.id.mapView);
+        mapView.setSatellite(true); // Changes the default map to satellite mode
         mapView.setBuiltInZoomControls(true); // Adding possibility to zoom in/out
         
         mc = mapView.getController();
-        String coordinates[] = {"57.688741", "11.975162"}; // coordinates for pub "Gasquen" @ Campus Johanneberg
+        String coordinates[] = {"57.706189", "11.9368017"}; // coordinates for pub "11:an" @ Campus Lindholmen
         double lat = Double.parseDouble(coordinates[0]);
         double lng = Double.parseDouble(coordinates[1]);
         
@@ -80,55 +72,6 @@ public class MapOfJohanneberg extends MapActivity
             listOfOverlays.add(mapOverlay);
             
             mapView.invalidate();
-    }
-    
- // Initiating Menu XML file (menu.xml)
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        super.onCreateOptionsMenu(menu);
-        MenuInflater oMenu = getMenuInflater();
-        oMenu.inflate(R.menu.menu, menu);
-        return true;
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch(item.getItemId()){
-        case R.id.change_map:
-        	new AlertDialog.Builder(this)
-            .setTitle("Ändra vy")
-            .setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int item) {
-                if (item == 0)
-            	{
-                	mapView.setTraffic(false);
-                	mapView.setSatellite(false);
-                	mapView.setStreetView(true);
-            	}
-                
-                else if (item == 1)
-                {
-                	mapView.setStreetView(false);
-                	mapView.setTraffic(false);
-                	mapView.setSatellite(true);
-            	}
-                
-                else if( item == 2)
-                {
-                	mapView.setStreetView(false);
-                	mapView.setSatellite(false);
-                	mapView.setTraffic(true);
-            	}
-            dialog.dismiss();
-            Toast.makeText(MapOfJohanneberg.this, items[item] + " är valt", Toast.LENGTH_SHORT).show();
-            }
-        }).create().show();
-        case R.id.settings:
-             return true;
-
-        case R.id.share:
-        	return true;
-        }
-        return false;
     }
  
     @Override
