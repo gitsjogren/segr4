@@ -3,10 +3,13 @@ package com.tarea.pubrundan;
 import java.util.List;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -27,10 +30,9 @@ import com.google.android.maps.OverlayItem;
 
 public class TheMap extends MapActivity implements OnTabChangeListener {
 
-	private static double lat;
-	private static double lon;
-	private int latE6;
-	private int lonE6;
+	private boolean startCampus = true; // false = Lindholmen, true =
+										// Johanneberg (default campus)
+	private int zoomLevel = 17;
 	private MapController mc;
 	private GeoPoint gp;
 	private MapView mapView;
@@ -75,7 +77,6 @@ public class TheMap extends MapActivity implements OnTabChangeListener {
 		requestWindowFeature(Window.FEATURE_NO_TITLE); // Suppress title bar for
 														// more space
 		setContentView(R.layout.showthemap); // Use xml-layout showtomap.xml
-
 		// Add map controller with zoom controls
 		mapView = (MapView) findViewById(R.id.mv);
 		mapView.setSatellite(true); // Satellite is set by default
@@ -89,21 +90,11 @@ public class TheMap extends MapActivity implements OnTabChangeListener {
 																	// for later
 																	// use in
 																	// the code
-
-		mc = mapView.getController();
-		// Convert lat/long in degrees into integers in microdegrees
-		latE6 = (int) (lat * 1e6);
-		lonE6 = (int) (lon * 1e6);
-		gp = new GeoPoint(latE6, lonE6); // Creates new Geopoint with
-											// coordinates passed from
-											// MapOverlayDemo class
-		mc.animateTo(gp); // Move the map using Mapcontroller object mc to
-							// Geopoint object gp
+		checkIfGpsIsEnabled(); // check if gps is enabled
+		changeToCampusJohanneberg(); // change the position to Johanneberg
 		showThePubs(); // Displaying all pubs as overlay in maps, see method for
 						// more info
-		mc.setZoom(17); // Set the zoom level (int value from 1 to 21) to 17 for
-						// behavior view
-		// showTheCurrentPosition();  // navigate to users current location
+		// showTheCurrentPosition(); // navigate to users current location
 		// inactive during development
 
 		// Button for get my location
@@ -118,7 +109,14 @@ public class TheMap extends MapActivity implements OnTabChangeListener {
 		changeCampusButton = (Button) findViewById(R.id.changeCampus);
 		changeCampusButton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				changeToCampusLindholmen();
+				if (startCampus) {
+					changeToCampusLindholmen();
+					startCampus = false;
+				} else if (!startCampus) {
+
+					changeToCampusJohanneberg();
+					startCampus = true;
+				}
 			}
 		});
 
@@ -141,7 +139,7 @@ public class TheMap extends MapActivity implements OnTabChangeListener {
 		mc = mapView.getController();
 		myLocationOverlay.runOnFirstFix(new Runnable() {
 			public void run() {
-				mc.setZoom(17);
+				mc.setZoom(18);
 				mc.animateTo(myLocationOverlay.getMyLocation());
 			}
 		});
@@ -170,10 +168,18 @@ public class TheMap extends MapActivity implements OnTabChangeListener {
 	public void changeToCampusLindholmen() {
 
 		mc = mapView.getController();
-		gp = new GeoPoint(57705947, 11936642);
+		gp = new GeoPoint((int) (57.705947 * 1e6), (int) (11.936642 * 1e6));
 		mc.animateTo(gp);
-		showThePubs();
-		mc.setZoom(17);
+		mc.setZoom(zoomLevel);
+	}
+
+	// navigate to campus Lindholmen if users clicks changeCampusButton
+	public void changeToCampusJohanneberg() {
+
+		mc = mapView.getController();
+		gp = new GeoPoint((int) (57.689034 * 1e6), (int) (11.976468 * 1e6));
+		mc.animateTo(gp);
+		mc.setZoom(zoomLevel);
 	}
 
 	// starting new activity( PubList.java ) if user clicks goToPubListButton
@@ -182,12 +188,6 @@ public class TheMap extends MapActivity implements OnTabChangeListener {
 		Intent i = new Intent(this, PubList.class); // context = this ,
 													// ClassToNavigateTo.class
 		startActivity(i);
-	}
-
-	// Method to insert latitude and longitude in degrees
-	public static void putLatLong(double latitude, double longitude) {
-		lat = latitude;
-		lon = longitude;
 	}
 
 	// Required method since class extends MapActivity
@@ -287,4 +287,36 @@ public class TheMap extends MapActivity implements OnTabChangeListener {
 							}
 						}).create().show();
 	}
+
+	private void checkIfGpsIsEnabled(){
+		 final LocationManager manager = (LocationManager) getSystemService( Context.LOCATION_SERVICE );
+
+		    if ( !manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ) {
+		        NoGpsDialog();}
+		    }
+
+	private void NoGpsDialog() {
+		final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle("GPS avstängd")
+				.setMessage("Din GPS är avstängd, vill du starta den?")
+				.setCancelable(false)
+				.setNeutralButton("Ja",
+						new android.content.DialogInterface.OnClickListener() {
+							public void onClick(
+									final DialogInterface dialog,
+									final int id) {
+								startActivity(new Intent(
+										Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+							}
+						})
+				.setNegativeButton("Nej", new DialogInterface.OnClickListener() {
+					public void onClick(final DialogInterface dialog,
+							final int id) {
+						dialog.cancel();
+					}
+				});
+		final AlertDialog ad = builder.create();
+		ad.show();
+	}
+
 }

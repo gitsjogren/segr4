@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Toast;
 
 public class AppTest extends Activity implements OnClickListener {
 
@@ -27,23 +26,13 @@ public class AppTest extends Activity implements OnClickListener {
 
 	}
 
-	public void onClick(View v) { // coordinates for johanneberg
-		double lat = 57.689034;
-		double lon = 11.976468;
+	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.mapshow_button:
 			Intent i = new Intent(this, TheMap.class);
-			TheMap.putLatLong(lat, lon);
 			startActivity(i);
 			break;
 		}
-	}
-
-	// Create a static method to show toasts (not presently used but included
-	// as an example)
-
-	public static void showToast(String text) {
-		Toast.makeText(context, text, Toast.LENGTH_LONG).show();
 	}
 
 }
