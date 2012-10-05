@@ -118,7 +118,7 @@ public class MapOfJohanneberg extends MapActivity
                 	mapView.setTraffic(true);
             	}
             dialog.dismiss();
-            Toast.makeText(MapOfJohanneberg.this, items[item] + " är valt", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MapOfJohanneberg.this, items[item] + " är valt.", Toast.LENGTH_SHORT).show();
             }
         }).create().show();
         case R.id.settings:
