@@ -7,6 +7,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -28,7 +30,7 @@ import com.google.android.maps.MyLocationOverlay;
 import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
 
-public class TheMap extends MapActivity implements OnTabChangeListener {
+public class TheMap extends MapActivity {
 
 	private boolean startCampus = true; // false = Lindholmen, true =
 										// Johanneberg (default campus)
@@ -120,7 +122,7 @@ public class TheMap extends MapActivity implements OnTabChangeListener {
 			}
 		});
 
-		// Button to control access overlay
+		// Button to goto PubList.java
 		goToPubListButton = (Button) findViewById(R.id.pubList);
 		goToPubListButton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
@@ -139,7 +141,7 @@ public class TheMap extends MapActivity implements OnTabChangeListener {
 		mc = mapView.getController();
 		myLocationOverlay.runOnFirstFix(new Runnable() {
 			public void run() {
-				mc.setZoom(18);
+				mc.setZoom(zoomLevel);
 				mc.animateTo(myLocationOverlay.getMyLocation());
 			}
 		});
@@ -185,8 +187,7 @@ public class TheMap extends MapActivity implements OnTabChangeListener {
 	// starting new activity( PubList.java ) if user clicks goToPubListButton
 	public void startPubListActivity() {
 
-		Intent i = new Intent(this, PubList.class); // context = this ,
-													// ClassToNavigateTo.class
+		Intent i = new Intent(this, PubList.class); // context = this , PubList.class = ClassToNavigateTo.class
 		startActivity(i);
 	}
 
@@ -260,6 +261,10 @@ public class TheMap extends MapActivity implements OnTabChangeListener {
 		super.onPause();
 		// when our activity pauses, we want to remove listening for location
 		// updates
+		// onPause, pressing home-button for example the GPS will be turned off, onResme will start it again
+		//LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+		//manager.removeUpdates(this);
+		//manager = null;
 		myLocationOverlay.disableMyLocation();
 	}
 
@@ -284,16 +289,18 @@ public class TheMap extends MapActivity implements OnTabChangeListener {
 
 							public void onClick(DialogInterface arg0, int arg1) {
 								TheMap.super.onBackPressed();
+								System.exit(0);  // if "Ja, avsluta" exit and remove location/network services for this app
 							}
 						}).create().show();
 	}
 
-	private void checkIfGpsIsEnabled(){
-		 final LocationManager manager = (LocationManager) getSystemService( Context.LOCATION_SERVICE );
+	private void checkIfGpsIsEnabled() {
+		final LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
-		    if ( !manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ) {
-		        NoGpsDialog();}
-		    }
+		if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+			NoGpsDialog();
+		}
+	}
 
 	private void NoGpsDialog() {
 		final AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -302,21 +309,41 @@ public class TheMap extends MapActivity implements OnTabChangeListener {
 				.setCancelable(false)
 				.setNeutralButton("Ja",
 						new android.content.DialogInterface.OnClickListener() {
-							public void onClick(
-									final DialogInterface dialog,
+							public void onClick(final DialogInterface dialog,
 									final int id) {
 								startActivity(new Intent(
 										Settings.ACTION_LOCATION_SOURCE_SETTINGS));
 							}
 						})
-				.setNegativeButton("Nej", new DialogInterface.OnClickListener() {
-					public void onClick(final DialogInterface dialog,
-							final int id) {
-						dialog.cancel();
-					}
-				});
+				.setNegativeButton("Nej",
+						new DialogInterface.OnClickListener() {
+							public void onClick(final DialogInterface dialog,
+									final int id) {
+								dialog.cancel();
+							}
+						});
 		final AlertDialog ad = builder.create();
 		ad.show();
+	}
+
+	public void onLocationChanged(Location location) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void onProviderDisabled(String provider) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void onProviderEnabled(String provider) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void onStatusChanged(String provider, int status, Bundle extras) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
