@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="hello">Chalmers pubrunda</string>
     <string name="app_name">Pubrundan</string>
-    <string name="edit_message">Ange meddelande</string>
-    <string name="changeCampus_button">Byt campus</string>
-    <string name="menu_settings">Inställningar</string>
-    <string name="title_activity_main">MainActivity.java</string>
-    <string name="map_of_johanneberg_display_message">MapOfJohanneberg.java</string>
-    <string name="getLocation">getLocation</string>
-    <string name="listview">listView</string>
+    <string name="goLabel">Show the Map</string>
 
 </resources>
