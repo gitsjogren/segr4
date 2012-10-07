@@ -1,0 +1,13 @@
+Pubrundan - DAT255 projekt
+
+Importera projektet
+
+1. Öppna Eclipse.
+2. Importera projektet.
+
+Om Eclipse klagar över compiler version, gör följande:
+
+1. Högerklicka på projektet under Package Explorer.
+2. Välj Properties längst ner i drop-down listan.
+3. Gå till Java Compiler fliken i fönstret som öppnas.
+4. Ändra Compiler compliance level till 1.6.
