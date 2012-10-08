@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pubList">
+        <item>11:an</item>
+        <item>Basen</item>
+        <item>Bulten</item>
+        <item>Fokus</item>
+        <item>Gasquen</item>
+        <item>Golden-I</item>
+        <item>Hubben</item>
+        <item>Kajsabaren</item>
+        <item>Kemi</item>
+        <item>V</item>
+        <item>Winden</item>
+        <item>Zaloonen</item>
+    </string-array>
+</resources>
+
+
