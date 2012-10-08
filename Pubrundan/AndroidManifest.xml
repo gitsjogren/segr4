@@ -19,7 +19,7 @@
         </activity>
         <activity android:name=".TheMap"> </activity>
         <uses-library android:name="com.google.android.maps" />
-        <activity android:name=".PubList"></activity>
+        <activity android:name=".PubInfo"></activity> // default PubList, using PubInfo for development test
     </application>
 </manifest>
 <!-- <?xml version="1.0" encoding="utf-8"?> -->

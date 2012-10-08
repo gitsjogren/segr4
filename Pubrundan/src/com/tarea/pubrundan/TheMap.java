@@ -187,7 +187,9 @@ public class TheMap extends MapActivity {
 	// starting new activity( PubList.java ) if user clicks goToPubListButton
 	public void startPubListActivity() {
 
-		Intent i = new Intent(this, PubList.class); // context = this , PubList.class = ClassToNavigateTo.class
+		
+		// default PubList.class in development test using PubInfo.class
+		Intent i = new Intent(this, PubInfo.class); // context = this , PubList.class = ClassToNavigateTo.class
 		startActivity(i);
 	}
 
@@ -276,7 +278,9 @@ public class TheMap extends MapActivity {
 	/** Called when the user press back button in the TheMap */
 	@Override
 	public void onBackPressed() {
-		new AlertDialog.Builder(this).setTitle("Avsluta") // Title: "Avsluta"
+		new AlertDialog.Builder(this)
+				.setTitle("Avsluta") // Title: "Avsluta"
+				.setIcon(R.drawable.icon_warning)
 				.setMessage("Säker på att du vill avsluta?") // Message:
 																// "Säker på att du vill avsluta?"
 				.setNegativeButton("Nej", null) // Negative answer button: "Nej"
@@ -306,6 +310,7 @@ public class TheMap extends MapActivity {
 		final AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle("GPS avstängd")
 				.setMessage("Din GPS är avstängd, vill du starta den?")
+				.setIcon(R.drawable.icon_warning)
 				.setCancelable(false)
 				.setNeutralButton("Ja",
 						new android.content.DialogInterface.OnClickListener() {
