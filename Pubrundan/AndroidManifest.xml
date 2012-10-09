@@ -22,5 +22,22 @@
         <activity android:name=".PubList"></activity>
         <activity android:name=".Pubs.JAPripps"></activity>
         <activity android:name=".Pubs.Gasquen"></activity>
+        <activity android:name=".Pubs.Bulten"></activity>
+        <activity android:name=".Pubs.Winden"></activity>
+        <activity android:name=".Pubs.Zaloonen"></activity>
+        <activity android:name=".Pubs.ClubAvancez"></activity>
+        <activity android:name=".Pubs.GoldenI"></activity>
+        <activity android:name=".Pubs.Hubben"></activity>
+        <activity android:name=".Pubs.Basen"></activity>
+        <activity android:name=".Pubs.Kajsabaren"></activity>
+        <activity android:name=".Pubs.Jarnvagspub"></activity>
+        <activity android:name=".Pubs.GasTown"></activity>
+        <activity android:name=".Pubs.FortNOx"></activity>
+        <activity android:name=".Pubs.Spritkoket"></activity>
+        <activity android:name=".Pubs.Focus"></activity>
+        <activity android:name=".Pubs.RodaRummet"></activity>
+        <activity android:name=".Pubs.SigurdAfiket"></activity>
+        <activity android:name=".Pubs.PubP"></activity>
+        <activity android:name=".Pubs.Elvan"></activity>
     </application>
 </manifest>
