@@ -54,8 +54,8 @@ public class TheMap extends MapActivity {
 													// current position
 
 	private List<Overlay> mapOverlays;
-	private Drawable drawable1, drawable2;
-	private OverlayClass itemizedOverlay1, itemizedOverlay2;
+	private Drawable drawable;
+	private OverlayClass itemizedOverlay;
 
 	private final CharSequence[] differentViews = { "Street", "Satellite",
 			"Traffic" }; // selectable map views
@@ -64,8 +64,9 @@ public class TheMap extends MapActivity {
 	// of Johanneberg and Lindholmen
 	// Coordinates need to be converted into integers, by default they are
 	// displayed in microdegrees
-	
-	// The pubs in the array are listed and hardcoded from coordinates_of_the_pubs.txt
+
+	// The pubs in the array are listed and hardcoded from
+	// coordinates_of_the_pubs.txt
 	private OverlayItem[] allPubsArray = {
 			// J.A. Pripps
 			new OverlayItem(new GeoPoint((int) (57.688984 * 1E6),
@@ -148,8 +149,9 @@ public class TheMap extends MapActivity {
 																	// use in
 																	// the code
 		checkIfGpsIsEnabled(); // check if gps is enabled
-		
-		loading();	// loading animation, invokes: changeToCampusJohanneberg(), showThePubs()
+
+		loading(); // loading animation, invokes: changeToCampusJohanneberg(),
+					// showThePubs()
 
 		// Button for get my location
 		getThePositionButton = (Button) findViewById(R.id.getPosition);
@@ -183,25 +185,29 @@ public class TheMap extends MapActivity {
 		});
 
 	}
-	
-	private void loading(){
-		
-		final Object loadingDialog = ProgressDialog.show(this, "Laddar pubbar...",
-	            "Vänta...", true);
-	    new Thread() {
-	        public void run() {
-	            try {
-	            	changeToCampusJohanneberg();	// change the position to Johanneberg
-	            	showThePubs();	// Displaying all pubs as overlay in maps, see method for
+
+	private void loading() {
+
+		final Object loadingDialog = ProgressDialog.show(this,
+				"Laddar pubbar...", "Vänta...", true);
+		new Thread() {
+			public void run() {
+				try {
+					changeToCampusJohanneberg(); // change the position to
+													// Johanneberg
+					showThePubs(); // Displaying all pubs as overlay in maps,
+									// see method for
 					// more info.
-	            	// showTheCurrentPosition(); // navigate to users current location, inactive during development.
-	                 
-	                sleep(3000);	// sleep the thread, 3000 milliseconds = 3 seconds.
-	            } catch (Exception e) {
-	            }
-	            ((Dialog) loadingDialog).dismiss();
-	        }
-	    }.start();
+					// showTheCurrentPosition(); // navigate to users current
+					// location, inactive during development.
+
+					sleep(3000); // sleep the thread, 3000 milliseconds = 3
+									// seconds.
+				} catch (Exception e) {
+				}
+				((Dialog) loadingDialog).dismiss();
+			}
+		}.start();
 	}
 
 	// The map will navigate to your current position
@@ -223,15 +229,16 @@ public class TheMap extends MapActivity {
 	public void showThePubs() {
 
 		// Create itemizedOverlay2 if it doesn't exist
-		if (itemizedOverlay2 == null) {
+		if (itemizedOverlay == null) {
 			mapOverlays = mapView.getOverlays();
-			drawable2 = this.getResources().getDrawable(R.drawable.icon_pub_location);
-			itemizedOverlay2 = new OverlayClass(drawable2, this);
+			drawable = this.getResources().getDrawable(
+					R.drawable.icon_pub_location);
+			itemizedOverlay = new OverlayClass(drawable, this);
 		}
 		for (int i = 0; i < allPubsArray.length; i++) {
 
-			itemizedOverlay2.addOverlay(allPubsArray[i]);
-			mapOverlays.add(itemizedOverlay2);
+			itemizedOverlay.addOverlay(allPubsArray[i]);
+			mapOverlays.add(itemizedOverlay);
 		}
 		// Added symbols will be displayed when map is redrawn so force redraw
 		// now
@@ -265,16 +272,16 @@ public class TheMap extends MapActivity {
 													// ClassToNavigateTo.class
 		startActivity(i);
 	}
-	
-	// starting new activity( PubInfo.java ) if user clicks goToPubListButton
-		public void startPubInfoActivity() {
 
-			// default PubList.class in development test using PubInfo.class
-			Intent i = new Intent(this, JAPripps.class); // context = this ,
+	// starting new activity( PubInfo.java ) if user clicks goToPubListButton
+	public void startPubInfoActivity() {
+
+		// default PubList.class in development test using PubInfo.class
+		Intent i = new Intent(this, JAPripps.class); // context = this ,
 														// PubInfo.class =
 														// ClassToNavigateTo.class
-			startActivity(i);
-		}
+		startActivity(i);
+	}
 
 	// Required method since class extends MapActivity
 	@Override
@@ -385,7 +392,7 @@ public class TheMap extends MapActivity {
 						}).create().show();
 	}
 
-	private void checkIfGpsIsEnabled() {
+	public void checkIfGpsIsEnabled() {
 		final LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
 		if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
@@ -393,7 +400,7 @@ public class TheMap extends MapActivity {
 		}
 	}
 
-	private void NoGpsDialog() {
+	public void NoGpsDialog() {
 		final AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle("GPS avstängd")
 				.setMessage("Din GPS är avstängd, vill du starta den?")
