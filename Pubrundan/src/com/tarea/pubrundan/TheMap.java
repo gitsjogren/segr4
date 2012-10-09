@@ -61,18 +61,68 @@ public class TheMap extends MapActivity {
 	// of Johanneberg and Lindholmen
 	// Coordinates need to be converted into integers, by default they are
 	// displayed in microdegrees
+	
+	// The pubs in the array are listed and hardcoded from coordinates_of_the_pubs.txt
 	private OverlayItem[] allPubsArray = {
-			new OverlayItem(new GeoPoint((int) (57.688999 * 1E6),
-					(int) (11.973979 * 1E6)), "Access Title 1",
-					"Access snippet 1"),
-			new OverlayItem(new GeoPoint((int) (57.687738 * 1E6),
-					(int) (11.975974 * 1E6)), "Access Title 2",
-					"Access snippet 2"),
-			new OverlayItem(new GeoPoint((int) (57.688885 * 1E6),
-					(int) (11.975481 * 1E6)), "Access Title 3",
-					"Access snippet 3"),
-			new OverlayItem(new GeoPoint((int) (57.706089 * 1E6),
-					(int) (11.936669 * 1E6)), "11:an", "Vänster om SVEA") };
+			// J.A. Pripps
+			new OverlayItem(new GeoPoint((int) (57.688984 * 1E6),
+					(int) (11.974389 * 1E6)), "J.A. Pripps", "Johanneberg"),
+			// Gasquen
+			new OverlayItem(new GeoPoint((int) (57.688725 * 1E6),
+					(int) (11.975156 * 1E6)), "Gasquen", "Johanneberg"),
+			// Bulten
+			new OverlayItem(new GeoPoint((int) (57.689148 * 1E6),
+					(int) (11.978496 * 1E6)), "Bulten", "Johanneberg"),
+			// Winden
+			new OverlayItem(new GeoPoint((int) (57.688961 * 1E6),
+					(int) (11.978665 * 1E6)), "Winden", "Johanneberg"),
+			// Zaloonen
+			new OverlayItem(new GeoPoint((int) (57.689097 * 1E6),
+					(int) (11.979126 * 1E6)), "Zaloonen", "Johanneberg"),
+			// Club Avancez
+			new OverlayItem(new GeoPoint((int) (57.692219 * 1E6),
+					(int) (11.976862 * 1E6)), "Club Avancez", "Johanneberg"),
+			// GoldenI
+			new OverlayItem(new GeoPoint((int) (57.692939 * 1E6),
+					(int) (11.975242 * 1E6)), "GoldenI", "Johanneberg"),
+			// Hubben 2.1
+			new OverlayItem(new GeoPoint((int) (57.688331 * 1E6),
+					(int) (11.979217 * 1E6)), "Hubben 2.1", "Johanneberg"),
+			// Basen
+			new OverlayItem(new GeoPoint((int) (57.688776 * 1E6),
+					(int) (11.978852 * 1E6)), "Basen", "Johanneberg"),
+			// Kajsabaren
+			new OverlayItem(new GeoPoint((int) (57.688196 * 1E6),
+					(int) (11.978573 * 1E6)), "Kajsabaren", "Johanneberg"),
+			// Järnvägspub
+			new OverlayItem(new GeoPoint((int) (57.688317 * 1E6),
+					(int) (11.975757 * 1E6)), "Järnvägspub", "Johanneberg"),
+			// GasTown
+			new OverlayItem(new GeoPoint((int) (57.687935 * 1E6),
+					(int) (11.975918 * 1E6)), "GasTown", "Johanneberg"),
+			// FortNOx
+			new OverlayItem(new GeoPoint((int) (57.687302 * 1E6),
+					(int) (57.687302 * 1E6)), "FortNOx", "Johanneberg"),
+			// Spritköket
+			new OverlayItem(new GeoPoint((int) (57.689587 * 1E6),
+					(int) (11.977978 * 1E6)), "Spritköket", "Johanneberg"),
+			// Focus
+			new OverlayItem(new GeoPoint((int) (57.691001 * 1E6),
+					(int) (11.977591 * 1E6)), "Focus", "Johanneberg"),
+			// Röda rummet
+			new OverlayItem(new GeoPoint((int) (57.689977 * 1E6),
+					(int) (11.976862 * 1E6)), "Röda rummet", "Johanneberg"),
+			// Sigurd/A-fiket
+			new OverlayItem(new GeoPoint((int) (57.687563 * 1E6),
+					(int) (11.976717 * 1E6)), "Sigurd/A-fiket", "Johanneberg"),
+			// Pub P
+			new OverlayItem(new GeoPoint((int) (57.706463 * 1E6),
+					(int) (11.939596 * 1E6)), "Pub P", "Lindholmen"),
+			// 11:an
+			new OverlayItem(new GeoPoint((int) (57.706085 * 1E6),
+					(int) (11.936675 * 1E6)), "11:an", "Johanneberg"),
+
+	};
 
 	// standard onCreate method
 	public void onCreate(Bundle savedInstanceState) {
@@ -155,7 +205,7 @@ public class TheMap extends MapActivity {
 		// Create itemizedOverlay2 if it doesn't exist
 		if (itemizedOverlay2 == null) {
 			mapOverlays = mapView.getOverlays();
-			drawable2 = this.getResources().getDrawable(R.drawable.ic_launcher);
+			drawable2 = this.getResources().getDrawable(R.drawable.icon_pub_location);
 			itemizedOverlay2 = new OverlayShowRoute(drawable2);
 		}
 		for (int i = 0; i < allPubsArray.length; i++) {
@@ -189,9 +239,10 @@ public class TheMap extends MapActivity {
 	// starting new activity( PubList.java ) if user clicks goToPubListButton
 	public void startPubListActivity() {
 
-		
 		// default PubList.class in development test using PubInfo.class
-		Intent i = new Intent(this, PubInfo.class); // context = this , PubList.class = ClassToNavigateTo.class
+		Intent i = new Intent(this, PubInfo.class); // context = this ,
+													// PubList.class =
+													// ClassToNavigateTo.class
 		startActivity(i);
 	}
 
@@ -265,10 +316,12 @@ public class TheMap extends MapActivity {
 		super.onPause();
 		// when our activity pauses, we want to remove listening for location
 		// updates
-		// onPause, pressing home-button for example the GPS will be turned off, onResme will start it again
-		//LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-		//manager.removeUpdates(this);
-		//manager = null;
+		// onPause, pressing home-button for example the GPS will be turned off,
+		// onResme will start it again
+		// LocationManager manager = (LocationManager)
+		// getSystemService(Context.LOCATION_SERVICE);
+		// manager.removeUpdates(this);
+		// manager = null;
 		myLocationOverlay.disableMyLocation();
 	}
 
@@ -280,8 +333,8 @@ public class TheMap extends MapActivity {
 	/** Called when the user press back button in the TheMap */
 	@Override
 	public void onBackPressed() {
-		new AlertDialog.Builder(this)
-				.setTitle("Avsluta") // Title: "Avsluta"
+		new AlertDialog.Builder(this).setTitle("Avsluta")
+				// Title: "Avsluta"
 				.setIcon(R.drawable.icon_warning)
 				.setMessage("Säker på att du vill avsluta?") // Message:
 																// "Säker på att du vill avsluta?"
@@ -295,7 +348,9 @@ public class TheMap extends MapActivity {
 
 							public void onClick(DialogInterface arg0, int arg1) {
 								TheMap.super.onBackPressed();
-								System.exit(0);  // if "Ja, avsluta" exit and remove location/network services for this app
+								System.exit(0); // if "Ja, avsluta" exit and
+												// remove location/network
+												// services for this app
 							}
 						}).create().show();
 	}
@@ -335,22 +390,22 @@ public class TheMap extends MapActivity {
 
 	public void onLocationChanged(Location location) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void onProviderDisabled(String provider) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void onProviderEnabled(String provider) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void onStatusChanged(String provider, int status, Bundle extras) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
