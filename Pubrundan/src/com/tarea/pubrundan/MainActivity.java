@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 
 // aka MainActivity
-public class AppTest extends Activity implements OnClickListener {
+public class MainActivity extends Activity implements OnClickListener {
 
 	static Context context;
 

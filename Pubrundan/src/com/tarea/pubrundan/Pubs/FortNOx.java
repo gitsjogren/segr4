@@ -1,4 +1,8 @@
-package com.tarea.pubrundan;
+package com.tarea.pubrundan.Pubs;
+
+import com.tarea.pubrundan.R;
+import com.tarea.pubrundan.R.layout;
+import com.tarea.pubrundan.R.menu;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -6,7 +10,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.Window;
 
-public class PubInfo extends Activity {
+public class FortNOx extends Activity {
 	
 	
 	
@@ -16,7 +20,7 @@ public class PubInfo extends Activity {
 			super.onCreate(savedInstanceState);
 			requestWindowFeature(Window.FEATURE_NO_TITLE); // Suppress title bar for
 															// more space
-			setContentView(R.layout.pubinfo);
+			setContentView(R.layout.fortnox);
 		
 	}
 		

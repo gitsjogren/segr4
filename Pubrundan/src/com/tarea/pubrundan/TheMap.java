@@ -29,6 +29,7 @@ import com.google.android.maps.MapView;
 import com.google.android.maps.MyLocationOverlay;
 import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
+import com.tarea.pubrundan.Pubs.JAPripps;
 
 //### This class follows some code examples from http://eagle.phys.utk.edu/guidry/android/index.html  ###//
 
@@ -52,7 +53,7 @@ public class TheMap extends MapActivity {
 
 	private List<Overlay> mapOverlays;
 	private Drawable drawable1, drawable2;
-	private OverlayShowRoute itemizedOverlay1, itemizedOverlay2;
+	private OverlayClass itemizedOverlay1, itemizedOverlay2;
 
 	private final CharSequence[] differentViews = { "Street", "Satellite",
 			"Traffic" }; // selectable map views
@@ -206,7 +207,7 @@ public class TheMap extends MapActivity {
 		if (itemizedOverlay2 == null) {
 			mapOverlays = mapView.getOverlays();
 			drawable2 = this.getResources().getDrawable(R.drawable.icon_pub_location);
-			itemizedOverlay2 = new OverlayShowRoute(drawable2, this);
+			itemizedOverlay2 = new OverlayClass(drawable2, this);
 		}
 		for (int i = 0; i < allPubsArray.length; i++) {
 
@@ -250,7 +251,7 @@ public class TheMap extends MapActivity {
 		public void startPubInfoActivity() {
 
 			// default PubList.class in development test using PubInfo.class
-			Intent i = new Intent(this, PubInfo.class); // context = this ,
+			Intent i = new Intent(this, JAPripps.class); // context = this ,
 														// PubInfo.class =
 														// ClassToNavigateTo.class
 			startActivity(i);

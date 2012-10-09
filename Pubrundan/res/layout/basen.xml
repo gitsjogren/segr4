@@ -23,7 +23,7 @@
             android:layout_alignTop="@+id/thumbnail"
             android:layout_gravity="center_vertical"
             android:layout_toRightOf="@+id/thumbnail"
-            android:text="J.A. Pripps"
+            android:text="Basen"
             android:textColor="@color/prippsblue"
             android:textSize="25dp"
             android:textStyle="bold"
@@ -61,7 +61,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
         android:contentDescription="Pub logo"
-        android:src="@drawable/icon_ja_pripps" />
+        android:src="@drawable/icon_roda_rummet" />
 
     <TextView
         android:id="@+id/title"

@@ -9,8 +9,10 @@ import android.widget.Toast;
 
 import com.google.android.maps.ItemizedOverlay;
 import com.google.android.maps.OverlayItem;
+import com.tarea.pubrundan.Pubs.JAPripps;
+import com.tarea.pubrundan.Pubs.Gasquen;
 
-public class OverlayShowRoute extends ItemizedOverlay<OverlayItem> {
+public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 
 	private ArrayList<OverlayItem> myOverlays;
 	
@@ -24,7 +26,7 @@ public class OverlayShowRoute extends ItemizedOverlay<OverlayItem> {
 	private ArrayList<Integer> counter = new ArrayList<Integer>();
 	
 
-	public OverlayShowRoute(Drawable defaultMarker, Context context) {
+	public OverlayClass(Drawable defaultMarker, Context context) {
 		super(boundCenterBottom(defaultMarker));
 		myOverlays = new ArrayList<OverlayItem>();
 		populate();
@@ -60,12 +62,12 @@ public class OverlayShowRoute extends ItemizedOverlay<OverlayItem> {
 			//OverlayItem item = myOverlays.get(i);
 			if(counter.get(i) == 0 ){
 			
-				Intent toPubInfo = new Intent(mContext,PubInfo.class );
+				Intent toPubInfo = new Intent(mContext,JAPripps.class );
 				mContext.startActivity(toPubInfo);			
 				return true;
 			}
 			else if( counter.get(i) == 1 ){
-			Intent toPubInfo2 = new Intent(mContext,PubInfo2.class );
+			Intent toPubInfo2 = new Intent(mContext,Gasquen.class );
 			mContext.startActivity(toPubInfo2);			
 			return true;
 			}
