@@ -30,6 +30,8 @@ import com.google.android.maps.MyLocationOverlay;
 import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
 
+//### This class follows some code examples from http://eagle.phys.utk.edu/guidry/android/index.html  ###//
+
 public class TheMap extends MapActivity {
 
 	private boolean startCampus = true; // false = Lindholmen, true =

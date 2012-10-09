@@ -1,0 +1,25 @@
+Listed below are the pubs of Chalmers (source: publistan)
+The coordinates are sorted in pairs of each 8 digits like (xx.xxxxxx,yy.yyyyyy)
+Not yet sure of the coordinates, someone please complete this!
+
+J.A. Pripps	(Johanneberg)	-	57.688984,11.974389
+Gasquen		(Johanneberg)	-	57.688725,11.975156	
+Bulten		(Johanneberg)	-	57.689148,11.978496
+Winden		(Johanneberg)	-	57.688961,11.978665
+Zaloonen	(Johanneberg)	-	57.689097,11.979126
+Club Avancez	(Johanneberg)	-	57.692219,11.976862
+GoldenI		(Johanneberg)	-	57.692939,11.975242
+Hubben 2.1	(Johanneberg)	-	57.688331,11.979217 
+Basen		(Johanneberg)	-	57.688776,11.978852
+Kajsabaren	(Johanneberg)	-	57.688196,11.978573
+Järnvägspub	(Johanneberg)	-	57.688317,11.975757
+GasTown		(Johanneberg)	-	57.687935,11.975918
+FortNOx		(Johanneberg)	-	57.687302,11.977237
+Spritköket	(Johanneberg)	-	57.689587,11.977978
+Focus		(Johanneberg)	-	57.691001,11.977591
+Röda rummet	(Johanneberg)	-	57.689977,11.976862
+Sigurd/A-fiket	(Johanneberg)	-	57.687563,11.976717
+Pub P		(Lindholmen)	-	57.706463,11.939596
+11:an		(Lindholmen)	-	57.706085,11.936675
+
+To be completed!		 
