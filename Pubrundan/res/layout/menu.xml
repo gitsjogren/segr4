@@ -19,7 +19,7 @@
         android:id="@+id/share"
         android:icon="@drawable/icon_share"
         android:numericShortcut="3"
-        android:title="Tipsa vän">
+        android:title="Skicka Feedback">
     </item>
 
 </menu>
