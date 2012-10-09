@@ -6,7 +6,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.Window;
 
-public class PubInfo extends Activity {
+public class PubInfo2 extends Activity {
 	
 	
 	
@@ -16,7 +16,7 @@ public class PubInfo extends Activity {
 			super.onCreate(savedInstanceState);
 			requestWindowFeature(Window.FEATURE_NO_TITLE); // Suppress title bar for
 															// more space
-			setContentView(R.layout.pubinfo);
+			setContentView(R.layout.pubinfo2);
 		
 	}
 		

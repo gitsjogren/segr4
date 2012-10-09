@@ -21,5 +21,6 @@
         <uses-library android:name="com.google.android.maps" />
         <activity android:name=".PubList"></activity>
         <activity android:name=".PubInfo"></activity>
+        <activity android:name=".PubInfo2"></activity>
     </application>
 </manifest>
