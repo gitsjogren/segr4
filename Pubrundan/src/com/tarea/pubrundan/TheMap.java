@@ -3,6 +3,8 @@ package com.tarea.pubrundan;
 import java.util.List;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -146,11 +148,8 @@ public class TheMap extends MapActivity {
 																	// use in
 																	// the code
 		checkIfGpsIsEnabled(); // check if gps is enabled
-		changeToCampusJohanneberg(); // change the position to Johanneberg
-		showThePubs(); // Displaying all pubs as overlay in maps, see method for
-						// more info
-		// showTheCurrentPosition(); // navigate to users current location
-		// inactive during development
+		
+		loading();	// loading animation, invokes: changeToCampusJohanneberg(), showThePubs()
 
 		// Button for get my location
 		getThePositionButton = (Button) findViewById(R.id.getPosition);
@@ -183,6 +182,26 @@ public class TheMap extends MapActivity {
 			}
 		});
 
+	}
+	
+	private void loading(){
+		
+		final Object loadingDialog = ProgressDialog.show(this, "Laddar pubbar...",
+	            "Vänta...", true);
+	    new Thread() {
+	        public void run() {
+	            try {
+	            	changeToCampusJohanneberg();	// change the position to Johanneberg
+	            	showThePubs();	// Displaying all pubs as overlay in maps, see method for
+					// more info.
+	            	// showTheCurrentPosition(); // navigate to users current location, inactive during development.
+	                 
+	                sleep(3000);	// sleep the thread, 3000 milliseconds = 3 seconds.
+	            } catch (Exception e) {
+	            }
+	            ((Dialog) loadingDialog).dismiss();
+	        }
+	    }.start();
 	}
 
 	// The map will navigate to your current position
