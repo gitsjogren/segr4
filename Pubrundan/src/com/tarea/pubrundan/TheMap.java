@@ -206,7 +206,7 @@ public class TheMap extends MapActivity {
 		if (itemizedOverlay2 == null) {
 			mapOverlays = mapView.getOverlays();
 			drawable2 = this.getResources().getDrawable(R.drawable.icon_pub_location);
-			itemizedOverlay2 = new OverlayShowRoute(drawable2);
+			itemizedOverlay2 = new OverlayShowRoute(drawable2, this);
 		}
 		for (int i = 0; i < allPubsArray.length; i++) {
 
@@ -240,11 +240,21 @@ public class TheMap extends MapActivity {
 	public void startPubListActivity() {
 
 		// default PubList.class in development test using PubInfo.class
-		Intent i = new Intent(this, PubInfo.class); // context = this ,
+		Intent i = new Intent(this, PubList.class); // context = this ,
 													// PubList.class =
 													// ClassToNavigateTo.class
 		startActivity(i);
 	}
+	
+	// starting new activity( PubInfo.java ) if user clicks goToPubListButton
+		public void startPubInfoActivity() {
+
+			// default PubList.class in development test using PubInfo.class
+			Intent i = new Intent(this, PubInfo.class); // context = this ,
+														// PubInfo.class =
+														// ClassToNavigateTo.class
+			startActivity(i);
+		}
 
 	// Required method since class extends MapActivity
 	@Override
