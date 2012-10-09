@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <view
+        android:id="@+id/mv"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        class="com.google.android.maps.MapView"
+        android:apiKey="0n_WUXbhVEKfU4SZhO9Hhixy7M617h_k4iBRiSA"
+        android:clickable="true" />
+
+    <!-- Must replace android:apiKey above with your own apiKey for continuing development with this application -->
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/prippsblue"
+        android:orientation="horizontal"
+        android:padding="1dp" >
+
+        <Button
+            android:id="@+id/getPosition"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_weight="1.0"
+            android:text="Min position"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/changeCampus"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_weight="1.0"
+            android:text="Byt campus"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/pubList"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_weight="1.0"
+            android:text="Publista"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+</FrameLayout>
