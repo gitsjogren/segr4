@@ -38,6 +38,6 @@
         <activity android:name=".Pubs.RodaRummet"></activity>
         <activity android:name=".Pubs.SigurdAfiket"></activity>
         <activity android:name=".Pubs.PubP"></activity>
-        <activity android:name=".Pubs.Elvan"></activity>
+        <activity android:name=".Pubs.PubF"></activity>
     </application>
 </manifest>
