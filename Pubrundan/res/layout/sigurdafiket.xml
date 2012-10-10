@@ -61,7 +61,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
         android:contentDescription="Pub logo"
-        android:src="@drawable/icon_roda_rummet" />
+        android:src="@drawable/icon_sigurdafiket" />
 
     <TextView
         android:id="@+id/title"

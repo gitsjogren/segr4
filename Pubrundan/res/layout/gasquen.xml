@@ -61,7 +61,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
         android:contentDescription="Pub logo"
-        android:src="@drawable/icon_ja_pripps" />
+        android:src="@drawable/icon_gasquen" />
 
     <TextView
         android:id="@+id/title"
