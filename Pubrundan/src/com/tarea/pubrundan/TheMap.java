@@ -3,12 +3,13 @@ package com.tarea.pubrundan;
 import java.util.List;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -19,7 +20,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.TabHost.OnTabChangeListener;
 import android.widget.Toast;
 
 import com.google.android.maps.GeoPoint;
@@ -29,6 +29,9 @@ import com.google.android.maps.MapView;
 import com.google.android.maps.MyLocationOverlay;
 import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
+import com.tarea.pubrundan.Pubs.JAPripps;
+
+//### This class follows some code examples from http://eagle.phys.utk.edu/guidry/android/index.html  ###//
 
 public class TheMap extends MapActivity {
 
@@ -38,41 +41,89 @@ public class TheMap extends MapActivity {
 	private MapController mc;
 	private GeoPoint gp;
 	private MapView mapView;
-	private Button getThePositionButton, changeCampusButton, goToPubListButton; // Buttons
-																				// shown
-																				// on
-																				// top
-																				// of
-																				// theMap
-	private MyLocationOverlay myLocationOverlay; // An Overlay showing a "point"
-													// on the map aka your
-													// current position
-
+	
+	/* Buttons shown on top of theMap */
+	private Button getThePositionButton, changeCampusButton, goToPubListButton;
+																																							
+	/* An Overlay showing a blue dot, which indicates your location */
+	private MyLocationOverlay myLocationOverlay; 
+													
 	private List<Overlay> mapOverlays;
-	private Drawable drawable1, drawable2;
-	private OverlayShowRoute itemizedOverlay1, itemizedOverlay2;
+	private Drawable drawable;
+	private OverlayClass itemizedOverlay;
 
+	/*  The different view selections of the map */
 	private final CharSequence[] differentViews = { "Street", "Satellite",
-			"Traffic" }; // selectable map views
+			"Traffic" };
 
-	// Define an array containing the access overlay items for all of the pubs
-	// of Johanneberg and Lindholmen
-	// Coordinates need to be converted into integers, by default they are
-	// displayed in microdegrees
+	/* Define an array containing the access overlay items for all of the pubs
+	 of Johanneberg and Lindholmen
+	 Coordinates need to be converted into integers, by default they are
+	 displayed in microdegrees */
+
+	/* The pubs in the array are listed and hardcoded from coordinates_of_the_pubs.txt */
 	private OverlayItem[] allPubsArray = {
-			new OverlayItem(new GeoPoint((int) (57.688999 * 1E6),
-					(int) (11.973979 * 1E6)), "Access Title 1",
-					"Access snippet 1"),
-			new OverlayItem(new GeoPoint((int) (57.687738 * 1E6),
-					(int) (11.975974 * 1E6)), "Access Title 2",
-					"Access snippet 2"),
-			new OverlayItem(new GeoPoint((int) (57.688885 * 1E6),
-					(int) (11.975481 * 1E6)), "Access Title 3",
-					"Access snippet 3"),
-			new OverlayItem(new GeoPoint((int) (57.706089 * 1E6),
-					(int) (11.936669 * 1E6)), "11:an", "Vänster om SVEA") };
+			// J.A. Pripps
+			new OverlayItem(new GeoPoint((int) (57.688984 * 1E6),
+					(int) (11.974389 * 1E6)), "J.A. Pripps", "Johanneberg"),
+			// Gasquen
+			new OverlayItem(new GeoPoint((int) (57.688725 * 1E6),
+					(int) (11.975156 * 1E6)), "Gasquen", "Johanneberg"),
+			// Bulten
+			new OverlayItem(new GeoPoint((int) (57.689148 * 1E6),
+					(int) (11.978496 * 1E6)), "Bulten", "Johanneberg"),
+			// Winden
+			new OverlayItem(new GeoPoint((int) (57.688961 * 1E6),
+					(int) (11.978665 * 1E6)), "Winden", "Johanneberg"),
+			// Zaloonen
+			new OverlayItem(new GeoPoint((int) (57.689097 * 1E6),
+					(int) (11.979126 * 1E6)), "Zaloonen", "Johanneberg"),
+			// Club Avancez
+			new OverlayItem(new GeoPoint((int) (57.692219 * 1E6),
+					(int) (11.976862 * 1E6)), "Club Avancez", "Johanneberg"),
+			// GoldenI
+			new OverlayItem(new GeoPoint((int) (57.692939 * 1E6),
+					(int) (11.975242 * 1E6)), "GoldenI", "Johanneberg"),
+			// Hubben 2.1
+			new OverlayItem(new GeoPoint((int) (57.688331 * 1E6),
+					(int) (11.979217 * 1E6)), "Hubben 2.1", "Johanneberg"),
+			// Basen
+			new OverlayItem(new GeoPoint((int) (57.688776 * 1E6),
+					(int) (11.978852 * 1E6)), "Basen", "Johanneberg"),
+			// Kajsabaren
+			new OverlayItem(new GeoPoint((int) (57.688196 * 1E6),
+					(int) (11.978573 * 1E6)), "Kajsabaren", "Johanneberg"),
+			// Järnvägspub
+			new OverlayItem(new GeoPoint((int) (57.688317 * 1E6),
+					(int) (11.975757 * 1E6)), "Järnvägspub", "Johanneberg"),
+			// GasTown
+			new OverlayItem(new GeoPoint((int) (57.687935 * 1E6),
+					(int) (11.975918 * 1E6)), "GasTown", "Johanneberg"),
+			// FortNOx
+			new OverlayItem(new GeoPoint((int) (57.687302 * 1E6),
+					(int) (57.687302 * 1E6)), "FortNOx", "Johanneberg"),
+			// Spritköket
+			new OverlayItem(new GeoPoint((int) (57.689587 * 1E6),
+					(int) (11.977978 * 1E6)), "Spritköket", "Johanneberg"),
+			// Focus
+			new OverlayItem(new GeoPoint((int) (57.691001 * 1E6),
+					(int) (11.977591 * 1E6)), "Focus", "Johanneberg"),
+			// Röda rummet
+			new OverlayItem(new GeoPoint((int) (57.689977 * 1E6),
+					(int) (11.976862 * 1E6)), "Röda rummet", "Johanneberg"),
+			// Sigurd/A-fiket
+			new OverlayItem(new GeoPoint((int) (57.687563 * 1E6),
+					(int) (11.976717 * 1E6)), "Sigurd/A-fiket", "Johanneberg"),
+			// Pub P
+			new OverlayItem(new GeoPoint((int) (57.706463 * 1E6),
+					(int) (11.939596 * 1E6)), "Pub P", "Lindholmen"),
+			// 11:an
+			new OverlayItem(new GeoPoint((int) (57.706085 * 1E6),
+					(int) (11.936675 * 1E6)), "11:an", "Johanneberg"),
 
-	// standard onCreate method
+	};
+
+	/* Standard onCreate-method */
 	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
@@ -93,11 +144,9 @@ public class TheMap extends MapActivity {
 																	// use in
 																	// the code
 		checkIfGpsIsEnabled(); // check if gps is enabled
-		changeToCampusJohanneberg(); // change the position to Johanneberg
-		showThePubs(); // Displaying all pubs as overlay in maps, see method for
-						// more info
-		// showTheCurrentPosition(); // navigate to users current location
-		// inactive during development
+
+		loading(); // loading animation, invokes: changeToCampusJohanneberg(),
+					// showThePubs()
 
 		// Button for get my location
 		getThePositionButton = (Button) findViewById(R.id.getPosition);
@@ -122,7 +171,7 @@ public class TheMap extends MapActivity {
 			}
 		});
 
-		// Button to goto PubList.java
+		/* Button which accesses the publist */
 		goToPubListButton = (Button) findViewById(R.id.pubList);
 		goToPubListButton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
@@ -132,7 +181,31 @@ public class TheMap extends MapActivity {
 
 	}
 
-	// The map will navigate to your current position
+	private void loading() {
+
+		final Object loadingDialog = ProgressDialog.show(this,
+				"Laddar pubbar...", "Vänta...", true);
+		new Thread() {
+			public void run() {
+				try {
+					changeToCampusJohanneberg(); // change the position to
+													// Johanneberg
+					showThePubs(); // Displaying all pubs as overlay in maps,
+									// see method for
+					// more info.
+					// showTheCurrentPosition(); // navigate to users current
+					// location, inactive during development.
+
+					sleep(3000); // sleep the thread, 3000 milliseconds = 3
+									// seconds.
+				} catch (Exception e) {
+				}
+				((Dialog) loadingDialog).dismiss();
+			}
+		}.start();
+	}
+
+	/* The map will navigate to your current position */
 	public void showTheCurrentPosition() {
 		myLocationOverlay = new MyLocationOverlay(this, mapView);
 		myLocationOverlay.enableMyLocation();
@@ -147,26 +220,27 @@ public class TheMap extends MapActivity {
 		});
 	}
 
-	// display all pubs in the allPubsArray as an overlay onto the map
+	/* Display all pubs in the allPubsArray as an overlay onto the map */
 	public void showThePubs() {
 
 		// Create itemizedOverlay2 if it doesn't exist
-		if (itemizedOverlay2 == null) {
+		if (itemizedOverlay == null) {
 			mapOverlays = mapView.getOverlays();
-			drawable2 = this.getResources().getDrawable(R.drawable.ic_launcher);
-			itemizedOverlay2 = new OverlayShowRoute(drawable2);
+			drawable = this.getResources().getDrawable(
+					R.drawable.icon_pub_location);
+			itemizedOverlay = new OverlayClass(drawable, this);
 		}
 		for (int i = 0; i < allPubsArray.length; i++) {
 
-			itemizedOverlay2.addOverlay(allPubsArray[i]);
-			mapOverlays.add(itemizedOverlay2);
+			itemizedOverlay.addOverlay(allPubsArray[i]);
+			mapOverlays.add(itemizedOverlay);
 		}
-		// Added symbols will be displayed when map is redrawn so force redraw
-		// now
+		/* Added symbols will be displayed when map is redrawn 
+		   so force redraw now */
 		mapView.postInvalidate();
 	}
 
-	// navigate to campus Lindholmen if users clicks changeCampusButton
+	/* Navigate to campus Lindholmen if users click on the changeCampusButton */
 	public void changeToCampusLindholmen() {
 
 		mc = mapView.getController();
@@ -175,7 +249,7 @@ public class TheMap extends MapActivity {
 		mc.setZoom(zoomLevel);
 	}
 
-	// navigate to campus Lindholmen if users clicks changeCampusButton
+	/* Navigate to campus Johanneberg if users click on the changeCampusButton */
 	public void changeToCampusJohanneberg() {
 
 		mc = mapView.getController();
@@ -187,7 +261,20 @@ public class TheMap extends MapActivity {
 	// starting new activity( PubList.java ) if user clicks goToPubListButton
 	public void startPubListActivity() {
 
-		Intent i = new Intent(this, PubList.class); // context = this , PubList.class = ClassToNavigateTo.class
+		// default PubList.class in development test using PubInfo.class
+		Intent i = new Intent(this, PubList.class); // context = this ,
+													// PubList.class =
+													// ClassToNavigateTo.class
+		startActivity(i);
+	}
+
+	// starting new activity( PubInfo.java ) if user clicks goToPubListButton
+	public void startPubInfoActivity() {
+
+		// default PubList.class in development test using PubInfo.class
+		Intent i = new Intent(this, JAPripps.class); // context = this ,
+														// PubInfo.class =
+														// ClassToNavigateTo.class
 		startActivity(i);
 	}
 
@@ -241,7 +328,9 @@ public class TheMap extends MapActivity {
 								}
 							}).create().show();
 		case R.id.settings:
-			return true;
+			
+                Intent settingsActivity = new Intent(getBaseContext(),SettingsMenu.class);
+                startActivity(settingsActivity);
 
 		case R.id.share:
 			return true;
@@ -261,10 +350,12 @@ public class TheMap extends MapActivity {
 		super.onPause();
 		// when our activity pauses, we want to remove listening for location
 		// updates
-		// onPause, pressing home-button for example the GPS will be turned off, onResme will start it again
-		//LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-		//manager.removeUpdates(this);
-		//manager = null;
+		// onPause, pressing home-button for example the GPS will be turned off,
+		// onResme will start it again
+		// LocationManager manager = (LocationManager)
+		// getSystemService(Context.LOCATION_SERVICE);
+		// manager.removeUpdates(this);
+		// manager = null;
 		myLocationOverlay.disableMyLocation();
 	}
 
@@ -276,7 +367,9 @@ public class TheMap extends MapActivity {
 	/** Called when the user press back button in the TheMap */
 	@Override
 	public void onBackPressed() {
-		new AlertDialog.Builder(this).setTitle("Avsluta") // Title: "Avsluta"
+		new AlertDialog.Builder(this).setTitle("Avsluta")
+				// Title: "Avsluta"
+				.setIcon(R.drawable.icon_warning)
 				.setMessage("Säker på att du vill avsluta?") // Message:
 																// "Säker på att du vill avsluta?"
 				.setNegativeButton("Nej", null) // Negative answer button: "Nej"
@@ -289,12 +382,14 @@ public class TheMap extends MapActivity {
 
 							public void onClick(DialogInterface arg0, int arg1) {
 								TheMap.super.onBackPressed();
-								System.exit(0);  // if "Ja, avsluta" exit and remove location/network services for this app
+								System.exit(0); // if "Ja, avsluta" exit and
+												// remove location/network
+												// services for this app
 							}
 						}).create().show();
 	}
 
-	private void checkIfGpsIsEnabled() {
+	public void checkIfGpsIsEnabled() {
 		final LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
 		if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
@@ -302,10 +397,11 @@ public class TheMap extends MapActivity {
 		}
 	}
 
-	private void NoGpsDialog() {
+	public void NoGpsDialog() {
 		final AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle("GPS avstängd")
 				.setMessage("Din GPS är avstängd, vill du starta den?")
+				.setIcon(R.drawable.icon_warning)
 				.setCancelable(false)
 				.setNeutralButton("Ja",
 						new android.content.DialogInterface.OnClickListener() {
@@ -328,22 +424,22 @@ public class TheMap extends MapActivity {
 
 	public void onLocationChanged(Location location) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void onProviderDisabled(String provider) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void onProviderEnabled(String provider) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void onStatusChanged(String provider, int status, Bundle extras) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

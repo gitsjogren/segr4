@@ -1,40 +1,38 @@
 package com.tarea.pubrundan;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements OnClickListener {
 
+	static Context context;
+
+	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.main);
+
+		// Get application context for later use
+		context = getApplicationContext();
+
+		// Add ClickListener for the button
+		View firstButton = findViewById(R.id.mapshow_button);
+		firstButton.setOnClickListener(this);
+
 	}
 
-	// Initiating Menu XML file (menu.xml)
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		MenuInflater menuInflater = getMenuInflater();
-		menuInflater.inflate(R.layout.menu, menu);
-		return true;
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.mapshow_button:
+			Intent i = new Intent(this, TheMap.class);
+			startActivity(i);
+			break;
+		}
 	}
 
-	/** Called when the user press back button in the MainActivity */
-	@Override
-	public void onBackPressed() {
-		new AlertDialog.Builder(this).setTitle("Avsluta")
-				.setMessage("Säker på att du vill avsluta?")
-				.setNegativeButton("Nej", null)
-				.setPositiveButton("Ja, avsluta!", new OnClickListener() {
-
-					public void onClick(DialogInterface arg0, int arg1) {
-						MainActivity.super.onBackPressed();
-					}
-				}).create().show();
-	}
 }

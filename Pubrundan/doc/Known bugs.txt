@@ -1,1 +1,0 @@
-Appen kraschar när man klickar på byt campus och min position om vartannat ett par gånger.
