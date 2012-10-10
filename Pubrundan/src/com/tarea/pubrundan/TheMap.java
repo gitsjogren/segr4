@@ -148,7 +148,7 @@ public class TheMap extends MapActivity {
 																	// for later
 																	// use in
 																	// the code
-		checkIfGpsIsEnabled(); // check if gps is enabled
+		//checkIfGpsIsEnabled(); // check if gps is enabled
 
 		loading(); // loading animation, invokes: changeToCampusJohanneberg(),
 					// showThePubs()
@@ -185,6 +185,39 @@ public class TheMap extends MapActivity {
 		});
 
 	}
+	
+	
+	
+	
+	
+	
+	
+	// display all pubs in the allPubsArray as an overlay onto the map
+		public void showThePubs() {
+
+			// Create itemizedOverlay2 if it doesn't exist
+			if (itemizedOverlay == null) {
+				mapOverlays = mapView.getOverlays();
+				drawable = this.getResources().getDrawable(
+						R.drawable.icon_pub_location);
+				itemizedOverlay = new OverlayClass(drawable, this);
+			}
+			for (int i = 0; i < allPubsArray.length; i++) {
+
+				itemizedOverlay.addOverlay(allPubsArray[i]);
+			}
+			// Added symbols will be displayed when map is redrawn so force redraw
+			// now
+			itemizedOverlay.populateFix();
+			mapOverlays.add(itemizedOverlay);  // need to be outside the for-loop (source: http://stackoverflow.com/questions/2659770/android-map-performance-poor-because-of-many-overlays)
+		}
+	
+	
+	
+	
+	
+	
+	
 
 	private void loading() {
 
@@ -223,26 +256,6 @@ public class TheMap extends MapActivity {
 				mc.animateTo(myLocationOverlay.getMyLocation());
 			}
 		});
-	}
-
-	// display all pubs in the allPubsArray as an overlay onto the map
-	public void showThePubs() {
-
-		// Create itemizedOverlay2 if it doesn't exist
-		if (itemizedOverlay == null) {
-			mapOverlays = mapView.getOverlays();
-			drawable = this.getResources().getDrawable(
-					R.drawable.icon_pub_location);
-			itemizedOverlay = new OverlayClass(drawable, this);
-		}
-		for (int i = 0; i < allPubsArray.length; i++) {
-
-			itemizedOverlay.addOverlay(allPubsArray[i]);
-			mapOverlays.add(itemizedOverlay);
-		}
-		// Added symbols will be displayed when map is redrawn so force redraw
-		// now
-		mapView.postInvalidate();
 	}
 
 	// navigate to campus Lindholmen if users clicks changeCampusButton
