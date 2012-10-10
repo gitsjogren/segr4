@@ -10,22 +10,20 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 <uses-permission android:name="android.permission.ACCESS_CORSE_LOCATION"/>
     <application android:icon="@drawable/ic_launcher" android:label="@string/app_name">
-<<<<<<< HEAD
-        <activity android:name=".WelcomeScreen"
-            		android:label="@string/app_name"></activity>
-         <intent-filter>
-=======
-        <activity android:name=".MainActivity"
+        
+        <activity android:name=".WelcomeScreen" 
                   android:label="@string/app_name">
             <intent-filter>
->>>>>>> 041ae9b4c5189dec7f25e93027edbf1c31c75fea
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        <activity android:name=".AppTest"></activity>
+        </activity>
+        
+        <activity android:name=".MainActivity"></activity>
         <activity android:name=".TheMap"> </activity>
         <uses-library android:name="com.google.android.maps" />
         <activity android:name=".PubList"></activity>
+        <activity android:name=".SettingsMenu"></activity>
         <activity android:name=".Pubs.JAPripps"></activity>
         <activity android:name=".Pubs.Gasquen"></activity>
         <activity android:name=".Pubs.Bulten"></activity>
@@ -46,30 +44,4 @@
         <activity android:name=".Pubs.PubP"></activity>
         <activity android:name=".Pubs.Elvan"></activity>
     </application>
-<<<<<<< HEAD
 </manifest>
-<!-- <?xml version="1.0" encoding="utf-8"?> -->
-<!-- <manifest xmlns:android="http://schemas.android.com/apk/res/android" -->
-<!-- package="com.tarea.pubrundan" -->
-<!-- android:versionCode="1" -->
-<!-- android:versionName="1.0"> -->
-<!-- <uses-sdk android:minSdkVersion="8" -->
-<!-- android:targetSdkVersion="8" /> -->
-<!-- <uses-permission android:name="android.permission.INTERNET" /> -->
-<!-- <application android:icon="@drawable/ic_launcher" android:label="@string/app_name"> -->
-<!-- <activity android:name=".AppMain" -->
-<!-- android:label="@string/app_name"> -->
-<!-- <intent-filter> -->
-<!-- <action android:name="android.intent.action.MAIN" /> -->
-<!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-<!-- </intent-filter> -->
-<!-- </activity> -->
-<!-- <activity android:name=".Tab1Activity"></activity> -->
-<!-- <activity android:name=".MapOverlayDemo" android:label="Lat/Long Location"> </activity> -->
-<!-- <uses-library android:name="com.google.android.maps" /> -->
-<!-- <activity android:name=".Tab2Activity"></activity> -->
-<!-- </application> -->
-<!-- </manifest> -->
-=======
-</manifest>
->>>>>>> 041ae9b4c5189dec7f25e93027edbf1c31c75fea

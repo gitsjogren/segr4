@@ -23,7 +23,7 @@ public class WelcomeScreen extends Activity {
         	public void run() {
               
         		/* Create an Intent that will start the MainActivity. */
-                Intent mainIntent = new Intent(WelcomeScreen.this,AppTest.class);
+                Intent mainIntent = new Intent(WelcomeScreen.this,MainActivity.class);
                 WelcomeScreen.this.startActivity(mainIntent);
                 WelcomeScreen.this.finish();
             }

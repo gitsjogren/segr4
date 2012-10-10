@@ -10,7 +10,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -21,7 +20,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.TabHost.OnTabChangeListener;
 import android.widget.Toast;
 
 import com.google.android.maps.GeoPoint;
@@ -43,30 +41,27 @@ public class TheMap extends MapActivity {
 	private MapController mc;
 	private GeoPoint gp;
 	private MapView mapView;
-	private Button getThePositionButton, changeCampusButton, goToPubListButton; // Buttons
-																				// shown
-																				// on
-																				// top
-																				// of
-																				// theMap
-	private MyLocationOverlay myLocationOverlay; // An Overlay showing a "point"
-													// on the map aka your
-													// current position
-
+	
+	/* Buttons shown on top of theMap */
+	private Button getThePositionButton, changeCampusButton, goToPubListButton;
+																																							
+	/* An Overlay showing a blue dot, which indicates your location */
+	private MyLocationOverlay myLocationOverlay; 
+													
 	private List<Overlay> mapOverlays;
 	private Drawable drawable;
 	private OverlayClass itemizedOverlay;
 
+	/*  The different view selections of the map */
 	private final CharSequence[] differentViews = { "Street", "Satellite",
-			"Traffic" }; // selectable map views
+			"Traffic" };
 
-	// Define an array containing the access overlay items for all of the pubs
-	// of Johanneberg and Lindholmen
-	// Coordinates need to be converted into integers, by default they are
-	// displayed in microdegrees
+	/* Define an array containing the access overlay items for all of the pubs
+	 of Johanneberg and Lindholmen
+	 Coordinates need to be converted into integers, by default they are
+	 displayed in microdegrees */
 
-	// The pubs in the array are listed and hardcoded from
-	// coordinates_of_the_pubs.txt
+	/* The pubs in the array are listed and hardcoded from coordinates_of_the_pubs.txt */
 	private OverlayItem[] allPubsArray = {
 			// J.A. Pripps
 			new OverlayItem(new GeoPoint((int) (57.688984 * 1E6),
@@ -128,7 +123,7 @@ public class TheMap extends MapActivity {
 
 	};
 
-	// standard onCreate method
+	/* Standard onCreate-method */
 	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
@@ -176,7 +171,7 @@ public class TheMap extends MapActivity {
 			}
 		});
 
-		// Button to goto PubList.java
+		/* Button which accesses the publist */
 		goToPubListButton = (Button) findViewById(R.id.pubList);
 		goToPubListButton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
@@ -210,7 +205,7 @@ public class TheMap extends MapActivity {
 		}.start();
 	}
 
-	// The map will navigate to your current position
+	/* The map will navigate to your current position */
 	public void showTheCurrentPosition() {
 		myLocationOverlay = new MyLocationOverlay(this, mapView);
 		myLocationOverlay.enableMyLocation();
@@ -225,7 +220,7 @@ public class TheMap extends MapActivity {
 		});
 	}
 
-	// display all pubs in the allPubsArray as an overlay onto the map
+	/* Display all pubs in the allPubsArray as an overlay onto the map */
 	public void showThePubs() {
 
 		// Create itemizedOverlay2 if it doesn't exist
@@ -240,12 +235,12 @@ public class TheMap extends MapActivity {
 			itemizedOverlay.addOverlay(allPubsArray[i]);
 			mapOverlays.add(itemizedOverlay);
 		}
-		// Added symbols will be displayed when map is redrawn so force redraw
-		// now
+		/* Added symbols will be displayed when map is redrawn 
+		   so force redraw now */
 		mapView.postInvalidate();
 	}
 
-	// navigate to campus Lindholmen if users clicks changeCampusButton
+	/* Navigate to campus Lindholmen if users click on the changeCampusButton */
 	public void changeToCampusLindholmen() {
 
 		mc = mapView.getController();
@@ -254,7 +249,7 @@ public class TheMap extends MapActivity {
 		mc.setZoom(zoomLevel);
 	}
 
-	// navigate to campus Johanneberg if users clicks changeCampusButton
+	/* Navigate to campus Johanneberg if users click on the changeCampusButton */
 	public void changeToCampusJohanneberg() {
 
 		mc = mapView.getController();
@@ -334,10 +329,8 @@ public class TheMap extends MapActivity {
 							}).create().show();
 		case R.id.settings:
 			
-                Intent settingsActivity = new Intent(getBaseContext(),Settings.class);
+                Intent settingsActivity = new Intent(getBaseContext(),SettingsMenu.class);
                 startActivity(settingsActivity);
-        
-			
 
 		case R.id.share:
 			return true;
