@@ -1,16 +1,14 @@
 package com.tarea.pubrundan.Pubs;
 
-import com.tarea.pubrundan.R;
-import com.tarea.pubrundan.R.layout;
-import com.tarea.pubrundan.R.menu;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.Window;
 
-public class Elvan extends Activity {
+import com.tarea.pubrundan.R;
+
+public class PubF extends Activity {
 	
 	
 	
@@ -20,7 +18,7 @@ public class Elvan extends Activity {
 			super.onCreate(savedInstanceState);
 			requestWindowFeature(Window.FEATURE_NO_TITLE); // Suppress title bar for
 															// more space
-			setContentView(R.layout.elvan);
+			setContentView(R.layout.pubf);
 		
 	}
 		
