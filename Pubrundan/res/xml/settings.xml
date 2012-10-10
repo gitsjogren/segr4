@@ -3,15 +3,19 @@
         <PreferenceCategory
                 android:title="Application Settings">
                 <ListPreference
-                        android:title="Default campus"
-                        android:summary="Choose your default campus to show at startup."
-                        android:key="defaultCampus"
-                        android:defaultValue="true"
-                        android:entries="@array/campus"
-                        android:entryValues="@array/campusValues" />
+	                android:title="Default campus"
+	                android:summary="Choose your default campus to show at startup."
+	                android:key="defaultCampus"
+	                android:defaultValue="true"
+	                android:entries="@array/campus"
+	                android:entryValues="@array/campusValues" />
         </PreferenceCategory>
         <PreferenceCategory
                 android:title="Other things">
-        
+                <ListPreference 
+                    android:title="Send feedback"
+                    android:summary="Bugs, suggestions or w/e"
+                    android:key="feedback" />
+                
 </PreferenceCategory>
 </PreferenceScreen>
