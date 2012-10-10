@@ -10,9 +10,15 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 <uses-permission android:name="android.permission.ACCESS_CORSE_LOCATION"/>
     <application android:icon="@drawable/ic_launcher" android:label="@string/app_name">
+<<<<<<< HEAD
         <activity android:name=".WelcomeScreen"
             		android:label="@string/app_name"></activity>
          <intent-filter>
+=======
+        <activity android:name=".MainActivity"
+                  android:label="@string/app_name">
+            <intent-filter>
+>>>>>>> 041ae9b4c5189dec7f25e93027edbf1c31c75fea
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -20,7 +26,27 @@
         <activity android:name=".TheMap"> </activity>
         <uses-library android:name="com.google.android.maps" />
         <activity android:name=".PubList"></activity>
+        <activity android:name=".Pubs.JAPripps"></activity>
+        <activity android:name=".Pubs.Gasquen"></activity>
+        <activity android:name=".Pubs.Bulten"></activity>
+        <activity android:name=".Pubs.Winden"></activity>
+        <activity android:name=".Pubs.Zaloonen"></activity>
+        <activity android:name=".Pubs.ClubAvancez"></activity>
+        <activity android:name=".Pubs.GoldenI"></activity>
+        <activity android:name=".Pubs.Hubben"></activity>
+        <activity android:name=".Pubs.Basen"></activity>
+        <activity android:name=".Pubs.Kajsabaren"></activity>
+        <activity android:name=".Pubs.Jarnvagspub"></activity>
+        <activity android:name=".Pubs.GasTown"></activity>
+        <activity android:name=".Pubs.FortNOx"></activity>
+        <activity android:name=".Pubs.Spritkoket"></activity>
+        <activity android:name=".Pubs.Focus"></activity>
+        <activity android:name=".Pubs.RodaRummet"></activity>
+        <activity android:name=".Pubs.SigurdAfiket"></activity>
+        <activity android:name=".Pubs.PubP"></activity>
+        <activity android:name=".Pubs.Elvan"></activity>
     </application>
+<<<<<<< HEAD
 </manifest>
 <!-- <?xml version="1.0" encoding="utf-8"?> -->
 <!-- <manifest xmlns:android="http://schemas.android.com/apk/res/android" -->
@@ -44,3 +70,6 @@
 <!-- <activity android:name=".Tab2Activity"></activity> -->
 <!-- </application> -->
 <!-- </manifest> -->
+=======
+</manifest>
+>>>>>>> 041ae9b4c5189dec7f25e93027edbf1c31c75fea

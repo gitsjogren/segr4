@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/more_pub_desc"
+        android:icon="@drawable/icon_more_info"
+        android:numericShortcut="1"
+        android:title="Mer info">
+    </item>
+
+    <item
+        android:id="@+id/find_pub"
+        android:icon="@drawable/icon_direction"
+        android:numericShortcut="2"
+        android:title="Hitta hit">
+    </item>
+
+    <item
+        android:id="@+id/show_pub_on_map"
+        android:icon="@drawable/icon_map"
+        android:numericShortcut="3"
+        android:title="Visa på karta">
+    </item>
+
+</menu>
