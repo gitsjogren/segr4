@@ -38,15 +38,18 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 	public OverlayClass(Drawable defaultMarker, Context context) {
 		super(boundCenterBottom(defaultMarker));
 		myOverlays = new ArrayList<OverlayItem>();
-		populate();
 		mContext = context;
 	}
 
 	public void addOverlay(OverlayItem overlay) {
 		myOverlays.add(overlay);
-		populate();
 		counter.add(count);
 		count++;
+	}
+	
+	// needed to access populate() from TheMap.java
+	public void populateFix(){
+		populate();
 	}
 
 	@Override
