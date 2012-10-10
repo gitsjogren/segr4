@@ -12,16 +12,6 @@
         </PreferenceCategory>
         <PreferenceCategory
                 android:title="Other things">
-        <EditTextPreference
-                android:name="EditText Preference"
-                android:summary="This allows you to enter a string"
-                android:defaultValue="Nothing"
-                android:title="Edit This Text"
-                android:key="editTextPref" />
-        <RingtonePreference
-                android:name="Ringtone Preference"
-                android:summary="Select a ringtone"
-                android:title="Ringtones"
-                android:key="ringtonePref" />
-
+        
+</PreferenceCategory>
 </PreferenceScreen>

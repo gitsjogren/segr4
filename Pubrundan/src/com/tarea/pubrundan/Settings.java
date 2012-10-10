@@ -1,29 +1,40 @@
 package com.tarea.pubrundan;
 
+import android.preference.PreferenceActivity;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.Preference;
-import android.preference.PreferenceActivity;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.widget.Toast;
 
 public class Settings extends PreferenceActivity{
 	
 	  @Override
-      public void onCreate(Bundle savedInstanceState) {
+      protected void onCreate(Bundle savedInstanceState) {
               super.onCreate(savedInstanceState);
-              setContentView(R.layout.main);
-              Button prefBtn = (Button) findViewById(R.id.prefButton);
-              prefBtn.setOnClickListener(new OnClickListener() {
+              addPreferencesFromResource(R.id.settings);
+              // Get the custom preference
+              Preference customPref = (Preference) findPreference("customPref");
+              customPref.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 
-                      public void onClick(View v) {
-                              Intent settingsActivity = new Intent(getBaseContext(),
-                                              Preferences.class);
-                              startActivity(settingsActivity);
-                      }
-              });
+                                      public boolean onPreferenceClick(Preference preference) {
+                                              Toast.makeText(getBaseContext(),
+                                                              "The custom preference has been clicked",
+                                                              Toast.LENGTH_LONG).show();
+                                              SharedPreferences customSharedPreference = getSharedPreferences(
+                                                              "myCustomSharedPrefs", Activity.MODE_PRIVATE);
+                                              SharedPreferences.Editor editor = customSharedPreference
+                                                              .edit();
+                                              editor.putString("myCustomPref",
+                                                              "The preference has been clicked");
+                                              editor.commit();
+                                              return true;
+                                      }
+
+                              });
       }
 }
+
 
 

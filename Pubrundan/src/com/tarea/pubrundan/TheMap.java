@@ -175,7 +175,7 @@ public class TheMap extends MapActivity {
 		mc.setZoom(zoomLevel);
 	}
 
-	// navigate to campus Lindholmen if users clicks changeCampusButton
+	// navigate to campus Johanneberg if users clicks changeCampusButton
 	public void changeToCampusJohanneberg() {
 
 		mc = mapView.getController();
@@ -241,7 +241,11 @@ public class TheMap extends MapActivity {
 								}
 							}).create().show();
 		case R.id.settings:
-			return true;
+			
+                Intent settingsActivity = new Intent(getBaseContext(),Settings.class);
+                startActivity(settingsActivity);
+        
+			
 
 		case R.id.share:
 			return true;

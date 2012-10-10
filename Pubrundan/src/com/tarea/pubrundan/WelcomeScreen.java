@@ -1,3 +1,4 @@
+
 package com.tarea.pubrundan;
 
 import android.app.Activity;
@@ -22,7 +23,7 @@ public class WelcomeScreen extends Activity {
         	public void run() {
               
         		/* Create an Intent that will start the MainActivity. */
-                Intent mainIntent = new Intent(WelcomeScreen.this,MainActivity.class);
+                Intent mainIntent = new Intent(WelcomeScreen.this,AppTest.class);
                 WelcomeScreen.this.startActivity(mainIntent);
                 WelcomeScreen.this.finish();
             }
