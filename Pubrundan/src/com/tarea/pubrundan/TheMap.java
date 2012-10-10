@@ -132,7 +132,8 @@ public class TheMap extends MapActivity {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE); // Suppress title bar for
 														// more space
-		setContentView(R.layout.showthemap); // Use xml-layout showtomap.xml
+		setContentView(R.layout.showthemap); // Use xml-layout showtomap.xml		
+		
 		// Add map controller with zoom controls
 		mapView = (MapView) findViewById(R.id.mv);
 		mapView.setSatellite(true); // Satellite is set by default

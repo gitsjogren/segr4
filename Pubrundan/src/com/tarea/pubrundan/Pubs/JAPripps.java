@@ -9,8 +9,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.Window;
 
-import com.google.android.maps.GeoPoint;
-import com.google.android.maps.OverlayItem;
 import com.tarea.pubrundan.R;
 import com.tarea.pubrundan.TheMap;
 
@@ -49,9 +47,12 @@ public class JAPripps extends Activity {
 				return true;
 
 			case R.id.show_pub_on_map:
-				OverlayItem oi = tm.allPubsArray[0];
-				GeoPoint gp = oi.getPoint();
-				tm.animateToGeopoint(gp,19);
+				//OverlayItem oi = tm.allPubsArray[0];
+				//GeoPoint gp = oi.getPoint();
+				//String send = gp.toString();
+				Intent i = new Intent(getBaseContext(),TheMap.class);
+				//i.putExtra("key", "value");
+                getApplicationContext().startActivity(i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 				return true;
 			}
 			return false;
