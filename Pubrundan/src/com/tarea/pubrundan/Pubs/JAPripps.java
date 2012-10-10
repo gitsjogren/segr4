@@ -2,20 +2,21 @@ package com.tarea.pubrundan.Pubs;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.Window;
-import android.widget.Toast;
 
+import com.google.android.maps.GeoPoint;
+import com.google.android.maps.OverlayItem;
 import com.tarea.pubrundan.R;
 import com.tarea.pubrundan.TheMap;
 
 public class JAPripps extends Activity {
 	
-	
+	private TheMap tm;
 	
 	// standard onCreate method
 		public void onCreate(Bundle savedInstanceState) {
@@ -44,10 +45,13 @@ public class JAPripps extends Activity {
 				new AlertDialog.Builder(this).setTitle("J.A. Pripps")
 						.setMessage(R.string.ja_pripps_info)
 						.create().show();
-			case R.id.settings:
+			case R.id.find_pub:
 				return true;
 
-			case R.id.share:
+			case R.id.show_pub_on_map:
+				OverlayItem oi = tm.allPubsArray[0];
+				GeoPoint gp = oi.getPoint();
+				tm.animateToGeopoint(gp,19);
 				return true;
 			}
 			return false;

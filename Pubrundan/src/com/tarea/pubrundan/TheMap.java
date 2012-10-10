@@ -10,7 +10,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -21,7 +20,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.TabHost.OnTabChangeListener;
 import android.widget.Toast;
 
 import com.google.android.maps.GeoPoint;
@@ -67,7 +65,7 @@ public class TheMap extends MapActivity {
 
 	// The pubs in the array are listed and hardcoded from
 	// coordinates_of_the_pubs.txt
-	private OverlayItem[] allPubsArray = {
+	public OverlayItem[] allPubsArray = {
 			// J.A. Pripps
 			new OverlayItem(new GeoPoint((int) (57.688984 * 1E6),
 					(int) (11.974389 * 1E6)), "J.A. Pripps", "Johanneberg"),
@@ -252,8 +250,10 @@ public class TheMap extends MapActivity {
 		mc = mapView.getController();
 		myLocationOverlay.runOnFirstFix(new Runnable() {
 			public void run() {
+				GeoPoint gp = myLocationOverlay.getMyLocation();
 				mc.setZoom(zoomLevel);
-				mc.animateTo(myLocationOverlay.getMyLocation());
+				mc.animateTo(gp);
+				mc.setCenter(gp);
 			}
 		});
 	}
@@ -264,6 +264,7 @@ public class TheMap extends MapActivity {
 		mc = mapView.getController();
 		gp = new GeoPoint((int) (57.705947 * 1e6), (int) (11.936642 * 1e6));
 		mc.animateTo(gp);
+		mc.setCenter(gp);
 		mc.setZoom(zoomLevel);
 	}
 
@@ -273,7 +274,17 @@ public class TheMap extends MapActivity {
 		mc = mapView.getController();
 		gp = new GeoPoint((int) (57.689034 * 1e6), (int) (11.976468 * 1e6));
 		mc.animateTo(gp);
+		mc.setCenter(gp);
 		mc.setZoom(zoomLevel);
+	}
+	
+	public void animateToGeopoint(GeoPoint gp, int zoom){
+		
+		mc = mapView.getController();
+		//gp = new GeoPoint((int) (57.689034 * 1e6), (int) (11.976468 * 1e6));
+		mc.animateTo(gp);
+		mc.setCenter(gp);
+		mc.setZoom(zoom);
 	}
 
 	// starting new activity( PubList.java ) if user clicks goToPubListButton
