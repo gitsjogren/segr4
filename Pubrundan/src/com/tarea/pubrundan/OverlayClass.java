@@ -11,7 +11,7 @@ import com.google.android.maps.OverlayItem;
 import com.tarea.pubrundan.Pubs.Basen;
 import com.tarea.pubrundan.Pubs.Bulten;
 import com.tarea.pubrundan.Pubs.ClubAvancez;
-import com.tarea.pubrundan.Pubs.Elvan;
+import com.tarea.pubrundan.Pubs.PubF;
 import com.tarea.pubrundan.Pubs.Focus;
 import com.tarea.pubrundan.Pubs.FortNOx;
 import com.tarea.pubrundan.Pubs.GasTown;
@@ -141,7 +141,7 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 			mContext.startActivity(pubp);
 			return true;
 		case 18:	// Start 11:an activity
-			Intent elvan = new Intent(mContext, Elvan.class);
+			Intent elvan = new Intent(mContext, PubF.class);
 			mContext.startActivity(elvan);
 			return true;
 		}
