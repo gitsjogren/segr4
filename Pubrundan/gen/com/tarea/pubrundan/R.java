@@ -81,7 +81,7 @@ public final class R {
         public static final int linearLayout1=0x7f070000;
         public static final int list_image=0x7f070003;
         public static final int mapshow_button=0x7f07000c;
-        public static final int more_pub_desc=0x7f070015;
+        public static final int more_pubinfo=0x7f070015;
         public static final int mv=0x7f070010;
         public static final int pubList=0x7f070011;
         public static final int settings=0x7f070013;
@@ -122,5 +122,6 @@ public final class R {
         public static final int app_name=0x7f050001;
         public static final int goLabel=0x7f050002;
         public static final int hello=0x7f050000;
+        public static final int ja_pripps_info=0x7f050003;
     }
 }
