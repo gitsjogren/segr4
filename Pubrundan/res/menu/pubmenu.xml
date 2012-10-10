@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
-        android:id="@+id/more_pub_desc"
+        android:id="@+id/more_pubinfo"
         android:icon="@drawable/icon_more_info"
         android:numericShortcut="1"
         android:title="Mer info">

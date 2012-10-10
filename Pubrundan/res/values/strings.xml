@@ -4,5 +4,8 @@
     <string name="hello">Chalmers pubrunda</string>
     <string name="app_name">Pubrundan</string>
     <string name="goLabel">Show the Map</string>
+    <string name="ja_pripps_info">J.A. Pripps Pub och Café är den naturliga samlingsplatsen mitt i Kårhuset.
+        Under dagtid finns allt du behöver för en trevlig fikastund. Under eftermiddagen öppnar ölkranarna
+        och framåt kvällen serverar köket god mat till priser som passar teknologstudentens plånbok.</string>
 
 </resources>
