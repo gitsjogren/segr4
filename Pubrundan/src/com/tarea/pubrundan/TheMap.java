@@ -104,7 +104,7 @@ public class TheMap extends MapActivity {
 					(int) (11.975918 * 1E6)), "GasTown", "Johanneberg"),
 			// FortNOx
 			new OverlayItem(new GeoPoint((int) (57.687302 * 1E6),
-					(int) (57.687302 * 1E6)), "FortNOx", "Johanneberg"),
+					(int) (11.977237 * 1E6)), "FortNOx", "Johanneberg"),
 			// Spritköket
 			new OverlayItem(new GeoPoint((int) (57.689587 * 1E6),
 					(int) (11.977978 * 1E6)), "Spritköket", "Johanneberg"),
@@ -123,6 +123,9 @@ public class TheMap extends MapActivity {
 			// 11:an
 			new OverlayItem(new GeoPoint((int) (57.706085 * 1E6),
 					(int) (11.936675 * 1E6)), "11:an", "Johanneberg"),
+			// Gangnam Style
+			new OverlayItem(new GeoPoint((int) (37.5175725 * 1E6),
+					(int) (127.047462 * 1E6)), "Gangnam Style", "Sydkorea"),
 
 	};
 
@@ -146,7 +149,7 @@ public class TheMap extends MapActivity {
 																	// for later
 																	// use in
 																	// the code
-		//checkIfGpsIsEnabled(); // check if gps is enabled
+		// checkIfGpsIsEnabled(); // check if gps is enabled
 
 		loading(); // loading animation, invokes: changeToCampusJohanneberg(),
 					// showThePubs()
@@ -183,39 +186,28 @@ public class TheMap extends MapActivity {
 		});
 
 	}
-	
-	
-	
-	
-	
-	
-	
+
 	// display all pubs in the allPubsArray as an overlay onto the map
-		public void showThePubs() {
+	public void showThePubs() {
 
-			// Create itemizedOverlay2 if it doesn't exist
-			if (itemizedOverlay == null) {
-				mapOverlays = mapView.getOverlays();
-				drawable = this.getResources().getDrawable(
-						R.drawable.icon_pub_location);
-				itemizedOverlay = new OverlayClass(drawable, this);
-			}
-			for (int i = 0; i < allPubsArray.length; i++) {
-
-				itemizedOverlay.addOverlay(allPubsArray[i]);
-			}
-			// Added symbols will be displayed when map is redrawn so force redraw
-			// now
-			itemizedOverlay.populateFix();
-			mapOverlays.add(itemizedOverlay);  // need to be outside the for-loop (source: http://stackoverflow.com/questions/2659770/android-map-performance-poor-because-of-many-overlays)
+		// Create itemizedOverlay2 if it doesn't exist
+		if (itemizedOverlay == null) {
+			mapOverlays = mapView.getOverlays();
+			drawable = this.getResources().getDrawable(
+					R.drawable.icon_pub_location);
+			itemizedOverlay = new OverlayClass(drawable, this);
 		}
-	
-	
-	
-	
-	
-	
-	
+		for (int i = 0; i < allPubsArray.length; i++) {
+
+			itemizedOverlay.addOverlay(allPubsArray[i]);
+		}
+		// Added symbols will be displayed when map is redrawn so force redraw
+		// now
+		itemizedOverlay.populateFix();
+		mapOverlays.add(itemizedOverlay); // need to be outside the for-loop
+											// (source:
+											// http://stackoverflow.com/questions/2659770/android-map-performance-poor-because-of-many-overlays)
+	}
 
 	private void loading() {
 
