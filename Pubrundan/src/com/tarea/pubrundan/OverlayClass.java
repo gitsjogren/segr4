@@ -5,16 +5,18 @@ import java.util.ArrayList;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
+import android.view.ViewConfiguration;
 
 import com.google.android.maps.ItemizedOverlay;
+import com.google.android.maps.MapView;
 import com.google.android.maps.OverlayItem;
 import com.tarea.pubrundan.Pubs.Basen;
 import com.tarea.pubrundan.Pubs.Bulten;
 import com.tarea.pubrundan.Pubs.ClubAvancez;
-import com.tarea.pubrundan.Pubs.GangnamStyle;
-import com.tarea.pubrundan.Pubs.PubF;
 import com.tarea.pubrundan.Pubs.Focus;
 import com.tarea.pubrundan.Pubs.FortNOx;
+import com.tarea.pubrundan.Pubs.GangnamStyle;
 import com.tarea.pubrundan.Pubs.GasTown;
 import com.tarea.pubrundan.Pubs.Gasquen;
 import com.tarea.pubrundan.Pubs.GoldenI;
@@ -22,6 +24,7 @@ import com.tarea.pubrundan.Pubs.Hubben;
 import com.tarea.pubrundan.Pubs.JAPripps;
 import com.tarea.pubrundan.Pubs.Jarnvagspub;
 import com.tarea.pubrundan.Pubs.Kajsabaren;
+import com.tarea.pubrundan.Pubs.PubF;
 import com.tarea.pubrundan.Pubs.PubP;
 import com.tarea.pubrundan.Pubs.RodaRummet;
 import com.tarea.pubrundan.Pubs.SigurdAfiket;
@@ -31,6 +34,13 @@ import com.tarea.pubrundan.Pubs.Zaloonen;
 
 public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 
+	
+	private static final float POINT_DIFFERENCE = 50;
+    private long systemTime = System.currentTimeMillis();
+
+    private float downX;
+    private float downY;
+	
 	private ArrayList<OverlayItem> myOverlays;
 	private Context mContext;
 	private int count = 0;
@@ -159,4 +169,36 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 	public int size() {
 		return myOverlays.size();
 	}
+	
+	
+	@Override
+    public boolean onTouchEvent(MotionEvent event, MapView mapView) {
+        switch (event.getAction()) {
+        case MotionEvent.ACTION_DOWN:
+            final long timeDiff = (System.currentTimeMillis() - systemTime);
+            if (timeDiff < ViewConfiguration.getDoubleTapTimeout()) 
+            {
+                if 
+                (
+                    (Math.abs(downX - event.getX()) < POINT_DIFFERENCE) && 
+                    (Math.abs(downY - event.getY()) < POINT_DIFFERENCE)
+                )
+                {
+                    mapView.getController().zoomInFixing
+                    (
+                        (int) event.getX(),
+                        (int) event.getY()
+                    );
+                }            
+            }
+            break;
+        case MotionEvent.ACTION_UP:
+            systemTime = System.currentTimeMillis();
+            downX = event.getX();
+            downY = event.getY();
+            
+            break;
+        }
+        return false;        
+    }
 }

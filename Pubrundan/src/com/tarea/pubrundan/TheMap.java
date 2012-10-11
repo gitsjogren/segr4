@@ -8,14 +8,18 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.gesture.GestureOverlayView;
+import android.gesture.GestureOverlayView.OnGestureListener;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.view.GestureDetector.OnDoubleTapListener;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -29,12 +33,14 @@ import com.google.android.maps.MapView;
 import com.google.android.maps.MyLocationOverlay;
 import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
+import com.google.android.maps.Projection;
 import com.tarea.pubrundan.Pubs.JAPripps;
 
 //### This class follows some code examples from http://eagle.phys.utk.edu/guidry/android/index.html  ###//
 
-public class TheMap extends MapActivity {
-
+public class TheMap extends MapActivity implements OnGestureListener,
+OnDoubleTapListener {
+	
 	private boolean startCampus = true; // false = Lindholmen, true =
 										// Johanneberg (default campus)
 	private int zoomLevel = 17;
@@ -130,6 +136,7 @@ public class TheMap extends MapActivity {
 	};
 
 	// standard onCreate method
+	@Override
 	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
@@ -185,6 +192,14 @@ public class TheMap extends MapActivity {
 			}
 		});
 
+	}
+	
+	public boolean onDoubleTap(MotionEvent e) {
+	     int x = (int)e.getX(), y = (int)e.getY();;  
+	     Projection p = mapView.getProjection();  
+	     mapView.getController().animateTo(p.fromPixels(x, y));
+	     mapView.getController().zoomIn();  
+	  return true; 
 	}
 
 	// display all pubs in the allPubsArray as an overlay onto the map
@@ -446,6 +461,68 @@ public class TheMap extends MapActivity {
 	public void onStatusChanged(String provider, int status, Bundle extras) {
 		// TODO Auto-generated method stub
 
+	}
+
+	public boolean onDoubleTapEvent(MotionEvent e) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean onSingleTapConfirmed(MotionEvent e) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean onDown(MotionEvent e) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
+			float velocityY) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public void onLongPress(MotionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX,
+			float distanceY) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public void onShowPress(MotionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public boolean onSingleTapUp(MotionEvent e) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public void onGesture(GestureOverlayView overlay, MotionEvent event) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void onGestureCancelled(GestureOverlayView overlay, MotionEvent event) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void onGestureEnded(GestureOverlayView overlay, MotionEvent event) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void onGestureStarted(GestureOverlayView overlay, MotionEvent event) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
