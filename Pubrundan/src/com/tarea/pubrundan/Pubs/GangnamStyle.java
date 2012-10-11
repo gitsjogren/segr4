@@ -2,13 +2,12 @@ package com.tarea.pubrundan.Pubs;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.Window;
+import android.view.WindowManager;
 
 import com.tarea.pubrundan.R;
 
-public class FortNOx extends Activity {
+public class GangnamStyle extends Activity {
 	
 	
 	
@@ -18,17 +17,10 @@ public class FortNOx extends Activity {
 			super.onCreate(savedInstanceState);
 			requestWindowFeature(Window.FEATURE_NO_TITLE); // Suppress title bar for
 															// more space
-			setContentView(R.layout.fortnox);
+			getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+		            WindowManager.LayoutParams.FLAG_FULLSCREEN);
+			setContentView(R.layout.gangnamstyle);
 		
 	}
-		
-		// Initiating Menu XML file (menu.xml)
-		@Override
-		public boolean onCreateOptionsMenu(Menu menu) {
-			super.onCreateOptionsMenu(menu);
-			MenuInflater oMenu = getMenuInflater();
-			oMenu.inflate(R.menu.pubmenu, menu);
-			return true;
-		}
 
 }

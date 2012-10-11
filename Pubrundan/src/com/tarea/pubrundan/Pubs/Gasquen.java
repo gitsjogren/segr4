@@ -1,14 +1,12 @@
 package com.tarea.pubrundan.Pubs;
 
-import com.tarea.pubrundan.R;
-import com.tarea.pubrundan.R.layout;
-import com.tarea.pubrundan.R.menu;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.Window;
+
+import com.tarea.pubrundan.R;
 
 public class Gasquen extends Activity {
 	

@@ -2,16 +2,13 @@ package com.tarea.pubrundan.Pubs;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.Window;
-import android.widget.Toast;
 
 import com.tarea.pubrundan.R;
-import com.tarea.pubrundan.TheMap;
 
 public class JAPripps extends Activity {
 	
