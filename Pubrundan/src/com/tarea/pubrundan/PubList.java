@@ -27,10 +27,18 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PubList.
+ */
 public class PubList extends Activity {
 
+	/** The go back to map button. */
 	private Button goBackToMapButton;
 
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

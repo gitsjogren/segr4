@@ -28,12 +28,19 @@ import android.view.Window;
 
 import com.tarea.pubrundan.R;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class RodaRummet.
+ */
 public class RodaRummet extends Activity {
 	
 	
 	
 	// standard onCreate method
-		public void onCreate(Bundle savedInstanceState) {
+		/* (non-Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
+	public void onCreate(Bundle savedInstanceState) {
 
 			super.onCreate(savedInstanceState);
 			requestWindowFeature(Window.FEATURE_NO_TITLE); // Suppress title bar for
@@ -43,6 +50,9 @@ public class RodaRummet extends Activity {
 	}
 		
 		// Initiating Menu XML file (menu.xml)
+		/* (non-Javadoc)
+		 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+		 */
 		@Override
 		public boolean onCreateOptionsMenu(Menu menu) {
 			super.onCreateOptionsMenu(menu);
