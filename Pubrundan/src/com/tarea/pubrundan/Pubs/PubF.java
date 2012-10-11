@@ -31,6 +31,9 @@ import com.tarea.pubrundan.R;
 // TODO: Auto-generated Javadoc
 /**
  * The Class PubF.
+ * 
+ * @author Erik Sjögren
+ * 
  */
 public class PubF extends Activity {
 	

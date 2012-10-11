@@ -29,7 +29,10 @@ import com.tarea.pubrundan.R;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class GangnamStyle.
+ * The Class GangnamStyle, our easter egg.
+ * 
+ * @author Erik Sjögren
+ * 
  */
 public class GangnamStyle extends Activity {
 	

@@ -31,6 +31,9 @@ import com.tarea.pubrundan.R;
 // TODO: Auto-generated Javadoc
 /**
  * The Class SigurdAfiket.
+ * 
+ * @author Erik Sjögren
+ * 
  */
 public class SigurdAfiket extends Activity {
 	

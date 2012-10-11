@@ -31,6 +31,9 @@ import com.tarea.pubrundan.R;
 // TODO: Auto-generated Javadoc
 /**
  * The Class Hubben.
+ * 
+ * @author Erik Sjögren
+ * 
  */
 public class Hubben extends Activity {
 	

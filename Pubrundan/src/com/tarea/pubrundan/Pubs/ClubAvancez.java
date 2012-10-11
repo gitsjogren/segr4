@@ -31,6 +31,9 @@ import com.tarea.pubrundan.R;
 // TODO: Auto-generated Javadoc
 /**
  * The Class ClubAvancez.
+ * 
+ * @author Erik Sjögren
+ * 
  */
 public class ClubAvancez extends Activity {
 	

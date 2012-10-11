@@ -31,6 +31,9 @@ import com.tarea.pubrundan.R;
 // TODO: Auto-generated Javadoc
 /**
  * The Class Gasquen.
+ * 
+ * @author Erik Sjögren
+ * 
  */
 public class Gasquen extends Activity {
 	

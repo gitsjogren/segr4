@@ -60,26 +60,29 @@ import com.tarea.pubrundan.Pubs.JAPripps;
 //### This class follows some code examples from http://eagle.phys.utk.edu/guidry/android/index.html  ###//
 
 /**
- * The Class TheMap.
+ * The class TheMap
+ * 
+ * @author Erik Sjögren
+ * 
  */
 public class TheMap extends MapActivity implements OnGestureListener,
-OnDoubleTapListener {
-	
+		OnDoubleTapListener {
+
 	/** The start campus. */
 	private boolean startCampus = true; // false = Lindholmen, true =
 										// Johanneberg (default campus)
 	/** The zoom level. */
-										private int zoomLevel = 17;
-	
+	private int zoomLevel = 17;
+
 	/** The mc. */
 	private MapController mc;
-	
+
 	/** The gp. */
 	private GeoPoint gp;
-	
+
 	/** The map view. */
 	private MapView mapView;
-	
+
 	/** The go to pub list button. */
 	private Button getThePositionButton, changeCampusButton, goToPubListButton; // Buttons
 																				// shown
@@ -88,16 +91,16 @@ OnDoubleTapListener {
 																				// of
 																				// theMap
 	/** The my location overlay. */
-																				private MyLocationOverlay myLocationOverlay; // An Overlay showing a "point"
-													// on the map aka your
-													// current position
+	private MyLocationOverlay myLocationOverlay; // An Overlay showing a "point"
+	// on the map aka your
+	// current position
 
 	/** The map overlays. */
-													private List<Overlay> mapOverlays;
-	
+	private List<Overlay> mapOverlays;
+
 	/** The drawable. */
 	private Drawable drawable;
-	
+
 	/** The itemized overlay. */
 	private OverlayClass itemizedOverlay;
 
@@ -178,7 +181,9 @@ OnDoubleTapListener {
 	};
 
 	// standard onCreate method
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.google.android.maps.MapActivity#onCreate(android.os.Bundle)
 	 */
 	@Override
@@ -238,16 +243,21 @@ OnDoubleTapListener {
 		});
 
 	}
-	
-	/* (non-Javadoc)
-	 * @see android.view.GestureDetector.OnDoubleTapListener#onDoubleTap(android.view.MotionEvent)
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * android.view.GestureDetector.OnDoubleTapListener#onDoubleTap(android.
+	 * view.MotionEvent)
 	 */
 	public boolean onDoubleTap(MotionEvent e) {
-	     int x = (int)e.getX(), y = (int)e.getY();;  
-	     Projection p = mapView.getProjection();  
-	     mapView.getController().animateTo(p.fromPixels(x, y));
-	     mapView.getController().zoomIn();  
-	  return true; 
+		int x = (int) e.getX(), y = (int) e.getY();
+		;
+		Projection p = mapView.getProjection();
+		mapView.getController().animateTo(p.fromPixels(x, y));
+		mapView.getController().zoomIn();
+		return true;
 	}
 
 	// display all pubs in the allPubsArray as an overlay onto the map
@@ -293,7 +303,7 @@ OnDoubleTapListener {
 					// showTheCurrentPosition(); // navigate to users current
 					// location, inactive during development.
 
-					sleep(3000); // sleep the thread, 3000 milliseconds = 3
+					sleep(2000); // sleep the thread, 2000 milliseconds = 2
 									// seconds.
 				} catch (Exception e) {
 				}
@@ -371,7 +381,9 @@ OnDoubleTapListener {
 	}
 
 	// Required method since class extends MapActivity
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.google.android.maps.MapActivity#isRouteDisplayed()
 	 */
 	@Override
@@ -380,7 +392,9 @@ OnDoubleTapListener {
 	}
 
 	// Initiating Menu XML file (menu.xml)
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
 	 */
 	@Override
@@ -393,7 +407,9 @@ OnDoubleTapListener {
 
 	// onOptionsMenu with three items, "Street", "Satellite" & Traffic... code
 	// refactor is needed!
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
 	 */
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -437,7 +453,10 @@ OnDoubleTapListener {
 		return false;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * Attempts to enable MyLocation, registering for updates from
+	 * LocationManager.GPS_PROVIDER and LocationManager.NETWORK_PROVIDER.
+	 * 
 	 * @see com.google.android.maps.MapActivity#onResume()
 	 */
 	@Override
@@ -447,27 +466,23 @@ OnDoubleTapListener {
 		myLocationOverlay.enableMyLocation();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * Stops location updates.
+	 * 
 	 * @see com.google.android.maps.MapActivity#onPause()
 	 */
 	@Override
 	protected void onPause() {
 		super.onPause();
 		// when our activity pauses, we want to remove listening for location
-		// updates
-		// onPause, pressing home-button for example the GPS will be turned off,
-		// onResme will start it again
-		// LocationManager manager = (LocationManager)
-		// getSystemService(Context.LOCATION_SERVICE);
-		// manager.removeUpdates(this);
-		// manager = null;
 		myLocationOverlay.disableMyLocation();
 	}
 
 	/**
 	 * On tab changed.
-	 *
-	 * @param tabId the tab id
+	 * 
+	 * @param tabId
+	 *            the tab id
 	 */
 	public void onTabChanged(String tabId) {
 		// TODO Auto-generated method stub
@@ -542,8 +557,9 @@ OnDoubleTapListener {
 
 	/**
 	 * On location changed.
-	 *
-	 * @param location the location
+	 * 
+	 * @param location
+	 *            the location
 	 */
 	public void onLocationChanged(Location location) {
 		// TODO Auto-generated method stub
@@ -552,8 +568,9 @@ OnDoubleTapListener {
 
 	/**
 	 * On provider disabled.
-	 *
-	 * @param provider the provider
+	 * 
+	 * @param provider
+	 *            the provider
 	 */
 	public void onProviderDisabled(String provider) {
 		// TODO Auto-generated method stub
@@ -562,8 +579,9 @@ OnDoubleTapListener {
 
 	/**
 	 * On provider enabled.
-	 *
-	 * @param provider the provider
+	 * 
+	 * @param provider
+	 *            the provider
 	 */
 	public void onProviderEnabled(String provider) {
 		// TODO Auto-generated method stub
@@ -572,26 +590,37 @@ OnDoubleTapListener {
 
 	/**
 	 * On status changed.
-	 *
-	 * @param provider the provider
-	 * @param status the status
-	 * @param extras the extras
+	 * 
+	 * @param provider
+	 *            the provider
+	 * @param status
+	 *            the status
+	 * @param extras
+	 *            the extras
 	 */
 	public void onStatusChanged(String provider, int status, Bundle extras) {
 		// TODO Auto-generated method stub
 
 	}
 
-	/* (non-Javadoc)
-	 * @see android.view.GestureDetector.OnDoubleTapListener#onDoubleTapEvent(android.view.MotionEvent)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * android.view.GestureDetector.OnDoubleTapListener#onDoubleTapEvent(android
+	 * .view.MotionEvent)
 	 */
 	public boolean onDoubleTapEvent(MotionEvent e) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	/* (non-Javadoc)
-	 * @see android.view.GestureDetector.OnDoubleTapListener#onSingleTapConfirmed(android.view.MotionEvent)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * android.view.GestureDetector.OnDoubleTapListener#onSingleTapConfirmed
+	 * (android.view.MotionEvent)
 	 */
 	public boolean onSingleTapConfirmed(MotionEvent e) {
 		// TODO Auto-generated method stub
@@ -600,8 +629,9 @@ OnDoubleTapListener {
 
 	/**
 	 * On down.
-	 *
-	 * @param e the e
+	 * 
+	 * @param e
+	 *            the e
 	 * @return true, if successful
 	 */
 	public boolean onDown(MotionEvent e) {
@@ -611,11 +641,15 @@ OnDoubleTapListener {
 
 	/**
 	 * On fling.
-	 *
-	 * @param e1 the e1
-	 * @param e2 the e2
-	 * @param velocityX the velocity x
-	 * @param velocityY the velocity y
+	 * 
+	 * @param e1
+	 *            the e1
+	 * @param e2
+	 *            the e2
+	 * @param velocityX
+	 *            the velocity x
+	 * @param velocityY
+	 *            the velocity y
 	 * @return true, if successful
 	 */
 	public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
@@ -626,21 +660,26 @@ OnDoubleTapListener {
 
 	/**
 	 * On long press.
-	 *
-	 * @param e the e
+	 * 
+	 * @param e
+	 *            the e
 	 */
 	public void onLongPress(MotionEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	/**
 	 * On scroll.
-	 *
-	 * @param e1 the e1
-	 * @param e2 the e2
-	 * @param distanceX the distance x
-	 * @param distanceY the distance y
+	 * 
+	 * @param e1
+	 *            the e1
+	 * @param e2
+	 *            the e2
+	 * @param distanceX
+	 *            the distance x
+	 * @param distanceY
+	 *            the distance y
 	 * @return true, if successful
 	 */
 	public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX,
@@ -651,18 +690,20 @@ OnDoubleTapListener {
 
 	/**
 	 * On show press.
-	 *
-	 * @param e the e
+	 * 
+	 * @param e
+	 *            the e
 	 */
 	public void onShowPress(MotionEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	/**
 	 * On single tap up.
-	 *
-	 * @param e the e
+	 * 
+	 * @param e
+	 *            the e
 	 * @return true, if successful
 	 */
 	public boolean onSingleTapUp(MotionEvent e) {
@@ -670,36 +711,52 @@ OnDoubleTapListener {
 		return false;
 	}
 
-	/* (non-Javadoc)
-	 * @see android.gesture.GestureOverlayView.OnGestureListener#onGesture(android.gesture.GestureOverlayView, android.view.MotionEvent)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * android.gesture.GestureOverlayView.OnGestureListener#onGesture(android
+	 * .gesture.GestureOverlayView, android.view.MotionEvent)
 	 */
 	public void onGesture(GestureOverlayView overlay, MotionEvent event) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-	/* (non-Javadoc)
-	 * @see android.gesture.GestureOverlayView.OnGestureListener#onGestureCancelled(android.gesture.GestureOverlayView, android.view.MotionEvent)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * android.gesture.GestureOverlayView.OnGestureListener#onGestureCancelled
+	 * (android.gesture.GestureOverlayView, android.view.MotionEvent)
 	 */
 	public void onGestureCancelled(GestureOverlayView overlay, MotionEvent event) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-	/* (non-Javadoc)
-	 * @see android.gesture.GestureOverlayView.OnGestureListener#onGestureEnded(android.gesture.GestureOverlayView, android.view.MotionEvent)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * android.gesture.GestureOverlayView.OnGestureListener#onGestureEnded(android
+	 * .gesture.GestureOverlayView, android.view.MotionEvent)
 	 */
 	public void onGestureEnded(GestureOverlayView overlay, MotionEvent event) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-	/* (non-Javadoc)
-	 * @see android.gesture.GestureOverlayView.OnGestureListener#onGestureStarted(android.gesture.GestureOverlayView, android.view.MotionEvent)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * android.gesture.GestureOverlayView.OnGestureListener#onGestureStarted
+	 * (android.gesture.GestureOverlayView, android.view.MotionEvent)
 	 */
 	public void onGestureStarted(GestureOverlayView overlay, MotionEvent event) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
