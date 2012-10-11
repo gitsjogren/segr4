@@ -3,12 +3,11 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
-    <view
+    <com.tarea.pubrundan.OnDoubleTap
         android:id="@+id/mv"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_weight="1"
-        class="com.google.android.maps.MapView"
         android:apiKey="0n_WUXbhVEKfU4SZhO9Hhixy7M617h_k4iBRiSA"
         android:clickable="true" />
 
