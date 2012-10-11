@@ -31,6 +31,9 @@ import com.tarea.pubrundan.R;
 // TODO: Auto-generated Javadoc
 /**
  * The Class Kajsabaren.
+ * 
+ * @author Erik Sjögren
+ * 
  */
 public class Kajsabaren extends Activity {
 	

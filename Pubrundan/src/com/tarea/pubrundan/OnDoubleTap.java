@@ -28,7 +28,10 @@ import com.google.android.maps.MapView;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class OnDoubleTap.
+ * The class OnDoubleTap
+ * 
+ * @author Erik Sjögren
+ * 
  */
 public class OnDoubleTap extends MapView {
 
@@ -48,6 +51,10 @@ public class OnDoubleTap extends MapView {
 
 	  /* (non-Javadoc)
   	 * @see android.view.ViewGroup#onInterceptTouchEvent(android.view.MotionEvent)
+  	 * 
+  	 * @param ev
+  	 * 
+  	 * @return true, if successful
   	 */
   	@Override
 	  public boolean onInterceptTouchEvent(MotionEvent ev) {

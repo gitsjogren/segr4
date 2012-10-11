@@ -31,6 +31,9 @@ import com.tarea.pubrundan.R;
 // TODO: Auto-generated Javadoc
 /**
  * The Class Bulten.
+ * 
+ * @author Erik Sjögren
+ * 
  */
 public class Bulten extends Activity {
 	

@@ -33,6 +33,9 @@ import com.tarea.pubrundan.R;
 // TODO: Auto-generated Javadoc
 /**
  * The Class JAPripps.
+ * 
+ * @author Erik Sjögren
+ * 
  */
 public class JAPripps extends Activity {
 	

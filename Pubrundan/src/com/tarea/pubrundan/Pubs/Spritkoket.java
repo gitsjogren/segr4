@@ -31,6 +31,9 @@ import com.tarea.pubrundan.R;
 // TODO: Auto-generated Javadoc
 /**
  * The Class Spritkoket.
+ * 
+ * @author Erik Sjögren
+ * 
  */
 public class Spritkoket extends Activity {
 	

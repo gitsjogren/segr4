@@ -29,7 +29,10 @@ import android.widget.Button;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class PubList.
+ * The class PubList
+ * 
+ * @author Erik Sjögren
+ * 
  */
 public class PubList extends Activity {
 

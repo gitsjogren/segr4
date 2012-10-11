@@ -31,6 +31,9 @@ import com.tarea.pubrundan.R;
 // TODO: Auto-generated Javadoc
 /**
  * The Class GoldenI.
+ * 
+ * @author Erik Sjögren
+ * 
  */
 public class GoldenI extends Activity {
 	
