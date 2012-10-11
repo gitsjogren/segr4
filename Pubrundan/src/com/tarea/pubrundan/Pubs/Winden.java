@@ -31,6 +31,9 @@ import com.tarea.pubrundan.R;
 // TODO: Auto-generated Javadoc
 /**
  * The Class Winden.
+ * 
+ * @author Erik Sjögren
+ * 
  */
 public class Winden extends Activity {
 	

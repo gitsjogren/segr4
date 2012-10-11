@@ -29,8 +29,11 @@ import android.view.Window;
 import com.tarea.pubrundan.R;
 
 // TODO: Auto-generated Javadoc
-/**
+/** 
  * The Class Basen.
+ * 
+ * @author Erik Sjögren
+ * 
  */
 public class Basen extends Activity {
 	

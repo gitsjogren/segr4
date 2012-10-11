@@ -54,7 +54,10 @@ import com.tarea.pubrundan.Pubs.Zaloonen;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class OverlayClass.
+ * The class OverlayClass
+ * 
+ * @author Erik Sjögren
+ * 
  */
 public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 
@@ -105,10 +108,10 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 		counter.add(count);
 		count++;
 	}
-	
-	// needed to access populate() from TheMap.java
+
 	/**
 	 * Populate fix.
+	 * Needed to access populate() from class TheMap
 	 */
 	public void populateFix(){
 		populate();
@@ -116,15 +119,17 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 
 	/* (non-Javadoc)
 	 * @see com.google.android.maps.ItemizedOverlay#createItem(int)
+	 * @param i
+	 * 
+	 * @return, OverlayItem i
 	 */
 	@Override
 	protected OverlayItem createItem(int i) {
 		return myOverlays.get(i);
 	}
 
-	// Removes overlay item i
 	/**
-	 * Removes the item.
+	 * Removes overlay item i.
 	 *
 	 * @param i the i
 	 */
@@ -133,9 +138,14 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 		populate();
 	}
 
-	// Handle tap events on overlay icons
 	/* (non-Javadoc)
+	 * Handle tap events on overlay icons
+	 * Start each pub as own class with xml
 	 * @see com.google.android.maps.ItemizedOverlay#onTap(int)
+	 * 
+	 * @param i
+	 * 
+	 * @return, true if successful
 	 */
 	@Override
 	protected boolean onTap(int i) {
@@ -217,7 +227,7 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 			Intent elvan = new Intent(mContext, PubF.class);
 			mContext.startActivity(elvan);
 			return true;
-		case 19:	// Start 11:an activity
+		case 19:	// Start Gangnam Style activity
 			Intent gangnamstyle = new Intent(mContext, GangnamStyle.class);
 			mContext.startActivity(gangnamstyle);
 			return true;
@@ -226,18 +236,25 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 
 	}
 
-	// Returns present number of items in list
 	/* (non-Javadoc)
+	 * Returns present number of items in list
 	 * @see com.google.android.maps.ItemizedOverlay#size()
 	 */
 	@Override
 	public int size() {
 		return myOverlays.size();
 	}
-	
-	
+		
 	/* (non-Javadoc)
+	 * 
 	 * @see com.google.android.maps.ItemizedOverlay#onTouchEvent(android.view.MotionEvent, com.google.android.maps.MapView)
+	 * 
+	 * @param event
+	 * 
+	 * @mapView
+	 * 
+	 * @return true, if successful
+	 * 
 	 */
 	@Override
     public boolean onTouchEvent(MotionEvent event, MapView mapView) {
