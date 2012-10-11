@@ -14,8 +14,6 @@
         android:orientation="vertical"
         android:padding="5dp" >
 
-        <!-- Title Of Song -->
-
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
@@ -36,8 +34,6 @@
             android:background="#DADADA" />
     </LinearLayout>
 
-    <!-- ListRow Left sied Thumbnail image -->
-
     <LinearLayout
         android:id="@+id/thumbnail"
         android:layout_width="wrap_content"
@@ -45,12 +41,6 @@
         android:layout_alignParentLeft="true"
         android:layout_marginRight="10dp"
         android:paddingTop="70dp" >
-
-        <!-- Artist Name -->
-
-
-        <!-- Rightend Duration -->
-
     </LinearLayout>
 
     <ImageView
@@ -61,7 +51,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
         android:contentDescription="Pub logo"
-        android:src="@drawable/icon_roda_rummet" />
+        android:src="@drawable/icon_basen" />
 
     <TextView
         android:id="@+id/title"
@@ -187,4 +177,5 @@
         android:textColor="@color/black"
         android:textSize="15dp"
         android:textStyle="normal" />
-</RelativeLayout>
+
+</RelativeLayout>

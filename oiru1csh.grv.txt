@@ -1,0 +1,78 @@
+Merge remote-tracking branch 'origin/Branch-for-theMap'
+
+Conflicts:
+	Pubrundan/AndroidManifest.xml
+	Pubrundan/gen/com/tarea/pubrundan/R.java
+	Pubrundan/src/com/tarea/pubrundan/OnDoubleTap.java
+	Pubrundan/src/com/tarea/pubrundan/Pubs/GangnamStyle.java
+	Pubrundan/src/com/tarea/pubrundan/Pubs/PubF.java
+	Pubrundan/src/com/tarea/pubrundan/TheMap.java
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Changes to be committed:
+#
+#	modified:   Pubrundan/AndroidManifest.xml
+#	new file:   Pubrundan/AndroidManifest.xml.BACKUP.4248.xml
+#	new file:   Pubrundan/AndroidManifest.xml.BASE.4248.xml
+#	new file:   Pubrundan/AndroidManifest.xml.LOCAL.4248.xml
+#	new file:   Pubrundan/AndroidManifest.xml.REMOTE.4248.xml
+#	modified:   Pubrundan/gen/com/tarea/pubrundan/R.java
+#	modified:   Pubrundan/res/drawable-hdpi/icon_ja_pripps.png
+#	modified:   Pubrundan/res/layout/basen.xml
+#	modified:   Pubrundan/res/layout/bulten.xml
+#	modified:   Pubrundan/res/layout/clubavancez.xml
+#	deleted:    Pubrundan/res/layout/elvan.xml
+#	modified:   Pubrundan/res/layout/focus.xml
+#	modified:   Pubrundan/res/layout/fortnox.xml
+#	modified:   Pubrundan/res/layout/gasquen.xml
+#	modified:   Pubrundan/res/layout/gastown.xml
+#	modified:   Pubrundan/res/layout/goldeni.xml
+#	modified:   Pubrundan/res/layout/hubben.xml
+#	modified:   Pubrundan/res/layout/japripps.xml
+#	modified:   Pubrundan/res/layout/jarnvagspub.xml
+#	modified:   Pubrundan/res/layout/kajsabaren.xml
+#	modified:   Pubrundan/res/layout/pubp.xml
+#	modified:   Pubrundan/res/layout/rodarummet.xml
+#	modified:   Pubrundan/res/layout/showthemap.xml
+#	modified:   Pubrundan/res/layout/sigurdafiket.xml
+#	modified:   Pubrundan/res/layout/spritkoket.xml
+#	modified:   Pubrundan/res/layout/winden.xml
+#	modified:   Pubrundan/res/layout/zaloonen.xml
+#	modified:   Pubrundan/res/menu/pubmenu.xml
+#	modified:   Pubrundan/res/values/strings.xml
+#	modified:   Pubrundan/src/com/tarea/pubrundan/MainActivity.java
+#	modified:   Pubrundan/src/com/tarea/pubrundan/OnDoubleTap.java
+#	modified:   Pubrundan/src/com/tarea/pubrundan/OverlayClass.java
+#	modified:   Pubrundan/src/com/tarea/pubrundan/PubList.java
+#	modified:   Pubrundan/src/com/tarea/pubrundan/Pubs/Basen.java
+#	modified:   Pubrundan/src/com/tarea/pubrundan/Pubs/Bulten.java
+#	modified:   Pubrundan/src/com/tarea/pubrundan/Pubs/ClubAvancez.java
+#	deleted:    Pubrundan/src/com/tarea/pubrundan/Pubs/Elvan.java
+#	modified:   Pubrundan/src/com/tarea/pubrundan/Pubs/Focus.java
+#	modified:   Pubrundan/src/com/tarea/pubrundan/Pubs/FortNOx.java
+#	modified:   Pubrundan/src/com/tarea/pubrundan/Pubs/GangnamStyle.java
+#	modified:   Pubrundan/src/com/tarea/pubrundan/Pubs/GasTown.java
+#	modified:   Pubrundan/src/com/tarea/pubrundan/Pubs/Gasquen.java
+#	modified:   Pubrundan/src/com/tarea/pubrundan/Pubs/GoldenI.java
+#	modified:   Pubrundan/src/com/tarea/pubrundan/Pubs/Hubben.java
+#	modified:   Pubrundan/src/com/tarea/pubrundan/Pubs/JAPripps.java
+#	modified:   Pubrundan/src/com/tarea/pubrundan/Pubs/Jarnvagspub.java
+#	modified:   Pubrundan/src/com/tarea/pubrundan/Pubs/Kajsabaren.java
+#	modified:   Pubrundan/src/com/tarea/pubrundan/Pubs/PubF.java
+#	modified:   Pubrundan/src/com/tarea/pubrundan/Pubs/PubP.java
+#	modified:   Pubrundan/src/com/tarea/pubrundan/Pubs/RodaRummet.java
+#	modified:   Pubrundan/src/com/tarea/pubrundan/Pubs/SigurdAfiket.java
+#	modified:   Pubrundan/src/com/tarea/pubrundan/Pubs/Spritkoket.java
+#	modified:   Pubrundan/src/com/tarea/pubrundan/Pubs/Winden.java
+#	modified:   Pubrundan/src/com/tarea/pubrundan/Pubs/Zaloonen.java
+#	modified:   Pubrundan/src/com/tarea/pubrundan/TheMap.java
+#
+

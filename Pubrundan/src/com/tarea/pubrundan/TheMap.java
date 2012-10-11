@@ -1,3 +1,23 @@
+/* ============================================================
+ * Copyright © 2012 Adam Book, Rickard Edfast, Erik Sjögren,
+ * Alexander Kurkimäki
+ *
+ * This file is part of Pubrundan.
+ *
+ * Pubrundan is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Pubrundan is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Pubrundan. If not, see <http://www.gnu.org/licenses/>.
+ * ============================================================ */
+
 package com.tarea.pubrundan;
 
 import java.util.List;
@@ -8,14 +28,18 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.gesture.GestureOverlayView;
+import android.gesture.GestureOverlayView.OnGestureListener;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.view.GestureDetector.OnDoubleTapListener;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -29,18 +53,36 @@ import com.google.android.maps.MapView;
 import com.google.android.maps.MyLocationOverlay;
 import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
+import com.google.android.maps.Projection;
 import com.tarea.pubrundan.Pubs.JAPripps;
 
+// TODO: Auto-generated Javadoc
 //### This class follows some code examples from http://eagle.phys.utk.edu/guidry/android/index.html  ###//
 
-public class TheMap extends MapActivity {
+/**
+ * The class TheMap
+ * 
+ * @author Erik Sjögren
+ * 
+ */
+public class TheMap extends MapActivity implements OnGestureListener,
+		OnDoubleTapListener {
 
+	/** The start campus. */
 	private boolean startCampus = true; // false = Lindholmen, true =
 										// Johanneberg (default campus)
+	/** The zoom level. */
 	private int zoomLevel = 17;
+
+	/** The mc. */
 	private MapController mc;
+
+	/** The gp. */
 	private GeoPoint gp;
+
+	/** The map view. */
 	private MapView mapView;
+<<<<<<< HEAD
 	
 	/* Buttons shown on top of theMap */
 	private Button getThePositionButton, changeCampusButton, goToPubListButton;
@@ -48,11 +90,35 @@ public class TheMap extends MapActivity {
 	/* An Overlay showing a blue dot, which indicates your location */
 	private MyLocationOverlay myLocationOverlay; 
 													
+=======
+
+	/** The go to pub list button. */
+	private Button getThePositionButton, changeCampusButton, goToPubListButton; // Buttons
+																				// shown
+																				// on
+																				// top
+																				// of
+																				// theMap
+	/** The my location overlay. */
+	private MyLocationOverlay myLocationOverlay; // An Overlay showing a "point"
+	// on the map aka your
+	// current position
+
+	/** The map overlays. */
+>>>>>>> origin/Branch-for-theMap
 	private List<Overlay> mapOverlays;
+
+	/** The drawable. */
 	private Drawable drawable;
+
+	/** The itemized overlay. */
 	private OverlayClass itemizedOverlay;
 
+<<<<<<< HEAD
 	/*  The different view selections of the map */
+=======
+	/** The different views. */
+>>>>>>> origin/Branch-for-theMap
 	private final CharSequence[] differentViews = { "Street", "Satellite",
 			"Traffic" };
 
@@ -61,7 +127,13 @@ public class TheMap extends MapActivity {
 	 Coordinates need to be converted into integers, by default they are
 	 displayed in microdegrees */
 
+<<<<<<< HEAD
 	/* The pubs in the array are listed and hardcoded from coordinates_of_the_pubs.txt */
+=======
+	// The pubs in the array are listed and hardcoded from
+	// coordinates_of_the_pubs.txt
+	/** The all pubs array. */
+>>>>>>> origin/Branch-for-theMap
 	private OverlayItem[] allPubsArray = {
 			// J.A. Pripps
 			new OverlayItem(new GeoPoint((int) (57.688984 * 1E6),
@@ -101,7 +173,7 @@ public class TheMap extends MapActivity {
 					(int) (11.975918 * 1E6)), "GasTown", "Johanneberg"),
 			// FortNOx
 			new OverlayItem(new GeoPoint((int) (57.687302 * 1E6),
-					(int) (57.687302 * 1E6)), "FortNOx", "Johanneberg"),
+					(int) (11.977237 * 1E6)), "FortNOx", "Johanneberg"),
 			// Spritköket
 			new OverlayItem(new GeoPoint((int) (57.689587 * 1E6),
 					(int) (11.977978 * 1E6)), "Spritköket", "Johanneberg"),
@@ -120,10 +192,23 @@ public class TheMap extends MapActivity {
 			// 11:an
 			new OverlayItem(new GeoPoint((int) (57.706085 * 1E6),
 					(int) (11.936675 * 1E6)), "11:an", "Johanneberg"),
+			// Gangnam Style
+			new OverlayItem(new GeoPoint((int) (37.5175725 * 1E6),
+					(int) (127.047462 * 1E6)), "Gangnam Style", "Sydkorea"),
 
 	};
 
+<<<<<<< HEAD
 	/* Standard onCreate-method */
+=======
+	// standard onCreate method
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.google.android.maps.MapActivity#onCreate(android.os.Bundle)
+	 */
+	@Override
+>>>>>>> origin/Branch-for-theMap
 	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
@@ -143,7 +228,7 @@ public class TheMap extends MapActivity {
 																	// for later
 																	// use in
 																	// the code
-		checkIfGpsIsEnabled(); // check if gps is enabled
+		// checkIfGpsIsEnabled(); // check if gps is enabled
 
 		loading(); // loading animation, invokes: changeToCampusJohanneberg(),
 					// showThePubs()
@@ -181,6 +266,50 @@ public class TheMap extends MapActivity {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * android.view.GestureDetector.OnDoubleTapListener#onDoubleTap(android.
+	 * view.MotionEvent)
+	 */
+	public boolean onDoubleTap(MotionEvent e) {
+		int x = (int) e.getX(), y = (int) e.getY();
+		;
+		Projection p = mapView.getProjection();
+		mapView.getController().animateTo(p.fromPixels(x, y));
+		mapView.getController().zoomIn();
+		return true;
+	}
+
+	// display all pubs in the allPubsArray as an overlay onto the map
+	/**
+	 * Show the pubs.
+	 */
+	public void showThePubs() {
+
+		// Create itemizedOverlay2 if it doesn't exist
+		if (itemizedOverlay == null) {
+			mapOverlays = mapView.getOverlays();
+			drawable = this.getResources().getDrawable(
+					R.drawable.icon_pub_location);
+			itemizedOverlay = new OverlayClass(drawable, this);
+		}
+		for (int i = 0; i < allPubsArray.length; i++) {
+
+			itemizedOverlay.addOverlay(allPubsArray[i]);
+		}
+		// Added symbols will be displayed when map is redrawn so force redraw
+		// now
+		itemizedOverlay.populateFix();
+		mapOverlays.add(itemizedOverlay); // need to be outside the for-loop
+											// (source:
+											// http://stackoverflow.com/questions/2659770/android-map-performance-poor-because-of-many-overlays)
+	}
+
+	/**
+	 * Loading.
+	 */
 	private void loading() {
 
 		final Object loadingDialog = ProgressDialog.show(this,
@@ -196,7 +325,7 @@ public class TheMap extends MapActivity {
 					// showTheCurrentPosition(); // navigate to users current
 					// location, inactive during development.
 
-					sleep(3000); // sleep the thread, 3000 milliseconds = 3
+					sleep(2000); // sleep the thread, 2000 milliseconds = 2
 									// seconds.
 				} catch (Exception e) {
 				}
@@ -205,7 +334,14 @@ public class TheMap extends MapActivity {
 		}.start();
 	}
 
+<<<<<<< HEAD
 	/* The map will navigate to your current position */
+=======
+	// The map will navigate to your current position
+	/**
+	 * Show the current position.
+	 */
+>>>>>>> origin/Branch-for-theMap
 	public void showTheCurrentPosition() {
 		myLocationOverlay = new MyLocationOverlay(this, mapView);
 		myLocationOverlay.enableMyLocation();
@@ -220,6 +356,7 @@ public class TheMap extends MapActivity {
 		});
 	}
 
+<<<<<<< HEAD
 	/* Display all pubs in the allPubsArray as an overlay onto the map */
 	public void showThePubs() {
 
@@ -241,6 +378,12 @@ public class TheMap extends MapActivity {
 	}
 
 	/* Navigate to campus Lindholmen if users click on the changeCampusButton */
+=======
+	// navigate to campus Lindholmen if users clicks changeCampusButton
+	/**
+	 * Change to campus lindholmen.
+	 */
+>>>>>>> origin/Branch-for-theMap
 	public void changeToCampusLindholmen() {
 
 		mc = mapView.getController();
@@ -249,7 +392,14 @@ public class TheMap extends MapActivity {
 		mc.setZoom(zoomLevel);
 	}
 
+<<<<<<< HEAD
 	/* Navigate to campus Johanneberg if users click on the changeCampusButton */
+=======
+	// navigate to campus Lindholmen if users clicks changeCampusButton
+	/**
+	 * Change to campus johanneberg.
+	 */
+>>>>>>> origin/Branch-for-theMap
 	public void changeToCampusJohanneberg() {
 
 		mc = mapView.getController();
@@ -259,6 +409,9 @@ public class TheMap extends MapActivity {
 	}
 
 	// starting new activity( PubList.java ) if user clicks goToPubListButton
+	/**
+	 * Start pub list activity.
+	 */
 	public void startPubListActivity() {
 
 		// default PubList.class in development test using PubInfo.class
@@ -269,6 +422,9 @@ public class TheMap extends MapActivity {
 	}
 
 	// starting new activity( PubInfo.java ) if user clicks goToPubListButton
+	/**
+	 * Start pub info activity.
+	 */
 	public void startPubInfoActivity() {
 
 		// default PubList.class in development test using PubInfo.class
@@ -279,12 +435,22 @@ public class TheMap extends MapActivity {
 	}
 
 	// Required method since class extends MapActivity
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.google.android.maps.MapActivity#isRouteDisplayed()
+	 */
 	@Override
 	protected boolean isRouteDisplayed() {
 		return false; // Don't display a route
 	}
 
 	// Initiating Menu XML file (menu.xml)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
@@ -295,6 +461,11 @@ public class TheMap extends MapActivity {
 
 	// onOptionsMenu with three items, "Street", "Satellite" & Traffic... code
 	// refactor is needed!
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
+	 */
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.change_map:
@@ -338,6 +509,12 @@ public class TheMap extends MapActivity {
 		return false;
 	}
 
+	/*
+	 * Attempts to enable MyLocation, registering for updates from
+	 * LocationManager.GPS_PROVIDER and LocationManager.NETWORK_PROVIDER.
+	 * 
+	 * @see com.google.android.maps.MapActivity#onResume()
+	 */
 	@Override
 	protected void onResume() {
 		super.onResume();
@@ -345,26 +522,32 @@ public class TheMap extends MapActivity {
 		myLocationOverlay.enableMyLocation();
 	}
 
+	/*
+	 * Stops location updates.
+	 * 
+	 * @see com.google.android.maps.MapActivity#onPause()
+	 */
 	@Override
 	protected void onPause() {
 		super.onPause();
 		// when our activity pauses, we want to remove listening for location
-		// updates
-		// onPause, pressing home-button for example the GPS will be turned off,
-		// onResme will start it again
-		// LocationManager manager = (LocationManager)
-		// getSystemService(Context.LOCATION_SERVICE);
-		// manager.removeUpdates(this);
-		// manager = null;
 		myLocationOverlay.disableMyLocation();
 	}
 
+	/**
+	 * On tab changed.
+	 * 
+	 * @param tabId
+	 *            the tab id
+	 */
 	public void onTabChanged(String tabId) {
 		// TODO Auto-generated method stub
 
 	}
 
-	/** Called when the user press back button in the TheMap */
+	/**
+	 * Called when the user press back button in the TheMap.
+	 */
 	@Override
 	public void onBackPressed() {
 		new AlertDialog.Builder(this).setTitle("Avsluta")
@@ -389,6 +572,9 @@ public class TheMap extends MapActivity {
 						}).create().show();
 	}
 
+	/**
+	 * Check if gps is enabled.
+	 */
 	public void checkIfGpsIsEnabled() {
 		final LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
@@ -397,6 +583,9 @@ public class TheMap extends MapActivity {
 		}
 	}
 
+	/**
+	 * No gps dialog.
+	 */
 	public void NoGpsDialog() {
 		final AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle("GPS avstängd")
@@ -422,22 +611,206 @@ public class TheMap extends MapActivity {
 		ad.show();
 	}
 
+	/**
+	 * On location changed.
+	 * 
+	 * @param location
+	 *            the location
+	 */
 	public void onLocationChanged(Location location) {
 		// TODO Auto-generated method stub
 
 	}
 
+	/**
+	 * On provider disabled.
+	 * 
+	 * @param provider
+	 *            the provider
+	 */
 	public void onProviderDisabled(String provider) {
 		// TODO Auto-generated method stub
 
 	}
 
+	/**
+	 * On provider enabled.
+	 * 
+	 * @param provider
+	 *            the provider
+	 */
 	public void onProviderEnabled(String provider) {
 		// TODO Auto-generated method stub
 
 	}
 
+	/**
+	 * On status changed.
+	 * 
+	 * @param provider
+	 *            the provider
+	 * @param status
+	 *            the status
+	 * @param extras
+	 *            the extras
+	 */
 	public void onStatusChanged(String provider, int status, Bundle extras) {
+		// TODO Auto-generated method stub
+
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * android.view.GestureDetector.OnDoubleTapListener#onDoubleTapEvent(android
+	 * .view.MotionEvent)
+	 */
+	public boolean onDoubleTapEvent(MotionEvent e) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * android.view.GestureDetector.OnDoubleTapListener#onSingleTapConfirmed
+	 * (android.view.MotionEvent)
+	 */
+	public boolean onSingleTapConfirmed(MotionEvent e) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	/**
+	 * On down.
+	 * 
+	 * @param e
+	 *            the e
+	 * @return true, if successful
+	 */
+	public boolean onDown(MotionEvent e) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	/**
+	 * On fling.
+	 * 
+	 * @param e1
+	 *            the e1
+	 * @param e2
+	 *            the e2
+	 * @param velocityX
+	 *            the velocity x
+	 * @param velocityY
+	 *            the velocity y
+	 * @return true, if successful
+	 */
+	public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
+			float velocityY) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	/**
+	 * On long press.
+	 * 
+	 * @param e
+	 *            the e
+	 */
+	public void onLongPress(MotionEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	/**
+	 * On scroll.
+	 * 
+	 * @param e1
+	 *            the e1
+	 * @param e2
+	 *            the e2
+	 * @param distanceX
+	 *            the distance x
+	 * @param distanceY
+	 *            the distance y
+	 * @return true, if successful
+	 */
+	public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX,
+			float distanceY) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	/**
+	 * On show press.
+	 * 
+	 * @param e
+	 *            the e
+	 */
+	public void onShowPress(MotionEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	/**
+	 * On single tap up.
+	 * 
+	 * @param e
+	 *            the e
+	 * @return true, if successful
+	 */
+	public boolean onSingleTapUp(MotionEvent e) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * android.gesture.GestureOverlayView.OnGestureListener#onGesture(android
+	 * .gesture.GestureOverlayView, android.view.MotionEvent)
+	 */
+	public void onGesture(GestureOverlayView overlay, MotionEvent event) {
+		// TODO Auto-generated method stub
+
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * android.gesture.GestureOverlayView.OnGestureListener#onGestureCancelled
+	 * (android.gesture.GestureOverlayView, android.view.MotionEvent)
+	 */
+	public void onGestureCancelled(GestureOverlayView overlay, MotionEvent event) {
+		// TODO Auto-generated method stub
+
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * android.gesture.GestureOverlayView.OnGestureListener#onGestureEnded(android
+	 * .gesture.GestureOverlayView, android.view.MotionEvent)
+	 */
+	public void onGestureEnded(GestureOverlayView overlay, MotionEvent event) {
+		// TODO Auto-generated method stub
+
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * android.gesture.GestureOverlayView.OnGestureListener#onGestureStarted
+	 * (android.gesture.GestureOverlayView, android.view.MotionEvent)
+	 */
+	public void onGestureStarted(GestureOverlayView overlay, MotionEvent event) {
 		// TODO Auto-generated method stub
 
 	}
