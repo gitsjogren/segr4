@@ -52,26 +52,54 @@ import com.tarea.pubrundan.Pubs.Spritkoket;
 import com.tarea.pubrundan.Pubs.Winden;
 import com.tarea.pubrundan.Pubs.Zaloonen;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class OverlayClass.
+ */
 public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 
 	
+	/** The Constant POINT_DIFFERENCE. */
 	private static final float POINT_DIFFERENCE = 50;
+    
+    /** The system time. */
     private long systemTime = System.currentTimeMillis();
 
+    /** The down x. */
     private float downX;
+    
+    /** The down y. */
     private float downY;
 	
+	/** The my overlays. */
 	private ArrayList<OverlayItem> myOverlays;
+	
+	/** The m context. */
 	private Context mContext;
+	
+	/** The count. */
 	private int count = 0;
+	
+	/** The counter. */
 	private ArrayList<Integer> counter = new ArrayList<Integer>();
 
+	/**
+	 * Instantiates a new overlay class.
+	 *
+	 * @param defaultMarker the default marker
+	 * @param context the context
+	 */
 	public OverlayClass(Drawable defaultMarker, Context context) {
 		super(boundCenterBottom(defaultMarker));
 		myOverlays = new ArrayList<OverlayItem>();
 		mContext = context;
 	}
 
+	/**
+	 * Adds the overlay.
+	 *
+	 * @param overlay the overlay
+	 */
 	public void addOverlay(OverlayItem overlay) {
 		myOverlays.add(overlay);
 		counter.add(count);
@@ -79,22 +107,36 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 	}
 	
 	// needed to access populate() from TheMap.java
+	/**
+	 * Populate fix.
+	 */
 	public void populateFix(){
 		populate();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.google.android.maps.ItemizedOverlay#createItem(int)
+	 */
 	@Override
 	protected OverlayItem createItem(int i) {
 		return myOverlays.get(i);
 	}
 
 	// Removes overlay item i
+	/**
+	 * Removes the item.
+	 *
+	 * @param i the i
+	 */
 	public void removeItem(int i) {
 		myOverlays.remove(i);
 		populate();
 	}
 
 	// Handle tap events on overlay icons
+	/* (non-Javadoc)
+	 * @see com.google.android.maps.ItemizedOverlay#onTap(int)
+	 */
 	@Override
 	protected boolean onTap(int i) {
 		switch (counter.get(i)) {
@@ -185,12 +227,18 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 	}
 
 	// Returns present number of items in list
+	/* (non-Javadoc)
+	 * @see com.google.android.maps.ItemizedOverlay#size()
+	 */
 	@Override
 	public int size() {
 		return myOverlays.size();
 	}
 	
 	
+	/* (non-Javadoc)
+	 * @see com.google.android.maps.ItemizedOverlay#onTouchEvent(android.view.MotionEvent, com.google.android.maps.MapView)
+	 */
 	@Override
     public boolean onTouchEvent(MotionEvent event, MapView mapView) {
         switch (event.getAction()) {

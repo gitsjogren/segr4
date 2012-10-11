@@ -27,12 +27,19 @@ import android.view.WindowManager;
 
 import com.tarea.pubrundan.R;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class GangnamStyle.
+ */
 public class GangnamStyle extends Activity {
 	
 	
 	
 	// standard onCreate method
-		public void onCreate(Bundle savedInstanceState) {
+		/* (non-Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
+	public void onCreate(Bundle savedInstanceState) {
 
 			super.onCreate(savedInstanceState);
 			requestWindowFeature(Window.FEATURE_NO_TITLE); // Suppress title bar for

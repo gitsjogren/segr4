@@ -28,27 +28,35 @@ import android.view.Window;
 
 import com.tarea.pubrundan.R;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Zaloonen.
+ */
 public class Zaloonen extends Activity {
-	
-	
-	
-	// standard onCreate method
-		public void onCreate(Bundle savedInstanceState) {
 
-			super.onCreate(savedInstanceState);
-			requestWindowFeature(Window.FEATURE_NO_TITLE); // Suppress title bar for
-															// more space
-			setContentView(R.layout.zaloonen);
-		
+	// standard onCreate method
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
+	public void onCreate(Bundle savedInstanceState) {
+
+		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE); // Suppress title bar for
+														// more space
+		setContentView(R.layout.zaloonen);
+
 	}
-		
-		// Initiating Menu XML file (menu.xml)
-		@Override
-		public boolean onCreateOptionsMenu(Menu menu) {
-			super.onCreateOptionsMenu(menu);
-			MenuInflater oMenu = getMenuInflater();
-			oMenu.inflate(R.menu.pubmenu, menu);
-			return true;
-		}
+
+	// Initiating Menu XML file (menu.xml)
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+	 */
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		super.onCreateOptionsMenu(menu);
+		MenuInflater oMenu = getMenuInflater();
+		oMenu.inflate(R.menu.pubmenu, menu);
+		return true;
+	}
 
 }

@@ -56,31 +56,52 @@ import com.google.android.maps.OverlayItem;
 import com.google.android.maps.Projection;
 import com.tarea.pubrundan.Pubs.JAPripps;
 
+// TODO: Auto-generated Javadoc
 //### This class follows some code examples from http://eagle.phys.utk.edu/guidry/android/index.html  ###//
 
+/**
+ * The Class TheMap.
+ */
 public class TheMap extends MapActivity implements OnGestureListener,
 OnDoubleTapListener {
 	
+	/** The start campus. */
 	private boolean startCampus = true; // false = Lindholmen, true =
 										// Johanneberg (default campus)
-	private int zoomLevel = 17;
+	/** The zoom level. */
+										private int zoomLevel = 17;
+	
+	/** The mc. */
 	private MapController mc;
+	
+	/** The gp. */
 	private GeoPoint gp;
+	
+	/** The map view. */
 	private MapView mapView;
+	
+	/** The go to pub list button. */
 	private Button getThePositionButton, changeCampusButton, goToPubListButton; // Buttons
 																				// shown
 																				// on
 																				// top
 																				// of
 																				// theMap
-	private MyLocationOverlay myLocationOverlay; // An Overlay showing a "point"
+	/** The my location overlay. */
+																				private MyLocationOverlay myLocationOverlay; // An Overlay showing a "point"
 													// on the map aka your
 													// current position
 
-	private List<Overlay> mapOverlays;
+	/** The map overlays. */
+													private List<Overlay> mapOverlays;
+	
+	/** The drawable. */
 	private Drawable drawable;
+	
+	/** The itemized overlay. */
 	private OverlayClass itemizedOverlay;
 
+	/** The different views. */
 	private final CharSequence[] differentViews = { "Street", "Satellite",
 			"Traffic" }; // selectable map views
 
@@ -91,6 +112,7 @@ OnDoubleTapListener {
 
 	// The pubs in the array are listed and hardcoded from
 	// coordinates_of_the_pubs.txt
+	/** The all pubs array. */
 	private OverlayItem[] allPubsArray = {
 			// J.A. Pripps
 			new OverlayItem(new GeoPoint((int) (57.688984 * 1E6),
@@ -156,6 +178,9 @@ OnDoubleTapListener {
 	};
 
 	// standard onCreate method
+	/* (non-Javadoc)
+	 * @see com.google.android.maps.MapActivity#onCreate(android.os.Bundle)
+	 */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 
@@ -214,6 +239,9 @@ OnDoubleTapListener {
 
 	}
 	
+	/* (non-Javadoc)
+	 * @see android.view.GestureDetector.OnDoubleTapListener#onDoubleTap(android.view.MotionEvent)
+	 */
 	public boolean onDoubleTap(MotionEvent e) {
 	     int x = (int)e.getX(), y = (int)e.getY();;  
 	     Projection p = mapView.getProjection();  
@@ -223,6 +251,9 @@ OnDoubleTapListener {
 	}
 
 	// display all pubs in the allPubsArray as an overlay onto the map
+	/**
+	 * Show the pubs.
+	 */
 	public void showThePubs() {
 
 		// Create itemizedOverlay2 if it doesn't exist
@@ -244,6 +275,9 @@ OnDoubleTapListener {
 											// http://stackoverflow.com/questions/2659770/android-map-performance-poor-because-of-many-overlays)
 	}
 
+	/**
+	 * Loading.
+	 */
 	private void loading() {
 
 		final Object loadingDialog = ProgressDialog.show(this,
@@ -269,6 +303,9 @@ OnDoubleTapListener {
 	}
 
 	// The map will navigate to your current position
+	/**
+	 * Show the current position.
+	 */
 	public void showTheCurrentPosition() {
 		myLocationOverlay = new MyLocationOverlay(this, mapView);
 		myLocationOverlay.enableMyLocation();
@@ -284,6 +321,9 @@ OnDoubleTapListener {
 	}
 
 	// navigate to campus Lindholmen if users clicks changeCampusButton
+	/**
+	 * Change to campus lindholmen.
+	 */
 	public void changeToCampusLindholmen() {
 
 		mc = mapView.getController();
@@ -293,6 +333,9 @@ OnDoubleTapListener {
 	}
 
 	// navigate to campus Lindholmen if users clicks changeCampusButton
+	/**
+	 * Change to campus johanneberg.
+	 */
 	public void changeToCampusJohanneberg() {
 
 		mc = mapView.getController();
@@ -302,6 +345,9 @@ OnDoubleTapListener {
 	}
 
 	// starting new activity( PubList.java ) if user clicks goToPubListButton
+	/**
+	 * Start pub list activity.
+	 */
 	public void startPubListActivity() {
 
 		// default PubList.class in development test using PubInfo.class
@@ -312,6 +358,9 @@ OnDoubleTapListener {
 	}
 
 	// starting new activity( PubInfo.java ) if user clicks goToPubListButton
+	/**
+	 * Start pub info activity.
+	 */
 	public void startPubInfoActivity() {
 
 		// default PubList.class in development test using PubInfo.class
@@ -322,12 +371,18 @@ OnDoubleTapListener {
 	}
 
 	// Required method since class extends MapActivity
+	/* (non-Javadoc)
+	 * @see com.google.android.maps.MapActivity#isRouteDisplayed()
+	 */
 	@Override
 	protected boolean isRouteDisplayed() {
 		return false; // Don't display a route
 	}
 
 	// Initiating Menu XML file (menu.xml)
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
@@ -338,6 +393,9 @@ OnDoubleTapListener {
 
 	// onOptionsMenu with three items, "Street", "Satellite" & Traffic... code
 	// refactor is needed!
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
+	 */
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.change_map:
@@ -379,6 +437,9 @@ OnDoubleTapListener {
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.google.android.maps.MapActivity#onResume()
+	 */
 	@Override
 	protected void onResume() {
 		super.onResume();
@@ -386,6 +447,9 @@ OnDoubleTapListener {
 		myLocationOverlay.enableMyLocation();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.google.android.maps.MapActivity#onPause()
+	 */
 	@Override
 	protected void onPause() {
 		super.onPause();
@@ -400,12 +464,19 @@ OnDoubleTapListener {
 		myLocationOverlay.disableMyLocation();
 	}
 
+	/**
+	 * On tab changed.
+	 *
+	 * @param tabId the tab id
+	 */
 	public void onTabChanged(String tabId) {
 		// TODO Auto-generated method stub
 
 	}
 
-	/** Called when the user press back button in the TheMap */
+	/**
+	 * Called when the user press back button in the TheMap.
+	 */
 	@Override
 	public void onBackPressed() {
 		new AlertDialog.Builder(this).setTitle("Avsluta")
@@ -430,6 +501,9 @@ OnDoubleTapListener {
 						}).create().show();
 	}
 
+	/**
+	 * Check if gps is enabled.
+	 */
 	public void checkIfGpsIsEnabled() {
 		final LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
@@ -438,6 +512,9 @@ OnDoubleTapListener {
 		}
 	}
 
+	/**
+	 * No gps dialog.
+	 */
 	public void NoGpsDialog() {
 		final AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle("GPS avstängd")
@@ -463,83 +540,163 @@ OnDoubleTapListener {
 		ad.show();
 	}
 
+	/**
+	 * On location changed.
+	 *
+	 * @param location the location
+	 */
 	public void onLocationChanged(Location location) {
 		// TODO Auto-generated method stub
 
 	}
 
+	/**
+	 * On provider disabled.
+	 *
+	 * @param provider the provider
+	 */
 	public void onProviderDisabled(String provider) {
 		// TODO Auto-generated method stub
 
 	}
 
+	/**
+	 * On provider enabled.
+	 *
+	 * @param provider the provider
+	 */
 	public void onProviderEnabled(String provider) {
 		// TODO Auto-generated method stub
 
 	}
 
+	/**
+	 * On status changed.
+	 *
+	 * @param provider the provider
+	 * @param status the status
+	 * @param extras the extras
+	 */
 	public void onStatusChanged(String provider, int status, Bundle extras) {
 		// TODO Auto-generated method stub
 
 	}
 
+	/* (non-Javadoc)
+	 * @see android.view.GestureDetector.OnDoubleTapListener#onDoubleTapEvent(android.view.MotionEvent)
+	 */
 	public boolean onDoubleTapEvent(MotionEvent e) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see android.view.GestureDetector.OnDoubleTapListener#onSingleTapConfirmed(android.view.MotionEvent)
+	 */
 	public boolean onSingleTapConfirmed(MotionEvent e) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
+	/**
+	 * On down.
+	 *
+	 * @param e the e
+	 * @return true, if successful
+	 */
 	public boolean onDown(MotionEvent e) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
+	/**
+	 * On fling.
+	 *
+	 * @param e1 the e1
+	 * @param e2 the e2
+	 * @param velocityX the velocity x
+	 * @param velocityY the velocity y
+	 * @return true, if successful
+	 */
 	public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
 			float velocityY) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
+	/**
+	 * On long press.
+	 *
+	 * @param e the e
+	 */
 	public void onLongPress(MotionEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/**
+	 * On scroll.
+	 *
+	 * @param e1 the e1
+	 * @param e2 the e2
+	 * @param distanceX the distance x
+	 * @param distanceY the distance y
+	 * @return true, if successful
+	 */
 	public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX,
 			float distanceY) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
+	/**
+	 * On show press.
+	 *
+	 * @param e the e
+	 */
 	public void onShowPress(MotionEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/**
+	 * On single tap up.
+	 *
+	 * @param e the e
+	 * @return true, if successful
+	 */
 	public boolean onSingleTapUp(MotionEvent e) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see android.gesture.GestureOverlayView.OnGestureListener#onGesture(android.gesture.GestureOverlayView, android.view.MotionEvent)
+	 */
 	public void onGesture(GestureOverlayView overlay, MotionEvent event) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see android.gesture.GestureOverlayView.OnGestureListener#onGestureCancelled(android.gesture.GestureOverlayView, android.view.MotionEvent)
+	 */
 	public void onGestureCancelled(GestureOverlayView overlay, MotionEvent event) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see android.gesture.GestureOverlayView.OnGestureListener#onGestureEnded(android.gesture.GestureOverlayView, android.view.MotionEvent)
+	 */
 	public void onGestureEnded(GestureOverlayView overlay, MotionEvent event) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see android.gesture.GestureOverlayView.OnGestureListener#onGestureStarted(android.gesture.GestureOverlayView, android.view.MotionEvent)
+	 */
 	public void onGestureStarted(GestureOverlayView overlay, MotionEvent event) {
 		// TODO Auto-generated method stub
 		

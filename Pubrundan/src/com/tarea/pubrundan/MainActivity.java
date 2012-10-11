@@ -27,6 +27,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 
+// TODO: Auto-generated Javadoc
 /**
  * This activity starts class TheMap.
  * 
@@ -36,9 +37,14 @@ import android.view.View.OnClickListener;
 
 public class MainActivity extends Activity implements OnClickListener {
 
+	/** The context. */
 	static Context context;
 
-	/** Called when the activity is first created. */
+	/**
+	 * Called when the activity is first created.
+	 *
+	 * @param savedInstanceState the saved instance state
+	 */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -53,6 +59,9 @@ public class MainActivity extends Activity implements OnClickListener {
 
 	}
 
+	/* (non-Javadoc)
+	 * @see android.view.View.OnClickListener#onClick(android.view.View)
+	 */
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.mapshow_button:
