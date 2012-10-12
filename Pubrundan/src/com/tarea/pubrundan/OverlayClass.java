@@ -25,11 +25,8 @@ import java.util.ArrayList;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
-import android.view.ViewConfiguration;
 
 import com.google.android.maps.ItemizedOverlay;
-import com.google.android.maps.MapView;
 import com.google.android.maps.OverlayItem;
 import com.tarea.pubrundan.Pubs.Basen;
 import com.tarea.pubrundan.Pubs.Bulten;
@@ -60,19 +57,6 @@ import com.tarea.pubrundan.Pubs.Zaloonen;
  * 
  */
 public class OverlayClass extends ItemizedOverlay<OverlayItem> {
-
-	
-	/** The Constant POINT_DIFFERENCE. */
-	private static final float POINT_DIFFERENCE = 50;
-    
-    /** The system time. */
-    private long systemTime = System.currentTimeMillis();
-
-    /** The down x. */
-    private float downX;
-    
-    /** The down y. */
-    private float downY;
 	
 	/** The my overlays. */
 	private ArrayList<OverlayItem> myOverlays;
@@ -244,46 +228,4 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 	public int size() {
 		return myOverlays.size();
 	}
-		
-	/* (non-Javadoc)
-	 * 
-	 * @see com.google.android.maps.ItemizedOverlay#onTouchEvent(android.view.MotionEvent, com.google.android.maps.MapView)
-	 * 
-	 * @param event
-	 * 
-	 * @mapView
-	 * 
-	 * @return true, if successful
-	 * 
-	 */
-	@Override
-    public boolean onTouchEvent(MotionEvent event, MapView mapView) {
-        switch (event.getAction()) {
-        case MotionEvent.ACTION_DOWN:
-            final long timeDiff = (System.currentTimeMillis() - systemTime);
-            if (timeDiff < ViewConfiguration.getDoubleTapTimeout()) 
-            {
-                if 
-                (
-                    (Math.abs(downX - event.getX()) < POINT_DIFFERENCE) && 
-                    (Math.abs(downY - event.getY()) < POINT_DIFFERENCE)
-                )
-                {
-                    mapView.getController().zoomInFixing
-                    (
-                        (int) event.getX(),
-                        (int) event.getY()
-                    );
-                }            
-            }
-            break;
-        case MotionEvent.ACTION_UP:
-            systemTime = System.currentTimeMillis();
-            downX = event.getX();
-            downY = event.getY();
-            
-            break;
-        }
-        return false;        
-    }
 }
