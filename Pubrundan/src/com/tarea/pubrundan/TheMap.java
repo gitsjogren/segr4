@@ -325,22 +325,11 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		mc = mapView.getController();
 		myLocationOverlay.runOnFirstFix(new Runnable() {
 			public void run() {
-				long lastTouchTime = -1;
-				      long thisTime = System.currentTimeMillis();
-				      if (thisTime + lastTouchTime > 250) {
-
-				        // Double tap
 				    	mc.setZoom(zoomLevel);
 						mc.animateTo(myLocationOverlay.getMyLocation());
-				        lastTouchTime = -1;
 
-				      } else {
-
-				        // Too slow 
-				        lastTouchTime = thisTime;
 				      }
-				    }
-		});
+				    });
 	}
 
 	// navigate to campus Lindholmen if users clicks changeCampusButton
