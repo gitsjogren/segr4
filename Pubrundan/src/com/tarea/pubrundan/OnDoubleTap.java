@@ -37,6 +37,7 @@ public class OnDoubleTap extends MapView {
 
 	  /** The last touch time. */
   	private long lastTouchTime = -1;
+  	private int millivalue = 250;
 
 	  /**
   	 * Instantiates a new on double tap.
@@ -62,7 +63,7 @@ public class OnDoubleTap extends MapView {
 	    if (ev.getAction() == MotionEvent.ACTION_DOWN) {
 
 	      long thisTime = System.currentTimeMillis();
-	      if (thisTime - lastTouchTime < 250) {
+	      if (thisTime - lastTouchTime < millivalue) {
 
 	        // Double tap
 	        this.getController().zoomInFixing((int) ev.getX(), (int) ev.getY());
