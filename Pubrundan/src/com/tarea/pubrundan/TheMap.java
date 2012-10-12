@@ -317,6 +317,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	 * Show the current position.
 	 */
 	public void showTheCurrentPosition() {
+		
 		myLocationOverlay = new MyLocationOverlay(this, mapView);
 		myLocationOverlay.enableMyLocation();
 		mapView.getOverlays().add(myLocationOverlay);
@@ -324,9 +325,21 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		mc = mapView.getController();
 		myLocationOverlay.runOnFirstFix(new Runnable() {
 			public void run() {
-				mc.setZoom(zoomLevel);
-				mc.animateTo(myLocationOverlay.getMyLocation());
-			}
+				long lastTouchTime = -1;
+				      long thisTime = System.currentTimeMillis();
+				      if (thisTime + lastTouchTime > 250) {
+
+				        // Double tap
+				    	mc.setZoom(zoomLevel);
+						mc.animateTo(myLocationOverlay.getMyLocation());
+				        lastTouchTime = -1;
+
+				      } else {
+
+				        // Too slow 
+				        lastTouchTime = thisTime;
+				      }
+				    }
 		});
 	}
 
