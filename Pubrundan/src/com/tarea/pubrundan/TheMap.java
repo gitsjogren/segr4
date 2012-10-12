@@ -294,16 +294,11 @@ public class TheMap extends MapActivity implements OnGestureListener,
 				"Laddar pubbar...", "Vänta...", true);
 		new Thread() {
 			public void run() {
-					changeToCampusJohanneberg(); // change the position to
-													// Johanneberg
-					showThePubs(); // Displaying all pubs as overlay in maps,
-									// see method for
-					// more info.
-					// showTheCurrentPosition(); // navigate to users current
-					// location, inactive during development.
-					//sleep(2000); usable to slow devices
-
-					((Dialog) loadingDialog).dismiss();
+				changeToCampusJohanneberg(); // change the position to
+												// Johanneberg
+				showThePubs(); // Displaying all pubs as overlay in maps,
+								// see method for
+				((Dialog) loadingDialog).dismiss();
 			}
 		}.start();
 	}
