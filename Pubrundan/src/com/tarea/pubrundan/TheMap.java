@@ -294,7 +294,6 @@ public class TheMap extends MapActivity implements OnGestureListener,
 				"Laddar pubbar...", "Vänta...", true);
 		new Thread() {
 			public void run() {
-				try {
 					changeToCampusJohanneberg(); // change the position to
 													// Johanneberg
 					showThePubs(); // Displaying all pubs as overlay in maps,
@@ -302,12 +301,9 @@ public class TheMap extends MapActivity implements OnGestureListener,
 					// more info.
 					// showTheCurrentPosition(); // navigate to users current
 					// location, inactive during development.
+					//sleep(2000); usable to slow devices
 
-					sleep(2000); // sleep the thread, 2000 milliseconds = 2
-									// seconds.
-				} catch (Exception e) {
-				}
-				((Dialog) loadingDialog).dismiss();
+					((Dialog) loadingDialog).dismiss();
 			}
 		}.start();
 	}
@@ -349,7 +345,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	public void changeToCampusJohanneberg() {
 
 		mc = mapView.getController();
-		gp = new GeoPoint((int) (57.689034 * 1e6), (int) (11.976468 * 1e6));
+		gp = new GeoPoint((int) (57.691144 * 1e6), (int) (11.976078 * 1e6));
 		mc.animateTo(gp);
 		mc.setZoom(zoomLevel);
 	}
