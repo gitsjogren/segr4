@@ -18,11 +18,10 @@
  * along with Pubrundan. If not, see <http://www.gnu.org/licenses/>.
  * ============================================================ */
 
-<<<<<<< HEAD
+
 package com.tarea.pubrundan.Pubs;
 
-=======
->>>>>>> origin/pubinfo
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -31,7 +30,6 @@ import android.view.Window;
 
 import com.tarea.pubrundan.R;
 
-<<<<<<< HEAD
 // TODO: Auto-generated Javadoc
 /**
  * The Class Bulten.
@@ -39,8 +37,6 @@ import com.tarea.pubrundan.R;
  * @author Erik Sjögren
  * 
  */
-=======
->>>>>>> origin/pubinfo
 public class Bulten extends Activity {
 	
 	

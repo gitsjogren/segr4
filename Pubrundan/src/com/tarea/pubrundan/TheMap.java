@@ -115,12 +115,8 @@ public class TheMap extends MapActivity implements OnGestureListener,
 
 	// The pubs in the array are listed and hardcoded from
 	// coordinates_of_the_pubs.txt
-<<<<<<< HEAD
 	/** The all pubs array. */
-	private OverlayItem[] allPubsArray = {
-=======
 	public OverlayItem[] allPubsArray = {
->>>>>>> origin/pubinfo
 			// J.A. Pripps
 			new OverlayItem(new GeoPoint((int) (57.688984 * 1E6),
 					(int) (11.974389 * 1E6)), "J.A. Pripps", "Johanneberg"),

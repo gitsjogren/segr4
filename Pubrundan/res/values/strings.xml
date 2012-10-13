@@ -4,9 +4,7 @@
 
     <string name="app_name">Pubrundan</string>
     <string name="goLabel">Show the Map</string>
-<<<<<<< HEAD
-    <string name="ja_pripps_info">J.A. Pripps Pub och Café är den naturliga samlingsplatsen mitt i Kårhuset.
-=======
+    <string name="ja_pripps_info">J.A. Pripps Pub och Café är den naturliga samlingsplatsen mitt i Kårhuset.</string>
     <string name="campus">Campus:</string>
     <string name="opening_hours">Öppettider:</string>
     <string name="house">Hus:</string>
@@ -35,7 +33,6 @@
     <string name="opening_hours_basen">16:00 &#8211; 01:00</string>  <!-- &#8211; = "-" -->
     <string name="ja_pripps_main_info">PubA verkar för A-sektionens sociala intressen genom att sköta om sektionspuben Röda Rummet där vi arrangerar pubar och andra sociala aktiviteter.</string>
     <string name="ja_pripps_more_info">J.A. Pripps Pub och Café är den naturliga samlingsplatsen mitt i Kårhuset.
->>>>>>> origin/pubinfo
         Under dagtid finns allt du behöver för en trevlig fikastund. Under eftermiddagen öppnar ölkranarna
         och framåt kvällen serverar köket god mat till priser som passar teknologstudentens plånbok.</string>
 
