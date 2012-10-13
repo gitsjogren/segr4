@@ -3,8 +3,8 @@ package com.tarea.pubrundan;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.util.Log;
+import android.view.*;
 import android.widget.*;
 
 public class FeedbackForm extends Activity {
@@ -31,14 +31,15 @@ public class FeedbackForm extends Activity {
 				final CheckBox responseCheckbox = (CheckBox) findViewById(R.id.CheckBoxResponse);  
 				boolean boxReqResponse = responseCheckbox.isChecked();
 				
-				String mottagare = "skrootmejl@gmail.com";
-				Intent m = new Intent(Intent.ACTION_SEND);
-				m.setType("message/rfc822");
-				m.putExtra(Intent.EXTRA_EMAIL	,	new String[]{mottagare});
-				m.putExtra(Intent.EXTRA_SUBJECT , 	feedbackType);
-				m.putExtra(Intent.EXTRA_TEXT	,	name);
-				m.putExtra(Intent.EXTRA_TEXT, email);
-				m.putExtra(Intent.EXTRA_TEXT, feedback);
+				try {
+					GmailSender sender = new GmailSender("feedbacktarea@gmail.com", "tarearu13z");
+					sender.sendMail(name, email, feedbackType, feedback);
+				} catch (Exception e) {
+					Log.e("SendMail", e.getMessage(), e);
+				}
+				
+				Intent i = new Intent(getBaseContext(), SettingsMenu.class);
+				startActivity(i);
 			}
 		});
 		// Get the context from the feedback form
@@ -52,8 +53,7 @@ public class FeedbackForm extends Activity {
 //				public void onClick(View v) {
 //						switch(v.getId()) {
 //						case R.id.ButtonSendFeedback:
-//							Intent i = new Intent(this, SettingsMenu.class);
-//							startActivity(i);
+//							
 //							break;
 //						}
 //					}

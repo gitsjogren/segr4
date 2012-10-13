@@ -4,8 +4,15 @@
     <string name="hello">Chalmers pubrunda</string>
     <string name="app_name">Pubrundan</string>
     <string name="goLabel">Show the Map</string>
-    <string name="ja_pripps_info">J.A. Pripps Pub och Café är den naturliga samlingsplatsen mitt i Kårhuset.
-        Under dagtid finns allt du behöver för en trevlig fikastund. Under eftermiddagen öppnar ölkranarna
-        och framåt kvällen serverar köket god mat till priser som passar teknologstudentens plånbok.</string>
-
+    <string name="ja_pripps_info">Detta är JA Pripps i edfast-branch</string>
+	<string name="feedbacktitle">Enter feedback details</string>
+	<string name="feedbackname">Enter name</string>
+	<string name="feedbackemail">Enter email</string>
+	<string name="feedbacktype1">Suggestion</string>  
+    <string name="feedbacktype2">Bug</string>  
+    <string name="feedbacktype3">Praise</string>
+    <string name="feedbacktype">Select feedback type</string>
+	<string name="feedbackbody">Feedback details goes here</string>
+	<string name="feedbackresponse">Would you like a response?</string>
+	<string name="feedbacksendbutton">Send feedback</string>
 </resources>

@@ -1,7 +1,9 @@
 package com.tarea.pubrundan;
 
-import android.content.SharedPreferences;
+import android.content.*;
 import android.os.Bundle;
+import android.preference.Preference;
+import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 
@@ -28,6 +30,15 @@ public class SettingsMenu extends PreferenceActivity {
 		 * Get all options in res/xml/settings.xml
 		 */
 		String defaultCampus = SP.getString("defaultCampus", "true");
+		
+		Preference feedback = (Preference) findPreference("feedback");
+		feedback.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+			public boolean onPreferenceClick(Preference preference) {
+				Intent i = new Intent(getApplicationContext(), FeedbackForm.class);
+				startActivity(i);
+				return true;
+			}
+		});
 	}
 	
 

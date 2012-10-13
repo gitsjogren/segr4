@@ -36,7 +36,7 @@ import com.tarea.pubrundan.Pubs.Bulten;
 import com.tarea.pubrundan.Pubs.ClubAvancez;
 import com.tarea.pubrundan.Pubs.Focus;
 import com.tarea.pubrundan.Pubs.FortNOx;
-import com.tarea.pubrundan.Pubs.GangnamStyle;
+//import com.tarea.pubrundan.Pubs.GangnamStyle;
 import com.tarea.pubrundan.Pubs.GasTown;
 import com.tarea.pubrundan.Pubs.Gasquen;
 import com.tarea.pubrundan.Pubs.GoldenI;
@@ -44,7 +44,7 @@ import com.tarea.pubrundan.Pubs.Hubben;
 import com.tarea.pubrundan.Pubs.JAPripps;
 import com.tarea.pubrundan.Pubs.Jarnvagspub;
 import com.tarea.pubrundan.Pubs.Kajsabaren;
-import com.tarea.pubrundan.Pubs.PubF;
+//import com.tarea.pubrundan.Pubs.PubF;
 import com.tarea.pubrundan.Pubs.PubP;
 import com.tarea.pubrundan.Pubs.RodaRummet;
 import com.tarea.pubrundan.Pubs.SigurdAfiket;
@@ -223,14 +223,14 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 			Intent pubp = new Intent(mContext, PubP.class);
 			mContext.startActivity(pubp);
 			return true;
-		case 18:	// Start 11:an activity
-			Intent elvan = new Intent(mContext, PubF.class);
-			mContext.startActivity(elvan);
-			return true;
-		case 19:	// Start Gangnam Style activity
-			Intent gangnamstyle = new Intent(mContext, GangnamStyle.class);
-			mContext.startActivity(gangnamstyle);
-			return true;
+//		case 18:	// Start 11:an activity
+//			Intent elvan = new Intent(mContext, PubF.class);
+//			mContext.startActivity(elvan);
+//			return true;
+//		case 19:	// Start Gangnam Style activity
+//			Intent gangnamstyle = new Intent(mContext, GangnamStyle.class);
+//			mContext.startActivity(gangnamstyle);
+//			return true;
 		}
 		return false;
 

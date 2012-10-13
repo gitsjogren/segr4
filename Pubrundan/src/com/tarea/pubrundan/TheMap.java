@@ -82,15 +82,13 @@ public class TheMap extends MapActivity implements OnGestureListener,
 
 	/** The map view. */
 	private MapView mapView;
-<<<<<<< HEAD
 	
 	/* Buttons shown on top of theMap */
 	private Button getThePositionButton, changeCampusButton, goToPubListButton;
 																																							
 	/* An Overlay showing a blue dot, which indicates your location */
 	private MyLocationOverlay myLocationOverlay; 
-													
-=======
+	
 
 	/** The go to pub list button. */
 	private Button getThePositionButton, changeCampusButton, goToPubListButton; // Buttons
@@ -105,7 +103,6 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	// current position
 
 	/** The map overlays. */
->>>>>>> origin/Branch-for-theMap
 	private List<Overlay> mapOverlays;
 
 	/** The drawable. */
@@ -114,11 +111,9 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	/** The itemized overlay. */
 	private OverlayClass itemizedOverlay;
 
-<<<<<<< HEAD
+
 	/*  The different view selections of the map */
-=======
 	/** The different views. */
->>>>>>> origin/Branch-for-theMap
 	private final CharSequence[] differentViews = { "Street", "Satellite",
 			"Traffic" };
 
@@ -127,13 +122,11 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	 Coordinates need to be converted into integers, by default they are
 	 displayed in microdegrees */
 
-<<<<<<< HEAD
 	/* The pubs in the array are listed and hardcoded from coordinates_of_the_pubs.txt */
-=======
+
 	// The pubs in the array are listed and hardcoded from
 	// coordinates_of_the_pubs.txt
 	/** The all pubs array. */
->>>>>>> origin/Branch-for-theMap
 	private OverlayItem[] allPubsArray = {
 			// J.A. Pripps
 			new OverlayItem(new GeoPoint((int) (57.688984 * 1E6),
@@ -198,9 +191,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 
 	};
 
-<<<<<<< HEAD
 	/* Standard onCreate-method */
-=======
 	// standard onCreate method
 	/*
 	 * (non-Javadoc)
@@ -208,7 +199,6 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	 * @see com.google.android.maps.MapActivity#onCreate(android.os.Bundle)
 	 */
 	@Override
->>>>>>> origin/Branch-for-theMap
 	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
@@ -334,14 +324,11 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		}.start();
 	}
 
-<<<<<<< HEAD
 	/* The map will navigate to your current position */
-=======
 	// The map will navigate to your current position
 	/**
 	 * Show the current position.
 	 */
->>>>>>> origin/Branch-for-theMap
 	public void showTheCurrentPosition() {
 		myLocationOverlay = new MyLocationOverlay(this, mapView);
 		myLocationOverlay.enableMyLocation();
@@ -356,7 +343,6 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		});
 	}
 
-<<<<<<< HEAD
 	/* Display all pubs in the allPubsArray as an overlay onto the map */
 	public void showThePubs() {
 
@@ -378,12 +364,11 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	}
 
 	/* Navigate to campus Lindholmen if users click on the changeCampusButton */
-=======
+
 	// navigate to campus Lindholmen if users clicks changeCampusButton
 	/**
 	 * Change to campus lindholmen.
 	 */
->>>>>>> origin/Branch-for-theMap
 	public void changeToCampusLindholmen() {
 
 		mc = mapView.getController();
@@ -392,14 +377,12 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		mc.setZoom(zoomLevel);
 	}
 
-<<<<<<< HEAD
 	/* Navigate to campus Johanneberg if users click on the changeCampusButton */
-=======
+
 	// navigate to campus Lindholmen if users clicks changeCampusButton
 	/**
 	 * Change to campus johanneberg.
 	 */
->>>>>>> origin/Branch-for-theMap
 	public void changeToCampusJohanneberg() {
 
 		mc = mapView.getController();
