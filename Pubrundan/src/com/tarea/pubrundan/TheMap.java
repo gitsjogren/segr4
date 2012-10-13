@@ -115,8 +115,12 @@ public class TheMap extends MapActivity implements OnGestureListener,
 
 	// The pubs in the array are listed and hardcoded from
 	// coordinates_of_the_pubs.txt
+<<<<<<< HEAD
 	/** The all pubs array. */
 	private OverlayItem[] allPubsArray = {
+=======
+	public OverlayItem[] allPubsArray = {
+>>>>>>> origin/pubinfo
 			// J.A. Pripps
 			new OverlayItem(new GeoPoint((int) (57.688984 * 1E6),
 					(int) (11.974389 * 1E6)), "J.A. Pripps", "Johanneberg"),
@@ -192,7 +196,8 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE); // Suppress title bar for
 														// more space
-		setContentView(R.layout.showthemap); // Use xml-layout showtomap.xml
+		setContentView(R.layout.showthemap); // Use xml-layout showtomap.xml		
+		
 		// Add map controller with zoom controls
 		mapView = (MapView) findViewById(R.id.mv);
 		mapView.setSatellite(true); // Satellite is set by default
@@ -315,8 +320,10 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		mc = mapView.getController();
 		myLocationOverlay.runOnFirstFix(new Runnable() {
 			public void run() {
+				GeoPoint gp = myLocationOverlay.getMyLocation();
 				mc.setZoom(zoomLevel);
-				mc.animateTo(myLocationOverlay.getMyLocation());
+				mc.animateTo(gp);
+				mc.setCenter(gp);
 			}
 		});
 	}
@@ -330,6 +337,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		mc = mapView.getController();
 		gp = new GeoPoint((int) (57.705947 * 1e6), (int) (11.936642 * 1e6));
 		mc.animateTo(gp);
+		mc.setCenter(gp);
 		mc.setZoom(zoomLevel);
 	}
 
@@ -342,7 +350,17 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		mc = mapView.getController();
 		gp = new GeoPoint((int) (57.691144 * 1e6), (int) (11.976078 * 1e6));
 		mc.animateTo(gp);
+		mc.setCenter(gp);
 		mc.setZoom(zoomLevel);
+	}
+	
+	public void animateToGeopoint(GeoPoint gp, int zoom){
+		
+		mc = mapView.getController();
+		//gp = new GeoPoint((int) (57.689034 * 1e6), (int) (11.976468 * 1e6));
+		mc.animateTo(gp);
+		mc.setCenter(gp);
+		mc.setZoom(zoom);
 	}
 
 	// starting new activity( PubList.java ) if user clicks goToPubListButton
