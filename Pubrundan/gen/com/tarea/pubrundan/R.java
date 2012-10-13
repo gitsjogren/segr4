@@ -139,13 +139,14 @@ public final class R {
         public static final int ja_pripps_info=0x7f050002;
         /**  &#8211; = "-" 
          */
-        public static final int ja_pripps_main_info=0x7f05001e;
-        public static final int ja_pripps_more_info=0x7f05001f;
+        public static final int ja_pripps_main_info=0x7f05001f;
+        public static final int ja_pripps_more_info=0x7f050020;
         public static final int jarnvagspub=0x7f050013;
-        public static final int johanneberg=0x7f05001c;
+        public static final int johanneberg=0x7f05001d;
         public static final int kajsabaren=0x7f050014;
+        public static final int lindholmen=0x7f05001c;
         public static final int opening_hours=0x7f050004;
-        public static final int opening_hours_basen=0x7f05001d;
+        public static final int opening_hours_basen=0x7f05001e;
         public static final int pub_logo=0x7f050006;
         public static final int pubf=0x7f050015;
         public static final int pubp=0x7f050016;
