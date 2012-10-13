@@ -94,9 +94,9 @@ public class JAPripps extends Activity {
 				//OverlayItem oi = tm.allPubsArray[0];
 				//GeoPoint gp = oi.getPoint();
 				//String send = gp.toString();
-				Intent i = new Intent(getBaseContext(),TheMap.class);
-				//i.putExtra("key", "value");
-                getApplicationContext().startActivity(i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+				Intent i = new Intent(this,TheMap.class);
+				i.putExtra("Pub","japripps");
+                startActivity(i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 				return true;
 			}
 			return false;
