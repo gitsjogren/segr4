@@ -1,3 +1,23 @@
+/* ============================================================
+ * Copyright © 2012 Adam Book, Rickard Edfast, Erik Sjögren,
+ * Alexander Kurkimäki
+ *
+ * This file is part of Pubrundan.
+ *
+ * Pubrundan is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Pubrundan is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Pubrundan. If not, see <http://www.gnu.org/licenses/>.
+ * ============================================================ */
+
 package com.tarea.pubrundan;
 
 import java.util.ArrayList;
@@ -11,7 +31,6 @@ import com.google.android.maps.OverlayItem;
 import com.tarea.pubrundan.Pubs.Basen;
 import com.tarea.pubrundan.Pubs.Bulten;
 import com.tarea.pubrundan.Pubs.ClubAvancez;
-import com.tarea.pubrundan.Pubs.PubF;
 import com.tarea.pubrundan.Pubs.Focus;
 import com.tarea.pubrundan.Pubs.FortNOx;
 import com.tarea.pubrundan.Pubs.GasTown;
@@ -21,6 +40,7 @@ import com.tarea.pubrundan.Pubs.Hubben;
 import com.tarea.pubrundan.Pubs.JAPripps;
 import com.tarea.pubrundan.Pubs.Jarnvagspub;
 import com.tarea.pubrundan.Pubs.Kajsabaren;
+import com.tarea.pubrundan.Pubs.PubF;
 import com.tarea.pubrundan.Pubs.PubP;
 import com.tarea.pubrundan.Pubs.RodaRummet;
 import com.tarea.pubrundan.Pubs.SigurdAfiket;
@@ -28,42 +48,88 @@ import com.tarea.pubrundan.Pubs.Spritkoket;
 import com.tarea.pubrundan.Pubs.Winden;
 import com.tarea.pubrundan.Pubs.Zaloonen;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The class OverlayClass
+ * 
+ * @author Erik Sjögren
+ * 
+ */
 public class OverlayClass extends ItemizedOverlay<OverlayItem> {
-
+	
+	/** The my overlays. */
 	private ArrayList<OverlayItem> myOverlays;
+	
+	/** The m context. */
 	private Context mContext;
+	
+	/** The count. */
 	private int count = 0;
+	
+	/** The counter. */
 	private ArrayList<Integer> counter = new ArrayList<Integer>();
 
+	/**
+	 * Instantiates a new overlay class.
+	 *
+	 * @param defaultMarker the default marker
+	 * @param context the context
+	 */
 	public OverlayClass(Drawable defaultMarker, Context context) {
 		super(boundCenterBottom(defaultMarker));
 		myOverlays = new ArrayList<OverlayItem>();
 		mContext = context;
 	}
 
+	/**
+	 * Adds the overlay.
+	 *
+	 * @param overlay the overlay
+	 */
 	public void addOverlay(OverlayItem overlay) {
 		myOverlays.add(overlay);
 		counter.add(count);
 		count++;
 	}
-	
-	// needed to access populate() from TheMap.java
+
+	/**
+	 * Populate fix.
+	 * Needed to access populate() from class TheMap
+	 */
 	public void populateFix(){
 		populate();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.google.android.maps.ItemizedOverlay#createItem(int)
+	 * @param i
+	 * 
+	 * @return, OverlayItem i
+	 */
 	@Override
 	protected OverlayItem createItem(int i) {
 		return myOverlays.get(i);
 	}
 
-	// Removes overlay item i
+	/**
+	 * Removes overlay item i.
+	 *
+	 * @param i the i
+	 */
 	public void removeItem(int i) {
 		myOverlays.remove(i);
 		populate();
 	}
 
-	// Handle tap events on overlay icons
+	/* (non-Javadoc)
+	 * Handle tap events on overlay icons
+	 * Start each pub as own class with xml
+	 * @see com.google.android.maps.ItemizedOverlay#onTap(int)
+	 * 
+	 * @param i
+	 * 
+	 * @return, true if successful
+	 */
 	@Override
 	protected boolean onTap(int i) {
 		switch (counter.get(i)) {
@@ -144,12 +210,19 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 			Intent elvan = new Intent(mContext, PubF.class);
 			mContext.startActivity(elvan);
 			return true;
+		case 19:	// Start Gangnam Style activity
+			//Intent gangnamstyle = new Intent(mContext, GangnamStyle.class);
+			//mContext.startActivity(gangnamstyle);
+			return true;
 		}
 		return false;
 
 	}
 
-	// Returns present number of items in list
+	/* (non-Javadoc)
+	 * Returns present number of items in list
+	 * @see com.google.android.maps.ItemizedOverlay#size()
+	 */
 	@Override
 	public int size() {
 		return myOverlays.size();
