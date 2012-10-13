@@ -35,13 +35,11 @@ public class JAPripps extends Activity {
 			return true;
 		}
 		
-		// onOptionsMenu with three items, "Street", "Satellite" & Traffic... code
-		// refactor is needed!
 		public boolean onOptionsItemSelected(MenuItem item) {
 			switch (item.getItemId()) {
 			case R.id.more_pubinfo:
 				new AlertDialog.Builder(this).setTitle("J.A. Pripps")
-						.setMessage(R.string.ja_pripps_info)
+						.setMessage(R.string.ja_pripps_more_info)
 						.create().show();
 			case R.id.find_pub:
 				return true;
