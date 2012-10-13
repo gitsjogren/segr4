@@ -245,10 +245,12 @@ public class TheMap extends MapActivity implements OnGestureListener,
 			}
 		});
 
-		String test = getIntent().getStringExtra("Pub");		
-		if( test != null ){
-			Toast.makeText(getBaseContext(), test, Toast.LENGTH_LONG).show();
-			GeoPoint gp = allPubsArray[0].getPoint();
+		String pubName = getIntent().getStringExtra("Pub");	
+		int pubNrInArray = getIntent().getIntExtra("Pub to animate to in array list", 1);  // 1 = defaultvalue
+		
+		if( pubName != null && pubNrInArray >= 0 ){
+			Toast.makeText(getBaseContext(), pubName, Toast.LENGTH_LONG).show();
+			GeoPoint gp = allPubsArray[pubNrInArray].getPoint();
 			animateToPubandSetZoom(gp);
         }
 		
@@ -258,7 +260,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		
 		mc = mapView.getController();
 		mc.animateTo(gp);
-		mc.setZoom(20);
+		mc.setZoom(19);
 	}
 
 	/*
