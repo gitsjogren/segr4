@@ -190,9 +190,21 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
+
+		String test = getIntent().getStringExtra("Pub");
+		
+		if( test != null ){
+			Toast.makeText(getBaseContext(), test, Toast.LENGTH_LONG).show();
+			//mc = mapView.getController();
+			//GeoPoint gp = new GeoPoint((int) (57.706463 * 1E6),	(int) (11.939596 * 1E6));
+            //mc.animateTo(gp);
+            //mc.setZoom(20);
+
+        }
+		
 		requestWindowFeature(Window.FEATURE_NO_TITLE); // Suppress title bar for
 														// more space
-		setContentView(R.layout.showthemap); // Use xml-layout showtomap.xml		
+		setContentView(R.layout.showthemap); // Use xml-layout showtomap.xml
 		
 		// Add map controller with zoom controls
 		mapView = (MapView) findViewById(R.id.mv);
@@ -244,6 +256,14 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		});
 
 	}
+	
+//	@Override
+//	public void onNewIntent(Intent intent) {
+//	   super.onNewIntent(intent);
+//	   if(intent.getStringExtra("methodName").equals("myMethod")){
+//	      changeToCampusLindholmen();
+//	   }
+//	}
 
 	/*
 	 * (non-Javadoc)
