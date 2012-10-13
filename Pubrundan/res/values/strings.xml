@@ -1,10 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <resources>
 
-    <string name="hello">Chalmers pubrunda</string>
     <string name="app_name">Pubrundan</string>
     <string name="goLabel">Show the Map</string>
+<<<<<<< HEAD
     <string name="ja_pripps_info">J.A. Pripps Pub och Café är den naturliga samlingsplatsen mitt i Kårhuset.
+=======
+    <string name="campus">Campus:</string>
+    <string name="opening_hours">Öppettider:</string>
+    <string name="house">Hus:</string>
+    <string name="pub_logo">Pub logo</string>
+    <string name="house_edit">EDIT</string>
+    <string name="basen">Basen</string>
+    <string name="bulten">Bulten</string>
+    <string name="club_avancez">Club Avancez</string>
+    <string name="focus">Focus</string>
+    <string name="fortnox">FortNOx</string>
+    <string name="gasquen">Gasquen</string>
+    <string name="gastown">GasTown</string>
+    <string name="goldeni">GoldenI</string>
+    <string name="hubben">Hubben 2.1</string>
+    <string name="ja_pripps">J.A. Pripps</string>
+    <string name="jarnvagspub">Järnvägspub</string>
+    <string name="kajsabaren">Kajsabaren</string>
+    <string name="pubf">11:an</string>
+    <string name="pubp">Pub P</string>
+    <string name="roda_rummet">Röda rummet</string>
+    <string name="sigurdafiket">Sigurd/A-fiket</string>
+    <string name="spritkoket">Spritköket</string>
+    <string name="winden">Winden</string>
+    <string name="zaloonen">Zaloonen</string>
+    <string name="johanneberg">Johanneberg</string>
+    <string name="opening_hours_basen">16:00 &#8211; 01:00</string>  <!-- &#8211; = "-" -->
+    <string name="ja_pripps_main_info">PubA verkar för A-sektionens sociala intressen genom att sköta om sektionspuben Röda Rummet där vi arrangerar pubar och andra sociala aktiviteter.</string>
+    <string name="ja_pripps_more_info">J.A. Pripps Pub och Café är den naturliga samlingsplatsen mitt i Kårhuset.
+>>>>>>> origin/pubinfo
         Under dagtid finns allt du behöver för en trevlig fikastund. Under eftermiddagen öppnar ölkranarna
         och framåt kvällen serverar köket god mat till priser som passar teknologstudentens plånbok.</string>
 
