@@ -15,7 +15,6 @@
         android:padding="5dp" >
 
         <TextView
-<<<<<<< HEAD
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -23,13 +22,11 @@
             android:layout_gravity="center_vertical"
             android:layout_toRightOf="@+id/thumbnail"
             android:text="Basen"
-=======
             android:id="@+id/maintitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="@string/basen"
->>>>>>> origin/pubinfo
             android:textColor="@color/prippsblue"
             android:textSize="25dp"
             android:textStyle="bold"
