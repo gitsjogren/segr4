@@ -91,11 +91,9 @@ public class JAPripps extends Activity {
 				return true;
 
 			case R.id.show_pub_on_map:
-				//OverlayItem oi = tm.allPubsArray[0];
-				//GeoPoint gp = oi.getPoint();
-				//String send = gp.toString();
 				Intent i = new Intent(this,TheMap.class);
-				i.putExtra("Pub","japripps");
+				i.putExtra("Pub","J.A. Pripps");
+				i.putExtra("Pub to animate to in array list", 0);
                 startActivity(i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 				return true;
 			}
