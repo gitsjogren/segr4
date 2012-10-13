@@ -24,8 +24,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
-
 import com.tarea.pubrundan.R;
+
 
 // TODO: Auto-generated Javadoc
 /**

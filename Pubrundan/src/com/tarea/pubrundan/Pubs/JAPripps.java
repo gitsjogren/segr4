@@ -18,24 +18,24 @@
  * along with Pubrundan. If not, see <http://www.gnu.org/licenses/>.
  * ============================================================ */
 
-<<<<<<< HEAD
+
 package com.tarea.pubrundan.Pubs;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-=======
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
->>>>>>> origin/pubinfo
+
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.Window;
-
 import com.tarea.pubrundan.R;
-<<<<<<< HEAD
+
+
 
 // TODO: Auto-generated Javadoc
 /**
@@ -44,10 +44,8 @@ import com.tarea.pubrundan.R;
  * @author Erik Sjögren
  * 
  */
-=======
-import com.tarea.pubrundan.TheMap;
 
->>>>>>> origin/pubinfo
+import com.tarea.pubrundan.TheMap;
 public class JAPripps extends Activity {
 	
 	private TheMap tm;
@@ -77,27 +75,17 @@ public class JAPripps extends Activity {
 			return true;
 		}
 		
-<<<<<<< HEAD
 		// onOptionsMenu with three items, "Street", "Satellite" & Traffic... code
 		// refactor is needed!
 		/* (non-Javadoc)
 		 * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
 		 */
-=======
->>>>>>> origin/pubinfo
+
 		public boolean onOptionsItemSelected(MenuItem item) {
 			switch (item.getItemId()) {
 			case R.id.more_pubinfo:
 				new AlertDialog.Builder(this).setTitle("J.A. Pripps")
-<<<<<<< HEAD
 						.setMessage(R.string.ja_pripps_info)
-						.create().show();
-			case R.id.settings:
-				return true;
-
-			case R.id.share:
-=======
-						.setMessage(R.string.ja_pripps_more_info)
 						.create().show();
 			case R.id.find_pub:
 				return true;
@@ -109,7 +97,6 @@ public class JAPripps extends Activity {
 				Intent i = new Intent(getBaseContext(),TheMap.class);
 				//i.putExtra("key", "value");
                 getApplicationContext().startActivity(i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
->>>>>>> origin/pubinfo
 				return true;
 			}
 			return false;

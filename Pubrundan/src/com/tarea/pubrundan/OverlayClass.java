@@ -49,7 +49,6 @@ import com.tarea.pubrundan.Pubs.Spritkoket;
 import com.tarea.pubrundan.Pubs.Winden;
 import com.tarea.pubrundan.Pubs.Zaloonen;
 
-// TODO: Auto-generated Javadoc
 /**
  * The class OverlayClass
  * 
