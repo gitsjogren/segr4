@@ -254,7 +254,6 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	 */
 	public boolean onDoubleTap(MotionEvent e) {
 		int x = (int) e.getX(), y = (int) e.getY();
-		;
 		Projection p = mapView.getProjection();
 		mapView.getController().animateTo(p.fromPixels(x, y));
 		mapView.getController().zoomIn();

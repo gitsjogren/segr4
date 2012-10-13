@@ -15,13 +15,6 @@
         android:padding="5dp" >
 
         <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/thumbnail"
-            android:layout_gravity="center_vertical"
-            android:layout_toRightOf="@+id/thumbnail"
-            android:text="Basen"
             android:id="@+id/maintitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -54,13 +47,8 @@
         android:layout_height="160dp"
         android:layout_below="@+id/linearLayout1"
         android:layout_centerHorizontal="true"
-<<<<<<< HEAD
-        android:layout_marginTop="5dp"
-        android:contentDescription="Pub logo"
-=======
         android:layout_marginTop="20dp"
         android:contentDescription="@string/pub_logo"
->>>>>>> origin/pubinfo
         android:src="@drawable/icon_basen" />
 
     <TextView
@@ -70,13 +58,8 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/list_image"
         android:layout_marginLeft="50dp"
-<<<<<<< HEAD
-        android:paddingTop="10dp"
-        android:text="Öppettider:"
-=======
         android:paddingTop="20dp"
         android:text="@string/opening_hours"
->>>>>>> origin/pubinfo
         android:textColor="@color/prippsblue"
         android:textSize="17dp"
         android:textStyle="bold"
@@ -91,11 +74,7 @@
         android:layout_below="@+id/title"
         android:layout_marginLeft="50dp"
         android:paddingTop="5dp"
-<<<<<<< HEAD
-        android:text="Plats:"
-=======
         android:text="@string/campus"
->>>>>>> origin/pubinfo
         android:textColor="@color/prippsblue"
         android:textSize="17dp"
         android:textStyle="bold"
@@ -110,25 +89,7 @@
         android:layout_below="@+id/TextView01"
         android:layout_marginLeft="50dp"
         android:paddingTop="5dp"
-<<<<<<< HEAD
-        android:text="Hus:"
-        android:textColor="@color/prippsblue"
-        android:textSize="17dp"
-        android:textStyle="bold"
-        android:typeface="sans" />
-
-    <TextView
-        android:id="@+id/TextView05"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/TextView03"
-        android:layout_marginLeft="50dp"
-        android:paddingTop="5dp"
-        android:text="Beräknad kötid:"
-=======
         android:text="@string/house"
->>>>>>> origin/pubinfo
         android:textColor="@color/prippsblue"
         android:textSize="17dp"
         android:textStyle="bold"
@@ -143,33 +104,13 @@
         android:layout_marginBottom="70dp"
         android:paddingLeft="15dp"
         android:paddingTop="5dp"
-<<<<<<< HEAD
-        android:text="PubA verkar för A-sektionens sociala intressen genom att sköta om sektionspuben Röda Rummet där vi arrangerar pubar och andra sociala aktiviteter."
-=======
         android:text="@string/ja_pripps_main_info"
->>>>>>> origin/pubinfo
         android:textColor="@color/black"
         android:textSize="13dp"
         android:textStyle="italic"
         android:typeface="serif" />
 
     <TextView
-<<<<<<< HEAD
-        android:id="@+id/TextView06"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/TextView05"
-        android:layout_alignBottom="@+id/TextView05"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="50dp"
-        android:text="30 min"
-        android:textColor="@color/black"
-        android:textSize="15dp"
-        android:textStyle="normal" />
-
-    <TextView
-=======
->>>>>>> origin/pubinfo
         android:id="@+id/TextView04"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -177,11 +118,7 @@
         android:layout_alignBottom="@+id/TextView03"
         android:layout_alignParentRight="true"
         android:layout_marginRight="50dp"
-<<<<<<< HEAD
-        android:text="EDIT"
-=======
         android:text="@string/house_edit"
->>>>>>> origin/pubinfo
         android:textColor="@color/black"
         android:textSize="15dp"
         android:textStyle="normal" />
@@ -194,11 +131,7 @@
         android:layout_alignBottom="@+id/TextView01"
         android:layout_alignParentRight="true"
         android:layout_marginRight="50dp"
-<<<<<<< HEAD
-        android:text="Johanneberg"
-=======
         android:text="@string/johanneberg"
->>>>>>> origin/pubinfo
         android:textColor="@color/black"
         android:textSize="15dp"
         android:textStyle="normal" />
@@ -211,11 +144,7 @@
         android:layout_alignBottom="@+id/title"
         android:layout_alignParentRight="true"
         android:layout_marginRight="50dp"
-<<<<<<< HEAD
-        android:text="16:00 - 01:00"
-=======
         android:text="@string/opening_hours_basen"
->>>>>>> origin/pubinfo
         android:textColor="@color/black"
         android:textSize="15dp"
         android:textStyle="normal" />

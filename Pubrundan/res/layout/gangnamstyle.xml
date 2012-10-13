@@ -11,7 +11,7 @@
         android:id="@+id/list_image"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:contentDescription="Gangnam Style"
+        android:contentDescription="@string/gangnam_style"
         android:src="@drawable/gangnam_style" />
 
 </RelativeLayout>
