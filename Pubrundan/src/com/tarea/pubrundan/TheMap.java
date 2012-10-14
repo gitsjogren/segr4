@@ -133,8 +133,12 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	// The pubs in the array are listed and hardcoded from
 	// coordinates_of_the_pubs.txt
 	/** The all pubs array. */
+<<<<<<< HEAD
 >>>>>>> origin/Branch-for-theMap
 	private OverlayItem[] allPubsArray = {
+=======
+	public OverlayItem[] allPubsArray = {
+>>>>>>> origin/Branch-for-theMap
 			// J.A. Pripps
 			new OverlayItem(new GeoPoint((int) (57.688984 * 1E6),
 					(int) (11.974389 * 1E6)), "J.A. Pripps", "Johanneberg"),
@@ -212,9 +216,12 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
+
+	
 		requestWindowFeature(Window.FEATURE_NO_TITLE); // Suppress title bar for
 														// more space
 		setContentView(R.layout.showthemap); // Use xml-layout showtomap.xml
+		
 		// Add map controller with zoom controls
 		mapView = (MapView) findViewById(R.id.mv);
 		mapView.setSatellite(true); // Satellite is set by default
@@ -264,6 +271,25 @@ public class TheMap extends MapActivity implements OnGestureListener,
 			}
 		});
 
+		String pubName = getIntent().getStringExtra("Pub");	
+		int pubNrInArray = getIntent().getIntExtra("Pub to animate to in array list", 1);  // 1 = defaultvalue
+		
+		if( pubName != null && pubNrInArray >= 0 ){
+			Toast.makeText(getBaseContext(), pubName, Toast.LENGTH_LONG).show();
+			GeoPoint gp = allPubsArray[pubNrInArray].getPoint();
+			animateToPubandSetZoom(gp);
+        }
+		
+	}
+	
+	public void animateToPubandSetZoom(GeoPoint gp){
+		
+		mc = mapView.getController();
+		mc.animateTo(gp);
+		mapView.invalidate();
+		mapView.getController();
+		mapView.postInvalidate();
+		mc.setZoom(19);
 	}
 
 	/*
@@ -275,7 +301,6 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	 */
 	public boolean onDoubleTap(MotionEvent e) {
 		int x = (int) e.getX(), y = (int) e.getY();
-		;
 		Projection p = mapView.getProjection();
 		mapView.getController().animateTo(p.fromPixels(x, y));
 		mapView.getController().zoomIn();
@@ -305,6 +330,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		mapOverlays.add(itemizedOverlay); // need to be outside the for-loop
 											// (source:
 											// http://stackoverflow.com/questions/2659770/android-map-performance-poor-because-of-many-overlays)
+		mapView.postInvalidate();
 	}
 
 	/**
@@ -316,19 +342,10 @@ public class TheMap extends MapActivity implements OnGestureListener,
 				"Laddar pubbar...", "Vänta...", true);
 		new Thread() {
 			public void run() {
-				try {
-					changeToCampusJohanneberg(); // change the position to
-													// Johanneberg
-					showThePubs(); // Displaying all pubs as overlay in maps,
-									// see method for
-					// more info.
-					// showTheCurrentPosition(); // navigate to users current
-					// location, inactive during development.
-
-					sleep(2000); // sleep the thread, 2000 milliseconds = 2
-									// seconds.
-				} catch (Exception e) {
-				}
+				changeToCampusJohanneberg(); // change the position to
+												// Johanneberg
+				showThePubs(); // Displaying all pubs as overlay in maps,
+								// see method for
 				((Dialog) loadingDialog).dismiss();
 			}
 		}.start();
@@ -350,8 +367,10 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		mc = mapView.getController();
 		myLocationOverlay.runOnFirstFix(new Runnable() {
 			public void run() {
+				GeoPoint gp = myLocationOverlay.getMyLocation();
 				mc.setZoom(zoomLevel);
-				mc.animateTo(myLocationOverlay.getMyLocation());
+				mc.animateTo(gp);
+				mc.setCenter(gp);
 			}
 		});
 	}
@@ -389,6 +408,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		mc = mapView.getController();
 		gp = new GeoPoint((int) (57.705947 * 1e6), (int) (11.936642 * 1e6));
 		mc.animateTo(gp);
+		mc.setCenter(gp);
 		mc.setZoom(zoomLevel);
 	}
 
@@ -403,9 +423,19 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	public void changeToCampusJohanneberg() {
 
 		mc = mapView.getController();
-		gp = new GeoPoint((int) (57.689034 * 1e6), (int) (11.976468 * 1e6));
+		gp = new GeoPoint((int) (57.691144 * 1e6), (int) (11.976078 * 1e6));
 		mc.animateTo(gp);
+		mc.setCenter(gp);
 		mc.setZoom(zoomLevel);
+	}
+	
+	public void animateToGeopoint(GeoPoint gp, int zoom){
+		
+		mc = mapView.getController();
+		//gp = new GeoPoint((int) (57.689034 * 1e6), (int) (11.976468 * 1e6));
+		mc.animateTo(gp);
+		mc.setCenter(gp);
+		mc.setZoom(zoom);
 	}
 
 	// starting new activity( PubList.java ) if user clicks goToPubListButton

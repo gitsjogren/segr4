@@ -20,13 +20,19 @@
 
 package com.tarea.pubrundan.Pubs;
 
+
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.Window;
-
 import com.tarea.pubrundan.R;
+import com.tarea.pubrundan.TheMap;
+
+
 
 // TODO: Auto-generated Javadoc
 /**
@@ -35,6 +41,7 @@ import com.tarea.pubrundan.R;
  * @author Erik Sjögren
  * 
  */
+
 public class Winden extends Activity {
 	
 	
@@ -62,6 +69,25 @@ public class Winden extends Activity {
 			MenuInflater oMenu = getMenuInflater();
 			oMenu.inflate(R.menu.pubmenu, menu);
 			return true;
+		}
+		
+		public boolean onOptionsItemSelected(MenuItem item) {
+			switch (item.getItemId()) {
+			case R.id.more_pubinfo:
+				new AlertDialog.Builder(this).setTitle("J.A. Pripps")
+						.setMessage(R.string.ja_pripps_info)
+						.create().show();
+			case R.id.find_pub:
+				return true;
+
+			case R.id.show_pub_on_map:
+				Intent i = new Intent(this,TheMap.class);
+				i.putExtra("Pub","Winden");
+				i.putExtra("Pub to animate to in array list", 3);
+                startActivity(i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+				return true;
+			}
+			return false;
 		}
 
 }

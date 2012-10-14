@@ -116,30 +116,33 @@ public final class R {
         public static final int pushpin=0x7f020021;
     }
     public static final class id {
-        public static final int TextView01=0x7f070004;
-        public static final int TextView02=0x7f07000a;
-        public static final int TextView03=0x7f070005;
-        public static final int TextView04=0x7f070009;
-        public static final int TextView05=0x7f070006;
-        public static final int TextView06=0x7f070008;
+        public static final int TextView01=0x7f070005;
+        public static final int TextView02=0x7f070009;
+        public static final int TextView03=0x7f070006;
+        public static final int TextView04=0x7f070008;
         public static final int TextView09=0x7f070007;
-        public static final int backToMap=0x7f07000f;
-        public static final int changeCampus=0x7f07000e;
-        public static final int change_map=0x7f070012;
-        public static final int duration=0x7f07000b;
-        public static final int find_pub=0x7f070016;
-        public static final int getPosition=0x7f07000d;
+        public static final int backToMap=0x7f07000e;
+        public static final int changeCampus=0x7f07000d;
+        public static final int change_map=0x7f070011;
+        public static final int duration=0x7f07000a;
+        public static final int find_pub=0x7f070015;
+        public static final int getPosition=0x7f07000c;
         public static final int linearLayout1=0x7f070000;
         public static final int list_image=0x7f070003;
-        public static final int mapshow_button=0x7f07000c;
-        public static final int more_pubinfo=0x7f070015;
-        public static final int mv=0x7f070010;
-        public static final int pubList=0x7f070011;
-        public static final int settings=0x7f070013;
-        public static final int share=0x7f070014;
-        public static final int show_pub_on_map=0x7f070017;
+        public static final int maintitle=0x7f070001;
+        public static final int mapshow_button=0x7f07000b;
+        public static final int more_pubinfo=0x7f070014;
+        public static final int mv=0x7f07000f;
+        public static final int pubList=0x7f070010;
+        public static final int settings=0x7f070012;
+        public static final int share=0x7f070013;
+        public static final int show_pub_on_map=0x7f070016;
         public static final int thumbnail=0x7f070002;
+<<<<<<< HEAD
         public static final int title=0x7f070001;
+>>>>>>> origin/Branch-for-theMap
+=======
+        public static final int title=0x7f070004;
 >>>>>>> origin/Branch-for-theMap
     }
     public static final class layout {
@@ -183,6 +186,7 @@ public final class R {
     }
     public static final class string {
 <<<<<<< HEAD
+<<<<<<< HEAD
         public static final int app_name=0x7f070001;
         public static final int goLabel=0x7f070002;
         public static final int hello=0x7f070000;
@@ -194,6 +198,43 @@ public final class R {
         public static final int goLabel=0x7f050002;
         public static final int hello=0x7f050000;
         public static final int ja_pripps_info=0x7f050003;
+>>>>>>> origin/Branch-for-theMap
+=======
+        public static final int app_name=0x7f050000;
+        public static final int basen=0x7f050009;
+        public static final int bulten=0x7f05000a;
+        public static final int campus=0x7f050003;
+        public static final int club_avancez=0x7f05000b;
+        public static final int focus=0x7f05000c;
+        public static final int fortnox=0x7f05000d;
+        public static final int gangnam_style=0x7f050008;
+        public static final int gasquen=0x7f05000e;
+        public static final int gastown=0x7f05000f;
+        public static final int goLabel=0x7f050001;
+        public static final int goldeni=0x7f050010;
+        public static final int house=0x7f050005;
+        public static final int house_edit=0x7f050007;
+        public static final int hubben=0x7f050011;
+        public static final int ja_pripps=0x7f050012;
+        public static final int ja_pripps_info=0x7f050002;
+        /**  &#8211; = "-" 
+         */
+        public static final int ja_pripps_main_info=0x7f05001f;
+        public static final int ja_pripps_more_info=0x7f050020;
+        public static final int jarnvagspub=0x7f050013;
+        public static final int johanneberg=0x7f05001d;
+        public static final int kajsabaren=0x7f050014;
+        public static final int lindholmen=0x7f05001c;
+        public static final int opening_hours=0x7f050004;
+        public static final int opening_hours_basen=0x7f05001e;
+        public static final int pub_logo=0x7f050006;
+        public static final int pubf=0x7f050015;
+        public static final int pubp=0x7f050016;
+        public static final int roda_rummet=0x7f050017;
+        public static final int sigurdafiket=0x7f050018;
+        public static final int spritkoket=0x7f050019;
+        public static final int winden=0x7f05001a;
+        public static final int zaloonen=0x7f05001b;
 >>>>>>> origin/Branch-for-theMap
     }
 }
