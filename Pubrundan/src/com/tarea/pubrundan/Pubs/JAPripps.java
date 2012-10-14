@@ -23,7 +23,11 @@ package com.tarea.pubrundan.Pubs;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
+import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -42,6 +46,7 @@ import com.tarea.pubrundan.TheMap;
 public class JAPripps extends Activity {
 	
 	private TheMap tm;
+	private LocationManager lm;
 	
 	// standard onCreate method
 		/* (non-Javadoc)
@@ -81,6 +86,16 @@ public class JAPripps extends Activity {
 						.setMessage(R.string.ja_pripps_info)
 						.create().show();
 			case R.id.find_pub:
+				lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE); 
+				Location myLocation = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+				String destLat = null;
+				String destLon = null;
+				String uri = "http://maps.google.com/maps?saddr=" + (myLocation.getLatitude())+","+(myLocation.getLongitude())+"&daddr="+destLat+","+destLon;
+
+				Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
+
+				intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
+				startActivity(intent);
 				return true;
 
 			case R.id.show_pub_on_map:
