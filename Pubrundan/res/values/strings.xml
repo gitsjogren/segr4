@@ -4,5 +4,9 @@
     <string name="hello">Chalmers pubrunda</string>
     <string name="app_name">Pubrundan</string>
     <string name="goLabel">Show the Map</string>
+    <string name="version">0.3</string>
+    <string name="Developers">TAREA</string>
+    <string name="Licence">GPL</string>
+    <string name="iconshock"><a href="http://www.iconshock.com" rel="nofollow">Original icon is made by Iconshock</a></string>
 
 </resources>

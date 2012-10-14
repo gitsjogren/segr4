@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="com.tarea.pubrundan"
       android:versionCode="1"
-      android:versionName="1.0">
+      android:versionName="@string/version">
       <uses-sdk android:minSdkVersion="7"
           android:targetSdkVersion="8"
           android:maxSdkVersion="16" />
@@ -24,6 +24,7 @@
         <uses-library android:name="com.google.android.maps" />
         <activity android:name=".PubList"></activity>
         <activity android:name=".SettingsMenu"></activity>
+        <activity android:name=".AboutPage"></activity>
         <activity android:name=".Pubs.JAPripps"></activity>
         <activity android:name=".Pubs.Gasquen"></activity>
         <activity android:name=".Pubs.Bulten"></activity>
