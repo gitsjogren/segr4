@@ -260,6 +260,9 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		
 		mc = mapView.getController();
 		mc.animateTo(gp);
+		mapView.invalidate();
+		mapView.getController();
+		mapView.postInvalidate();
 		mc.setZoom(19);
 	}
 
@@ -301,6 +304,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		mapOverlays.add(itemizedOverlay); // need to be outside the for-loop
 											// (source:
 											// http://stackoverflow.com/questions/2659770/android-map-performance-poor-because-of-many-overlays)
+		mapView.postInvalidate();
 	}
 
 	/**
