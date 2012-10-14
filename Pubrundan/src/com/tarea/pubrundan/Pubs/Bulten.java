@@ -22,8 +22,6 @@
 package com.tarea.pubrundan.Pubs;
 
 import com.tarea.pubrundan.R;
-import com.tarea.pubrundan.TheMap;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -32,6 +30,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.Window;
+
+import com.tarea.pubrundan.TheMap;
 
 // TODO: Auto-generated Javadoc
 /**
