@@ -10,7 +10,7 @@ package com.tarea.pubrundan;
 public final class R {
     public static final class array {
         public static final int campus=0x7f050000;
-        public static final int campusValues=0x7f050001;
+        public static final int startCampus=0x7f050001;
     }
     public static final class attr {
     }
@@ -55,6 +55,7 @@ public final class R {
         public static final int pushpin=0x7f020011;
     }
     public static final class id {
+<<<<<<< HEAD
         public static final int TextView01=0x7f090004;
         public static final int TextView02=0x7f09000a;
         public static final int TextView03=0x7f090005;
@@ -161,6 +162,64 @@ public final class R {
         public static final int kajsabaren=0x7f03000c;
         public static final int main=0x7f03000d;
 <<<<<<< HEAD
+=======
+        public static final int TextView01=0x7f090015;
+        public static final int TextView02=0x7f09001b;
+        public static final int TextView03=0x7f090016;
+        public static final int TextView04=0x7f09001a;
+        public static final int TextView05=0x7f090017;
+        public static final int TextView06=0x7f090019;
+        public static final int TextView09=0x7f090018;
+        public static final int backToMap=0x7f09001f;
+        public static final int changeCampus=0x7f09001e;
+        public static final int change_map=0x7f090022;
+        public static final int duration=0x7f09001c;
+        public static final int find_pub=0x7f090026;
+        public static final int getPosition=0x7f09001d;
+        public static final int iconshock=0x7f09000f;
+        public static final int linearLayout1=0x7f090011;
+        public static final int list_image=0x7f090014;
+        public static final int more_pub_desc=0x7f090025;
+        public static final int mv=0x7f090020;
+        public static final int pubList=0x7f090021;
+        public static final int settings=0x7f090023;
+        public static final int share=0x7f090024;
+        public static final int show_pub_on_map=0x7f090027;
+        public static final int textView1=0x7f090005;
+        public static final int textView10=0x7f09000a;
+        public static final int textView11=0x7f09000c;
+        public static final int textView12=0x7f09000d;
+        public static final int textView13=0x7f090010;
+        public static final int textView14=0x7f090000;
+        public static final int textView15=0x7f090001;
+        public static final int textView16=0x7f09000e;
+        public static final int textView2=0x7f090006;
+        public static final int textView3=0x7f090008;
+        public static final int textView4=0x7f090009;
+        public static final int textView5=0x7f09000b;
+        public static final int textView6=0x7f090004;
+        public static final int textView7=0x7f090002;
+        public static final int textView8=0x7f090003;
+        public static final int textView9=0x7f090007;
+        public static final int thumbnail=0x7f090013;
+        public static final int title=0x7f090012;
+    }
+    public static final class layout {
+        public static final int about=0x7f030000;
+        public static final int basen=0x7f030001;
+        public static final int bulten=0x7f030002;
+        public static final int clubavancez=0x7f030003;
+        public static final int elvan=0x7f030004;
+        public static final int focus=0x7f030005;
+        public static final int fortnox=0x7f030006;
+        public static final int gasquen=0x7f030007;
+        public static final int gastown=0x7f030008;
+        public static final int goldeni=0x7f030009;
+        public static final int hubben=0x7f03000a;
+        public static final int japripps=0x7f03000b;
+        public static final int jarnvagspub=0x7f03000c;
+        public static final int kajsabaren=0x7f03000d;
+>>>>>>> first_run
         public static final int publist=0x7f03000e;
         public static final int pubp=0x7f03000f;
         public static final int rodarummet=0x7f030010;
@@ -187,9 +246,16 @@ public final class R {
     public static final class string {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        public static final int Developers=0x7f070004;
+        public static final int Licence=0x7f070005;
+>>>>>>> first_run
         public static final int app_name=0x7f070001;
         public static final int goLabel=0x7f070002;
         public static final int hello=0x7f070000;
+        public static final int iconshock=0x7f070006;
+        public static final int version=0x7f070003;
     }
     public static final class xml {
         public static final int settings=0x7f040000;
