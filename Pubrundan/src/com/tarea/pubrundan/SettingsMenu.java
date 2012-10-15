@@ -10,7 +10,7 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 import android.view.Window;
 
-/*
+/**
  * The settings-menu where you're able to change your default
  * campus, send feedback on the application, see information about
  * the application itself and other features.
@@ -20,7 +20,7 @@ import android.view.Window;
 public class SettingsMenu extends PreferenceActivity {
 	
 
-	/*
+	/**
 	 * (non-Javadoc)
 	 * 
 	 * @see android.preference.PreferenceActivity#onCreate(android.os.Bundle)
@@ -34,7 +34,7 @@ public class SettingsMenu extends PreferenceActivity {
 		final SharedPreferences SP = PreferenceManager
 				.getDefaultSharedPreferences(getBaseContext());
 
-		/*
+		/**
 		 * A clickable "preference" which starts the About-section within
 		 * the SettingsMenu.
 		 */
@@ -52,7 +52,7 @@ public class SettingsMenu extends PreferenceActivity {
 				});
 		
 
-		/*
+		/**
 		 * When the value is changed in the Default Campus settings the new value 
 		 * is stored in the SharedPreferences to be reminded each time you start
 		 * the application.
@@ -69,7 +69,7 @@ public class SettingsMenu extends PreferenceActivity {
 			}
 		});
 		
-		/*
+		/**
 		 * Get all options in res/xml/settings.xml
 		 */
 		SP.getString("defaultCampus", "0");

@@ -41,7 +41,6 @@ import com.tarea.pubrundan.TheMap;
  */
 public class JAPripps extends Activity {
 	
-	private TheMap tm;
 	
 	// standard onCreate method
 		/* (non-Javadoc)
