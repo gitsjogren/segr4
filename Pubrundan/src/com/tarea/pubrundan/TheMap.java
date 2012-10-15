@@ -254,22 +254,25 @@ public class TheMap extends MapActivity implements OnGestureListener,
 			}
 		});
 
-		String pubName = getIntent().getStringExtra("Pub");
-		int pubNrInArray = getIntent().getIntExtra(
-				"Pub to animate to in array list", 1); // 1 = defaultvalue
+		String fromIdShowPubOnMap = getIntent().getStringExtra("Show");
+		String fromIdFindPub = getIntent().getStringExtra("Route");
+		int animateToPub = getIntent().getIntExtra(
+				"Pub to animate to", 1); // 1 = defaultvalue
+		int drawRouteToPub = getIntent().getIntExtra(
+				"Pub to draw route to", 1); // 1 = defaultvalue
 
-//		if (pubName != null && pubNrInArray >= 0) {
-//			Toast.makeText(getBaseContext(), pubName, Toast.LENGTH_LONG).show();
-//			GeoPoint gp = allPubsArray[pubNrInArray].getPoint();
-//			animateToPubandSetZoom(gp);
-//		}
+		if (fromIdShowPubOnMap != null) {
+			Toast.makeText(getBaseContext(), fromIdShowPubOnMap, Toast.LENGTH_LONG).show();
+			GeoPoint gp = allPubsArray[animateToPub].getPoint();
+			animateToPubandSetZoom(gp);
+		}
 		
-		if (pubName != null && pubNrInArray >=0){
+		else if (fromIdFindPub != null){
 			
 			 mapOverlays = mapView.getOverlays();
 			 projection = mapView.getProjection();
 
-			 myoverlay = new MyOverlay();
+			 myoverlay = new MyOverlay(drawRouteToPub);
 			 mapOverlays.add(myoverlay);
 		}
 
@@ -810,8 +813,11 @@ public class TheMap extends MapActivity implements OnGestureListener,
 
 	class MyOverlay extends Overlay {
 
-		public MyOverlay() {
-			
+		private int endPoint;
+		
+		public MyOverlay(int endPoint) {
+		
+			this.endPoint=endPoint;
 		}
 
 		public void draw(Canvas canvas, MapView mapv, boolean shadow) {
@@ -825,9 +831,10 @@ public class TheMap extends MapActivity implements OnGestureListener,
 			mPaint.setStrokeCap(Paint.Cap.ROUND);
 			mPaint.setStrokeWidth(4);
 
-			GeoPoint gp1 = allPubsArray[0].getPoint();	// starting point
-
-			GeoPoint gp2 = allPubsArray[1].getPoint();	// End point
+			
+			//GeoPoint gp1 = allPubsArray[0].getPoint();	// starting point
+			GeoPoint gp1 = new GeoPoint((int) (57.689814 * 1E6), (int) (11.972988 * 1E6));  // for development, geopoint of chalmers entrance
+			GeoPoint gp2 = allPubsArray[endPoint].getPoint();	// End point
 
 			Path path1 = new Path();
 
