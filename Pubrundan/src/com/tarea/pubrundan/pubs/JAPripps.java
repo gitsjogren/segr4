@@ -85,20 +85,11 @@ public class JAPripps extends Activity {
 				new AlertDialog.Builder(this).setTitle("J.A. Pripps")
 						.setMessage(R.string.ja_pripps_info)
 						.create().show();
+				return true;
 			case R.id.find_pub:
-//				lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE); 
-//				Location myLocation = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-//				String destLat = null;
-//				String destLon = null;
-//				String uri = "http://maps.google.com/maps?saddr=" + (myLocation.getLatitude())+","+(myLocation.getLongitude())+"&daddr="+destLat+","+destLon;
-//
-//				Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
-//
-//				intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
-//				startActivity(intent);
 				Intent e = new Intent(this,TheMap.class);
 				e.putExtra("Pub","J.A. Pripps");
-				e.putExtra("Pub to animate to in array list", 6);
+				e.putExtra("Pub to animate to in array list", 0);
                 startActivity(e.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 				return true;
 

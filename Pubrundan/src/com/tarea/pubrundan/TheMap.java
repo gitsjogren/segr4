@@ -264,7 +264,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 //			animateToPubandSetZoom(gp);
 //		}
 		
-		if(pubName != null && pubNrInArray >= 0){
+		if (pubName != null && pubNrInArray >=0){
 			
 			 mapOverlays = mapView.getOverlays();
 			 projection = mapView.getProjection();
@@ -811,7 +811,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	class MyOverlay extends Overlay {
 
 		public MyOverlay() {
-
+			
 		}
 
 		public void draw(Canvas canvas, MapView mapv, boolean shadow) {
@@ -825,42 +825,23 @@ public class TheMap extends MapActivity implements OnGestureListener,
 			mPaint.setStrokeCap(Paint.Cap.ROUND);
 			mPaint.setStrokeWidth(4);
 
-			GeoPoint gP1 = new GeoPoint(57688984, 11974389);// starting point
+			GeoPoint gp1 = allPubsArray[0].getPoint();	// starting point
 
-			GeoPoint gP2 = new GeoPoint(57688725, 11975156);// End point
+			GeoPoint gp2 = allPubsArray[1].getPoint();	// End point
 
-
-			GeoPoint gP4 = new GeoPoint(33695043, 73050000);// Start point
-															// Islamabad
-			GeoPoint gP3 = new GeoPoint(33615043, 73050000);// End Point
-															// Rawalpindi
+			Path path1 = new Path();
 
 			Point p1 = new Point();
 			Point p2 = new Point();
-			Path path1 = new Path();
+			projection.toPixels(gp2, p1);
+			projection.toPixels(gp1, p2);
 
-			Point p3 = new Point();
-			Point p4 = new Point();
-			Path path2 = new Path();
-			projection.toPixels(gP2, p3);
-			projection.toPixels(gP1, p4);
+			path1.moveTo(p2.x, p2.y);	// Moving to next pub
+			path1.lineTo(p1.x, p1.y);	// Path till next pub
 
-			path1.moveTo(p4.x, p4.y);// Moving to Abbottabad location
-			path1.lineTo(p3.x, p3.y);// Path till Islamabad
-
-			projection.toPixels(gP3, p1);
-			projection.toPixels(gP4, p2);
-
-			path2.moveTo(p2.x, p2.y);// Moving to Islamabad location
-			path2.lineTo(p1.x, p1.y);// Path to Rawalpindi
-
-			canvas.drawPath(path1, mPaint);// Actually drawing the path from
-											// Abbottabad to Islamabad
-			canvas.drawPath(path2, mPaint);// Actually drawing the path from
-											// Islamabad to Rawalpindi
+			canvas.drawPath(path1, mPaint);// Actually drawing the path from first GeoPoint to second
 
 		}
-
 	}
 
 }
