@@ -96,13 +96,17 @@ public class JAPripps extends Activity {
 //
 //				intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
 //				startActivity(intent);
+				Intent e = new Intent(this,TheMap.class);
+				e.putExtra("Pub","J.A. Pripps");
+				e.putExtra("Pub to animate to in array list", 6);
+                startActivity(e.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 				return true;
 
 			case R.id.show_pub_on_map:
-				Intent i = new Intent(this,TheMap.class);
-				i.putExtra("Pub","J.A. Pripps");
-				i.putExtra("Pub to animate to in array list", 0);
-                startActivity(i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+//				Intent i = new Intent(this,TheMap.class);
+//				i.putExtra("Pub","J.A. Pripps");
+//				i.putExtra("Pub to animate to in array list", 0);
+//                startActivity(i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 				return true;
 			}
 			return false;

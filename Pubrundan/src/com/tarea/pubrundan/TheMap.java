@@ -30,6 +30,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.gesture.GestureOverlayView;
 import android.gesture.GestureOverlayView.OnGestureListener;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationManager;
@@ -74,6 +79,10 @@ public class TheMap extends MapActivity implements OnGestureListener,
 										// Johanneberg (default campus)
 	/** The zoom level. */
 	private int zoomLevel = 17;
+	
+	private Projection projection;
+	
+	private MyOverlay myoverlay;
 
 	/** The mc. */
 	private MapController mc;
@@ -192,11 +201,10 @@ public class TheMap extends MapActivity implements OnGestureListener,
 
 		super.onCreate(savedInstanceState);
 
-	
 		requestWindowFeature(Window.FEATURE_NO_TITLE); // Suppress title bar for
 														// more space
 		setContentView(R.layout.showthemap); // Use xml-layout showtomap.xml
-		
+
 		// Add map controller with zoom controls
 		mapView = (MapView) findViewById(R.id.mv);
 		mapView.setSatellite(true); // Satellite is set by default
@@ -246,27 +254,38 @@ public class TheMap extends MapActivity implements OnGestureListener,
 			}
 		});
 
-		String pubName = getIntent().getStringExtra("Pub");	
-		int pubNrInArray = getIntent().getIntExtra("Pub to animate to in array list", 1);  // 1 = defaultvalue
+		String pubName = getIntent().getStringExtra("Pub");
+		int pubNrInArray = getIntent().getIntExtra(
+				"Pub to animate to in array list", 1); // 1 = defaultvalue
+
+//		if (pubName != null && pubNrInArray >= 0) {
+//			Toast.makeText(getBaseContext(), pubName, Toast.LENGTH_LONG).show();
+//			GeoPoint gp = allPubsArray[pubNrInArray].getPoint();
+//			animateToPubandSetZoom(gp);
+//		}
 		
-		if( pubName != null && pubNrInArray >= 0 ){
-			Toast.makeText(getBaseContext(), pubName, Toast.LENGTH_LONG).show();
-			GeoPoint gp = allPubsArray[pubNrInArray].getPoint();
-			animateToPubandSetZoom(gp);
-        }
-		
+		if(pubName != null && pubNrInArray >= 0){
+			
+			 mapOverlays = mapView.getOverlays();
+			 projection = mapView.getProjection();
+
+			 myoverlay = new MyOverlay();
+			 mapOverlays.add(myoverlay);
+		}
+
 	}
-	
-	public void animateToPubandSetZoom(final GeoPoint gp){
-		
-//		http://code.google.com/p/osmdroid/issues/detail?id=204
-//		issue in google maps, this ugly workaround will bypass the initialization time issues		
+
+	public void animateToPubandSetZoom(final GeoPoint gp) {
+
+		// http://code.google.com/p/osmdroid/issues/detail?id=204
+		// issue in google maps, this ugly workaround will bypass the
+		// initialization time issues
 		new Handler().postDelayed(new Runnable() {
-		    public void run() {
-		    	mc = mapView.getController();
+			public void run() {
+				mc = mapView.getController();
 				mc.setZoom(19);
 				mc.animateTo(gp);
-		    }
+			}
 		}, 200);
 	}
 
@@ -308,7 +327,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		mapOverlays.add(itemizedOverlay); // need to be outside the for-loop
 											// (source:
 											// http://stackoverflow.com/questions/2659770/android-map-performance-poor-because-of-many-overlays)
-		//mapView.postInvalidate();
+		// mapView.postInvalidate();
 	}
 
 	/**
@@ -374,11 +393,11 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		mc.setCenter(gp);
 		mc.setZoom(zoomLevel);
 	}
-	
-	public void animateToGeopoint(GeoPoint gp, int zoom){
-		
+
+	public void animateToGeopoint(GeoPoint gp, int zoom) {
+
 		mc = mapView.getController();
-		//gp = new GeoPoint((int) (57.689034 * 1e6), (int) (11.976468 * 1e6));
+		// gp = new GeoPoint((int) (57.689034 * 1e6), (int) (11.976468 * 1e6));
 		mc.animateTo(gp);
 		mc.setCenter(gp);
 		mc.setZoom(zoom);
@@ -786,6 +805,61 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	 */
 	public void onGestureStarted(GestureOverlayView overlay, MotionEvent event) {
 		// TODO Auto-generated method stub
+
+	}
+
+	class MyOverlay extends Overlay {
+
+		public MyOverlay() {
+
+		}
+
+		public void draw(Canvas canvas, MapView mapv, boolean shadow) {
+			super.draw(canvas, mapv, shadow);
+			// Configuring the paint brush
+			Paint mPaint = new Paint();
+			mPaint.setDither(true);
+			mPaint.setColor(Color.RED);
+			mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+			mPaint.setStrokeJoin(Paint.Join.ROUND);
+			mPaint.setStrokeCap(Paint.Cap.ROUND);
+			mPaint.setStrokeWidth(4);
+
+			GeoPoint gP1 = new GeoPoint(57688984, 11974389);// starting point
+
+			GeoPoint gP2 = new GeoPoint(57688725, 11975156);// End point
+
+
+			GeoPoint gP4 = new GeoPoint(33695043, 73050000);// Start point
+															// Islamabad
+			GeoPoint gP3 = new GeoPoint(33615043, 73050000);// End Point
+															// Rawalpindi
+
+			Point p1 = new Point();
+			Point p2 = new Point();
+			Path path1 = new Path();
+
+			Point p3 = new Point();
+			Point p4 = new Point();
+			Path path2 = new Path();
+			projection.toPixels(gP2, p3);
+			projection.toPixels(gP1, p4);
+
+			path1.moveTo(p4.x, p4.y);// Moving to Abbottabad location
+			path1.lineTo(p3.x, p3.y);// Path till Islamabad
+
+			projection.toPixels(gP3, p1);
+			projection.toPixels(gP4, p2);
+
+			path2.moveTo(p2.x, p2.y);// Moving to Islamabad location
+			path2.lineTo(p1.x, p1.y);// Path to Rawalpindi
+
+			canvas.drawPath(path1, mPaint);// Actually drawing the path from
+											// Abbottabad to Islamabad
+			canvas.drawPath(path2, mPaint);// Actually drawing the path from
+											// Islamabad to Rawalpindi
+
+		}
 
 	}
 
