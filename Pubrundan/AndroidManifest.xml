@@ -47,7 +47,8 @@
         <activity android:name=".Pubs.SigurdAfiket" android:screenOrientation="portrait"></activity>
         <activity android:name=".Pubs.PubP" android:screenOrientation="portrait"></activity>
         <activity android:name=".Pubs.PubF" android:screenOrientation="portrait"></activity>
-         <activity android:name=".Pubs.GangnamStyle" android:screenOrientation="landscape"></activity>
+        <activity android:name=".Pubs.Elvan" android:screenOrientation="portrait"></activity>
+        <activity android:name=".Pubs.GangnamStyle" android:screenOrientation="landscape"></activity>
 
     </application>
 </manifest>
