@@ -54,7 +54,7 @@ import com.google.android.maps.MyLocationOverlay;
 import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
 import com.google.android.maps.Projection;
-import com.tarea.pubrundan.Pubs.JAPripps;
+import com.tarea.pubrundan.pubs.JAPripps;
 
 // TODO: Auto-generated Javadoc
 //### This class follows some code examples from http://eagle.phys.utk.edu/guidry/android/index.html  ###//
@@ -260,10 +260,9 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		
 		mc = mapView.getController();
 		mc.animateTo(gp);
-		mapView.invalidate();
-		mapView.getController();
-		mapView.postInvalidate();
 		mc.setZoom(19);
+		//mapView.invalidate();
+		//mapView.postInvalidate();
 	}
 
 	/*
@@ -304,7 +303,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		mapOverlays.add(itemizedOverlay); // need to be outside the for-loop
 											// (source:
 											// http://stackoverflow.com/questions/2659770/android-map-performance-poor-because-of-many-overlays)
-		mapView.postInvalidate();
+		//mapView.postInvalidate();
 	}
 
 	/**

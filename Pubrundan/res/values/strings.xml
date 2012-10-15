@@ -1,6 +1,7 @@
 <resources>
 
     <string name="app_name">Pubrundan</string>
+    <string name="api_map_key">0n_WUXbhVEKfU4SZhO9Hhixy7M617h_k4iBRiSA</string>
     <string name="goLabel">Show the Map</string>
     <string name="ja_pripps_info">J.A. Pripps Pub och Café är den naturliga samlingsplatsen mitt i Kårhuset.</string>
     <string name="campus">Campus:</string>
