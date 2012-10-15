@@ -23,11 +23,7 @@ package com.tarea.pubrundan.pubs;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.location.Location;
-import android.location.LocationManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -45,8 +41,6 @@ import com.tarea.pubrundan.TheMap;
  */
 public class JAPripps extends Activity {
 	
-	private TheMap tm;
-	private LocationManager lm;
 	
 	// standard onCreate method
 		/* (non-Javadoc)
@@ -88,16 +82,16 @@ public class JAPripps extends Activity {
 				return true;
 			case R.id.find_pub:
 				Intent e = new Intent(this,TheMap.class);
-				e.putExtra("Pub","J.A. Pripps");
-				e.putExtra("Pub to animate to in array list", 0);
+				e.putExtra("Route","J.A. Pripps");
+				e.putExtra("Pub to draw route to", 0);
                 startActivity(e.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 				return true;
 
 			case R.id.show_pub_on_map:
-//				Intent i = new Intent(this,TheMap.class);
-//				i.putExtra("Pub","J.A. Pripps");
-//				i.putExtra("Pub to animate to in array list", 0);
-//                startActivity(i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+				Intent i = new Intent(this,TheMap.class);
+				i.putExtra("Show","J.A. Pripps");
+				i.putExtra("Pub to animate to", 0);
+                startActivity(i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 				return true;
 			}
 			return false;
