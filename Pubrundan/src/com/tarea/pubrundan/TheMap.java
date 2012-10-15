@@ -34,6 +34,7 @@ import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.Settings;
 import android.view.GestureDetector.OnDoubleTapListener;
 import android.view.Menu;
@@ -256,13 +257,17 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		
 	}
 	
-	public void animateToPubandSetZoom(GeoPoint gp){
+	public void animateToPubandSetZoom(final GeoPoint gp){
 		
-		mc = mapView.getController();
-		mc.animateTo(gp);
-		mc.setZoom(19);
-		//mapView.invalidate();
-		//mapView.postInvalidate();
+//		http://code.google.com/p/osmdroid/issues/detail?id=204
+//		issue in google maps, this ugly workaround will bypass the initialization time issues		
+		new Handler().postDelayed(new Runnable() {
+		    public void run() {
+		    	mc = mapView.getController();
+				mc.setZoom(19);
+				mc.animateTo(gp);
+		    }
+		}, 200);
 	}
 
 	/*
