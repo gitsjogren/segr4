@@ -10,7 +10,7 @@ package com.tarea.pubrundan;
 public final class R {
     public static final class array {
         public static final int campus=0x7f050000;
-        public static final int campusValues=0x7f050001;
+        public static final int startCampus=0x7f050001;
     }
     public static final class attr {
     }

@@ -8,10 +8,12 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -35,33 +37,45 @@ import com.tarea.pubrundan.Pubs.JAPripps;
 
 public class TheMap extends MapActivity {
 
-	private boolean startCampus = true; // false = Lindholmen, true =
-										// Johanneberg (default campus)
+	private SharedPreferences sharedPrefs;
+
+	/*
+	 * Boolean that tells the application which campus that
+	 * is currently the one the user is looking at. 
+	 * Used for the 'Byt Campus'-button.
+	 */
+	private boolean activeCampus;
+	
+	private String default_campus;
 	private int zoomLevel = 17;
 	private MapController mc;
 	private GeoPoint gp;
 	private MapView mapView;
-	
-	/* Buttons shown on top of theMap */
+
+	/* Buttons shown on top of TheMap */
 	private Button getThePositionButton, changeCampusButton, goToPubListButton;
-																																							
+
 	/* An Overlay showing a blue dot, which indicates your location */
-	private MyLocationOverlay myLocationOverlay; 
-													
+	private MyLocationOverlay myLocationOverlay;
+
 	private List<Overlay> mapOverlays;
 	private Drawable drawable;
 	private OverlayClass itemizedOverlay;
 
-	/*  The different view selections of the map */
+	/* The different view selections of the map */
 	private final CharSequence[] differentViews = { "Street", "Satellite",
 			"Traffic" };
 
-	/* Define an array containing the access overlay items for all of the pubs
-	 of Johanneberg and Lindholmen
-	 Coordinates need to be converted into integers, by default they are
-	 displayed in microdegrees */
+	/*
+	 * Define an array containing the access overlay items for all of the pubs
+	 * of Johanneberg and Lindholmen Coordinates need to be converted into
+	 * integers, by default they are displayed in microdegrees
+	 */
 
-	/* The pubs in the array are listed and hardcoded from coordinates_of_the_pubs.txt */
+	/*
+	 * The pubs in the array are listed and hardcoded from
+	 * coordinates_of_the_pubs.txt
+	 */
 	private OverlayItem[] allPubsArray = {
 			// J.A. Pripps
 			new OverlayItem(new GeoPoint((int) (57.688984 * 1E6),
@@ -145,8 +159,31 @@ public class TheMap extends MapActivity {
 																	// the code
 		checkIfGpsIsEnabled(); // check if gps is enabled
 
-		loading(); // loading animation, invokes: changeToCampusJohanneberg(),
-					// showThePubs()
+		/*
+		 * If the application is running for the first time a dialog will pop up
+		 * and ask for the default campus.
+		 */
+		sharedPrefs = PreferenceManager
+				.getDefaultSharedPreferences(getBaseContext());
+		boolean firstrun = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+				.getBoolean("firstrun", true);
+		if (firstrun) {
+			setDefaultCampus();
+
+			// Save the state
+			getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
+					.putBoolean("firstrun", false).commit();
+		}	
+		/*
+		 * If it's not the first run of the application
+		 * then we can just start the loading sequence.
+		 * Not possible if the default campus hasn't been
+		 * chosen.
+		 */
+		else{
+			getDefaultCampus();
+			loading();
+		}
 
 		// Button for get my location
 		getThePositionButton = (Button) findViewById(R.id.getPosition);
@@ -160,14 +197,7 @@ public class TheMap extends MapActivity {
 		changeCampusButton = (Button) findViewById(R.id.changeCampus);
 		changeCampusButton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				if (startCampus) {
-					changeToCampusLindholmen();
-					startCampus = false;
-				} else if (!startCampus) {
-
-					changeToCampusJohanneberg();
-					startCampus = true;
-				}
+				changeCampus();
 			}
 		});
 
@@ -181,6 +211,86 @@ public class TheMap extends MapActivity {
 
 	}
 
+	/*
+	 * Method that gets the value for default campus if the
+	 * application itself has been closed.
+	 */
+	private void getDefaultCampus() {
+		default_campus = sharedPrefs.getString("defaultCampus", "0");
+		
+		if(default_campus.equals("0"))
+			activeCampus = true;
+		
+		else if(default_campus.equals("1"))
+			activeCampus = false;
+	}
+
+	/*
+	 * A dialog that lets the user set the default campus, on the first run
+	 * only, that will make the application navigate there on start.
+	 */
+	private void setDefaultCampus() {
+		final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle("Standard campus")
+				.setMessage("Var vänlig och välj standard campus för kartan.")
+				.setIcon(R.drawable.icon_warning)
+				.setCancelable(false)
+				.setNeutralButton("Johanneberg",
+						new android.content.DialogInterface.OnClickListener() {
+							public void onClick(final DialogInterface dialog,
+									final int id) {
+								default_campus = "0";
+								SharedPreferences.Editor editor = sharedPrefs
+										.edit();
+								editor.putString("defaultCampus", "0");
+								editor.commit();
+								activeCampus = true;
+								loading();
+								
+							}
+						})
+				.setNegativeButton("Lindholmen",
+						new DialogInterface.OnClickListener() {
+							public void onClick(final DialogInterface dialog,
+									final int id) {
+								default_campus = "1";
+								SharedPreferences.Editor editor = sharedPrefs
+										.edit();
+								editor.putString("defaultCampus", "1");
+								editor.commit();
+								activeCampus = false;
+								loading();
+							}
+						});
+		final AlertDialog ad = builder.create();
+		ad.show();
+	}
+
+	/*
+	 * A simple method to check if the application is run for the first time.
+	 */
+	public boolean firstRun() {
+		return sharedPrefs.getBoolean("firstRun", true);
+	}
+
+	/*
+	 * A method that sets the application to "not first run"
+	 */
+	public void setRunned() {
+		SharedPreferences.Editor edit = sharedPrefs.edit();
+		edit.putBoolean("firstRun", false);
+		edit.commit();
+	}
+
+	/*
+	 * Sets the application for first run.
+	 *  0 = Only this app can read these preferences.
+	 */
+	public void firstRunPreferences() {
+		Context mContext = this.getApplicationContext();
+		sharedPrefs = mContext.getSharedPreferences("myAppPrefs", 0); 
+	}
+
 	private void loading() {
 
 		final Object loadingDialog = ProgressDialog.show(this,
@@ -188,10 +298,11 @@ public class TheMap extends MapActivity {
 		new Thread() {
 			public void run() {
 				try {
-					changeToCampusJohanneberg(); // change the position to
-													// Johanneberg
-					showThePubs(); // Displaying all pubs as overlay in maps,
-									// see method for
+					showThePubs();
+					showDefaultCampus();				
+
+					// Displaying all pubs as overlay in maps,
+					// see method for
 					// more info.
 					// showTheCurrentPosition(); // navigate to users current
 					// location, inactive during development.
@@ -202,9 +313,40 @@ public class TheMap extends MapActivity {
 				}
 				((Dialog) loadingDialog).dismiss();
 			}
+
 		}.start();
 	}
 
+	/*
+	 * Zooms into the campus that the user has chosen.
+	 */
+	protected void showDefaultCampus() {
+		if (default_campus.equals("0")){
+			changeToCampusJohanneberg();
+			activeCampus = true;
+		}
+
+		else if (default_campus.equals("1")){
+			changeToCampusLindholmen();
+			activeCampus = false;
+			
+		}
+	}
+
+	/*
+	 * Used to for the 'Byt Campus' button which looks
+	 * at the current campus and jumps between the two,
+	 * depending on which campus you have as active.
+	 */
+	public void changeCampus(){
+		if(activeCampus)
+			changeToCampusLindholmen();
+			
+		else if(!activeCampus)
+			changeToCampusJohanneberg();
+	}	
+
+	
 	/* The map will navigate to your current position */
 	public void showTheCurrentPosition() {
 		myLocationOverlay = new MyLocationOverlay(this, mapView);
@@ -235,8 +377,10 @@ public class TheMap extends MapActivity {
 			itemizedOverlay.addOverlay(allPubsArray[i]);
 			mapOverlays.add(itemizedOverlay);
 		}
-		/* Added symbols will be displayed when map is redrawn 
-		   so force redraw now */
+		/*
+		 * Added symbols will be displayed when map is redrawn so force redraw
+		 * now
+		 */
 		mapView.postInvalidate();
 	}
 
@@ -247,6 +391,10 @@ public class TheMap extends MapActivity {
 		gp = new GeoPoint((int) (57.705947 * 1e6), (int) (11.936642 * 1e6));
 		mc.animateTo(gp);
 		mc.setZoom(zoomLevel);
+		Toast.makeText(TheMap.this,
+				"Campus Lindholmen",
+				Toast.LENGTH_SHORT).show();
+		activeCampus = false;
 	}
 
 	/* Navigate to campus Johanneberg if users click on the changeCampusButton */
@@ -256,6 +404,9 @@ public class TheMap extends MapActivity {
 		gp = new GeoPoint((int) (57.689034 * 1e6), (int) (11.976468 * 1e6));
 		mc.animateTo(gp);
 		mc.setZoom(zoomLevel);
+		Toast.makeText(TheMap.this, "Campus Johanneberg", Toast.LENGTH_SHORT)
+				.show();
+		activeCampus = true;
 	}
 
 	// starting new activity( PubList.java ) if user clicks goToPubListButton
@@ -328,9 +479,10 @@ public class TheMap extends MapActivity {
 								}
 							}).create().show();
 		case R.id.settings:
-			
-                Intent settingsActivity = new Intent(getBaseContext(),SettingsMenu.class);
-                startActivity(settingsActivity);
+
+			Intent settingsActivity = new Intent(getBaseContext(),
+					SettingsMenu.class);
+			startActivity(settingsActivity);
 
 		case R.id.share:
 			return true;

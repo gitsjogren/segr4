@@ -3,9 +3,9 @@
 
     <PreferenceCategory android:title="Application Settings" >
         <ListPreference
-            android:defaultValue="true"
+            android:defaultValue="0"
             android:entries="@array/campus"
-            android:entryValues="@array/campusValues"
+            android:entryValues="@array/startCampus"
             android:key="defaultCampus"
             android:summary="Choose your default campus to show at startup."
             android:title="Default campus" />
