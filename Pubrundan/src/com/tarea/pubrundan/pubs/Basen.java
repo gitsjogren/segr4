@@ -71,16 +71,21 @@ public class Basen extends Activity {
 		public boolean onOptionsItemSelected(MenuItem item) {
 			switch (item.getItemId()) {
 			case R.id.more_pubinfo:
-				new AlertDialog.Builder(this).setTitle("J.A. Pripps")
+				new AlertDialog.Builder(this).setTitle("Basen")
 						.setMessage(R.string.ja_pripps_info)
 						.create().show();
+				return true;
 			case R.id.find_pub:
+				Intent e = new Intent(this,TheMap.class);
+				e.putExtra("Route","Basen");
+				e.putExtra("Pub to draw route to", 8);
+                startActivity(e.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 				return true;
 
 			case R.id.show_pub_on_map:
 				Intent i = new Intent(this,TheMap.class);
-				i.putExtra("Pub","Basen");
-				i.putExtra("Pub to animate to in array list", 8);
+				i.putExtra("Show","Basen");
+				i.putExtra("Pub to animate to", 8);
                 startActivity(i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 				return true;
 			}

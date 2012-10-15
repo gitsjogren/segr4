@@ -74,16 +74,21 @@ public class SigurdAfiket extends Activity {
 		public boolean onOptionsItemSelected(MenuItem item) {
 			switch (item.getItemId()) {
 			case R.id.more_pubinfo:
-				new AlertDialog.Builder(this).setTitle("J.A. Pripps")
+				new AlertDialog.Builder(this).setTitle("Sigurd/A-fiket")
 						.setMessage(R.string.ja_pripps_info)
 						.create().show();
+				return true;
 			case R.id.find_pub:
+				Intent e = new Intent(this,TheMap.class);
+				e.putExtra("Route","Sigurd/A-fiket");
+				e.putExtra("Pub to draw route to", 16);
+                startActivity(e.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 				return true;
 
 			case R.id.show_pub_on_map:
 				Intent i = new Intent(this,TheMap.class);
-				i.putExtra("Pub","Sigurd/A-fiket");
-				i.putExtra("Pub to animate to in array list", 16);
+				i.putExtra("Show","Sigurd/A-fiket");
+				i.putExtra("Pub to animate to", 16);
                 startActivity(i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 				return true;
 			}
