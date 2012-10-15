@@ -28,26 +28,26 @@ import android.graphics.drawable.Drawable;
 
 import com.google.android.maps.ItemizedOverlay;
 import com.google.android.maps.OverlayItem;
-import com.tarea.pubrundan.Pubs.Basen;
-import com.tarea.pubrundan.Pubs.Bulten;
-import com.tarea.pubrundan.Pubs.ClubAvancez;
-import com.tarea.pubrundan.Pubs.Focus;
-import com.tarea.pubrundan.Pubs.FortNOx;
-import com.tarea.pubrundan.Pubs.GangnamStyle;
-import com.tarea.pubrundan.Pubs.GasTown;
-import com.tarea.pubrundan.Pubs.Gasquen;
-import com.tarea.pubrundan.Pubs.GoldenI;
-import com.tarea.pubrundan.Pubs.Hubben;
-import com.tarea.pubrundan.Pubs.JAPripps;
-import com.tarea.pubrundan.Pubs.Jarnvagspub;
-import com.tarea.pubrundan.Pubs.Kajsabaren;
-import com.tarea.pubrundan.Pubs.PubF;
-import com.tarea.pubrundan.Pubs.PubP;
-import com.tarea.pubrundan.Pubs.RodaRummet;
-import com.tarea.pubrundan.Pubs.SigurdAfiket;
-import com.tarea.pubrundan.Pubs.Spritkoket;
-import com.tarea.pubrundan.Pubs.Winden;
-import com.tarea.pubrundan.Pubs.Zaloonen;
+import com.tarea.pubrundan.pubs.Basen;
+import com.tarea.pubrundan.pubs.Bulten;
+import com.tarea.pubrundan.pubs.ClubAvancez;
+import com.tarea.pubrundan.pubs.Focus;
+import com.tarea.pubrundan.pubs.FortNOx;
+import com.tarea.pubrundan.pubs.GangnamStyle;
+import com.tarea.pubrundan.pubs.GasTown;
+import com.tarea.pubrundan.pubs.Gasquen;
+import com.tarea.pubrundan.pubs.GoldenI;
+import com.tarea.pubrundan.pubs.Hubben;
+import com.tarea.pubrundan.pubs.JAPripps;
+import com.tarea.pubrundan.pubs.Jarnvagspub;
+import com.tarea.pubrundan.pubs.Kajsabaren;
+import com.tarea.pubrundan.pubs.PubF;
+import com.tarea.pubrundan.pubs.PubP;
+import com.tarea.pubrundan.pubs.RodaRummet;
+import com.tarea.pubrundan.pubs.SigurdAfiket;
+import com.tarea.pubrundan.pubs.Spritkoket;
+import com.tarea.pubrundan.pubs.Winden;
+import com.tarea.pubrundan.pubs.Zaloonen;
 
 /**
  * The class OverlayClass
