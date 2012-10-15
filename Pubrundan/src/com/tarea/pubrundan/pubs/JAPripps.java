@@ -20,17 +20,11 @@
 
 package com.tarea.pubrundan.pubs;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.Window;
 
 import com.tarea.pubrundan.R;
-import com.tarea.pubrundan.TheMap;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -41,7 +35,6 @@ import com.tarea.pubrundan.TheMap;
  */
 public class JAPripps extends PubLayout {
 
-	// public PubLayout pl;
 	// standard onCreate method
 	/*
 	 * (non-Javadoc)

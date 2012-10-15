@@ -22,16 +22,11 @@
 package com.tarea.pubrundan.pubs;
 
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.Window;
+
 import com.tarea.pubrundan.R;
-import com.tarea.pubrundan.TheMap;
 
 
 // TODO: Auto-generated Javadoc
@@ -42,57 +37,42 @@ import com.tarea.pubrundan.TheMap;
  * 
  */
 
-public class Spritkoket extends Activity {
-	
-	
-	
+public class Spritkoket extends PubLayout {
+
 	// standard onCreate method
-		/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
+	@Override
 	public void onCreate(Bundle savedInstanceState) {
 
-			super.onCreate(savedInstanceState);
-			requestWindowFeature(Window.FEATURE_NO_TITLE); // Suppress title bar for
-															// more space
-			setContentView(R.layout.spritkoket);
-		
-	}
-		
-		// Initiating Menu XML file (menu.xml)
-		/* (non-Javadoc)
-		 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
-		 */
-		@Override
-		public boolean onCreateOptionsMenu(Menu menu) {
-			super.onCreateOptionsMenu(menu);
-			MenuInflater oMenu = getMenuInflater();
-			oMenu.inflate(R.menu.pubmenu, menu);
-			return true;
-		}
-		
-		public boolean onOptionsItemSelected(MenuItem item) {
-			switch (item.getItemId()) {
-			case R.id.more_pubinfo:
-				new AlertDialog.Builder(this).setTitle("Spritköket")
-						.setMessage(R.string.ja_pripps_info)
-						.create().show();
-				return true;
-			case R.id.find_pub:
-				Intent e = new Intent(this,TheMap.class);
-				e.putExtra("Route","Spritköket");
-				e.putExtra("Pub to draw route to", 13);
-                startActivity(e.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-				return true;
+		super.onCreate(savedInstanceState, R.layout.spritkoket);
 
-			case R.id.show_pub_on_map:
-				Intent i = new Intent(this,TheMap.class);
-				i.putExtra("Show","Spritköket");
-				i.putExtra("Pub to animate to", 13);
-                startActivity(i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-				return true;
-			}
-			return false;
-		}
+	}
+
+	// Initiating Menu XML file (menu.xml)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+	 */
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		return super.onCreateOptionsMenu(menu);
+	}
+
+	// onOptionsMenu with three items, "Street", "Satellite" & Traffic... code
+	// refactor is needed!
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
+	 */
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		return super.onOptionsItemSelected(item, "Spritköket", R.string.ja_pripps_info, 13);
+	}
 
 }
