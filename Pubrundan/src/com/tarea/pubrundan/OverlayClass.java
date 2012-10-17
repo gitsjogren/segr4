@@ -42,6 +42,7 @@ import com.tarea.pubrundan.pubs.JAPripps;
 import com.tarea.pubrundan.pubs.Jarnvagspub;
 import com.tarea.pubrundan.pubs.Kajsabaren;
 import com.tarea.pubrundan.pubs.PubF;
+import com.tarea.pubrundan.pubs.PubInfo;
 import com.tarea.pubrundan.pubs.PubP;
 import com.tarea.pubrundan.pubs.RodaRummet;
 import com.tarea.pubrundan.pubs.SigurdAfiket;
@@ -136,6 +137,10 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 
 		case 0:		// Start J.A. Pripps activity
 			Intent japripps = new Intent(mContext, JAPripps.class);
+			japripps.putExtra("Pub layout", R.layout.japripps);
+			japripps.putExtra("Pub title", "J.A. Pripps");
+			japripps.putExtra("More info", R.string.ja_pripps_info);
+			japripps.putExtra("Pub nr in array", 0);
 			mContext.startActivity(japripps);
 			return true;
 		case 1:		// Start Gasquen activity
