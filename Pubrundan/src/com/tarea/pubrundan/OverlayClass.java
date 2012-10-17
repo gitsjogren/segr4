@@ -25,18 +25,14 @@ import java.util.ArrayList;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
-import android.view.ViewConfiguration;
 
 import com.google.android.maps.ItemizedOverlay;
-import com.google.android.maps.MapView;
 import com.google.android.maps.OverlayItem;
-import com.tarea.pubrundan.Pubs.Basen;
 import com.tarea.pubrundan.Pubs.Bulten;
 import com.tarea.pubrundan.Pubs.ClubAvancez;
 import com.tarea.pubrundan.Pubs.Focus;
 import com.tarea.pubrundan.Pubs.FortNOx;
-//import com.tarea.pubrundan.Pubs.GangnamStyle;
+import com.tarea.pubrundan.Pubs.GangnamStyle;
 import com.tarea.pubrundan.Pubs.GasTown;
 import com.tarea.pubrundan.Pubs.Gasquen;
 import com.tarea.pubrundan.Pubs.GoldenI;
@@ -44,7 +40,7 @@ import com.tarea.pubrundan.Pubs.Hubben;
 import com.tarea.pubrundan.Pubs.JAPripps;
 import com.tarea.pubrundan.Pubs.Jarnvagspub;
 import com.tarea.pubrundan.Pubs.Kajsabaren;
-//import com.tarea.pubrundan.Pubs.PubF;
+import com.tarea.pubrundan.Pubs.PubF;
 import com.tarea.pubrundan.Pubs.PubP;
 import com.tarea.pubrundan.Pubs.RodaRummet;
 import com.tarea.pubrundan.Pubs.SigurdAfiket;
@@ -52,7 +48,6 @@ import com.tarea.pubrundan.Pubs.Spritkoket;
 import com.tarea.pubrundan.Pubs.Winden;
 import com.tarea.pubrundan.Pubs.Zaloonen;
 
-// TODO: Auto-generated Javadoc
 /**
  * The class OverlayClass
  * 
@@ -61,28 +56,15 @@ import com.tarea.pubrundan.Pubs.Zaloonen;
  */
 public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 
-	
-	/** The Constant POINT_DIFFERENCE. */
-	private static final float POINT_DIFFERENCE = 50;
-    
-    /** The system time. */
-    private long systemTime = System.currentTimeMillis();
-
-    /** The down x. */
-    private float downX;
-    
-    /** The down y. */
-    private float downY;
-	
 	/** The my overlays. */
 	private ArrayList<OverlayItem> myOverlays;
-	
+
 	/** The m context. */
 	private Context mContext;
-	
+
 	/** The count. */
 	private int count = 0;
-	
+
 	/** The counter. */
 	private ArrayList<Integer> counter = new ArrayList<Integer>();
 
@@ -223,14 +205,14 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 			Intent pubp = new Intent(mContext, PubP.class);
 			mContext.startActivity(pubp);
 			return true;
-//		case 18:	// Start 11:an activity
-//			Intent elvan = new Intent(mContext, PubF.class);
-//			mContext.startActivity(elvan);
-//			return true;
-//		case 19:	// Start Gangnam Style activity
-//			Intent gangnamstyle = new Intent(mContext, GangnamStyle.class);
-//			mContext.startActivity(gangnamstyle);
-//			return true;
+		case 18:	// Start 11:an activity
+			Intent elvan = new Intent(mContext, PubF.class);
+			mContext.startActivity(elvan);
+			return true;
+		case 19:	// Start Gangnam Style activity
+			Intent gangnamstyle = new Intent(mContext, GangnamStyle.class);
+			mContext.startActivity(gangnamstyle);
+			return true;
 		}
 		return false;
 
@@ -244,46 +226,4 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 	public int size() {
 		return myOverlays.size();
 	}
-		
-	/* (non-Javadoc)
-	 * 
-	 * @see com.google.android.maps.ItemizedOverlay#onTouchEvent(android.view.MotionEvent, com.google.android.maps.MapView)
-	 * 
-	 * @param event
-	 * 
-	 * @mapView
-	 * 
-	 * @return true, if successful
-	 * 
-	 */
-	@Override
-    public boolean onTouchEvent(MotionEvent event, MapView mapView) {
-        switch (event.getAction()) {
-        case MotionEvent.ACTION_DOWN:
-            final long timeDiff = (System.currentTimeMillis() - systemTime);
-            if (timeDiff < ViewConfiguration.getDoubleTapTimeout()) 
-            {
-                if 
-                (
-                    (Math.abs(downX - event.getX()) < POINT_DIFFERENCE) && 
-                    (Math.abs(downY - event.getY()) < POINT_DIFFERENCE)
-                )
-                {
-                    mapView.getController().zoomInFixing
-                    (
-                        (int) event.getX(),
-                        (int) event.getY()
-                    );
-                }            
-            }
-            break;
-        case MotionEvent.ACTION_UP:
-            systemTime = System.currentTimeMillis();
-            downX = event.getX();
-            downY = event.getY();
-            
-            break;
-        }
-        return false;        
-    }
 }

@@ -30,11 +30,16 @@ public class FeedbackForm extends Activity {
 				String feedbackType = feedbackSpinner.getSelectedItem().toString(); 
 				final CheckBox responseCheckbox = (CheckBox) findViewById(R.id.CheckBoxResponse);  
 				boolean boxReqResponse = responseCheckbox.isChecked();
+				String person = name + (" , ") + email;
 				
 				try {
+					Toast.makeText(FeedbackForm.this, "email sent", Toast.LENGTH_SHORT)
+					.show();
 					GmailSender sender = new GmailSender("feedbacktarea@gmail.com", "tarearu13z");
-					sender.sendMail(name, email, feedbackType, feedback);
+					sender.sendMail(feedbackType, feedback, person, "feedbacktarea@gmail.com");
 				} catch (Exception e) {
+					Toast.makeText(FeedbackForm.this, "email error", Toast.LENGTH_SHORT)
+					.show();
 					Log.e("SendMail", e.getMessage(), e);
 				}
 				
