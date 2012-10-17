@@ -236,7 +236,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 																	// for later
 																	// use in
 																	// the code
-		// checkIfGpsIsEnabled(); // check if gps is enabled
+		checkIfGpsIsEnabled(); // check if gps is enabled
 
 		/*
 		 * If the application is running for the first time a dialog will pop up
@@ -416,9 +416,10 @@ public class TheMap extends MapActivity implements OnGestureListener,
 				"Laddar pubbar...", "Vänta...", true);
 		new Thread() {
 			public void run() {
-				try {
+				try {				
 					showThePubs();
-					showDefaultCampus();				
+					showDefaultCampus();
+					checkIfGpsIsEnabled();
 
 					// Displaying all pubs as overlay in maps,
 					// see method for
@@ -617,11 +618,14 @@ public class TheMap extends MapActivity implements OnGestureListener,
 											Toast.LENGTH_SHORT).show();
 								}
 							}).create().show();
+							break;
+							
 		case R.id.settings:
 
 			Intent settingsActivity = new Intent(getBaseContext(),
 					SettingsMenu.class);
 			startActivity(settingsActivity);
+			break;
 
 		case R.id.share:
 			return true;
@@ -697,10 +701,12 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	 */
 	public void checkIfGpsIsEnabled() {
 		final LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-
-		if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+		
+		if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) 
 			NoGpsDialog();
-		}
+		
+		else
+			Toast.makeText(TheMap.this, "GPS is Enabled", Toast.LENGTH_SHORT).show();
 	}
 
 	/**
