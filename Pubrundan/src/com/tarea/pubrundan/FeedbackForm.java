@@ -1,9 +1,9 @@
 package com.tarea.pubrundan;
 
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.*;
 import android.widget.*;
 
@@ -24,9 +24,9 @@ public class FeedbackForm extends Activity {
 				
 				final EditText nameField = (EditText) findViewById(R.id.EditTextName);  
 				String name = nameField.getText().toString(); 
-				if(name == ""){
-					// Create dialogbox: "alla fält måste vara ifyllda"
-				}
+//				if(name == ""){
+//					// Create dialogbox: "alla fält måste vara ifyllda"
+//				}
 					
 				final EditText emailField = (EditText) findViewById(R.id.EditTextEmail);  
 				String email = emailField.getText().toString();
@@ -35,33 +35,34 @@ public class FeedbackForm extends Activity {
 				String feedback = feedbackField.getText().toString();  
 			
 				final Spinner feedbackSpinner = (Spinner) findViewById(R.id.SpinnerFeedbackType);  
-				String feedbackType = feedbackSpinner.getSelectedItem().toString(); 
+				String feedbackSubject = feedbackSpinner.getSelectedItem().toString(); 
 				
 				final CheckBox responseCheckbox = (CheckBox) findViewById(R.id.CheckBoxResponse);  
 				boolean boxReqResponse = responseCheckbox.isChecked();
 				
-				if(boxReqResponse == true){
-					if(email == ""){
-						// Create dialogbox: "Du måste ange en mailadress"
-					}
-				}
+//				if(boxReqResponse == true){
+//					if(email == ""){
+//						// Create dialogbox: "Du måste ange en mailadress"
+//					}
+//				}
 				
-				if(name == "" || feedback == ""){
-					// Create dialogbox: "Namn och feedback måste fyllas i"
-				}
+//				if(name == "" || feedback == ""){
+//					// Create dialogbox: "Namn och feedback måste fyllas i"
+//				}
 					
-				String person = name + (" , ") + email;
+				String person = (("Namn: ") + name + ("\nEmailadress: ") + email + ("\nMeddelande: "));
 				String feedbackMejlen = "feedbacktarea@gmail.com";
 				
-				Intent startGmail = new Intent();				
-				startGmail.setAction(Intent.ACTION_SEND);
-				startGmail.putExtra(Intent.EXTRA_TEXT, "");
-				startGmail.setType("text/plain");
 				
+				Intent sendMail = new Intent(Intent.ACTION_SEND);
+				sendMail.setType("text/plain");
+				sendMail.putExtra(Intent.EXTRA_EMAIL, new String[] {feedbackMejlen});
+				sendMail.putExtra(Intent.EXTRA_SUBJECT, feedbackSubject);
+				sendMail.putExtra(Intent.EXTRA_TEXT, person+feedback);
+				startActivity(Intent.createChooser(sendMail, "Send feedback via..."));
 				
-				startActivity(sendIntent);
-				Intent i = new Intent(getBaseContext(), SettingsMenu.class);
-				startActivity(i);
+//				Intent i = new Intent(getBaseContext(), SettingsMenu.class);
+//				startActivity(i);
 			}
 		});
 	

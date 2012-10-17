@@ -21,7 +21,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".TheMap" android:screenOrientation="portrait"> </activity>
+<!--         <activity android:name=".Share" android:screenOrientation="portrait"></activity> -->
+        <activity android:name=".TheMap" android:screenOrientation="portrait"></activity>
         <uses-library android:name="com.google.android.maps" />
         <activity android:name=".SettingsMenu" android:screenOrientation="portrait"></activity>
         <activity android:name=".FeedbackForm" android:screenOrientation="portrait"></activity>
