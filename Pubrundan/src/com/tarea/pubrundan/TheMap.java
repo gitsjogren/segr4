@@ -624,7 +624,9 @@ public class TheMap extends MapActivity implements OnGestureListener,
 			startActivity(settingsActivity);
 
 		case R.id.share:
-			return true;
+			
+			Intent showShare = new Intent(getBaseContext(), Share.class);
+			startActivity(showShare);
 		}
 		return false;
 	}

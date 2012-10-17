@@ -4,15 +4,15 @@
   <item android:title="Ändra vy"
       android:numericShortcut="1"
       android:icon="@drawable/icon_map" 
-      android:id="@+id/change_map"></item>
+      android:id="@+id/change_map" />
   
   <item android:title="Inställningar"
       android:numericShortcut="2"
       android:icon="@drawable/icon_settings"
-      android:id="@+id/settings" ></item>
+      android:id="@+id/settings" />
   
   <item android:title="Tipsa vän"
       android:numericShortcut="3"
       android:icon="@drawable/icon_share"
-      android:id="@+id/share"></item>
+      android:id="@+id/share" />
 </menu>

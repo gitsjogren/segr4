@@ -73,7 +73,7 @@ public final class R {
         public static final int pushpin=0x7f020023;
     }
     public static final class id {
-        public static final int BtnSendFeedback=0x7f090023;
+        public static final int ButtonSendFeedback=0x7f090023;
         public static final int CheckBoxResponse=0x7f090022;
         public static final int EditTextEmail=0x7f09001f;
         public static final int EditTextFeedbackBody=0x7f090021;
