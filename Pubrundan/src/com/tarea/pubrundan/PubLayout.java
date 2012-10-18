@@ -18,7 +18,7 @@
  * along with Pubrundan. If not, see <http://www.gnu.org/licenses/>.
  * ============================================================ */
 
-package com.tarea.pubrundan.pubs;
+package com.tarea.pubrundan;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -30,7 +30,6 @@ import android.view.MenuItem;
 import android.view.Window;
 
 import com.tarea.pubrundan.R;
-import com.tarea.pubrundan.TheMap;
 
 /**
  * The Class PubLayout.
