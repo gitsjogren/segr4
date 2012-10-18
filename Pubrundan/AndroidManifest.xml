@@ -22,7 +22,7 @@
         <activity android:name=".TheMap" android:screenOrientation="portrait"> </activity>
         <uses-library android:name="com.google.android.maps" />
         <activity android:name=".PubList" android:screenOrientation="portrait"></activity>
-        <activity android:name=".pubs.JAPripps" android:screenOrientation="portrait"></activity>
+        <activity android:name=".PassingDataToPubLayout" android:screenOrientation="portrait"></activity>
         <activity android:name=".pubs.Gasquen" android:screenOrientation="portrait"></activity>
         <activity android:name=".pubs.Bulten" android:screenOrientation="portrait"></activity>
         <activity android:name=".pubs.Winden" android:screenOrientation="portrait"></activity>
@@ -41,6 +41,6 @@
         <activity android:name=".pubs.SigurdAfiket" android:screenOrientation="portrait"></activity>
         <activity android:name=".pubs.PubP" android:screenOrientation="portrait"></activity>
         <activity android:name=".pubs.PubF" android:screenOrientation="portrait"></activity>
-        <activity android:name=".pubs.GangnamStyle" android:screenOrientation="landscape"></activity>
+        <activity android:name=".GangnamStyle" android:screenOrientation="landscape"></activity>
     </application>
 </manifest>

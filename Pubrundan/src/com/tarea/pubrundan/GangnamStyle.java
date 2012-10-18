@@ -18,60 +18,39 @@
  * along with Pubrundan. If not, see <http://www.gnu.org/licenses/>.
  * ============================================================ */
 
-package com.tarea.pubrundan.pubs;
+package com.tarea.pubrundan;
 
-
+import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-
+import android.view.Window;
+import android.view.WindowManager;
 import com.tarea.pubrundan.R;
 
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class Zaloonen.
+ * The Class GangnamStyle, our easter egg.
  * 
  * @author Erik Sjögren
  * 
  */
-
-public class Zaloonen extends PubLayout {
-
+public class GangnamStyle extends Activity {
+	
+	
+	
 	// standard onCreate method
-	/*
-	 * (non-Javadoc)
-	 * 
+		/* (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
-	@Override
 	public void onCreate(Bundle savedInstanceState) {
 
-		super.onCreate(savedInstanceState, R.layout.zaloonen);
-
-	}
-
-	// Initiating Menu XML file (menu.xml)
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
-	 */
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		return super.onCreateOptionsMenu(menu);
-	}
-
-	// onOptionsMenu with three items, "Street", "Satellite" & Traffic... code
-	// refactor is needed!
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
-	 */
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		return super.onOptionsItemSelected(item, "Zaloonen", R.string.ja_pripps_info, 4);
+			super.onCreate(savedInstanceState);
+			requestWindowFeature(Window.FEATURE_NO_TITLE); // Suppress title bar for
+															// more space
+			getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+		            WindowManager.LayoutParams.FLAG_FULLSCREEN);
+			setContentView(R.layout.gangnamstyle);
+		
 	}
 
 }

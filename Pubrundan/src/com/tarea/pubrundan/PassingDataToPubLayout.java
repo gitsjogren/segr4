@@ -18,26 +18,21 @@
  * along with Pubrundan. If not, see <http://www.gnu.org/licenses/>.
  * ============================================================ */
 
+package com.tarea.pubrundan;
 
-package com.tarea.pubrundan.pubs;
-
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.tarea.pubrundan.R;
-
-
 // TODO: Auto-generated Javadoc
 /**
- * The Class GasTown.
+ * The Class JAPripps.
  * 
  * @author Erik Sjögren
  * 
  */
-
-public class GasTown extends PubLayout {
+public class PassingDataToPubLayout extends PubLayout {
 
 	// standard onCreate method
 	/*
@@ -48,7 +43,7 @@ public class GasTown extends PubLayout {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 
-		super.onCreate(savedInstanceState, R.layout.gastown);
+		super.onCreate(savedInstanceState, getIntent().getIntExtra("Pub layout", -1));
 
 	}
 
@@ -72,7 +67,11 @@ public class GasTown extends PubLayout {
 	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		return super.onOptionsItemSelected(item, "GasTown", R.string.ja_pripps_info, 11);
+		Intent e = getIntent();
+		String title = e.getStringExtra("Pub title");
+		int moreInfo = e.getIntExtra("More info", -1);
+		int pubNrInArray = e.getIntExtra("Pub nr in array", -1);
+		return super.onOptionsItemSelected(item, title, moreInfo, pubNrInArray);
 	}
 
 }

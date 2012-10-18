@@ -60,7 +60,6 @@ import com.google.android.maps.MyLocationOverlay;
 import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
 import com.google.android.maps.Projection;
-import com.tarea.pubrundan.pubs.JAPripps;
 
 // TODO: Auto-generated Javadoc
 //### This class follows some code examples from http://eagle.phys.utk.edu/guidry/android/index.html  ###//
@@ -426,7 +425,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	public void startPubInfoActivity() {
 
 		// default PubList.class in development test using PubInfo.class
-		Intent i = new Intent(this, JAPripps.class); // context = this ,
+		Intent i = new Intent(this, PassingDataToPubLayout.class); // context = this ,
 														// PubInfo.class =
 														// ClassToNavigateTo.class
 		startActivity(i);
