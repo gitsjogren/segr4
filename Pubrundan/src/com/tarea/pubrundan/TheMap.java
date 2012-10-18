@@ -425,7 +425,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	public void startPubInfoActivity() {
 
 		// default PubList.class in development test using PubInfo.class
-		Intent i = new Intent(this, PassingDataToPubLayout.class); // context = this ,
+		Intent i = new Intent(this, PubLayout.class); // context = this ,
 														// PubInfo.class =
 														// ClassToNavigateTo.class
 		startActivity(i);

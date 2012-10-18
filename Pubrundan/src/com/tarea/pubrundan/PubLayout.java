@@ -29,28 +29,34 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.Window;
 
-import com.tarea.pubrundan.R;
-
+// TODO: Auto-generated Javadoc
 /**
- * The Class PubLayout.
+ * The Class JAPripps.
  * 
  * @author Erik Sjögren
  * 
  */
-
 public class PubLayout extends Activity {
-	
-	public void onCreate(Bundle savedInstanceState, int layoutResID) {
+
+	// standard onCreate method
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
+
+	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE); // Suppress title bar for
 														// more space
-		setContentView(layoutResID);
-	
-}
-	
+		setContentView(getIntent().getIntExtra("Pub layout", -1));
+	}
+
 	// Initiating Menu XML file (menu.xml)
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
 	 */
 
@@ -60,31 +66,38 @@ public class PubLayout extends Activity {
 		oMenu.inflate(R.menu.pubmenu, menu);
 		return true;
 	}
-	
+
 	// onOptionsMenu with three items, "Street", "Satellite" & Traffic... code
 	// refactor is needed!
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
 	 */
-	public boolean onOptionsItemSelected(MenuItem item, String title, int messageID, int number) {
+
+	public boolean onOptionsItemSelected(MenuItem item) {
+		Intent e = getIntent();
+		String title = e.getStringExtra("Pub title");
+		int moreInfo = e.getIntExtra("More info", -1);
+		int pubNrInArray = e.getIntExtra("Pub nr in array", -1);
 		super.onOptionsItemSelected(item);
 		switch (item.getItemId()) {
 		case R.id.more_pubinfo:
 			new AlertDialog.Builder(this).setTitle(title)
-					.setMessage(messageID)
+					.setMessage(moreInfo)
 					.create().show();
 			return true;
 		case R.id.find_pub:
-			Intent e = new Intent(this,TheMap.class);
-			e.putExtra("Route",title);
-			e.putExtra("Pub to draw route to", number);
-            startActivity(e.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+			Intent a = new Intent(this,TheMap.class);
+			a.putExtra("Route",title);
+			a.putExtra("Pub to draw route to", pubNrInArray);
+            startActivity(a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 			return true;
 
 		case R.id.show_pub_on_map:
 			Intent i = new Intent(this,TheMap.class);
 			i.putExtra("Show",title);
-			i.putExtra("Pub to animate to", number);
+			i.putExtra("Pub to animate to", pubNrInArray);
             startActivity(i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 			return true;
 		}
