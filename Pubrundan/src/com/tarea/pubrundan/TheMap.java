@@ -74,10 +74,12 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		OnDoubleTapListener {
 
 	/** The start campus. */
-	private boolean startCampus = true; // false = Lindholmen, true =
+	private static boolean startCampus = true; // false = Lindholmen, true =
 										// Johanneberg (default campus)
 	/** The zoom level. */
-	private int zoomLevel = 17;
+	private final int zoomLevel = 17;
+	
+	private final int defaultValue = -1;
 	
 	private Projection projection;
 	
@@ -217,6 +219,27 @@ public class TheMap extends MapActivity implements OnGestureListener,
 																	// for later
 																	// use in
 																	// the code
+		String fromIdShowPubOnMap = getIntent().getStringExtra("Show");
+		String fromIdFindPub = getIntent().getStringExtra("Route");
+		int animateToPub = getIntent().getIntExtra(
+				"Pub to animate to", defaultValue);
+		int drawRouteToPub = getIntent().getIntExtra(
+				"Pub to draw route to", defaultValue);
+
+		if (fromIdShowPubOnMap != null) {
+			Toast.makeText(getBaseContext(), fromIdShowPubOnMap, Toast.LENGTH_LONG).show();
+			GeoPoint gp = allPubsArray[animateToPub].getPoint();
+			animateToPubandSetZoom(gp);
+		}
+		
+		else if (fromIdFindPub != null){
+			
+			 mapOverlays = mapView.getOverlays();
+			 projection = mapView.getProjection();
+
+			 myoverlay = new MyOverlay(drawRouteToPub);
+			 mapOverlays.add(myoverlay);
+		}
 		// checkIfGpsIsEnabled(); // check if gps is enabled
 
 		loading(); // loading animation, invokes: changeToCampusJohanneberg(),
@@ -253,35 +276,13 @@ public class TheMap extends MapActivity implements OnGestureListener,
 			}
 		});
 
-		String fromIdShowPubOnMap = getIntent().getStringExtra("Show");
-		String fromIdFindPub = getIntent().getStringExtra("Route");
-		int animateToPub = getIntent().getIntExtra(
-				"Pub to animate to", 1); // 1 = defaultvalue
-		int drawRouteToPub = getIntent().getIntExtra(
-				"Pub to draw route to", 1); // 1 = defaultvalue
-
-		if (fromIdShowPubOnMap != null) {
-			Toast.makeText(getBaseContext(), fromIdShowPubOnMap, Toast.LENGTH_LONG).show();
-			GeoPoint gp = allPubsArray[animateToPub].getPoint();
-			animateToPubandSetZoom(gp);
-		}
-		
-		else if (fromIdFindPub != null){
-			
-			 mapOverlays = mapView.getOverlays();
-			 projection = mapView.getProjection();
-
-			 myoverlay = new MyOverlay(drawRouteToPub);
-			 mapOverlays.add(myoverlay);
-		}
-
 	}
 
 	public void animateToPubandSetZoom(final GeoPoint gp) {
 
 		// http://code.google.com/p/osmdroid/issues/detail?id=204
 		// issue in google maps, this ugly workaround will bypass the
-		// initialization time issues
+		// initialization time issues, in this method it is set to 200 msec
 		new Handler().postDelayed(new Runnable() {
 			public void run() {
 				mc = mapView.getController();
@@ -329,7 +330,6 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		mapOverlays.add(itemizedOverlay); // need to be outside the for-loop
 											// (source:
 											// http://stackoverflow.com/questions/2659770/android-map-performance-poor-because-of-many-overlays)
-		// mapView.postInvalidate();
 	}
 
 	/**
@@ -418,19 +418,6 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		startActivity(i);
 	}
 
-	// starting new activity( PubInfo.java ) if user clicks goToPubListButton
-	/**
-	 * Start pub info activity.
-	 */
-	public void startPubInfoActivity() {
-
-		// default PubList.class in development test using PubInfo.class
-		Intent i = new Intent(this, PubLayout.class); // context = this ,
-														// PubInfo.class =
-														// ClassToNavigateTo.class
-		startActivity(i);
-	}
-
 	// Required method since class extends MapActivity
 	/*
 	 * (non-Javadoc)
@@ -467,8 +454,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		switch (item.getItemId()) {
 		case R.id.change_map:
 			new AlertDialog.Builder(this).setTitle("Ändra vy")
-					.setSingleChoiceItems(differentViews, -1, // -1 === fulhack
-																// :|
+					.setSingleChoiceItems(differentViews, defaultValue,
 							new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,
 										int item) {
@@ -495,13 +481,16 @@ public class TheMap extends MapActivity implements OnGestureListener,
 											Toast.LENGTH_SHORT).show();
 								}
 							}).create().show();
+			break;
 		case R.id.settings:
-			return true;
+			Intent settingsActivity = new Intent(getBaseContext(),SettingsMenu.class);
+            startActivity(settingsActivity);
+			break;
 
 		case R.id.share:
-			return true;
+			break;
 		}
-		return false;
+		return true;
 	}
 
 	/*

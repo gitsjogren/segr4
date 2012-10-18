@@ -37,6 +37,8 @@ import android.view.Window;
  * 
  */
 public class PubLayout extends Activity {
+	
+	private final int defaultValue = -1;
 
 	// standard onCreate method
 	/*
@@ -50,7 +52,7 @@ public class PubLayout extends Activity {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE); // Suppress title bar for
 														// more space
-		setContentView(getIntent().getIntExtra("Pub layout", -1));
+		setContentView(getIntent().getIntExtra("Pub layout", defaultValue));
 	}
 
 	// Initiating Menu XML file (menu.xml)
@@ -79,7 +81,7 @@ public class PubLayout extends Activity {
 		Intent e = getIntent();
 		String title = e.getStringExtra("Pub title");
 		int moreInfo = e.getIntExtra("More info", -1);
-		int pubNrInArray = e.getIntExtra("Pub nr in array", -1);
+		int pubNrInArray = e.getIntExtra("Pub nr in array", defaultValue);
 		super.onOptionsItemSelected(item);
 		switch (item.getItemId()) {
 		case R.id.more_pubinfo:
