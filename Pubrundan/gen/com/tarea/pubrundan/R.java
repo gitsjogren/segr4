@@ -160,7 +160,7 @@ public final class R {
         public static final int bulten=0x7f07000a;
         public static final int campus=0x7f070003;
         public static final int club_avancez=0x7f07000b;
-        public static final int developers=0x7f07002c;
+        public static final int developers=0x7f07002e;
         public static final int feedbackbody=0x7f070028;
         public static final int feedbackemail=0x7f070023;
         public static final int feedbackname=0x7f070022;
@@ -181,7 +181,7 @@ public final class R {
         public static final int house=0x7f070005;
         public static final int house_edit=0x7f070007;
         public static final int hubben=0x7f070011;
-        public static final int iconshock=0x7f07002e;
+        public static final int iconshock=0x7f070030;
         public static final int ja_pripps=0x7f070012;
         public static final int ja_pripps_info=0x7f070002;
         /**  &#8211; = "-" 
@@ -191,7 +191,7 @@ public final class R {
         public static final int jarnvagspub=0x7f070013;
         public static final int johanneberg=0x7f07001d;
         public static final int kajsabaren=0x7f070014;
-        public static final int licence=0x7f07002d;
+        public static final int licence=0x7f07002f;
         public static final int lindholmen=0x7f07001c;
         public static final int opening_hours=0x7f070004;
         public static final int opening_hours_basen=0x7f07001e;
@@ -199,9 +199,11 @@ public final class R {
         public static final int pubf=0x7f070015;
         public static final int pubp=0x7f070016;
         public static final int roda_rummet=0x7f070017;
+        public static final int shareLink=0x7f07002c;
+        public static final int shareTitle=0x7f07002b;
         public static final int sigurdafiket=0x7f070018;
         public static final int spritkoket=0x7f070019;
-        public static final int version=0x7f07002b;
+        public static final int version=0x7f07002d;
         public static final int winden=0x7f07001a;
         public static final int zaloonen=0x7f07001b;
     }

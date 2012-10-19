@@ -45,6 +45,8 @@
 	<string name="feedbackbody">Feedback details goes here</string>
 	<string name="feedbackresponse">Would you like a response?</string>
 	<string name="feedbacksendbutton">Send feedback</string>
+	<string name="shareTitle">Share this app via</string>
+	<string name="shareLink">Jag tyker du ska kolla in Androidappen Pubrundan på Google Play här:</string>
 	
 	<string name="version">0.3</string>
     <string name="developers">TAREA</string>

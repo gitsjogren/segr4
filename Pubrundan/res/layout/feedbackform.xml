@@ -2,7 +2,7 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/feedback"
-    android:layout_width="wrap_content"
+    android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:scrollbars="vertical">
 
@@ -10,16 +10,13 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
-
+
         <TextView
             android:id="@+id/TextViewTitle"
-            android:layout_width="356dp"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:text="@string/feedbacktitle"
-            android:textSize="10pt" >
-
-        </TextView>
+            android:textSize="10pt" />
 
         <EditText
             android:id="@+id/EditTextName"

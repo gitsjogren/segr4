@@ -40,26 +40,30 @@ public class FeedbackForm extends Activity {
 				final CheckBox responseCheckbox = (CheckBox) findViewById(R.id.CheckBoxResponse);  
 				boolean boxReqResponse = responseCheckbox.isChecked();
 				
-//				if(boxReqResponse == true){
-//					if(email == ""){
-//						// Create dialogbox: "Du måste ange en mailadress"
-//					}
-//				}
-				
-//				if(name == "" || feedback == ""){
-//					// Create dialogbox: "Namn och feedback måste fyllas i"
-//				}
-					
+				String response = "";
+				if(boxReqResponse){
+					response = "Requires a response";
+					if(email == null){
+						// Create dialogbox: "Du måste ange en mailadress"
+					}
+				}
+				else {
+					if(name == null || feedback == null){
+						Toast.makeText(getBaseContext(), "else i feedback", Toast.LENGTH_SHORT).show();
+						// Create dialogbox: "Namn och feedback måste fyllas i"
+					}
+				}
 				String person = (("Namn: ") + name + ("\nEmailadress: ") + email + ("\nMeddelande: "));
 				String feedbackMejlen = "feedbacktarea@gmail.com";
 				
-				
 				Intent sendMail = new Intent(Intent.ACTION_SEND);
-				sendMail.setType("text/plain");
+				sendMail.setType("message/rfc822");
 				sendMail.putExtra(Intent.EXTRA_EMAIL, new String[] {feedbackMejlen});
 				sendMail.putExtra(Intent.EXTRA_SUBJECT, feedbackSubject);
-				sendMail.putExtra(Intent.EXTRA_TEXT, person+feedback);
-				startActivity(Intent.createChooser(sendMail, "Send feedback via..."));
+				sendMail.putExtra(Intent.EXTRA_TEXT, person+feedback+response);
+				// Either launches a dialog box with available mail-apps or starts the users default choice
+				startActivity(sendMail);
+				//startActivity(Intent.createChooser(sendMail, "Send feedback via..."));
 				
 //				Intent i = new Intent(getBaseContext(), SettingsMenu.class);
 //				startActivity(i);
@@ -69,12 +73,6 @@ public class FeedbackForm extends Activity {
 	}
 }
 //	}
-//		if (boxReqResponse == true) {
-//			String reqResponse = "Requires a response";
-//		}
-//		else {
-//			String reqResponse = "No response required";
-//		}
 //		
 		
 

@@ -28,12 +28,9 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-
+import android.content.SharedPreferences;
 import android.gesture.GestureOverlayView;
 import android.gesture.GestureOverlayView.OnGestureListener;
-
-import android.content.SharedPreferences;
-
 import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationManager;
@@ -617,18 +614,25 @@ public class TheMap extends MapActivity implements OnGestureListener,
 											Toast.LENGTH_SHORT).show();
 								}
 							}).create().show();
+			break;
+			
 		case R.id.settings:
-
 			Intent settingsActivity = new Intent(getBaseContext(),
 					SettingsMenu.class);
 			startActivity(settingsActivity);
+			break;
 
 		case R.id.share:
-			return true;
-//			Intent showShare = new Intent(getBaseContext(), Share.class);
-//			startActivity(showShare);
+			Intent showShare = new Intent(Intent.ACTION_SEND);
+			showShare.setType("text/plain");
+			String title = (String) getResources().getText(R.string.shareTitle);
+			String appLink = (String) getResources().getText(R.string.shareLink);
+			showShare.putExtra(Intent.EXTRA_TEXT, appLink);
+			startActivity(Intent.createChooser(showShare, title));
+			break;
 		}
 		return false;
+		
 	}
 
 	/**
