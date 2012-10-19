@@ -28,12 +28,9 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-
+import android.content.SharedPreferences;
 import android.gesture.GestureOverlayView;
 import android.gesture.GestureOverlayView.OnGestureListener;
-
-import android.content.SharedPreferences;
-
 import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationManager;
@@ -82,7 +79,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	 * Used for the 'Byt Campus'-button.
 	 */
 	private boolean activeCampus;
-	
+
 	private String default_campus;
 	private int zoomLevel = 17;
 
@@ -218,11 +215,11 @@ public class TheMap extends MapActivity implements OnGestureListener,
 
 		super.onCreate(savedInstanceState);
 
-	
+
 		requestWindowFeature(Window.FEATURE_NO_TITLE); // Suppress title bar for
 														// more space
 		setContentView(R.layout.showthemap); // Use xml-layout showtomap.xml
-		
+
 		// Add map controller with zoom controls
 		mapView = (MapView) findViewById(R.id.mv);
 		mapView.setSatellite(true); // Satellite is set by default
@@ -290,17 +287,17 @@ public class TheMap extends MapActivity implements OnGestureListener,
 
 		String pubName = getIntent().getStringExtra("Pub");	
 		int pubNrInArray = getIntent().getIntExtra("Pub to animate to in array list", 1);  // 1 = defaultvalue
-		
+
 		if( pubName != null && pubNrInArray >= 0 ){
 			Toast.makeText(getBaseContext(), pubName, Toast.LENGTH_LONG).show();
 			GeoPoint gp = allPubsArray[pubNrInArray].getPoint();
 			animateToPubandSetZoom(gp);
         }
-		
+
 	}
-	
+
 	public void animateToPubandSetZoom(GeoPoint gp){
-		
+
 		mc = mapView.getController();
 		mc.animateTo(gp);
 		mapView.invalidate();
@@ -361,10 +358,10 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	 */
 	private void getDefaultCampus() {
 		default_campus = sharedPrefs.getString("defaultCampus", "0");
-		
+
 		if(default_campus.equals("0"))
 			activeCampus = true;
-		
+
 		else if(default_campus.equals("1"))
 			activeCampus = false;
 	}
@@ -390,7 +387,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 								editor.commit();
 								activeCampus = true;
 								loading();
-								
+
 							}
 						})
 				.setNegativeButton("Lindholmen",
@@ -449,7 +446,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		else if (default_campus.equals("1")){
 			changeToCampusLindholmen();
 			activeCampus = false;
-			
+
 		}
 	}
 
@@ -461,7 +458,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	public void changeCampus(){
 		if(activeCampus)
 			changeToCampusLindholmen();
-			
+
 		else if(!activeCampus)
 			changeToCampusJohanneberg();
 	}	
@@ -519,9 +516,9 @@ public class TheMap extends MapActivity implements OnGestureListener,
 				.show();
 		activeCampus = true;
 	}
-	
+
 	public void animateToGeopoint(GeoPoint gp, int zoom){
-		
+
 		mc = mapView.getController();
 		//gp = new GeoPoint((int) (57.689034 * 1e6), (int) (11.976468 * 1e6));
 		mc.animateTo(gp);
@@ -617,16 +614,25 @@ public class TheMap extends MapActivity implements OnGestureListener,
 											Toast.LENGTH_SHORT).show();
 								}
 							}).create().show();
+			break;
+			
 		case R.id.settings:
-
 			Intent settingsActivity = new Intent(getBaseContext(),
 					SettingsMenu.class);
 			startActivity(settingsActivity);
+			break;
 
 		case R.id.share:
-			return true;
+			Intent showShare = new Intent(Intent.ACTION_SEND);
+			showShare.setType("text/plain");
+			String title = (String) getResources().getText(R.string.shareTitle);
+			String appLink = (String) getResources().getText(R.string.shareLink);
+			showShare.putExtra(Intent.EXTRA_TEXT, appLink);
+			startActivity(Intent.createChooser(showShare, title));
+			break;
 		}
 		return false;
+		
 	}
 
 	/**

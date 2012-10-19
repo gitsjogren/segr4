@@ -15,17 +15,17 @@
                   android:label="@string/app_name"
                   android:screenOrientation="portrait">
 
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
- 
-        <activity android:name=".TheMap" android:screenOrientation="portrait"> </activity>
+        <activity android:name=".Share" android:screenOrientation="portrait"></activity>
+        <activity android:name=".TheMap" android:screenOrientation="portrait"></activity>
         <uses-library android:name="com.google.android.maps" />
         <activity android:name=".SettingsMenu" android:screenOrientation="portrait"></activity>
+        <activity android:name=".FeedbackForm" android:screenOrientation="portrait"></activity>
         <activity android:name=".AboutPage" android:screenOrientation="portrait"></activity>
         <activity android:name=".PubList" android:screenOrientation="portrait"></activity>
         <activity android:name=".Pubs.JAPripps" android:screenOrientation="portrait"></activity>
@@ -36,7 +36,7 @@
         <activity android:name=".Pubs.ClubAvancez" android:screenOrientation="portrait"></activity>
         <activity android:name=".Pubs.GoldenI" android:screenOrientation="portrait"></activity>
         <activity android:name=".Pubs.Hubben" android:screenOrientation="portrait"></activity>
-        <activity android:name=".Pubs.Basen" android:screenOrientation="portrait"></activity>
+        <activity android:name=".Basen" android:screenOrientation="portrait"></activity>
         <activity android:name=".Pubs.Kajsabaren" android:screenOrientation="portrait"></activity>
         <activity android:name=".Pubs.Jarnvagspub" android:screenOrientation="portrait"></activity>
         <activity android:name=".Pubs.GasTown" android:screenOrientation="portrait"></activity>
@@ -47,7 +47,8 @@
         <activity android:name=".Pubs.SigurdAfiket" android:screenOrientation="portrait"></activity>
         <activity android:name=".Pubs.PubP" android:screenOrientation="portrait"></activity>
         <activity android:name=".Pubs.PubF" android:screenOrientation="portrait"></activity>
+        <activity android:name=".Pubs.Elvan" android:screenOrientation="portrait"></activity>
         <activity android:name=".Pubs.GangnamStyle" android:screenOrientation="landscape"></activity>
-
+        
     </application>
 </manifest>
