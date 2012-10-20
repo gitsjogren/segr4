@@ -1,4 +1,3 @@
-
 package com.tarea.pubrundan;
 
 import android.app.Activity;
@@ -18,7 +17,7 @@ public class WelcomeScreen extends Activity {
     	requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 	            WindowManager.LayoutParams.FLAG_FULLSCREEN);
-    	super.onCreate(icicle);
+        super.onCreate(icicle);
         setContentView(R.layout.welcome);
 
         /* New Handler to start the MainActivity 

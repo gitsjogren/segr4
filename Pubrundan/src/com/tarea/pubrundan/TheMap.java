@@ -28,6 +28,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.gesture.GestureOverlayView;
 import android.gesture.GestureOverlayView.OnGestureListener;
 import android.graphics.Canvas;
@@ -40,6 +41,7 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.view.GestureDetector.OnDoubleTapListener;
 import android.view.Menu;
@@ -73,16 +75,21 @@ import com.google.android.maps.Projection;
 public class TheMap extends MapActivity implements OnGestureListener,
 		OnDoubleTapListener {
 
-	/** The start campus. */
-	private static boolean startCampus = true; // false = Lindholmen, true =
-										// Johanneberg (default campus)
-	/** The zoom level. */
-	private final int zoomLevel = 17;
-	
-	private final int defaultValue = -1;
+
+	private SharedPreferences sharedPrefs;
+
+	/*
+	 * Boolean that tells the application which campus that
+	 * is currently the one the user is looking at. 
+	 * Used for the 'Byt Campus'-button.
+	 */
+	private boolean activeCampus;
+
+	private String default_campus;
+	private int zoomLevel = 17;
 	
 	private Projection projection;
-	
+
 	private MyOverlay myoverlay;
 
 	/** The mc. */
@@ -107,6 +114,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	// current position
 
 	/** The map overlays. */
+
 	private List<Overlay> mapOverlays;
 
 	/** The drawable. */
@@ -115,19 +123,33 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	/** The itemized overlay. */
 	private OverlayClass itemizedOverlay;
 
-	/** The different views. */
-	private final CharSequence[] differentViews = { "Street", "Satellite",
-			"Traffic" }; // selectable map views
+	private final int defaultIntValue = -1;
 
-	// Define an array containing the access overlay items for all of the pubs
-	// of Johanneberg and Lindholmen
-	// Coordinates need to be converted into integers, by default they are
-	// displayed in microdegrees
+	/** The different views. */
+
+	private final CharSequence[] differentViews = { "Street", "Satellite",
+			"Traffic" };
+
+	/*
+	 * Define an array containing the access overlay items for all of the pubs
+	 * of Johanneberg and Lindholmen Coordinates need to be converted into
+	 * integers, by default they are displayed in microdegrees
+	 */
+
+
+	/* The pubs in the array are listed and hardcoded from coordinates_of_the_pubs.txt */
 
 	// The pubs in the array are listed and hardcoded from
 	// coordinates_of_the_pubs.txt
 	/** The all pubs array. */
-	public OverlayItem[] allPubsArray = {
+
+	/*
+	 * The pubs in the array are listed and hardcoded from
+	 * coordinates_of_the_pubs.txt
+	 */
+
+	private OverlayItem[] allPubsArray = {
+
 			// J.A. Pripps
 			new OverlayItem(new GeoPoint((int) (57.688984 * 1E6),
 					(int) (11.974389 * 1E6)), "J.A. Pripps", "Johanneberg"),
@@ -202,6 +224,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 
 		super.onCreate(savedInstanceState);
 
+
 		requestWindowFeature(Window.FEATURE_NO_TITLE); // Suppress title bar for
 														// more space
 		setContentView(R.layout.showthemap); // Use xml-layout showtomap.xml
@@ -219,31 +242,33 @@ public class TheMap extends MapActivity implements OnGestureListener,
 																	// for later
 																	// use in
 																	// the code
-		String fromIdShowPubOnMap = getIntent().getStringExtra("Show");
-		String fromIdFindPub = getIntent().getStringExtra("Route");
-		int animateToPub = getIntent().getIntExtra(
-				"Pub to animate to", defaultValue);
-		int drawRouteToPub = getIntent().getIntExtra(
-				"Pub to draw route to", defaultValue);
-
-		if (fromIdShowPubOnMap != null) {
-			Toast.makeText(getBaseContext(), fromIdShowPubOnMap, Toast.LENGTH_LONG).show();
-			GeoPoint gp = allPubsArray[animateToPub].getPoint();
-			animateToPubandSetZoom(gp);
-		}
-		
-		else if (fromIdFindPub != null){
-			
-			 mapOverlays = mapView.getOverlays();
-			 projection = mapView.getProjection();
-
-			 myoverlay = new MyOverlay(drawRouteToPub);
-			 mapOverlays.add(myoverlay);
-		}
 		// checkIfGpsIsEnabled(); // check if gps is enabled
 
-		loading(); // loading animation, invokes: changeToCampusJohanneberg(),
-					// showThePubs()
+		/*
+		 * If the application is running for the first time a dialog will pop up
+		 * and ask for the default campus.
+		 */
+		sharedPrefs = PreferenceManager
+				.getDefaultSharedPreferences(getBaseContext());
+		boolean firstrun = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+				.getBoolean("firstrun", true);
+		if (firstrun) {
+			setDefaultCampus();
+
+			// Save the state
+			getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
+					.putBoolean("firstrun", false).commit();
+		}	
+		/*
+		 * If it's not the first run of the application
+		 * then we can just start the loading sequence.
+		 * Not possible if the default campus hasn't been
+		 * chosen.
+		 */
+		else{
+			getDefaultCampus();
+			loading();
+		}
 
 		// Button for get my location
 		getThePositionButton = (Button) findViewById(R.id.getPosition);
@@ -257,24 +282,41 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		changeCampusButton = (Button) findViewById(R.id.changeCampus);
 		changeCampusButton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				if (startCampus) {
-					changeToCampusLindholmen();
-					startCampus = false;
-				} else if (!startCampus) {
-
-					changeToCampusJohanneberg();
-					startCampus = true;
-				}
+				changeCampus();
 			}
 		});
 
-		// Button to goto PubList.java
+		/* Button which accesses the publist */
 		goToPubListButton = (Button) findViewById(R.id.pubList);
 		goToPubListButton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				startPubListActivity();
 			}
 		});
+
+		String fromIdShowPubOnMap = getIntent().getStringExtra("Show");
+		int animateToPub = getIntent().getIntExtra(
+				"Pub to animate to", defaultIntValue);
+		
+		String fromIdFindPub = getIntent().getStringExtra("Route");
+		int drawRouteToPub = getIntent().getIntExtra(
+				"Pub to draw route to", defaultIntValue);
+
+		if (fromIdShowPubOnMap != null) {
+			Toast.makeText(getBaseContext(), fromIdShowPubOnMap, Toast.LENGTH_LONG).show();
+			GeoPoint gp = allPubsArray[animateToPub].getPoint();
+			animateToPubandSetZoom(gp);
+		}
+		
+		else if (fromIdFindPub != null){
+
+			 mapOverlays = mapView.getOverlays();
+			 projection = mapView.getProjection();
+
+			 myoverlay = new MyOverlay(drawRouteToPub);
+			 mapOverlays.add(myoverlay);
+		}
+
 
 	}
 
@@ -307,6 +349,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		return true;
 	}
 
+
 	// display all pubs in the allPubsArray as an overlay onto the map
 	/**
 	 * Show the pubs.
@@ -330,30 +373,129 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		mapOverlays.add(itemizedOverlay); // need to be outside the for-loop
 											// (source:
 											// http://stackoverflow.com/questions/2659770/android-map-performance-poor-because-of-many-overlays)
+		mapView.postInvalidate();
 	}
 
 	/**
 	 * Loading.
 	 */
+
+	/*
+	 * Method that gets the value for default campus if the
+	 * application itself has been closed.
+	 */
+	private void getDefaultCampus() {
+		default_campus = sharedPrefs.getString("defaultCampus", "0");
+
+		if(default_campus.equals("0"))
+			activeCampus = true;
+
+		else if(default_campus.equals("1"))
+			activeCampus = false;
+	}
+
+	/**
+	 * A dialog that lets the user set the default campus, on the first run
+	 * only, that will make the application navigate there on start.
+	 */
+	private void setDefaultCampus() {
+		final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle("Standard campus")
+				.setMessage("Var vänlig och välj standard campus för kartan.")
+				.setIcon(R.drawable.icon_warning)
+				.setCancelable(false)
+				.setNeutralButton("Johanneberg",
+						new android.content.DialogInterface.OnClickListener() {
+							public void onClick(final DialogInterface dialog,
+									final int id) {
+								default_campus = "0";
+								SharedPreferences.Editor editor = sharedPrefs
+										.edit();
+								editor.putString("defaultCampus", "0");
+								editor.commit();
+								activeCampus = true;
+								loading();
+
+							}
+						})
+				.setNegativeButton("Lindholmen",
+						new DialogInterface.OnClickListener() {
+							public void onClick(final DialogInterface dialog,
+									final int id) {
+								default_campus = "1";
+								SharedPreferences.Editor editor = sharedPrefs
+										.edit();
+								editor.putString("defaultCampus", "1");
+								editor.commit();
+								activeCampus = false;
+								loading();
+							}
+						});
+		final AlertDialog ad = builder.create();
+		ad.show();
+	}
+
 	private void loading() {
 
 		final Object loadingDialog = ProgressDialog.show(this,
 				"Laddar pubbar...", "Vänta...", true);
 		new Thread() {
 			public void run() {
-				changeToCampusJohanneberg(); // change the position to
-												// Johanneberg
-				showThePubs(); // Displaying all pubs as overlay in maps,
-								// see method for
+				try {
+					showThePubs();
+					showDefaultCampus();				
+
+					// Displaying all pubs as overlay in maps,
+					// see method for
+					// more info.
+					// showTheCurrentPosition(); // navigate to users current
+					// location, inactive during development.
+
+					sleep(3000); // sleep the thread, 3000 milliseconds = 3
+									// seconds.
+				} catch (Exception e) {
+				}
+
 				((Dialog) loadingDialog).dismiss();
 			}
+
 		}.start();
 	}
 
-	// The map will navigate to your current position
+	/**
+	 * Zooms into the campus that the user has chosen.
+	 */
+	protected void showDefaultCampus() {
+		if (default_campus.equals("0")){
+			changeToCampusJohanneberg();
+			activeCampus = true;
+		}
+
+		else if (default_campus.equals("1")){
+			changeToCampusLindholmen();
+			activeCampus = false;
+
+		}
+	}
+
+	/**
+	 * Used to for the 'Byt Campus' button which looks
+	 * at the current campus and jumps between the two,
+	 * depending on which campus you have as active.
+	 */
+	public void changeCampus(){
+		if(activeCampus)
+			changeToCampusLindholmen();
+
+		else if(!activeCampus)
+			changeToCampusJohanneberg();
+	}	
+
+
 	/**
 	 * Show the current position.
 	 */
+
 	public void showTheCurrentPosition() {
 		myLocationOverlay = new MyLocationOverlay(this, mapView);
 		myLocationOverlay.enableMyLocation();
@@ -370,7 +512,6 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		});
 	}
 
-	// navigate to campus Lindholmen if users clicks changeCampusButton
 	/**
 	 * Change to campus lindholmen.
 	 */
@@ -381,12 +522,17 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		mc.animateTo(gp);
 		mc.setCenter(gp);
 		mc.setZoom(zoomLevel);
+		Toast.makeText(TheMap.this,
+				"Campus Lindholmen",
+				Toast.LENGTH_SHORT).show();
+		activeCampus = false;
 	}
 
-	// navigate to campus Lindholmen if users clicks changeCampusButton
+
 	/**
 	 * Change to campus johanneberg.
 	 */
+
 	public void changeToCampusJohanneberg() {
 
 		mc = mapView.getController();
@@ -394,18 +540,20 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		mc.animateTo(gp);
 		mc.setCenter(gp);
 		mc.setZoom(zoomLevel);
+		Toast.makeText(TheMap.this, "Campus Johanneberg", Toast.LENGTH_SHORT)
+				.show();
+		activeCampus = true;
 	}
 
-	public void animateToGeopoint(GeoPoint gp, int zoom) {
+	public void animateToGeopoint(GeoPoint gp, int zoom){
 
 		mc = mapView.getController();
-		// gp = new GeoPoint((int) (57.689034 * 1e6), (int) (11.976468 * 1e6));
+		//gp = new GeoPoint((int) (57.689034 * 1e6), (int) (11.976468 * 1e6));
 		mc.animateTo(gp);
 		mc.setCenter(gp);
 		mc.setZoom(zoom);
 	}
 
-	// starting new activity( PubList.java ) if user clicks goToPubListButton
 	/**
 	 * Start pub list activity.
 	 */
@@ -419,7 +567,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	}
 
 	// Required method since class extends MapActivity
-	/*
+	/**
 	 * (non-Javadoc)
 	 * 
 	 * @see com.google.android.maps.MapActivity#isRouteDisplayed()
@@ -430,7 +578,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	}
 
 	// Initiating Menu XML file (menu.xml)
-	/*
+	/**
 	 * (non-Javadoc)
 	 * 
 	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
@@ -445,7 +593,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 
 	// onOptionsMenu with three items, "Street", "Satellite" & Traffic... code
 	// refactor is needed!
-	/*
+	/**
 	 * (non-Javadoc)
 	 * 
 	 * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
@@ -454,7 +602,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		switch (item.getItemId()) {
 		case R.id.change_map:
 			new AlertDialog.Builder(this).setTitle("Ändra vy")
-					.setSingleChoiceItems(differentViews, defaultValue,
+					.setSingleChoiceItems(differentViews, defaultIntValue,
 							new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,
 										int item) {
@@ -482,18 +630,27 @@ public class TheMap extends MapActivity implements OnGestureListener,
 								}
 							}).create().show();
 			break;
+			
 		case R.id.settings:
-			Intent settingsActivity = new Intent(getBaseContext(),SettingsMenu.class);
-            startActivity(settingsActivity);
+			Intent settingsActivity = new Intent(getBaseContext(),
+					SettingsMenu.class);
+			startActivity(settingsActivity);
 			break;
 
 		case R.id.share:
+			Intent showShare = new Intent(Intent.ACTION_SEND);
+			showShare.setType("text/plain");
+			String title = (String) getResources().getText(R.string.shareTitle);
+			String appLink = (String) getResources().getText(R.string.shareLink);
+			showShare.putExtra(Intent.EXTRA_TEXT, appLink);
+			startActivity(Intent.createChooser(showShare, title));
 			break;
 		}
-		return true;
+		return false;
+		
 	}
 
-	/*
+	/**
 	 * Attempts to enable MyLocation, registering for updates from
 	 * LocationManager.GPS_PROVIDER and LocationManager.NETWORK_PROVIDER.
 	 * 
@@ -506,7 +663,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		myLocationOverlay.enableMyLocation();
 	}
 
-	/*
+	/**
 	 * Stops location updates.
 	 * 
 	 * @see com.google.android.maps.MapActivity#onPause()
@@ -643,7 +800,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 
 	}
 
-	/*
+	/**
 	 * (non-Javadoc)
 	 * 
 	 * @see
@@ -655,7 +812,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		return false;
 	}
 
-	/*
+	/**
 	 * (non-Javadoc)
 	 * 
 	 * @see
@@ -751,7 +908,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		return false;
 	}
 
-	/*
+	/**
 	 * (non-Javadoc)
 	 * 
 	 * @see
@@ -763,7 +920,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 
 	}
 
-	/*
+	/**
 	 * (non-Javadoc)
 	 * 
 	 * @see
@@ -775,7 +932,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 
 	}
 
-	/*
+	/**
 	 * (non-Javadoc)
 	 * 
 	 * @see
@@ -787,7 +944,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 
 	}
 
-	/*
+	/**
 	 * (non-Javadoc)
 	 * 
 	 * @see
@@ -798,13 +955,13 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		// TODO Auto-generated method stub
 
 	}
-
+	
 	class MyOverlay extends Overlay {
 
 		private int endPoint;
-		
+
 		public MyOverlay(int endPoint) {
-		
+
 			this.endPoint=endPoint;
 		}
 
@@ -813,13 +970,13 @@ public class TheMap extends MapActivity implements OnGestureListener,
 			// Configuring the paint brush
 			Paint mPaint = new Paint();
 			mPaint.setDither(true);
-			mPaint.setColor(Color.RED);
+			mPaint.setColor(Color.BLUE);
 			mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
 			mPaint.setStrokeJoin(Paint.Join.ROUND);
 			mPaint.setStrokeCap(Paint.Cap.ROUND);
 			mPaint.setStrokeWidth(4);
 
-			
+
 			//GeoPoint gp1 = allPubsArray[0].getPoint();	// starting point
 			GeoPoint gp1 = new GeoPoint((int) (57.689814 * 1E6), (int) (11.972988 * 1E6));  // for development, geopoint of chalmers entrance
 			GeoPoint gp2 = allPubsArray[endPoint].getPoint();	// End point

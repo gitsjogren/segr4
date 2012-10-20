@@ -22,8 +22,10 @@
         <activity android:name=".TheMap" android:screenOrientation="portrait"> </activity>
         <uses-library android:name="com.google.android.maps" />
         <activity android:name=".PubList" android:screenOrientation="portrait"></activity>
-        <activity android:name=".SettingsMenu" android:screenOrientation="portrait"></activity>
         <activity android:name=".PubLayout" android:screenOrientation="portrait"></activity>
+        <activity android:name=".SettingsMenu" android:screenOrientation="portrait"></activity>
+        <activity android:name=".FeedbackForm" android:screenOrientation="portrait"></activity>
+        <activity android:name=".AboutPage" android:screenOrientation="portrait"></activity>
         <activity android:name=".GangnamStyle" android:screenOrientation="landscape"></activity>
     </application>
 </manifest>

@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-        <PreferenceCategory
-                android:title="Application Settings">
-                <ListPreference
-                        android:title="Default campus"
-                        android:summary="Choose your default campus to show at startup."
-                        android:key="defaultCampus"
-                        android:defaultValue="true"
-                        android:entries="@array/campus"
-                        android:entryValues="@array/campusValues" />
-        </PreferenceCategory>
-        <PreferenceCategory
-                android:title="Other things">
-        
-</PreferenceCategory>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="Application Settings" >
+        <ListPreference
+            android:defaultValue="0"
+            android:entries="@array/campus"
+            android:entryValues="@array/startCampus"
+            android:key="defaultCampus"
+            android:summary="Choose your default campus to show at startup."
+            android:title="Default campus" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Other things" >
+        <Preference
+            android:key="aboutPage"
+            android:summary="Information about the application"
+            android:title="About" />
+    </PreferenceCategory>
+
 </PreferenceScreen>

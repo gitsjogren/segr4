@@ -44,7 +44,7 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 	private Context mContext;
 	
 	/** The count. */
-	private static int count = 0;
+	private int count = 0;
 	
 	/** The counter. */
 	private ArrayList<Integer> counter = new ArrayList<Integer>();
@@ -60,6 +60,7 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 		myOverlays = new ArrayList<OverlayItem>();
 		mContext = context;
 	}
+
 	/**
 	 * Adds the overlay.
 	 *
@@ -144,7 +145,7 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 			winden.putExtra("More info", R.string.ja_pripps_info);
 			winden.putExtra("Pub nr in array", 3);
 			mContext.startActivity(winden);
-			break;
+			return true;
 		case 4:		// Start Zaloonen Pripps activity
 			Intent zaloonen = new Intent(mContext, PubLayout.class);
 			zaloonen.putExtra("Pub layout", R.layout.zaloonen);
@@ -184,7 +185,7 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 			basen.putExtra("More info", R.string.ja_pripps_info);
 			basen.putExtra("Pub nr in array", 8);
 			mContext.startActivity(basen);
-			break;
+			return true;
 		case 9:		// Start Kajsabaren activity
 			Intent kajsaBaren = new Intent(mContext, PubLayout.class);
 			kajsaBaren.putExtra("Pub layout", R.layout.kajsabaren);
@@ -208,7 +209,7 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 			gasTown.putExtra("More info", R.string.ja_pripps_info);
 			gasTown.putExtra("Pub nr in array", 11);
 			mContext.startActivity(gasTown);
-			break;
+			return true;
 		case 12:	// Start FortNOx activity
 			Intent fortNox = new Intent(mContext, PubLayout.class);
 			fortNox.putExtra("Pub layout", R.layout.fortnox);
@@ -274,10 +275,6 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 
 	}
 
-	/* (non-Javadoc)
-	 * Returns present number of items in list
-	 * @see com.google.android.maps.ItemizedOverlay#size()
-	 */
 	@Override
 	public int size() {
 		return myOverlays.size();
