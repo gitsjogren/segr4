@@ -22,43 +22,35 @@ package com.tarea.pubrundan;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.Window;
-import android.widget.Button;
+import android.view.WindowManager;
+import com.tarea.pubrundan.R;
+
 
 // TODO: Auto-generated Javadoc
 /**
- * The class PubList
+ * The Class GangnamStyle, our easter egg.
  * 
  * @author Erik Sjögren
  * 
  */
-public class PubList extends Activity {
-
-	/** The go back to map button. */
-	private Button goBackToMapButton;
-
-	/* (non-Javadoc)
+public class GangnamStyle extends Activity {
+	
+	
+	
+	// standard onCreate method
+		/* (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		
-		requestWindowFeature(Window.FEATURE_NO_TITLE); // Suppress title bar for
-														// more space
-		super.onCreate(savedInstanceState);
-		
-		setContentView(R.layout.publist);
+	public void onCreate(Bundle savedInstanceState) {
 
-		// Button, go back to map
-		goBackToMapButton = (Button) findViewById(R.id.backToMap);
-		goBackToMapButton.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				onBackPressed(); // put user to previous activity, acts the same
-									// as back button on phone
-			}
-		});
+			requestWindowFeature(Window.FEATURE_NO_TITLE); // Suppress title bar for
+															// more space
+			getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+		            WindowManager.LayoutParams.FLAG_FULLSCREEN);
+			super.onCreate(savedInstanceState);
+			setContentView(R.layout.gangnamstyle);
+		
 	}
 
 }
