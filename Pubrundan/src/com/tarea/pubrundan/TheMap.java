@@ -20,6 +20,7 @@
 
 package com.tarea.pubrundan;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.app.AlertDialog;
@@ -37,6 +38,7 @@ import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -71,12 +73,30 @@ import com.google.android.maps.Projection;
  * 
  */
 public class TheMap extends MapActivity implements OnGestureListener,
-		OnDoubleTapListener {
+		OnDoubleTapListener, LocationListener {
+	
+	private ArrayList<GeoPoint> geoList = new ArrayList<GeoPoint>();
 
+<<<<<<< HEAD
 	/** The start campus. */
 	private boolean startCampus = true; // false = Lindholmen, true =
 										// Johanneberg (default campus)
 	/** The zoom level. */
+=======
+
+	private SharedPreferences sharedPrefs;
+
+	/*
+	 * Boolean that tells the application which campus that
+	 * is currently the one the user is looking at. 
+	 * Used for the 'Byt Campus'-button.
+	 */
+	private boolean activeCampus;
+
+	MyLocationOverlayExtension mloe;
+	
+	private String default_campus;
+>>>>>>> some fixes trying to solve issue #7
 	private int zoomLevel = 17;
 	
 	private Projection projection;
@@ -103,6 +123,8 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	private MyLocationOverlay myLocationOverlay; // An Overlay showing a "point"
 	// on the map aka your
 	// current position
+	
+	public GeoPoint myLocation;
 
 	/** The map overlays. */
 	private List<Overlay> mapOverlays;
@@ -276,6 +298,10 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		}
 
 	}
+	
+	 public GeoPoint getMyLocation(){
+		    return myLocation;
+		  }
 
 	public void animateToPubandSetZoom(final GeoPoint gp) {
 
@@ -358,11 +384,13 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		myLocationOverlay = new MyLocationOverlay(this, mapView);
 		myLocationOverlay.enableMyLocation();
 		mapView.getOverlays().add(myLocationOverlay);
+		mapView.postInvalidate();
 
 		mc = mapView.getController();
 		myLocationOverlay.runOnFirstFix(new Runnable() {
 			public void run() {
 				GeoPoint gp = myLocationOverlay.getMyLocation();
+				geoList.add(gp);
 				mc.setZoom(zoomLevel);
 				mc.animateTo(gp);
 				mc.setCenter(gp);
@@ -514,7 +542,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	protected void onResume() {
 		super.onResume();
 		// when our activity resumes, we want to register for location updates
-		myLocationOverlay.enableMyLocation();
+		//myLocationOverlay.enableMyLocation();
 	}
 
 	/*
@@ -526,7 +554,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	protected void onPause() {
 		super.onPause();
 		// when our activity pauses, we want to remove listening for location
-		myLocationOverlay.disableMyLocation();
+		//myLocationOverlay.disableMyLocation();
 	}
 
 	/**
@@ -611,10 +639,8 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	 * 
 	 * @param location
 	 *            the location
-	 */
-	public void onLocationChanged(Location location) {
-		// TODO Auto-generated method stub
-
+	 */	
+	public void onLocationChanged(Location location) {  
 	}
 
 	/**
@@ -829,9 +855,18 @@ public class TheMap extends MapActivity implements OnGestureListener,
 			mPaint.setStrokeJoin(Paint.Join.ROUND);
 			mPaint.setStrokeCap(Paint.Cap.ROUND);
 			mPaint.setStrokeWidth(4);
+<<<<<<< HEAD
 
 			
 			//GeoPoint gp1 = allPubsArray[0].getPoint();	// starting point
+=======
+			
+			GeoPoint myLoc = mloe.listan.get(0);
+			int first = myLoc.getLatitudeE6();
+			int second = myLoc.getLongitudeE6();
+			//GeoPoint gp1 = new GeoPoint((int) (first * 1E6), (int) (second * 1E6));
+			//GeoPoint gp1 = new GeoPoint(geoListOfInt.get(0), geoListOfInt.get(1));	// starting point
+>>>>>>> some fixes trying to solve issue #7
 			GeoPoint gp1 = new GeoPoint((int) (57.689814 * 1E6), (int) (11.972988 * 1E6));  // for development, geopoint of chalmers entrance
 			GeoPoint gp2 = allPubsArray[endPoint].getPoint();	// End point
 
