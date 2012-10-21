@@ -11,6 +11,7 @@ public final class R {
     public static final class array {
         public static final int campus=0x7f050000;
         public static final int feedbacktypelist=0x7f050002;
+        public static final int pubs=0x7f050003;
         public static final int startCampus=0x7f050001;
     }
     public static final class attr {
@@ -85,20 +86,20 @@ public final class R {
         public static final int TextView04=0x7f090019;
         public static final int TextView09=0x7f090018;
         public static final int TextViewTitle=0x7f09001d;
-        public static final int backToMap=0x7f090027;
-        public static final int changeCampus=0x7f090026;
+        public static final int changeCampus=0x7f090028;
         public static final int change_map=0x7f09002a;
         public static final int duration=0x7f09001b;
         public static final int feedback=0x7f09001c;
         public static final int find_pub=0x7f09002e;
-        public static final int getPosition=0x7f090025;
+        public static final int getPosition=0x7f090027;
         public static final int iconshock=0x7f09000f;
+        public static final int label=0x7f090024;
         public static final int linearLayout1=0x7f090011;
         public static final int list_image=0x7f090014;
         public static final int maintitle=0x7f090012;
-        public static final int mapshow_button=0x7f090024;
+        public static final int mapshow_button=0x7f090025;
         public static final int more_pubinfo=0x7f09002d;
-        public static final int mv=0x7f090028;
+        public static final int mv=0x7f090026;
         public static final int pubList=0x7f090029;
         public static final int settings=0x7f09002b;
         public static final int share=0x7f09002c;
@@ -138,17 +139,18 @@ public final class R {
         public static final int japripps=0x7f03000c;
         public static final int jarnvagspub=0x7f03000d;
         public static final int kajsabaren=0x7f03000e;
-        public static final int main=0x7f03000f;
-        public static final int pubf=0x7f030010;
-        public static final int publist=0x7f030011;
-        public static final int pubp=0x7f030012;
-        public static final int rodarummet=0x7f030013;
-        public static final int showthemap=0x7f030014;
-        public static final int sigurdafiket=0x7f030015;
-        public static final int spritkoket=0x7f030016;
-        public static final int welcome=0x7f030017;
-        public static final int winden=0x7f030018;
-        public static final int zaloonen=0x7f030019;
+        public static final int list_item=0x7f03000f;
+        public static final int main=0x7f030010;
+        public static final int pubf=0x7f030011;
+        public static final int publist=0x7f030012;
+        public static final int pubp=0x7f030013;
+        public static final int rodarummet=0x7f030014;
+        public static final int showthemap=0x7f030015;
+        public static final int sigurdafiket=0x7f030016;
+        public static final int spritkoket=0x7f030017;
+        public static final int welcome=0x7f030018;
+        public static final int winden=0x7f030019;
+        public static final int zaloonen=0x7f03001a;
     }
     public static final class menu {
         public static final int menu=0x7f080000;

@@ -145,7 +145,7 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 			winden.putExtra("More info", R.string.ja_pripps_info);
 			winden.putExtra("Pub nr in array", 3);
 			mContext.startActivity(winden);
-			return true;
+			break;
 		case 4:		// Start Zaloonen Pripps activity
 			Intent zaloonen = new Intent(mContext, PubLayout.class);
 			zaloonen.putExtra("Pub layout", R.layout.zaloonen);
@@ -185,7 +185,7 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 			basen.putExtra("More info", R.string.ja_pripps_info);
 			basen.putExtra("Pub nr in array", 8);
 			mContext.startActivity(basen);
-			return true;
+			break;
 		case 9:		// Start Kajsabaren activity
 			Intent kajsaBaren = new Intent(mContext, PubLayout.class);
 			kajsaBaren.putExtra("Pub layout", R.layout.kajsabaren);
@@ -209,7 +209,7 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 			gasTown.putExtra("More info", R.string.ja_pripps_info);
 			gasTown.putExtra("Pub nr in array", 11);
 			mContext.startActivity(gasTown);
-			return true;
+			break;
 		case 12:	// Start FortNOx activity
 			Intent fortNox = new Intent(mContext, PubLayout.class);
 			fortNox.putExtra("Pub layout", R.layout.fortnox);

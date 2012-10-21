@@ -988,9 +988,9 @@ public class TheMap extends MapActivity implements OnGestureListener,
 			mPaint.setStrokeCap(Paint.Cap.ROUND);
 			mPaint.setStrokeWidth(4);
 			
-			GeoPoint myLoc = mloe.listan.get(0);
-			int first = myLoc.getLatitudeE6();
-			int second = myLoc.getLongitudeE6();
+			//GeoPoint myLoc = mloe.listan.get(0);
+			//int first = myLoc.getLatitudeE6();
+			//int second = myLoc.getLongitudeE6();
 			//GeoPoint gp1 = new GeoPoint((int) (first * 1E6), (int) (second * 1E6));
 			//GeoPoint gp1 = new GeoPoint(geoListOfInt.get(0), geoListOfInt.get(1));	// starting point
 			GeoPoint gp1 = new GeoPoint((int) (57.689814 * 1E6), (int) (11.972988 * 1E6));  // for development, geopoint of chalmers entrance
