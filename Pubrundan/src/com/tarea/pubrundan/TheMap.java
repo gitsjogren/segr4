@@ -29,6 +29,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.gesture.GestureOverlayView;
 import android.gesture.GestureOverlayView.OnGestureListener;
 import android.graphics.Canvas;
@@ -77,12 +78,10 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	
 	private ArrayList<GeoPoint> geoList = new ArrayList<GeoPoint>();
 
-<<<<<<< HEAD
 	/** The start campus. */
 	private boolean startCampus = true; // false = Lindholmen, true =
 										// Johanneberg (default campus)
 	/** The zoom level. */
-=======
 
 	private SharedPreferences sharedPrefs;
 
@@ -96,7 +95,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	MyLocationOverlayExtension mloe;
 	
 	private String default_campus;
->>>>>>> some fixes trying to solve issue #7
+
 	private int zoomLevel = 17;
 	
 	private Projection projection;
@@ -855,18 +854,14 @@ public class TheMap extends MapActivity implements OnGestureListener,
 			mPaint.setStrokeJoin(Paint.Join.ROUND);
 			mPaint.setStrokeCap(Paint.Cap.ROUND);
 			mPaint.setStrokeWidth(4);
-<<<<<<< HEAD
-
 			
 			//GeoPoint gp1 = allPubsArray[0].getPoint();	// starting point
-=======
 			
 			GeoPoint myLoc = mloe.listan.get(0);
 			int first = myLoc.getLatitudeE6();
 			int second = myLoc.getLongitudeE6();
 			//GeoPoint gp1 = new GeoPoint((int) (first * 1E6), (int) (second * 1E6));
 			//GeoPoint gp1 = new GeoPoint(geoListOfInt.get(0), geoListOfInt.get(1));	// starting point
->>>>>>> some fixes trying to solve issue #7
 			GeoPoint gp1 = new GeoPoint((int) (57.689814 * 1E6), (int) (11.972988 * 1E6));  // for development, geopoint of chalmers entrance
 			GeoPoint gp2 = allPubsArray[endPoint].getPoint();	// End point
 
