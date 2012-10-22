@@ -36,7 +36,7 @@ import android.view.Window;
  * 
  */
 public class PubLayout extends Activity {
-	
+
 	private final int defaultIntValue = -1;
 
 	// standard onCreate method
@@ -51,7 +51,7 @@ public class PubLayout extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE); // Suppress title bar for
 														// more space
 		super.onCreate(savedInstanceState);
-		
+
 		setContentView(getIntent().getIntExtra("Pub layout", defaultIntValue));
 	}
 
@@ -68,7 +68,7 @@ public class PubLayout extends Activity {
 		oMenu.inflate(R.menu.pubmenu, menu);
 		return true;
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -83,23 +83,22 @@ public class PubLayout extends Activity {
 		super.onOptionsItemSelected(item);
 		switch (item.getItemId()) {
 		case R.id.more_pubinfo:
-			new AlertDialog.Builder(this).setTitle(title)
-					.setMessage(moreInfo)
+			new AlertDialog.Builder(this).setTitle(title).setMessage(moreInfo)
 					.create().show();
 			break;
 		case R.id.find_pub:
-			Intent a = new Intent(this,TheMap.class);
-			a.putExtra("Route",title);
+			Intent a = new Intent(this, TheMap.class);
+			a.putExtra("Route", title);
 			a.putExtra("Pub to draw route to", pubNrInArray);
-            startActivity(a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-            break;
+			startActivity(a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+			break;
 
 		case R.id.show_pub_on_map:
-			Intent i = new Intent(this,TheMap.class);
-			i.putExtra("Show",title);
+			Intent i = new Intent(this, TheMap.class);
+			i.putExtra("Show", title);
 			i.putExtra("Pub to animate to", pubNrInArray);
-            startActivity(i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-            break;
+			startActivity(i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+			break;
 		}
 		return true;
 	}

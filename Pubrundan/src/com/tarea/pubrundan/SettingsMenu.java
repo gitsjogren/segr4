@@ -45,7 +45,6 @@ import android.view.Window;
 
 public class SettingsMenu extends PreferenceActivity {
 
-
 	/**
 	 * (non-Javadoc)
 	 * 
@@ -61,48 +60,48 @@ public class SettingsMenu extends PreferenceActivity {
 				.getDefaultSharedPreferences(getBaseContext());
 
 		/**
-		 * A clickable "preference" which starts the About-section within
-		 * the SettingsMenu.
+		 * A clickable "preference" which starts the About-section within the
+		 * SettingsMenu.
 		 */
 		Preference aboutPage = (Preference) findPreference("aboutPage");
-		aboutPage
-				.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+		aboutPage.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 
-					public boolean onPreferenceClick(Preference preference) {
-						Intent aboutPage = new Intent(getBaseContext(),
-								AboutPage.class);
-						startActivity(aboutPage);
-						return true;
-					}
-
-				});
-
-
-		/**
-		 * When the value is changed in the Default Campus settings the new value 
-		 * is stored in the SharedPreferences to be reminded each time you start
-		 * the application.
-		 */
-		Preference defaultCampus = (Preference) findPreference("defaultCampus");
-		defaultCampus.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
-
-			public boolean onPreferenceChange(Preference preference, Object newValue) {
-
-				SharedPreferences.Editor editor = sP.edit();
-				editor.putString("defaultCampus", (String) newValue);
-				editor.commit();
+			public boolean onPreferenceClick(Preference preference) {
+				Intent aboutPage = new Intent(getBaseContext(), AboutPage.class);
+				startActivity(aboutPage);
 				return true;
 			}
+
 		});
-		
+
+		/**
+		 * When the value is changed in the Default Campus settings the new
+		 * value is stored in the SharedPreferences to be reminded each time you
+		 * start the application.
+		 */
+		Preference defaultCampus = (Preference) findPreference("defaultCampus");
+		defaultCampus
+				.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+
+					public boolean onPreferenceChange(Preference preference,
+							Object newValue) {
+
+						SharedPreferences.Editor editor = sP.edit();
+						editor.putString("defaultCampus", (String) newValue);
+						editor.commit();
+						return true;
+					}
+				});
+
 		Preference feedback = (Preference) findPreference("feedback");
 		feedback.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 
 			public boolean onPreferenceClick(Preference preference) {
-					Intent i = new Intent(getApplicationContext(), FeedbackForm.class);
-					startActivity(i);
-					return true;
-				}
+				Intent i = new Intent(getApplicationContext(),
+						FeedbackForm.class);
+				startActivity(i);
+				return true;
+			}
 		});
 
 		/**

@@ -42,9 +42,9 @@ public class FeedbackForm extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.feedbackform);
 
-		final Button SendFeedback = (Button) this
+		final Button sendFeedback = (Button) this
 				.findViewById(R.id.ButtonSendFeedback);
-		SendFeedback.setOnClickListener(new View.OnClickListener() {
+		sendFeedback.setOnClickListener(new View.OnClickListener() {
 
 			// Get the context from the feedback form
 			public void onClick(View v) {
