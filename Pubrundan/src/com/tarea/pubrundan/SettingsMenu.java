@@ -68,12 +68,23 @@ public class SettingsMenu extends PreferenceActivity {
 				return true;
 			}
 		});
+		
+		Preference feedback = (Preference) findPreference("feedback");
+		feedback.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+
+			public boolean onPreferenceClick(Preference preference) {
+					Intent i = new Intent(getApplicationContext(), FeedbackForm.class);
+					startActivity(i);
+					return true;
+				}
+		});
 
 		/**
 		 * Get all options in res/xml/settings.xml
 		 */
 		sP.getString("defaultCampus", "0");
 		sP.getString("aboutPage", "");
+		sP.getString("feedback", "");
 
 	}
 

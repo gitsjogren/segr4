@@ -31,6 +31,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
  
 public class PubList extends ListActivity {
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         
@@ -56,7 +57,7 @@ public class PubList extends ListActivity {
       			jaPripps.putExtra("Pub layout", R.layout.japripps);
       			jaPripps.putExtra("Pub title", "J.A. Pripps");
       			jaPripps.putExtra("More info", R.string.ja_pripps_info);
-      			jaPripps.putExtra("Pub nr in array", 0);
+      			jaPripps.putExtra("Pub nr in array", position);
       			startActivity(jaPripps);
       			break;
       		case 1:		// Start Gasquen activity
@@ -64,7 +65,7 @@ public class PubList extends ListActivity {
       			gasquen.putExtra("Pub layout", R.layout.gasquen);
       			gasquen.putExtra("Pub title", "Gasquen");
       			gasquen.putExtra("More info", R.string.ja_pripps_info);
-      			gasquen.putExtra("Pub nr in array", 1);
+      			gasquen.putExtra("Pub nr in array", position);
       			startActivity(gasquen);
       			break;
       		case 2:		// Start Bulten activity
@@ -72,7 +73,7 @@ public class PubList extends ListActivity {
       			bulten.putExtra("Pub layout", R.layout.bulten);
       			bulten.putExtra("Pub title", "Bulten");
       			bulten.putExtra("More info", R.string.ja_pripps_info);
-      			bulten.putExtra("Pub nr in array", 2);
+      			bulten.putExtra("Pub nr in array", position);
       			startActivity(bulten);
       			break;
       		case 3:		// Start Winden activity
@@ -80,7 +81,7 @@ public class PubList extends ListActivity {
       			winden.putExtra("Pub layout", R.layout.winden);
       			winden.putExtra("Pub title", "Winden");
       			winden.putExtra("More info", R.string.ja_pripps_info);
-      			winden.putExtra("Pub nr in array", 3);
+      			winden.putExtra("Pub nr in array", position);
       			startActivity(winden);
       			break;
       		case 4:		// Start Zaloonen Pripps activity
@@ -88,7 +89,7 @@ public class PubList extends ListActivity {
     			zaloonen.putExtra("Pub layout", R.layout.zaloonen);
     			zaloonen.putExtra("Pub title", "Zaloonen");
     			zaloonen.putExtra("More info", R.string.ja_pripps_info);
-    			zaloonen.putExtra("Pub nr in array", 4);
+    			zaloonen.putExtra("Pub nr in array", position);
     			startActivity(zaloonen);
     			break;
     		case 5:		// Start Club Avancez activity
@@ -96,7 +97,7 @@ public class PubList extends ListActivity {
     			clubAvancez.putExtra("Pub layout", R.layout.clubavancez);
     			clubAvancez.putExtra("Pub title", "Club Avancez");
     			clubAvancez.putExtra("More info", R.string.ja_pripps_info);
-    			clubAvancez.putExtra("Pub nr in array", 5);
+    			clubAvancez.putExtra("Pub nr in array", position);
     			startActivity(clubAvancez);
     			break;
     		case 6:		// Start GoldenI activity
@@ -104,7 +105,7 @@ public class PubList extends ListActivity {
     			goldenI.putExtra("Pub layout", R.layout.goldeni);
     			goldenI.putExtra("Pub title", "GoldenI");
     			goldenI.putExtra("More info", R.string.ja_pripps_info);
-    			goldenI.putExtra("Pub nr in array", 6);
+    			goldenI.putExtra("Pub nr in array", position);
     			startActivity(goldenI);
     			break;
     		case 7:		// Start Hubben 2.1 activity
@@ -112,7 +113,7 @@ public class PubList extends ListActivity {
     			hubben.putExtra("Pub layout", R.layout.hubben);
     			hubben.putExtra("Pub title", "Hubben 2.1");
     			hubben.putExtra("More info", R.string.ja_pripps_info);
-    			hubben.putExtra("Pub nr in array", 7);
+    			hubben.putExtra("Pub nr in array", position);
     			startActivity(hubben);
     			break;
     		case 8:		// Start Basen activity
@@ -120,7 +121,7 @@ public class PubList extends ListActivity {
     			basen.putExtra("Pub layout", R.layout.basen);
     			basen.putExtra("Pub title", "Basen");
     			basen.putExtra("More info", R.string.ja_pripps_info);
-    			basen.putExtra("Pub nr in array", 8);
+    			basen.putExtra("Pub nr in array", position);
     			startActivity(basen);
     			break;
     		case 9:		// Start Kajsabaren activity
@@ -128,7 +129,7 @@ public class PubList extends ListActivity {
     			kajsaBaren.putExtra("Pub layout", R.layout.kajsabaren);
     			kajsaBaren.putExtra("Pub title", "Kajsabaren");
     			kajsaBaren.putExtra("More info", R.string.ja_pripps_info);
-    			kajsaBaren.putExtra("Pub nr in array", 9);
+    			kajsaBaren.putExtra("Pub nr in array", position);
     			startActivity(kajsaBaren);
     			break;
     		case 10:	// Start Järnvägspub activity
@@ -136,7 +137,7 @@ public class PubList extends ListActivity {
     			jarnvagsPub.putExtra("Pub layout", R.layout.jarnvagspub);
     			jarnvagsPub.putExtra("Pub title", "Järnvägspub");
     			jarnvagsPub.putExtra("More info", R.string.ja_pripps_info);
-    			jarnvagsPub.putExtra("Pub nr in array", 10);
+    			jarnvagsPub.putExtra("Pub nr in array", position);
     			startActivity(jarnvagsPub);
     			break;
     		case 11:	// Start GasTown activity
@@ -144,7 +145,7 @@ public class PubList extends ListActivity {
     			gasTown.putExtra("Pub layout", R.layout.gastown);
     			gasTown.putExtra("Pub title", "GasTown");
     			gasTown.putExtra("More info", R.string.ja_pripps_info);
-    			gasTown.putExtra("Pub nr in array", 11);
+    			gasTown.putExtra("Pub nr in array", position);
     			startActivity(gasTown);
     			break;
     		case 12:	// Start FortNOx activity
@@ -152,7 +153,7 @@ public class PubList extends ListActivity {
     			fortNox.putExtra("Pub layout", R.layout.fortnox);
     			fortNox.putExtra("Pub title", "FortNOx");
     			fortNox.putExtra("More info", R.string.ja_pripps_info);
-    			fortNox.putExtra("Pub nr in array", 12);
+    			fortNox.putExtra("Pub nr in array", position);
     			startActivity(fortNox);
     			break;
     		case 13:	// Start Spritköket activity
@@ -160,7 +161,7 @@ public class PubList extends ListActivity {
     			spritkoket.putExtra("Pub layout", R.layout.spritkoket);
     			spritkoket.putExtra("Pub title", "Spritköket");
     			spritkoket.putExtra("More info", R.string.ja_pripps_info);
-    			spritkoket.putExtra("Pub nr in array", 13);
+    			spritkoket.putExtra("Pub nr in array", position);
     			startActivity(spritkoket);
     			break;
     		case 14:	// Start Focus activity
@@ -168,7 +169,7 @@ public class PubList extends ListActivity {
     			focus.putExtra("Pub layout", R.layout.focus);
     			focus.putExtra("Pub title", "Focus");
     			focus.putExtra("More info", R.string.ja_pripps_info);
-    			focus.putExtra("Pub nr in array", 14);
+    			focus.putExtra("Pub nr in array", position);
     			startActivity(focus);
     			break;
     		case 15:	// Start Röda rummet activity
@@ -176,7 +177,7 @@ public class PubList extends ListActivity {
     			rodaRummet.putExtra("Pub layout", R.layout.rodarummet);
     			rodaRummet.putExtra("Pub title", "Röda rummet");
     			rodaRummet.putExtra("More info", R.string.ja_pripps_info);
-    			rodaRummet.putExtra("Pub nr in array", 15);
+    			rodaRummet.putExtra("Pub nr in array", position);
     			startActivity(rodaRummet);
     			break;
     		case 16:	// Start Sigurd/A-fiket activity
@@ -184,7 +185,7 @@ public class PubList extends ListActivity {
     			sigurdAfiket.putExtra("Pub layout", R.layout.sigurdafiket);
     			sigurdAfiket.putExtra("Pub title", "Sigurd/A-fiket");
     			sigurdAfiket.putExtra("More info", R.string.ja_pripps_info);
-    			sigurdAfiket.putExtra("Pub nr in array", 16);
+    			sigurdAfiket.putExtra("Pub nr in array", position);
     			startActivity(sigurdAfiket);
     			break;
     		case 17:	// Start Pub P activity
@@ -192,7 +193,7 @@ public class PubList extends ListActivity {
     			pubP.putExtra("Pub layout", R.layout.pubp);
     			pubP.putExtra("Pub title", "Pub P");
     			pubP.putExtra("More info", R.string.ja_pripps_info);
-    			pubP.putExtra("Pub nr in array", 17);
+    			pubP.putExtra("Pub nr in array", position);
     			startActivity(pubP);
     			break;
     		case 18:	// Start 11:an activity
@@ -200,7 +201,7 @@ public class PubList extends ListActivity {
     			pubF.putExtra("Pub layout", R.layout.pubf);
     			pubF.putExtra("Pub title", "Pub F");
     			pubF.putExtra("More info", R.string.ja_pripps_info);
-    			pubF.putExtra("Pub nr in array", 18);
+    			pubF.putExtra("Pub nr in array", position);
     			startActivity(pubF);
     			break;
           }

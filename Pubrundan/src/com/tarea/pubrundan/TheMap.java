@@ -154,7 +154,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	 * The pubs in the array are listed and hardcoded from
 	 * coordinates_of_the_pubs.txt	 */
 
-	private OverlayItem[] allPubsArray = {
+	public OverlayItem[] allPubsArray = {
 
 			// J.A. Pripps
 			new OverlayItem(new GeoPoint((int) (57.688984 * 1E6),
@@ -212,7 +212,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 					(int) (11.939596 * 1E6)), "Pub P", "Lindholmen"),
 			// 11:an
 			new OverlayItem(new GeoPoint((int) (57.706085 * 1E6),
-					(int) (11.936675 * 1E6)), "11:an", "Johanneberg"),
+					(int) (11.936675 * 1E6)), "Pub F", "Johanneberg"),
 			// Gangnam Style
 			new OverlayItem(new GeoPoint((int) (37.5175725 * 1E6),
 					(int) (127.047462 * 1E6)), "Gangnam Style", "Sydkorea"),
