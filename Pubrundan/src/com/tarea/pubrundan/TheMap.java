@@ -225,16 +225,14 @@ public class TheMap extends MapActivity implements OnGestureListener,
 
 	};
 
-	// standard onCreate method
 	/*
-	 * (non-Javadoc)
+	 * standard onCreate method
 	 * 
-	 * @see com.google.android.maps.MapActivity#onCreate(android.os.Bundle)
 	 */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 
-		super.onCreate(savedInstanceState);
+		super.onCreate(savedInstanceState);	// standard onCreate method
 
 		requestWindowFeature(Window.FEATURE_NO_TITLE); // Suppress title bar for more space
 		setContentView(R.layout.showthemap); // Use xml-layout showtomap.xml
