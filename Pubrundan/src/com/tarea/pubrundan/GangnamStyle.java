@@ -27,14 +27,11 @@ import android.view.WindowManager;
 import com.tarea.pubrundan.R;
 
 /**
-<<<<<<< HEAD
- * The Class GangnamStyle.
-=======
+
  * The Class GangnamStyle, our easter egg.
  * 
  * @author Erik Sjögren
  * 
->>>>>>> origin/Branch-for-theMap
  */
 public class GangnamStyle extends Activity {
 

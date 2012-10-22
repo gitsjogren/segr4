@@ -35,26 +35,22 @@ import android.widget.TextView;
 
 public class AboutPage extends Activity {
 
-
+	/**
+	 * Creates the about page with a clickable link
+	 * to the site IconSchock where the original icon
+	 * is from.
+	 */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-<<<<<<< HEAD
-		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-=======
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
->>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb
 		setContentView(R.layout.about);
 
 		TextView noteView = (TextView) findViewById(R.id.iconshock);
 		noteView.setText("http://www.iconshock.com");
 		Linkify.addLinks(noteView, Linkify.ALL);
-<<<<<<< HEAD
-		
-=======
 
->>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb
 
 	}
 }

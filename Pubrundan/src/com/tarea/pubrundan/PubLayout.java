@@ -20,47 +20,27 @@
 
 package com.tarea.pubrundan;
 
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-<<<<<<< HEAD:Pubrundan/src/com/tarea/pubrundan/Pubs/Zaloonen.java
-import android.view.MenuItem;
-import android.view.Window;
-
-import com.tarea.pubrundan.R;
-import com.tarea.pubrundan.TheMap;
-
-
-=======
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.Window;
 
-<<<<<<< HEAD
->>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb:Pubrundan/src/com/tarea/pubrundan/PubLayout.java
-// TODO: Auto-generated Javadoc
-=======
->>>>>>> 394121e74c5a21d07bd01f89db0595e1323f526f
 /**
  * The Class PubLayout.
  * 
  * @author Erik Sjögren
  * 
  */
-<<<<<<< HEAD:Pubrundan/src/com/tarea/pubrundan/Pubs/Zaloonen.java
-
-public class Zaloonen extends Activity {
-=======
 public class PubLayout extends Activity {
 	
 	private final int defaultIntValue = -1;
->>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb:Pubrundan/src/com/tarea/pubrundan/PubLayout.java
 
 	// standard onCreate method
-	/*
+	/**
 	 * (non-Javadoc)
 	 * 
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
@@ -74,28 +54,9 @@ public class PubLayout extends Activity {
 		
 		setContentView(getIntent().getIntExtra("Pub layout", defaultIntValue));
 	}
-	
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case R.id.more_pubinfo:
-			new AlertDialog.Builder(this).setTitle("J.A. Pripps")
-					.setMessage(R.string.ja_pripps_info)
-					.create().show();
-		case R.id.find_pub:
-			return true;
 
-<<<<<<< HEAD:Pubrundan/src/com/tarea/pubrundan/Pubs/Zaloonen.java
-		case R.id.show_pub_on_map:
-			Intent i = new Intent(this,TheMap.class);
-			i.putExtra("Pub","Zaloonen");
-			i.putExtra("Pub to animate to in array list", 4);
-            startActivity(i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-			return true;
-		}
-		return false;
-=======
 	// Initiating Menu XML file (menu.xml)
-	/*
+	/**
 	 * (non-Javadoc)
 	 * 
 	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
@@ -106,10 +67,9 @@ public class PubLayout extends Activity {
 		MenuInflater oMenu = getMenuInflater();
 		oMenu.inflate(R.menu.pubmenu, menu);
 		return true;
->>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb:Pubrundan/src/com/tarea/pubrundan/PubLayout.java
 	}
 	
-	/*
+	/**
 	 * (non-Javadoc)
 	 * 
 	 * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)

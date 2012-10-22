@@ -1,12 +1,8 @@
 <resources>
 
-<<<<<<< HEAD
-    <string name="app_name">Pubrundan</string> 
-=======
     <string name="app_name">Pubrundan</string>
     <string name="api_map_key">0n_WUXbhVEKfU4SZhO9Hhixy7M617h_k4iBRiSA</string>
     <string name="goLabel">Show the Map</string>
->>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb
     <string name="ja_pripps_info">J.A. Pripps Pub och Café är den naturliga samlingsplatsen mitt i Kårhuset.</string>
     <string name="campus">Campus:</string>
     <string name="opening_hours">Öppettider:</string>
@@ -35,12 +31,8 @@
     <string name="zaloonen">Zaloonen</string>
     <string name="lindholmen">Lindholmen</string>
     <string name="johanneberg">Johanneberg</string>
-<<<<<<< HEAD
-    <string name="opening_hours_basen">16:00 &#8211; 01:00</string>  <!-- &#8211; = "-" -->
-=======
     <string name="opening_hours_basen">16:00 &#8211; 01:00</string>
  <!-- &#8211; = "-" -->
->>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb
     <string name="ja_pripps_main_info">PubA verkar för A-sektionens sociala intressen genom att sköta om sektionspuben Röda Rummet där vi arrangerar pubar och andra sociala aktiviteter.</string>
     <string name="ja_pripps_more_info">J.A. Pripps Pub och Café är den naturliga samlingsplatsen mitt i Kårhuset.
         Under dagtid finns allt du behöver för en trevlig fikastund. Under eftermiddagen öppnar ölkranarna
@@ -63,14 +55,5 @@
     <string name="iconshock"><a href="http://www.iconshock.com" rel="nofollow">Original icon is made by Iconshock</a></string>
     <string name="campusJohanneberg">Campus Johanneberg</string>
     <string name="campusLindholmen">Campus Lindholmen</string>
-<<<<<<< HEAD
-
-    <string name="version">0.3</string>
-    <string name="Developers">TAREA</string>
-    <string name="Licence">GPL</string>
-    <string name="iconshock"><a href="http://www.iconshock.com" rel="nofollow">Original icon is made by Iconshock</a></string>
-
-=======
->>>>>>> 394121e74c5a21d07bd01f89db0595e1323f526f
 
 </resources>

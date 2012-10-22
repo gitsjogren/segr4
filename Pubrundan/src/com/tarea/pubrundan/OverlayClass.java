@@ -80,7 +80,7 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 		populate();
 	}
 
-	/* (non-Javadoc)
+	/** (non-Javadoc)
 	 * @see com.google.android.maps.ItemizedOverlay#createItem(int)
 	 * @param i
 	 * 
@@ -101,7 +101,7 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 		populate();
 	}
 
-	/* (non-Javadoc)
+	/** (non-Javadoc)
 	 * Handle tap events on overlay icons
 	 * Start each pub as own class with xml
 	 * @see com.google.android.maps.ItemizedOverlay#onTap(int)

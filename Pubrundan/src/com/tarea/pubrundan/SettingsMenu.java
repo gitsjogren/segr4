@@ -36,19 +36,9 @@ import android.view.Window;
  * the application itself and other features.
  */
 
-/**
- * The class SettingMenu
- * 
- * @author Alexander Kurkimäki
- * 
- */
 
 public class SettingsMenu extends PreferenceActivity {
-<<<<<<< HEAD
-	
-=======
 
->>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb
 
 	/**
 	 * (non-Javadoc)
@@ -58,21 +48,10 @@ public class SettingsMenu extends PreferenceActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
-<<<<<<< HEAD
-		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-		super.onCreate(savedInstanceState);
-		addPreferencesFromResource(R.xml.settings);
-<<<<<<< HEAD
-		final SharedPreferences SP = PreferenceManager
-=======
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		super.onCreate(savedInstanceState);
 		addPreferencesFromResource(R.xml.settings);
 		final SharedPreferences sP = PreferenceManager
->>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb
-=======
-		final SharedPreferences sP = PreferenceManager
->>>>>>> 394121e74c5a21d07bd01f89db0595e1323f526f
 				.getDefaultSharedPreferences(getBaseContext());
 
 		/**
@@ -84,30 +63,14 @@ public class SettingsMenu extends PreferenceActivity {
 				.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 
 					public boolean onPreferenceClick(Preference preference) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-						Intent AboutActivity = new Intent(getBaseContext(),
-								AboutPage.class);
-						startActivity(AboutActivity);
-=======
 						Intent aboutPage = new Intent(getBaseContext(),
 								AboutPage.class);
 						startActivity(aboutPage);
->>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb
-=======
-						Intent aboutPage = new Intent(getBaseContext(),
-								AboutPage.class);
-						startActivity(aboutPage);
->>>>>>> 394121e74c5a21d07bd01f89db0595e1323f526f
 						return true;
 					}
 
 				});
-<<<<<<< HEAD
-		
-=======
 
->>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb
 
 		/**
 		 * When the value is changed in the Default Campus settings the new value 
@@ -116,38 +79,16 @@ public class SettingsMenu extends PreferenceActivity {
 		 */
 		Preference defaultCampus = (Preference) findPreference("defaultCampus");
 		defaultCampus.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
-<<<<<<< HEAD
-			
-			public boolean onPreferenceChange(Preference preference, Object newValue) {
-				
-				SharedPreferences.Editor editor = SP.edit();
-=======
 
 			public boolean onPreferenceChange(Preference preference, Object newValue) {
 
 				SharedPreferences.Editor editor = sP.edit();
-<<<<<<< HEAD
->>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb
-=======
->>>>>>> 394121e74c5a21d07bd01f89db0595e1323f526f
 				editor.putString("defaultCampus", (String) newValue);
 				editor.commit();
 				return true;
 			}
 		});
 		
-<<<<<<< HEAD
-<<<<<<< HEAD
-		/**
-		 * Get all options in res/xml/settings.xml
-		 */
-		SP.getString("defaultCampus", "0");
-		SP.getString("aboutPage", "");
-		
-	}
-
-}
-=======
 		Preference feedback = (Preference) findPreference("feedback");
 		feedback.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 
@@ -161,21 +102,6 @@ public class SettingsMenu extends PreferenceActivity {
 		/**
 		 * Get all options in res/xml/settings.xml
 		 */
-=======
-		Preference feedback = (Preference) findPreference("feedback");
-		feedback.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-
-			public boolean onPreferenceClick(Preference preference) {
-					Intent i = new Intent(getApplicationContext(), FeedbackForm.class);
-					startActivity(i);
-					return true;
-				}
-		});
-
-		/**
-		 * Get all options in res/xml/settings.xml
-		 */
->>>>>>> 394121e74c5a21d07bd01f89db0595e1323f526f
 		sP.getString("defaultCampus", "0");
 		sP.getString("aboutPage", "");
 		sP.getString("feedback", "");
@@ -183,4 +109,3 @@ public class SettingsMenu extends PreferenceActivity {
 	}
 
 }
->>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb

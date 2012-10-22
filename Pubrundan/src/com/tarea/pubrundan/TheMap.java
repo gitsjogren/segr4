@@ -28,14 +28,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-<<<<<<< HEAD
-
-import android.gesture.GestureOverlayView;
-import android.gesture.GestureOverlayView.OnGestureListener;
-
-import android.content.SharedPreferences;
-
-=======
 import android.content.SharedPreferences;
 import android.gesture.GestureOverlayView;
 import android.gesture.GestureOverlayView.OnGestureListener;
@@ -44,16 +36,12 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
->>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb
 import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-<<<<<<< HEAD
-=======
 import android.os.Handler;
->>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb
 import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.view.GestureDetector.OnDoubleTapListener;
@@ -86,14 +74,7 @@ import com.google.android.maps.Projection;
  */
 public class TheMap extends MapActivity implements OnGestureListener,
 		OnDoubleTapListener, LocationListener {
-<<<<<<< HEAD
 
-<<<<<<< HEAD
-=======
->>>>>>> 394121e74c5a21d07bd01f89db0595e1323f526f
-
-=======
->>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb
 	private SharedPreferences sharedPrefs;
 
 	/*
@@ -103,13 +84,6 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	 */
 	private boolean activeCampus;
 	
-<<<<<<< HEAD
-<<<<<<< HEAD
-	private String default_campus;
-	private int zoomLevel = 17;
-=======
-=======
->>>>>>> 394121e74c5a21d07bd01f89db0595e1323f526f
 	private String defaultCampus;
 	
 	private final int zoomLevel = 17;
@@ -125,18 +99,10 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	private final static double johannebergLat = 57691144;
 	
 	private final static double johannebergLon = 11976078;
-<<<<<<< HEAD
-=======
-	
-	private final static double entranceOfChalmersLat = 57689814;
-			
-	private final static double entranceOfChalmersLon = 11972988;
->>>>>>> 394121e74c5a21d07bd01f89db0595e1323f526f
 	
 	private Projection projection;
 
 	private MyOverlay myoverlay;
->>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb
 
 	/** The mc. */
 	private MapController mc;
@@ -171,17 +137,12 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	/** The itemized overlay. */
 	private OverlayClass itemizedOverlay;
 
-<<<<<<< HEAD
-
-=======
 	private final int defaultIntValue = -1;
->>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb
 
 	/** The different views. */
 
 	private final CharSequence[] differentViews = { "Street", "Satellite",
 			"Traffic" };
-<<<<<<< HEAD
 
 	/*
 	 * Define an array containing the access overlay items for all of the pubs
@@ -195,86 +156,66 @@ public class TheMap extends MapActivity implements OnGestureListener,
 
 	public OverlayItem[] allPubsArray = {
 
-=======
-
-	/*
-	 * Define an array containing the access overlay items for all of the pubs
-	 * of Johanneberg and Lindholmen Coordinates need to be converted into
-	 * integers, by default they are displayed in microdegrees
-	 */
-
-	/*
-	 * The pubs in the array are listed and hardcoded from
-	 * coordinates_of_the_pubs.txt	 */
-
-	public OverlayItem[] allPubsArray = {
-
->>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb
 			// J.A. Pripps
-			new OverlayItem(new GeoPoint((int) (57688984),
-					(int) (11974389)), "J.A. Pripps", "Johanneberg"),
+			new OverlayItem(new GeoPoint((int) (57.688984 * 1E6),
+					(int) (11.974389 * 1E6)), "J.A. Pripps", "Johanneberg"),
 			// Gasquen
-			new OverlayItem(new GeoPoint((int) (57688725),
-					(int) (11975156)), "Gasquen", "Johanneberg"),
+			new OverlayItem(new GeoPoint((int) (57.688725 * 1E6),
+					(int) (11.975156 * 1E6)), "Gasquen", "Johanneberg"),
 			// Bulten
-			new OverlayItem(new GeoPoint((int) (57.689148),
-					(int) (11978496)), "Bulten", "Johanneberg"),
+			new OverlayItem(new GeoPoint((int) (57.689148 * 1E6),
+					(int) (11.978496 * 1E6)), "Bulten", "Johanneberg"),
 			// Winden
-			new OverlayItem(new GeoPoint((int) (57688961),
-					(int) (11978665)), "Winden", "Johanneberg"),
+			new OverlayItem(new GeoPoint((int) (57.688961 * 1E6),
+					(int) (11.978665 * 1E6)), "Winden", "Johanneberg"),
 			// Zaloonen
-			new OverlayItem(new GeoPoint((int) (57689097),
-					(int) (11979126)), "Zaloonen", "Johanneberg"),
+			new OverlayItem(new GeoPoint((int) (57.689097 * 1E6),
+					(int) (11.979126 * 1E6)), "Zaloonen", "Johanneberg"),
 			// Club Avancez
-			new OverlayItem(new GeoPoint((int) (57692219),
-					(int) (11976862)), "Club Avancez", "Johanneberg"),
+			new OverlayItem(new GeoPoint((int) (57.692219 * 1E6),
+					(int) (11.976862 * 1E6)), "Club Avancez", "Johanneberg"),
 			// GoldenI
-			new OverlayItem(new GeoPoint((int) (57692939),
-					(int) (11975242)), "GoldenI", "Johanneberg"),
+			new OverlayItem(new GeoPoint((int) (57.692939 * 1E6),
+					(int) (11.975242 * 1E6)), "GoldenI", "Johanneberg"),
 			// Hubben 2.1
-			new OverlayItem(new GeoPoint((int) (57688331),
-					(int) (11979217)), "Hubben 2.1", "Johanneberg"),
+			new OverlayItem(new GeoPoint((int) (57.688331 * 1E6),
+					(int) (11.979217 * 1E6)), "Hubben 2.1", "Johanneberg"),
 			// Basen
-			new OverlayItem(new GeoPoint((int) (57688776),
-					(int) (11978852)), "Basen", "Johanneberg"),
+			new OverlayItem(new GeoPoint((int) (57.688776 * 1E6),
+					(int) (11.978852 * 1E6)), "Basen", "Johanneberg"),
 			// Kajsabaren
-			new OverlayItem(new GeoPoint((int) (57688196),
-					(int) (11978573)), "Kajsabaren", "Johanneberg"),
+			new OverlayItem(new GeoPoint((int) (57.688196 * 1E6),
+					(int) (11.978573 * 1E6)), "Kajsabaren", "Johanneberg"),
 			// Järnvägspub
-			new OverlayItem(new GeoPoint((int) (57688317),
-					(int) (11975757)), "Järnvägspub", "Johanneberg"),
+			new OverlayItem(new GeoPoint((int) (57.688317 * 1E6),
+					(int) (11.975757 * 1E6)), "Järnvägspub", "Johanneberg"),
 			// GasTown
-			new OverlayItem(new GeoPoint((int) (57687935),
-					(int) (11975918)), "GasTown", "Johanneberg"),
+			new OverlayItem(new GeoPoint((int) (57.687935 * 1E6),
+					(int) (11.975918 * 1E6)), "GasTown", "Johanneberg"),
 			// FortNOx
-			new OverlayItem(new GeoPoint((int) (57687302),
-					(int) (11977237)), "FortNOx", "Johanneberg"),
+			new OverlayItem(new GeoPoint((int) (57.687302 * 1E6),
+					(int) (11.977237 * 1E6)), "FortNOx", "Johanneberg"),
 			// Spritköket
-			new OverlayItem(new GeoPoint((int) (57689587),
-					(int) (11977978)), "Spritköket", "Johanneberg"),
+			new OverlayItem(new GeoPoint((int) (57.689587 * 1E6),
+					(int) (11.977978 * 1E6)), "Spritköket", "Johanneberg"),
 			// Focus
-			new OverlayItem(new GeoPoint((int) (57691001),
-					(int) (11977591)), "Focus", "Johanneberg"),
+			new OverlayItem(new GeoPoint((int) (57.691001 * 1E6),
+					(int) (11.977591 * 1E6)), "Focus", "Johanneberg"),
 			// Röda rummet
-			new OverlayItem(new GeoPoint((int) (57689977),
-					(int) (11976862)), "Röda rummet", "Johanneberg"),
+			new OverlayItem(new GeoPoint((int) (57.689977 * 1E6),
+					(int) (11.976862 * 1E6)), "Röda rummet", "Johanneberg"),
 			// Sigurd/A-fiket
-			new OverlayItem(new GeoPoint((int) (57687563),
-					(int) (11976717)), "Sigurd/A-fiket", "Johanneberg"),
+			new OverlayItem(new GeoPoint((int) (57.687563 * 1E6),
+					(int) (11.976717 * 1E6)), "Sigurd/A-fiket", "Johanneberg"),
 			// Pub P
-			new OverlayItem(new GeoPoint((int) (57706463),
-					(int) (11939596)), "Pub P", "Lindholmen"),
+			new OverlayItem(new GeoPoint((int) (57.706463 * 1E6),
+					(int) (11.939596 * 1E6)), "Pub P", "Lindholmen"),
 			// 11:an
-<<<<<<< HEAD
 			new OverlayItem(new GeoPoint((int) (57.706085 * 1E6),
 					(int) (11.936675 * 1E6)), "Pub F", "Johanneberg"),
-=======
-			new OverlayItem(new GeoPoint((int) (57706085),
-					(int) (11936675)), "Pub F", "Johanneberg"),
->>>>>>> 394121e74c5a21d07bd01f89db0595e1323f526f
 			// Gangnam Style
-			new OverlayItem(new GeoPoint((int) (375175725),
-					(int) (127047462)), "Gangnam Style", "Sydkorea"),
+			new OverlayItem(new GeoPoint((int) (37.5175725 * 1E6),
+					(int) (127.047462 * 1E6)), "Gangnam Style", "Sydkorea"),
 
 	};
 
@@ -289,21 +230,9 @@ public class TheMap extends MapActivity implements OnGestureListener,
 
 		super.onCreate(savedInstanceState);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-	
-		requestWindowFeature(Window.FEATURE_NO_TITLE); // Suppress title bar for
-														// more space
-=======
-		requestWindowFeature(Window.FEATURE_NO_TITLE); // Suppress title bar for more space
->>>>>>> 394121e74c5a21d07bd01f89db0595e1323f526f
-		setContentView(R.layout.showthemap); // Use xml-layout showtomap.xml
-		
-=======
 		requestWindowFeature(Window.FEATURE_NO_TITLE); // Suppress title bar for more space
 		setContentView(R.layout.showthemap); // Use xml-layout showtomap.xml
 
->>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb
 		// Add map controller with zoom controls
 		mapView = (MapView) findViewById(R.id.mv);
 		mapView.setSatellite(true); // Satellite is set by default
@@ -317,15 +246,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 																	// for later
 																	// use in
 																	// the code
-<<<<<<< HEAD
-<<<<<<< HEAD
-		// checkIfGpsIsEnabled(); // check if gps is enabled
-=======
 		checkIfGpsIsEnabled(); // check if gps is enabled
->>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb
-=======
-		checkIfGpsIsEnabled(); // check if gps is enabled
->>>>>>> 394121e74c5a21d07bd01f89db0595e1323f526f
 
 		/*
 		 * If the application is running for the first time a dialog will pop up
@@ -377,27 +298,6 @@ public class TheMap extends MapActivity implements OnGestureListener,
 			}
 		});
 
-<<<<<<< HEAD
-		String pubName = getIntent().getStringExtra("Pub");	
-		int pubNrInArray = getIntent().getIntExtra("Pub to animate to in array list", 1);  // 1 = defaultvalue
-		
-		if( pubName != null && pubNrInArray >= 0 ){
-			Toast.makeText(getBaseContext(), pubName, Toast.LENGTH_LONG).show();
-			GeoPoint gp = allPubsArray[pubNrInArray].getPoint();
-			animateToPubandSetZoom(gp);
-        }
-		
-	}
-	
-	public void animateToPubandSetZoom(GeoPoint gp){
-		
-		mc = mapView.getController();
-		mc.animateTo(gp);
-		mapView.invalidate();
-		mapView.getController();
-		mapView.postInvalidate();
-		mc.setZoom(19);
-=======
 		String fromIdShowPubOnMap = getIntent().getStringExtra("Show");
 		int animateToPub = getIntent().getIntExtra(
 				"Pub to animate to", defaultIntValue);
@@ -435,10 +335,6 @@ public class TheMap extends MapActivity implements OnGestureListener,
 				mc.animateTo(gp);
 			}
 		}, timeConstant);
-<<<<<<< HEAD
->>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb
-=======
->>>>>>> 394121e74c5a21d07bd01f89db0595e1323f526f
 	}
 
 	/*
@@ -481,8 +377,6 @@ public class TheMap extends MapActivity implements OnGestureListener,
 											// (source:
 											// http://stackoverflow.com/questions/2659770/android-map-performance-poor-because-of-many-overlays)
 		mapView.postInvalidate();
-<<<<<<< HEAD
-=======
 	}
 
 	/*
@@ -498,92 +392,29 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		else if(defaultCampus.equals("1")){
 			activeCampus = false;
 		}
->>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb
-	}
-
-<<<<<<< HEAD
-	/**
-	 * A dialog that lets the user set the default campus, on the first run
-	 * only, that will make the application navigate there on start.
-	 */
-<<<<<<< HEAD
-
-=======
->>>>>>> 394121e74c5a21d07bd01f89db0595e1323f526f
-	/*
-	 * Method that gets the value for default campus if the
-	 * application itself has been closed.
-	 */
-	private void getDefaultCampus() {
-<<<<<<< HEAD
-		default_campus = sharedPrefs.getString("defaultCampus", "0");
-		
-		if(default_campus.equals("0"))
-			activeCampus = true;
-		
-		else if(default_campus.equals("1"))
-=======
-		defaultCampus = sharedPrefs.getString("defaultCampus", "0");
-
-		if(defaultCampus.equals("0")){
-			activeCampus = true;
-		}
-		else if(defaultCampus.equals("1")){
->>>>>>> 394121e74c5a21d07bd01f89db0595e1323f526f
-			activeCampus = false;
-		}
 	}
 
 	/**
 	 * A dialog that lets the user set the default campus, on the first run
 	 * only, that will make the application navigate there on start.
 	 */
-=======
->>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb
 	private void setDefaultCampus() {
 		final AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle("Standard campus")
 				.setMessage("Var vänlig och välj standard campus för kartan.")
 				.setIcon(R.drawable.icon_warning)
 				.setCancelable(false)
-<<<<<<< HEAD
-<<<<<<< HEAD
-				.setNeutralButton("Johanneberg",
-						new android.content.DialogInterface.OnClickListener() {
-							public void onClick(final DialogInterface dialog,
-									final int id) {
-								default_campus = "0";
-=======
 				.setNeutralButton(R.string.johanneberg,
 						new android.content.DialogInterface.OnClickListener() {
 							public void onClick(final DialogInterface dialog,
 									final int id) {
 								defaultCampus = "0";
->>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb
-=======
-				.setNeutralButton(R.string.johanneberg,
-						new android.content.DialogInterface.OnClickListener() {
-							public void onClick(final DialogInterface dialog,
-									final int id) {
-								defaultCampus = "0";
->>>>>>> 394121e74c5a21d07bd01f89db0595e1323f526f
 								SharedPreferences.Editor editor = sharedPrefs
 										.edit();
 								editor.putString("defaultCampus", "0");
 								editor.commit();
 								activeCampus = true;
 								loading();
-<<<<<<< HEAD
-								
-							}
-						})
-				.setNegativeButton(R.string.lindholmen,
-						new DialogInterface.OnClickListener() {
-							public void onClick(final DialogInterface dialog,
-									final int id) {
-<<<<<<< HEAD
-								default_campus = "1";
-=======
 
 							}
 						})
@@ -592,10 +423,6 @@ public class TheMap extends MapActivity implements OnGestureListener,
 							public void onClick(final DialogInterface dialog,
 									final int id) {
 								defaultCampus = "1";
->>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb
-=======
-								defaultCampus = "1";
->>>>>>> 394121e74c5a21d07bd01f89db0595e1323f526f
 								SharedPreferences.Editor editor = sharedPrefs
 										.edit();
 								editor.putString("defaultCampus", "1");
@@ -639,34 +466,15 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	 * Zooms into the campus that the user has chosen.
 	 */
 	protected void showDefaultCampus() {
-<<<<<<< HEAD
-<<<<<<< HEAD
-		if (default_campus.equals("0")){
-=======
 		if (defaultCampus.equals("0")){
->>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb
-=======
-		if (defaultCampus.equals("0")){
->>>>>>> 394121e74c5a21d07bd01f89db0595e1323f526f
 			changeToCampusJohanneberg();
 			activeCampus = true;
 		}
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-		else if (default_campus.equals("1")){
-=======
-		else if (defaultCampus.equals("1")){
->>>>>>> 394121e74c5a21d07bd01f89db0595e1323f526f
-			changeToCampusLindholmen();
-			activeCampus = false;
-			
-=======
 		else if (defaultCampus.equals("1")){
 			changeToCampusLindholmen();
 			activeCampus = false;
 
->>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb
 		}
 	}
 
@@ -676,29 +484,12 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	 * depending on which campus you have as active.
 	 */
 	public void changeCampus(){
-<<<<<<< HEAD
-<<<<<<< HEAD
-		if(activeCampus)
-			changeToCampusLindholmen();
-			
-		else if(!activeCampus)
-			changeToCampusJohanneberg();
-=======
 		if(activeCampus){
 			changeToCampusLindholmen();
 		}
 		else if(!activeCampus){
 			changeToCampusJohanneberg();
 		}
->>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb
-=======
-		if(activeCampus){
-			changeToCampusLindholmen();
-		}
-		else if(!activeCampus){
-			changeToCampusJohanneberg();
-		}
->>>>>>> 394121e74c5a21d07bd01f89db0595e1323f526f
 	}	
 
 
@@ -734,15 +525,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		mc.setCenter(gp);
 		mc.setZoom(zoomLevel);
 		Toast.makeText(TheMap.this,
-<<<<<<< HEAD
-<<<<<<< HEAD
-				"Campus Lindholmen",
-=======
 				R.string.campusLindholmen,
->>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb
-=======
-				R.string.campusLindholmen,
->>>>>>> 394121e74c5a21d07bd01f89db0595e1323f526f
 				Toast.LENGTH_SHORT).show();
 		activeCampus = false;
 	}
@@ -755,29 +538,6 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	public void changeToCampusJohanneberg() {
 
 		mc = mapView.getController();
-<<<<<<< HEAD
-<<<<<<< HEAD
-		gp = new GeoPoint((int) (57.691144 * 1e6), (int) (11.976078 * 1e6));
-=======
-		gp = new GeoPoint((int) (johannebergLat), (int) (johannebergLon));
->>>>>>> 394121e74c5a21d07bd01f89db0595e1323f526f
-		mc.animateTo(gp);
-		mc.setCenter(gp);
-		mc.setZoom(zoomLevel);
-		Toast.makeText(TheMap.this, R.string.campusJohanneberg, Toast.LENGTH_SHORT)
-				.show();
-		activeCampus = true;
-	}
-<<<<<<< HEAD
-	
-	public void animateToGeopoint(GeoPoint gp, int zoom){
-		
-		mc = mapView.getController();
-		//gp = new GeoPoint((int) (57.689034 * 1e6), (int) (11.976468 * 1e6));
-		mc.animateTo(gp);
-		mc.setCenter(gp);
-		mc.setZoom(zoom);
-=======
 		gp = new GeoPoint((int) (johannebergLat), (int) (johannebergLon));
 		mc.animateTo(gp);
 		mc.setCenter(gp);
@@ -785,10 +545,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		Toast.makeText(TheMap.this, R.string.campusJohanneberg, Toast.LENGTH_SHORT)
 				.show();
 		activeCampus = true;
->>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb
 	}
-=======
->>>>>>> 394121e74c5a21d07bd01f89db0595e1323f526f
 
 	/**
 	 * Start pub list activity.
@@ -802,21 +559,6 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		startActivity(i);
 	}
 
-<<<<<<< HEAD
-	/**
-	 * Start pub info activity.
-	 */
-	public void startPubInfoActivity() {
-
-		// default PubList.class in development test using PubInfo.class
-		Intent i = new Intent(this, JAPripps.class); // context = this ,
-														// PubInfo.class =
-														// ClassToNavigateTo.class
-		startActivity(i);
-	}
-
-=======
->>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb
 	// Required method since class extends MapActivity
 	/**
 	 * (non-Javadoc)
@@ -883,17 +625,10 @@ public class TheMap extends MapActivity implements OnGestureListener,
 			break;
 			
 		case R.id.settings:
-<<<<<<< HEAD
-
-			Intent settingsActivity = new Intent(getBaseContext(),
-					SettingsMenu.class);
-			startActivity(settingsActivity);
-=======
 			Intent settingsActivity = new Intent(getBaseContext(),
 					SettingsMenu.class);
 			startActivity(settingsActivity);
 			break;
->>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb
 
 		case R.id.share:
 			Intent showShare = new Intent(Intent.ACTION_SEND);
@@ -1232,11 +967,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 			mPaint.setStrokeCap(Paint.Cap.ROUND);
 			mPaint.setStrokeWidth(4);
 
-<<<<<<< HEAD
 			GeoPoint gp1 = new GeoPoint((int) (57.689814 * 1E6), (int) (11.972988 * 1E6));  // for development, geopoint of chalmers entrance, starting point
-=======
-			GeoPoint gp1 = new GeoPoint((int) (entranceOfChalmersLat), (int) (entranceOfChalmersLon));  // for development, geopoint of chalmers entrance, starting point
->>>>>>> 394121e74c5a21d07bd01f89db0595e1323f526f
 			GeoPoint gp2 = allPubsArray[endPoint].getPoint();	// End point
 
 			Path path1 = new Path();
