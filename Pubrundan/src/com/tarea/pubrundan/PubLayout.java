@@ -29,9 +29,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.Window;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class JAPripps.
+ * The Class PubLayout.
  * 
  * @author Erik Sjögren
  * 
@@ -69,9 +68,7 @@ public class PubLayout extends Activity {
 		oMenu.inflate(R.menu.pubmenu, menu);
 		return true;
 	}
-
-	// onOptionsMenu with three items, "Street", "Satellite" & Traffic... code
-	// refactor is needed!
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -81,8 +78,8 @@ public class PubLayout extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		Intent e = getIntent();
 		String title = e.getStringExtra("Pub title");
-		int moreInfo = e.getIntExtra("More info", -1);
-		int pubNrInArray = e.getIntExtra("Pub nr in array", -1);
+		int moreInfo = e.getIntExtra("More info", defaultIntValue);
+		int pubNrInArray = e.getIntExtra("Pub nr in array", defaultIntValue);
 		super.onOptionsItemSelected(item);
 		switch (item.getItemId()) {
 		case R.id.more_pubinfo:

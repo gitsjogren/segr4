@@ -1,3 +1,23 @@
+/* ============================================================
+ * Copyright © 2012 Adam Book, Rickard Edfast, Erik Sjögren,
+ * Alexander Kurkimäki
+ *
+ * This file is part of Pubrundan.
+ *
+ * Pubrundan is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Pubrundan is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Pubrundan. If not, see <http://www.gnu.org/licenses/>.
+ * ============================================================ */
+
 package com.tarea.pubrundan;
 
 
@@ -6,6 +26,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.*;
 import android.widget.*;
+
+/**
+ * The class FeedbackForm
+ * 
+ * @author Rickard Edfast
+ * 
+ */
 
 public class FeedbackForm extends Activity {
 
@@ -25,10 +52,7 @@ public class FeedbackForm extends Activity {
 
 
 				final EditText nameField = (EditText) findViewById(R.id.EditTextName);  
-				String name = nameField.getText().toString(); 
-//				if(name == ""){
-//					// Create dialogbox: "alla fält måste vara ifyllda"
-//				}
+				String name = nameField.getText().toString();
 
 				final EditText emailField = (EditText) findViewById(R.id.EditTextEmail);  
 				String email = emailField.getText().toString();
@@ -65,21 +89,8 @@ public class FeedbackForm extends Activity {
 				sendMail.putExtra(Intent.EXTRA_TEXT, person+feedback+response);
 				// Either launches a dialog box with available mail-apps or starts the users default choice
 				startActivity(sendMail);
-				//startActivity(Intent.createChooser(sendMail, "Send feedback via..."));
-
-//				Intent i = new Intent(getBaseContext(), SettingsMenu.class);
-//				startActivity(i);
 			}
 		});
 
 	}
 }
-//	}
-//		
-
-
-
-
-//public void sendFeedback() {
-//	switch(button.getId()) {
-//	case R.id.ButtonSendFeedback:
