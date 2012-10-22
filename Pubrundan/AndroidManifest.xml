@@ -32,6 +32,7 @@
  
         <activity android:name=".TheMap" android:screenOrientation="portrait"> </activity>
         <uses-library android:name="com.google.android.maps" />
+<<<<<<< HEAD
         <activity android:name=".SettingsMenu" android:screenOrientation="portrait"></activity>
         <activity android:name=".AboutPage" android:screenOrientation="portrait"></activity>
         <activity android:name=".PubList" android:screenOrientation="portrait"></activity>
@@ -58,6 +59,9 @@
          <activity android:name=".Pubs.GangnamStyle" android:screenOrientation="landscape"></activity>
 
 =======
+=======
+        <activity android:name=".PubList" android:screenOrientation="portrait"></activity>
+>>>>>>> 394121e74c5a21d07bd01f89db0595e1323f526f
         <activity android:name=".PubLayout" android:screenOrientation="portrait"></activity>
         <activity android:name=".SettingsMenu" android:screenOrientation="portrait"></activity>
         <activity android:name=".FeedbackForm" android:screenOrientation="portrait"></activity>

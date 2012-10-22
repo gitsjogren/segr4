@@ -63,11 +63,14 @@
     <string name="iconshock"><a href="http://www.iconshock.com" rel="nofollow">Original icon is made by Iconshock</a></string>
     <string name="campusJohanneberg">Campus Johanneberg</string>
     <string name="campusLindholmen">Campus Lindholmen</string>
+<<<<<<< HEAD
 
     <string name="version">0.3</string>
     <string name="Developers">TAREA</string>
     <string name="Licence">GPL</string>
     <string name="iconshock"><a href="http://www.iconshock.com" rel="nofollow">Original icon is made by Iconshock</a></string>
 
+=======
+>>>>>>> 394121e74c5a21d07bd01f89db0595e1323f526f
 
 </resources>

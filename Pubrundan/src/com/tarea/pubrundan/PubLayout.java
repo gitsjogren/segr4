@@ -39,10 +39,13 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.Window;
 
+<<<<<<< HEAD
 >>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb:Pubrundan/src/com/tarea/pubrundan/PubLayout.java
 // TODO: Auto-generated Javadoc
+=======
+>>>>>>> 394121e74c5a21d07bd01f89db0595e1323f526f
 /**
- * The Class JAPripps.
+ * The Class PubLayout.
  * 
  * @author Erik Sjögren
  * 
@@ -105,9 +108,7 @@ public class PubLayout extends Activity {
 		return true;
 >>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb:Pubrundan/src/com/tarea/pubrundan/PubLayout.java
 	}
-
-	// onOptionsMenu with three items, "Street", "Satellite" & Traffic... code
-	// refactor is needed!
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -117,8 +118,8 @@ public class PubLayout extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		Intent e = getIntent();
 		String title = e.getStringExtra("Pub title");
-		int moreInfo = e.getIntExtra("More info", -1);
-		int pubNrInArray = e.getIntExtra("Pub nr in array", -1);
+		int moreInfo = e.getIntExtra("More info", defaultIntValue);
+		int pubNrInArray = e.getIntExtra("Pub nr in array", defaultIntValue);
 		super.onOptionsItemSelected(item);
 		switch (item.getItemId()) {
 		case R.id.more_pubinfo:

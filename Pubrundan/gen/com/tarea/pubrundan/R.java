@@ -14,7 +14,10 @@ public final class R {
 =======
         public static final int feedbacktypelist=0x7f050002;
         public static final int pubs=0x7f050003;
+<<<<<<< HEAD
 >>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb
+=======
+>>>>>>> 394121e74c5a21d07bd01f89db0595e1323f526f
         public static final int startCampus=0x7f050001;
     }
     public static final class attr {
@@ -198,7 +201,10 @@ public final class R {
         public static final int welcome=0x7f030018;
         public static final int winden=0x7f030019;
         public static final int zaloonen=0x7f03001a;
+<<<<<<< HEAD
 >>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb
+=======
+>>>>>>> 394121e74c5a21d07bd01f89db0595e1323f526f
     }
     public static final class menu {
         public static final int menu=0x7f080000;

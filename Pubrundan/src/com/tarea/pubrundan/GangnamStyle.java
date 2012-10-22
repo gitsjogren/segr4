@@ -26,8 +26,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import com.tarea.pubrundan.R;
 
-
-// TODO: Auto-generated Javadoc
 /**
 <<<<<<< HEAD
  * The Class GangnamStyle.
@@ -39,13 +37,7 @@ import com.tarea.pubrundan.R;
 >>>>>>> origin/Branch-for-theMap
  */
 public class GangnamStyle extends Activity {
-	
-	
-	
-	// standard onCreate method
-		/* (non-Javadoc)
-	 * @see android.app.Activity#onCreate(android.os.Bundle)
-	 */
+
 	public void onCreate(Bundle savedInstanceState) {
 
 			requestWindowFeature(Window.FEATURE_NO_TITLE); // Suppress title bar for

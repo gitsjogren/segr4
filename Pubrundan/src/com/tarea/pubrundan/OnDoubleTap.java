@@ -26,7 +26,6 @@ import android.view.MotionEvent;
 
 import com.google.android.maps.MapView;
 
-// TODO: Auto-generated Javadoc
 /**
 <<<<<<< HEAD
  * The Class OnDoubleTap.
@@ -40,12 +39,18 @@ import com.google.android.maps.MapView;
 public class OnDoubleTap extends MapView {
 
 	  /** The last touch time. */
+<<<<<<< HEAD
   	private long lastTouchTime = -1;
 <<<<<<< HEAD
   	private int millivalue = 250;
 =======
   	private final int millivalue = 250;
 >>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb
+=======
+  	private static long lastTouchTime = -1;
+  	
+  	private final static int millivalue = 250;
+>>>>>>> 394121e74c5a21d07bd01f89db0595e1323f526f
 
 	  /**
   	 * Instantiates a new on double tap.
