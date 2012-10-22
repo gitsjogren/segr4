@@ -37,7 +37,7 @@ public class OnDoubleTap extends MapView {
 	/** The last touch time. */
 	private static long lastTouchTime = -1;
 
-	private final int milliValue = 250; // to make double tap, the next
+	private final static int milliValue = 250; // to make double tap, the next
 												// tap must tapped <250
 												// milliseconds after the first
 												// tap
@@ -52,7 +52,8 @@ public class OnDoubleTap extends MapView {
 	 */
 	public OnDoubleTap(Context context, AttributeSet attrs) {
 
-		super(context, attrs);	// passes parameters to superclass, context and attrs contructs a mapView object
+		super(context, attrs); // passes parameters to superclass, context and
+								// attrs contructs a mapView object
 	}
 
 	/*
@@ -73,7 +74,14 @@ public class OnDoubleTap extends MapView {
 			long thisTime = System.currentTimeMillis(); // sets thisTime to the
 														// systems current time
 														// in milliseconds
-			if (thisTime - lastTouchTime < milliValue) {	// if current time(msec) minus the value of lastTouchTime is less than 250 msec, zoom in one zoomlevel = a double tap
+			if (thisTime - lastTouchTime < milliValue) { // if current
+															// time(msec) minus
+															// the value of
+															// lastTouchTime is
+															// less than 250
+															// msec, zoom in one
+															// zoomlevel = a
+															// double tap
 
 				this.getController().zoomInFixing((int) ev.getX(), // get
 																	// controller

@@ -78,39 +78,46 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	private SharedPreferences sharedPrefs;
 
 	/*
-	 * Boolean that tells the application which campus that
-	 * is currently the one the user is looking at. 
-	 * Used for the 'Byt Campus'-button.
+	 * Boolean that tells the application which campus that is currently the one
+	 * the user is looking at. Used for the 'Byt Campus'-button.
 	 */
 	private boolean activeCampus;
-	
+
 	private String defaultCampus;
-	
+
 	private final int sleepTime = 3000;
-	
+
 	private final static int strokeWidthIsFour = 4;
-	
+
 	private final static int zoomLevel = 17;
-	
+
 	private final static int closeZoom = 19;
-	
+
 	private final int timeConstant = 200;
-	
+
 	private final double lindholmenLat = 57705947;
-	
+
 	private final double lindholmenLon = 11936642;
+<<<<<<< HEAD
 	
 <<<<<<< HEAD
 =======
+=======
+
+>>>>>>> dfa211d3e950728d3a9e8ae72e237577cfe92d1d
 	private final double johannebergLat = 57691144;
-	
+
 	private final double johannebergLon = 11976078;
-	
+
 	private final double entranceOfChalmersLat = 57689814;
-			
+
 	private final double entranceOfChalmersLon = 11972988;
+<<<<<<< HEAD
 	
 >>>>>>> 93b02a650f2df3966f1c1655821f429336d63125
+=======
+
+>>>>>>> dfa211d3e950728d3a9e8ae72e237577cfe92d1d
 	private Projection projection;
 
 	private MyOverlay myoverlay;
@@ -161,11 +168,13 @@ public class TheMap extends MapActivity implements OnGestureListener,
 
 	/*
 	 * The pubs in the array are listed and hardcoded from
-	 * coordinates_of_the_pubs.txt	 */
+	 * coordinates_of_the_pubs.txt
+	 */
 
 	private OverlayItem[] allPubsArray = {
 
 			// J.A. Pripps
+<<<<<<< HEAD
 			new OverlayItem(new GeoPoint((int) (57.688984 * 1E6),
 					(int) (11.974389 * 1E6)), "J.A. Pripps", "Johanneberg"),
 			// Gasquen
@@ -225,19 +234,80 @@ public class TheMap extends MapActivity implements OnGestureListener,
 			// Gangnam Style
 			new OverlayItem(new GeoPoint((int) (37.5175725 * 1E6),
 					(int) (127.047462 * 1E6)), "Gangnam Style", "Sydkorea"),
+=======
+			new OverlayItem(new GeoPoint((int) (57688984), (int) (11974389)),
+					"J.A. Pripps", "Johanneberg"),
+			// Gasquen
+			new OverlayItem(new GeoPoint((int) (57688725), (int) (11975156)),
+					"Gasquen", "Johanneberg"),
+			// Bulten
+			new OverlayItem(new GeoPoint((int) (57.689148), (int) (11978496)),
+					"Bulten", "Johanneberg"),
+			// Winden
+			new OverlayItem(new GeoPoint((int) (57688961), (int) (11978665)),
+					"Winden", "Johanneberg"),
+			// Zaloonen
+			new OverlayItem(new GeoPoint((int) (57689097), (int) (11979126)),
+					"Zaloonen", "Johanneberg"),
+			// Club Avancez
+			new OverlayItem(new GeoPoint((int) (57692219), (int) (11976862)),
+					"Club Avancez", "Johanneberg"),
+			// GoldenI
+			new OverlayItem(new GeoPoint((int) (57692939), (int) (11975242)),
+					"GoldenI", "Johanneberg"),
+			// Hubben 2.1
+			new OverlayItem(new GeoPoint((int) (57688331), (int) (11979217)),
+					"Hubben 2.1", "Johanneberg"),
+			// Basen
+			new OverlayItem(new GeoPoint((int) (57688776), (int) (11978852)),
+					"Basen", "Johanneberg"),
+			// Kajsabaren
+			new OverlayItem(new GeoPoint((int) (57688196), (int) (11978573)),
+					"Kajsabaren", "Johanneberg"),
+			// Järnvägspub
+			new OverlayItem(new GeoPoint((int) (57688317), (int) (11975757)),
+					"Järnvägspub", "Johanneberg"),
+			// GasTown
+			new OverlayItem(new GeoPoint((int) (57687935), (int) (11975918)),
+					"GasTown", "Johanneberg"),
+			// FortNOx
+			new OverlayItem(new GeoPoint((int) (57687302), (int) (11977237)),
+					"FortNOx", "Johanneberg"),
+			// Spritköket
+			new OverlayItem(new GeoPoint((int) (57689587), (int) (11977978)),
+					"Spritköket", "Johanneberg"),
+			// Focus
+			new OverlayItem(new GeoPoint((int) (57691001), (int) (11977591)),
+					"Focus", "Johanneberg"),
+			// Röda rummet
+			new OverlayItem(new GeoPoint((int) (57689977), (int) (11976862)),
+					"Röda rummet", "Johanneberg"),
+			// Sigurd/A-fiket
+			new OverlayItem(new GeoPoint((int) (57687563), (int) (11976717)),
+					"Sigurd/A-fiket", "Johanneberg"),
+			// Pub P
+			new OverlayItem(new GeoPoint((int) (57706463), (int) (11939596)),
+					"Pub P", "Lindholmen"),
+			// 11:an
+			new OverlayItem(new GeoPoint((int) (57706085), (int) (11936675)),
+					"Pub F", "Johanneberg"),
+			// Gangnam Style
+			new OverlayItem(new GeoPoint((int) (375175725), (int) (127047462)),
+					"Gangnam Style", "Sydkorea"),
+>>>>>>> dfa211d3e950728d3a9e8ae72e237577cfe92d1d
 
 	};
 
 	/*
 	 * standard onCreate method
-	 * 
 	 */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 
-		super.onCreate(savedInstanceState);	// standard onCreate method
+		super.onCreate(savedInstanceState); // standard onCreate method
 
-		requestWindowFeature(Window.FEATURE_NO_TITLE); // Suppress title bar for more space
+		requestWindowFeature(Window.FEATURE_NO_TITLE); // Suppress title bar for
+														// more space
 		setContentView(R.layout.showthemap); // Use xml-layout showtomap.xml
 
 		// Add map controller with zoom controls
@@ -253,7 +323,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 																	// for later
 																	// use in
 																	// the code
-		checkIfGpsIsEnabled(); // check if gps is enabled
+		checkIfGpsIsEnabled(); // check if gps is enabled, if not a dialog will show up
 
 		/*
 		 * If the application is running for the first time a dialog will pop up
@@ -269,16 +339,15 @@ public class TheMap extends MapActivity implements OnGestureListener,
 			// Save the state
 			getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
 					.putBoolean("firstrun", false).commit();
-		}	
+		}
 		/*
-		 * If it's not the first run of the application
-		 * then we can just start the loading sequence.
-		 * Not possible if the default campus hasn't been
+		 * If it's not the first run of the application then we can just start
+		 * the loading sequence. Not possible if the default campus hasn't been
 		 * chosen.
 		 */
-		else{
-			getDefaultCampus();
-			loading();
+		else {
+			getDefaultCampus();	// get the default campus, stored locally
+			loading();	// invoke showThePubs() and showDefaultCampus()
 		}
 
 		// Button for get my location
@@ -306,30 +375,31 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		});
 
 		String fromIdShowPubOnMap = getIntent().getStringExtra("Show");
-		int animateToPub = getIntent().getIntExtra(
-				"Pub to animate to", defaultIntValue);
-		
+		int animateToPub = getIntent().getIntExtra("Pub to animate to",
+				defaultIntValue);
+
 		String fromIdFindPub = getIntent().getStringExtra("Route");
-		int drawRouteToPub = getIntent().getIntExtra(
-				"Pub to draw route to", defaultIntValue);
+		int drawRouteToPub = getIntent().getIntExtra("Pub to draw route to",
+				defaultIntValue);
 
 		if (fromIdShowPubOnMap != null) {
-			Toast.makeText(getBaseContext(), fromIdShowPubOnMap, Toast.LENGTH_LONG).show();
+			Toast.makeText(getBaseContext(), fromIdShowPubOnMap,
+					Toast.LENGTH_LONG).show();
 			GeoPoint gp = allPubsArray[animateToPub].getPoint();
 			animateToPubandSetZoom(gp);
 		}
-		
-		else if (fromIdFindPub != null){
 
-			 mapOverlays = mapView.getOverlays();
-			 projection = mapView.getProjection();
+		else if (fromIdFindPub != null) {
 
-			 myoverlay = new MyOverlay(drawRouteToPub);
-			 mapOverlays.add(myoverlay);
+			mapOverlays = mapView.getOverlays();
+			projection = mapView.getProjection();
+
+			myoverlay = new MyOverlay(drawRouteToPub);
+			mapOverlays.add(myoverlay);	// a line drawn from a geopoint to another to myOverlay
 		}
 
 	}
-	
+
 	public void animateToPubandSetZoom(final GeoPoint gp) {
 
 		// http://code.google.com/p/osmdroid/issues/detail?id=204
@@ -359,7 +429,6 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		return true;
 	}
 
-
 	// display all pubs in the allPubsArray as an overlay onto the map
 	/**
 	 * Show the pubs.
@@ -383,20 +452,19 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		mapOverlays.add(itemizedOverlay); // need to be outside the for-loop
 											// (source:
 											// http://stackoverflow.com/questions/2659770/android-map-performance-poor-because-of-many-overlays)
-		mapView.postInvalidate();
+		mapView.postInvalidate();	// if the map is changed, this method should be used
 	}
 
 	/*
-	 * Method that gets the value for default campus if the
-	 * application itself has been closed.
+	 * Method that gets the value for default campus if the application itself
+	 * has been closed.
 	 */
 	private void getDefaultCampus() {
 		defaultCampus = sharedPrefs.getString("defaultCampus", "0");
 
-		if(defaultCampus.equals("0")){
+		if (defaultCampus.equals("0")) {
 			activeCampus = true;
-		}
-		else if(defaultCampus.equals("1")){
+		} else if (defaultCampus.equals("1")) {
 			activeCampus = false;
 		}
 	}
@@ -442,15 +510,16 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		ad.show();
 	}
 
+	// loading procedure under 3000msec = sleepTime
 	private void loading() {
 
-		final Object loadingDialog = ProgressDialog.show(this,
-				"Laddar...", "Vänta...", true);
+		final Object loadingDialog = ProgressDialog.show(this, "Laddar...",
+				"Vänta...", true);
 		new Thread() {
 			public void run() {
 				try {
 					showThePubs();
-					showDefaultCampus();				
+					showDefaultCampus();
 
 					// Displaying all pubs as overlay in maps,
 					// see method for
@@ -459,7 +528,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 					// location, inactive during development.
 
 					sleep(sleepTime); // sleep the thread, 3000 milliseconds = 3
-									// seconds.
+										// seconds.
 				} catch (Exception e) {
 				}
 
@@ -473,12 +542,12 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	 * Zooms into the campus that the user has chosen.
 	 */
 	protected void showDefaultCampus() {
-		if (defaultCampus.equals("0")){
+		if (defaultCampus.equals("0")) {
 			changeToCampusJohanneberg();
 			activeCampus = true;
 		}
 
-		else if (defaultCampus.equals("1")){
+		else if (defaultCampus.equals("1")) {
 			changeToCampusLindholmen();
 			activeCampus = false;
 
@@ -486,19 +555,16 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	}
 
 	/**
-	 * Used to for the 'Byt Campus' button which looks
-	 * at the current campus and jumps between the two,
-	 * depending on which campus you have as active.
+	 * Used to for the 'Byt Campus' button which looks at the current campus and
+	 * jumps between the two, depending on which campus you have as active.
 	 */
-	public void changeCampus(){
-		if(activeCampus){
+	public void changeCampus() {
+		if (activeCampus) {
 			changeToCampusLindholmen();
-		}
-		else if(!activeCampus){
+		} else if (!activeCampus) {
 			changeToCampusJohanneberg();
 		}
-	}	
-
+	}
 
 	/**
 	 * Show the current position.
@@ -531,12 +597,10 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		mc.animateTo(gp);
 		mc.setCenter(gp);
 		mc.setZoom(zoomLevel);
-		Toast.makeText(TheMap.this,
-				R.string.campusLindholmen,
+		Toast.makeText(TheMap.this, R.string.campusLindholmen,
 				Toast.LENGTH_SHORT).show();
 		activeCampus = false;
 	}
-
 
 	/**
 	 * Change to campus johanneberg.
@@ -549,8 +613,8 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		mc.animateTo(gp);
 		mc.setCenter(gp);
 		mc.setZoom(zoomLevel);
-		Toast.makeText(TheMap.this, R.string.campusJohanneberg, Toast.LENGTH_SHORT)
-				.show();
+		Toast.makeText(TheMap.this, R.string.campusJohanneberg,
+				Toast.LENGTH_SHORT).show();
 		activeCampus = true;
 	}
 
@@ -601,7 +665,8 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.change_map:
-			new AlertDialog.Builder(this).setTitle("Ändra vy")
+			new AlertDialog.Builder(this)
+					.setTitle("Ändra vy")
 					.setSingleChoiceItems(differentViews, defaultIntValue,
 							new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,
@@ -630,24 +695,25 @@ public class TheMap extends MapActivity implements OnGestureListener,
 								}
 							}).create().show();
 			break;
-			
+
 		case R.id.settings:
 			Intent settingsActivity = new Intent(getBaseContext(),
-					SettingsMenu.class);
+					SettingsMenu.class);	// start SettingsMenu class
 			startActivity(settingsActivity);
 			break;
 
 		case R.id.share:
-			Intent showShare = new Intent(Intent.ACTION_SEND);
+			Intent showShare = new Intent(Intent.ACTION_SEND);	// start ACTION_SEND, calling android system
 			showShare.setType("text/plain");
 			String title = (String) getResources().getText(R.string.shareTitle);
-			String appLink = (String) getResources().getText(R.string.shareLink);
+			String appLink = (String) getResources()
+					.getText(R.string.shareLink);
 			showShare.putExtra(Intent.EXTRA_TEXT, appLink);
 			startActivity(Intent.createChooser(showShare, title));
 			break;
 		}
 		return true;
-		
+
 	}
 
 	/**
@@ -688,6 +754,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 
 	/**
 	 * Called when the user press back button in the TheMap.
+	 * Will exit the application.
 	 */
 	@Override
 	public void onBackPressed() {
@@ -757,8 +824,8 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	 * 
 	 * @param location
 	 *            the location
-	 */	
-	public void onLocationChanged(Location location) {  
+	 */
+	public void onLocationChanged(Location location) {
 	}
 
 	/**
@@ -801,9 +868,8 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	/**
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * android.view.GestureDetector.OnDoubleTapListener#onDoubleTapEvent(android
-	 * .view.MotionEvent)
+	 * @see android.view.GestureDetector.OnDoubleTapListener#onDoubleTapEvent(android
+	 *      .view.MotionEvent)
 	 */
 	public boolean onDoubleTapEvent(MotionEvent e) {
 		// TODO Auto-generated method stub
@@ -813,9 +879,8 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	/**
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * android.view.GestureDetector.OnDoubleTapListener#onSingleTapConfirmed
-	 * (android.view.MotionEvent)
+	 * @see android.view.GestureDetector.OnDoubleTapListener#onSingleTapConfirmed
+	 *      (android.view.MotionEvent)
 	 */
 	public boolean onSingleTapConfirmed(MotionEvent e) {
 		// TODO Auto-generated method stub
@@ -909,9 +974,8 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	/**
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * android.gesture.GestureOverlayView.OnGestureListener#onGesture(android
-	 * .gesture.GestureOverlayView, android.view.MotionEvent)
+	 * @see android.gesture.GestureOverlayView.OnGestureListener#onGesture(android
+	 *      .gesture.GestureOverlayView, android.view.MotionEvent)
 	 */
 	public void onGesture(GestureOverlayView overlay, MotionEvent event) {
 		// TODO Auto-generated method stub
@@ -921,9 +985,8 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	/**
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * android.gesture.GestureOverlayView.OnGestureListener#onGestureCancelled
-	 * (android.gesture.GestureOverlayView, android.view.MotionEvent)
+	 * @see android.gesture.GestureOverlayView.OnGestureListener#onGestureCancelled
+	 *      (android.gesture.GestureOverlayView, android.view.MotionEvent)
 	 */
 	public void onGestureCancelled(GestureOverlayView overlay, MotionEvent event) {
 		// TODO Auto-generated method stub
@@ -933,9 +996,8 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	/**
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * android.gesture.GestureOverlayView.OnGestureListener#onGestureEnded(android
-	 * .gesture.GestureOverlayView, android.view.MotionEvent)
+	 * @see android.gesture.GestureOverlayView.OnGestureListener#onGestureEnded(android
+	 *      .gesture.GestureOverlayView, android.view.MotionEvent)
 	 */
 	public void onGestureEnded(GestureOverlayView overlay, MotionEvent event) {
 		// TODO Auto-generated method stub
@@ -943,24 +1005,23 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	}
 
 	/**
-	 * (non-Javadoc)
+	 * Draw method for drawing a line from one geopoint to another, this is done inside MyOverlay class
 	 * 
-	 * @see
-	 * android.gesture.GestureOverlayView.OnGestureListener#onGestureStarted
-	 * (android.gesture.GestureOverlayView, android.view.MotionEvent)
+	 * @see android.gesture.GestureOverlayView.OnGestureListener#onGestureStarted
+	 *      (android.gesture.GestureOverlayView, android.view.MotionEvent)
 	 */
 	public void onGestureStarted(GestureOverlayView overlay, MotionEvent event) {
 		// TODO Auto-generated method stub
 
 	}
-	
+
 	class MyOverlay extends Overlay {
 
 		private int endPoint;
 
 		public MyOverlay(int endPoint) {
 
-			this.endPoint=endPoint;
+			this.endPoint = endPoint;
 		}
 
 		public void draw(Canvas canvas, MapView mapv, boolean shadow) {
@@ -974,8 +1035,16 @@ public class TheMap extends MapActivity implements OnGestureListener,
 			mPaint.setStrokeCap(Paint.Cap.ROUND);
 			mPaint.setStrokeWidth(strokeWidthIsFour);
 
+<<<<<<< HEAD
 			GeoPoint gp1 = new GeoPoint((int) (57.689814 * 1E6), (int) (11.972988 * 1E6));  // for development, geopoint of chalmers entrance, starting point
 			GeoPoint gp2 = allPubsArray[endPoint].getPoint();	// End point
+=======
+			GeoPoint gp1 = new GeoPoint((int) (entranceOfChalmersLat),
+					(int) (entranceOfChalmersLon)); // for development, geopoint
+													// of chalmers entrance,
+													// starting point
+			GeoPoint gp2 = allPubsArray[endPoint].getPoint(); // End point
+>>>>>>> dfa211d3e950728d3a9e8ae72e237577cfe92d1d
 
 			Path path1 = new Path();
 
@@ -984,10 +1053,11 @@ public class TheMap extends MapActivity implements OnGestureListener,
 			projection.toPixels(gp2, p1);
 			projection.toPixels(gp1, p2);
 
-			path1.moveTo(p2.x, p2.y);	// Moving to next pub
-			path1.lineTo(p1.x, p1.y);	// Path till next pub
+			path1.moveTo(p2.x, p2.y); // Moving to next pub
+			path1.lineTo(p1.x, p1.y); // Path till next pub
 
-			canvas.drawPath(path1, mPaint);// Actually drawing the path from first GeoPoint to second
+			canvas.drawPath(path1, mPaint);// Actually drawing the path from
+											// first GeoPoint to second
 
 		}
 	}
