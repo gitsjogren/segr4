@@ -10,6 +10,11 @@ package com.tarea.pubrundan;
 public final class R {
     public static final class array {
         public static final int campus=0x7f050000;
+<<<<<<< HEAD
+=======
+        public static final int feedbacktypelist=0x7f050002;
+        public static final int pubs=0x7f050003;
+>>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb
         public static final int startCampus=0x7f050001;
     }
     public static final class attr {
@@ -72,11 +77,21 @@ public final class R {
         public static final int pushpin=0x7f020023;
     }
     public static final class id {
+<<<<<<< HEAD
+=======
+        public static final int ButtonSendFeedback=0x7f090023;
+        public static final int CheckBoxResponse=0x7f090022;
+        public static final int EditTextEmail=0x7f09001f;
+        public static final int EditTextFeedbackBody=0x7f090021;
+        public static final int EditTextName=0x7f09001e;
+        public static final int SpinnerFeedbackType=0x7f090020;
+>>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb
         public static final int TextView01=0x7f090016;
         public static final int TextView02=0x7f09001a;
         public static final int TextView03=0x7f090017;
         public static final int TextView04=0x7f090019;
         public static final int TextView09=0x7f090018;
+<<<<<<< HEAD
         public static final int backToMap=0x7f09001e;
         public static final int changeCampus=0x7f09001d;
         public static final int change_map=0x7f090021;
@@ -93,6 +108,27 @@ public final class R {
         public static final int settings=0x7f090022;
         public static final int share=0x7f090023;
         public static final int show_pub_on_map=0x7f090026;
+=======
+        public static final int TextViewTitle=0x7f09001d;
+        public static final int changeCampus=0x7f090028;
+        public static final int change_map=0x7f09002a;
+        public static final int duration=0x7f09001b;
+        public static final int feedback=0x7f09001c;
+        public static final int find_pub=0x7f09002e;
+        public static final int getPosition=0x7f090027;
+        public static final int iconshock=0x7f09000f;
+        public static final int label=0x7f090024;
+        public static final int linearLayout1=0x7f090011;
+        public static final int list_image=0x7f090014;
+        public static final int maintitle=0x7f090012;
+        public static final int mapshow_button=0x7f090025;
+        public static final int more_pubinfo=0x7f09002d;
+        public static final int mv=0x7f090026;
+        public static final int pubList=0x7f090029;
+        public static final int settings=0x7f09002b;
+        public static final int share=0x7f09002c;
+        public static final int show_pub_on_map=0x7f09002f;
+>>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb
         public static final int textView1=0x7f090005;
         public static final int textView10=0x7f09000a;
         public static final int textView11=0x7f09000c;
@@ -117,6 +153,7 @@ public final class R {
         public static final int basen=0x7f030001;
         public static final int bulten=0x7f030002;
         public static final int clubavancez=0x7f030003;
+<<<<<<< HEAD
         public static final int focus=0x7f030004;
         public static final int fortnox=0x7f030005;
         public static final int gangnamstyle=0x7f030006;
@@ -137,12 +174,38 @@ public final class R {
         public static final int welcome=0x7f030015;
         public static final int winden=0x7f030016;
         public static final int zaloonen=0x7f030017;
+=======
+        public static final int feedbackform=0x7f030004;
+        public static final int focus=0x7f030005;
+        public static final int fortnox=0x7f030006;
+        public static final int gangnamstyle=0x7f030007;
+        public static final int gasquen=0x7f030008;
+        public static final int gastown=0x7f030009;
+        public static final int goldeni=0x7f03000a;
+        public static final int hubben=0x7f03000b;
+        public static final int japripps=0x7f03000c;
+        public static final int jarnvagspub=0x7f03000d;
+        public static final int kajsabaren=0x7f03000e;
+        public static final int list_item=0x7f03000f;
+        public static final int main=0x7f030010;
+        public static final int pubf=0x7f030011;
+        public static final int publist=0x7f030012;
+        public static final int pubp=0x7f030013;
+        public static final int rodarummet=0x7f030014;
+        public static final int showthemap=0x7f030015;
+        public static final int sigurdafiket=0x7f030016;
+        public static final int spritkoket=0x7f030017;
+        public static final int welcome=0x7f030018;
+        public static final int winden=0x7f030019;
+        public static final int zaloonen=0x7f03001a;
+>>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb
     }
     public static final class menu {
         public static final int menu=0x7f080000;
         public static final int pubmenu=0x7f080001;
     }
     public static final class string {
+<<<<<<< HEAD
         public static final int Developers=0x7f070021;
         public static final int Licence=0x7f070022;
         public static final int app_name=0x7f070000;
@@ -181,6 +244,62 @@ public final class R {
         public static final int version=0x7f070020;
         public static final int winden=0x7f070019;
         public static final int zaloonen=0x7f07001a;
+=======
+        public static final int api_map_key=0x7f070001;
+        public static final int app_name=0x7f070000;
+        public static final int basen=0x7f07000a;
+        public static final int bulten=0x7f07000b;
+        public static final int campus=0x7f070004;
+        public static final int campusJohanneberg=0x7f070032;
+        public static final int campusLindholmen=0x7f070033;
+        public static final int club_avancez=0x7f07000c;
+        public static final int developers=0x7f07002f;
+        public static final int feedbackbody=0x7f070029;
+        public static final int feedbackemail=0x7f070024;
+        public static final int feedbackname=0x7f070023;
+        public static final int feedbackresponse=0x7f07002a;
+        public static final int feedbacksendbutton=0x7f07002b;
+        public static final int feedbacktitle=0x7f070022;
+        public static final int feedbacktype=0x7f070028;
+        public static final int feedbacktype1=0x7f070025;
+        public static final int feedbacktype2=0x7f070026;
+        public static final int feedbacktype3=0x7f070027;
+        public static final int focus=0x7f07000d;
+        public static final int fortnox=0x7f07000e;
+        public static final int gangnam_style=0x7f070009;
+        public static final int gasquen=0x7f07000f;
+        public static final int gastown=0x7f070010;
+        public static final int goLabel=0x7f070002;
+        public static final int goldeni=0x7f070011;
+        public static final int house=0x7f070006;
+        public static final int house_edit=0x7f070008;
+        public static final int hubben=0x7f070012;
+        public static final int iconshock=0x7f070031;
+        public static final int ja_pripps=0x7f070013;
+        public static final int ja_pripps_info=0x7f070003;
+        /**  &#8211; = "-" 
+         */
+        public static final int ja_pripps_main_info=0x7f070020;
+        public static final int ja_pripps_more_info=0x7f070021;
+        public static final int jarnvagspub=0x7f070014;
+        public static final int johanneberg=0x7f07001e;
+        public static final int kajsabaren=0x7f070015;
+        public static final int licence=0x7f070030;
+        public static final int lindholmen=0x7f07001d;
+        public static final int opening_hours=0x7f070005;
+        public static final int opening_hours_basen=0x7f07001f;
+        public static final int pub_logo=0x7f070007;
+        public static final int pubf=0x7f070016;
+        public static final int pubp=0x7f070017;
+        public static final int roda_rummet=0x7f070018;
+        public static final int shareLink=0x7f07002d;
+        public static final int shareTitle=0x7f07002c;
+        public static final int sigurdafiket=0x7f070019;
+        public static final int spritkoket=0x7f07001a;
+        public static final int version=0x7f07002e;
+        public static final int winden=0x7f07001b;
+        public static final int zaloonen=0x7f07001c;
+>>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb
     }
     public static final class xml {
         public static final int settings=0x7f040000;

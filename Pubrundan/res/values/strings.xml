@@ -1,6 +1,12 @@
 <resources>
 
+<<<<<<< HEAD
     <string name="app_name">Pubrundan</string> 
+=======
+    <string name="app_name">Pubrundan</string>
+    <string name="api_map_key">0n_WUXbhVEKfU4SZhO9Hhixy7M617h_k4iBRiSA</string>
+    <string name="goLabel">Show the Map</string>
+>>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb
     <string name="ja_pripps_info">J.A. Pripps Pub och Café är den naturliga samlingsplatsen mitt i Kårhuset.</string>
     <string name="campus">Campus:</string>
     <string name="opening_hours">Öppettider:</string>
@@ -29,11 +35,34 @@
     <string name="zaloonen">Zaloonen</string>
     <string name="lindholmen">Lindholmen</string>
     <string name="johanneberg">Johanneberg</string>
+<<<<<<< HEAD
     <string name="opening_hours_basen">16:00 &#8211; 01:00</string>  <!-- &#8211; = "-" -->
+=======
+    <string name="opening_hours_basen">16:00 &#8211; 01:00</string>
+ <!-- &#8211; = "-" -->
+>>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb
     <string name="ja_pripps_main_info">PubA verkar för A-sektionens sociala intressen genom att sköta om sektionspuben Röda Rummet där vi arrangerar pubar och andra sociala aktiviteter.</string>
     <string name="ja_pripps_more_info">J.A. Pripps Pub och Café är den naturliga samlingsplatsen mitt i Kårhuset.
         Under dagtid finns allt du behöver för en trevlig fikastund. Under eftermiddagen öppnar ölkranarna
         och framåt kvällen serverar köket god mat till priser som passar teknologstudentens plånbok.</string>
+    <string name="feedbacktitle">Enter feedback details</string>
+    <string name="feedbackname">Enter name</string>
+    <string name="feedbackemail">Enter email</string>
+    <string name="feedbacktype1">Suggestion</string>
+    <string name="feedbacktype2">Bug</string>
+    <string name="feedbacktype3">Praise</string>
+    <string name="feedbacktype">Select feedback type</string>
+    <string name="feedbackbody">Feedback details goes here</string>
+    <string name="feedbackresponse">Would you like a response?</string>
+    <string name="feedbacksendbutton">Send feedback</string>
+    <string name="shareTitle">Share this app via</string>
+    <string name="shareLink">Jag tycker du ska kolla in Androidappen Pubrundan på Google Play här:</string>
+    <string name="version">0.3</string>
+    <string name="developers">TAREA</string>
+    <string name="licence">GPL</string>
+    <string name="iconshock"><a href="http://www.iconshock.com" rel="nofollow">Original icon is made by Iconshock</a></string>
+    <string name="campusJohanneberg">Campus Johanneberg</string>
+    <string name="campusLindholmen">Campus Lindholmen</string>
 
     <string name="version">0.3</string>
     <string name="Developers">TAREA</string>

@@ -18,7 +18,7 @@
  * along with Pubrundan. If not, see <http://www.gnu.org/licenses/>.
  * ============================================================ */
 
-package com.tarea.pubrundan.Pubs;
+package com.tarea.pubrundan;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -48,11 +48,11 @@ public class GangnamStyle extends Activity {
 	 */
 	public void onCreate(Bundle savedInstanceState) {
 
-			super.onCreate(savedInstanceState);
 			requestWindowFeature(Window.FEATURE_NO_TITLE); // Suppress title bar for
 															// more space
 			getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 		            WindowManager.LayoutParams.FLAG_FULLSCREEN);
+			super.onCreate(savedInstanceState);
 			setContentView(R.layout.gangnamstyle);
 		
 	}

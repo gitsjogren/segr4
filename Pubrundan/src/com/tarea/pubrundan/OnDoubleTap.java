@@ -41,7 +41,11 @@ public class OnDoubleTap extends MapView {
 
 	  /** The last touch time. */
   	private long lastTouchTime = -1;
+<<<<<<< HEAD
   	private int millivalue = 250;
+=======
+  	private final int millivalue = 250;
+>>>>>>> 368d9c8d2f2579eb18102e53e045dca03ee590bb
 
 	  /**
   	 * Instantiates a new on double tap.
