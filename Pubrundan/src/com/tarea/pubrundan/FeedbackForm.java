@@ -42,23 +42,17 @@ public class FeedbackForm extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.feedbackform);
 
-		final Button SendFeedback = (Button) this
+		final Button sendFeedback = (Button) this
 				.findViewById(R.id.ButtonSendFeedback);
-		SendFeedback.setOnClickListener(new View.OnClickListener() {
+		sendFeedback.setOnClickListener(new View.OnClickListener() {
 
-<<<<<<< HEAD
 
 		
 			public void onClick(View v) {
 
 				// Get the context from the feedback form and turn it into strings
 				final EditText nameField = (EditText) findViewById(R.id.EditTextName);  
-=======
-			// Get the context from the feedback form
-			public void onClick(View v) {
 
-				final EditText nameField = (EditText) findViewById(R.id.EditTextName);
->>>>>>> 80c4e41f78cb1db6c29324dd50f764e9689f24c8
 				String name = nameField.getText().toString();
 
 				final EditText emailField = (EditText) findViewById(R.id.EditTextEmail);
@@ -77,7 +71,6 @@ public class FeedbackForm extends Activity {
 				String response = "";
 				if (boxReqResponse) {
 					response = "Requires a response";
-<<<<<<< HEAD
 					if(email == null){
 						// To be created: Dialogbox with message: "Du måste ange en mailadress!"
 					}
@@ -88,20 +81,6 @@ public class FeedbackForm extends Activity {
 				}
 				
 				String person = (("Namn: ") + name + ("\nEmailadress: ") + email + ("\nMeddelande: "));
-=======
-					if (email == null) {
-						// Create dialogbox: "Du måste ange en mailadress"
-					}
-				} else {
-					if (name == null || feedback == null) {
-						Toast.makeText(getBaseContext(), "else i feedback",
-								Toast.LENGTH_SHORT).show();
-						// Create dialogbox: "Namn och feedback måste fyllas i"
-					}
-				}
-				String person = (("Namn: ") + name + ("\nEmailadress: ")
-						+ email + ("\nMeddelande: "));
->>>>>>> 80c4e41f78cb1db6c29324dd50f764e9689f24c8
 				String feedbackMejlen = "feedbacktarea@gmail.com";
 				
 				Intent sendMail = new Intent(Intent.ACTION_SEND);	// Creates the mail
@@ -109,17 +88,11 @@ public class FeedbackForm extends Activity {
 				sendMail.putExtra(Intent.EXTRA_EMAIL,
 						new String[] { feedbackMejlen });
 				sendMail.putExtra(Intent.EXTRA_SUBJECT, feedbackSubject);
-<<<<<<< HEAD
-				sendMail.putExtra(Intent.EXTRA_TEXT, person+feedback+response);
-				
-				startActivity(sendMail); // Either launches a dialog box with available mail-apps or starts the users default choice
-=======
 				sendMail.putExtra(Intent.EXTRA_TEXT, person + feedback
 						+ response);
 				// Either launches a dialog box with available mail-apps or
 				// starts the users default choice
 				startActivity(sendMail);
->>>>>>> 80c4e41f78cb1db6c29324dd50f764e9689f24c8
 			}
 		});
 

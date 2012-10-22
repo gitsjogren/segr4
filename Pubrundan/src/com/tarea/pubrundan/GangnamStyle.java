@@ -39,10 +39,20 @@ public class GangnamStyle extends Activity {
 
 		requestWindowFeature(Window.FEATURE_NO_TITLE); // Suppress title bar for
 														// more space
-		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,	// Using WindowManager to set flags and change the view to fullscreen
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, // Using
+																			// WindowManager
+																			// to
+																			// set
+																			// flags
+																			// and
+																			// change
+																			// the
+																			// view
+																			// to
+																			// fullscreen
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		super.onCreate(savedInstanceState);	// standard onCreate method
-		setContentView(R.layout.gangnamstyle);	// set the layout for this class
+		super.onCreate(savedInstanceState); // standard onCreate method
+		setContentView(R.layout.gangnamstyle); // set the layout for this class
 
 	}
 
