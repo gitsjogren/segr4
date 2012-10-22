@@ -44,7 +44,7 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 	private Context mContext;
 	
 	/** The count. */
-	private static int count = 0;
+	private int count = 0;
 	
 	/** The counter. */
 	private ArrayList<Integer> counter = new ArrayList<Integer>();
