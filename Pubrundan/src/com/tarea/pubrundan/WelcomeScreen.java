@@ -35,7 +35,7 @@ import android.view.WindowManager;
  */
 public class WelcomeScreen extends Activity {
 
-    private final static int display_length = 2000;
+    private final int displayLength = 2000;
 
     /** Called when the activity is first created. */
     @Override
@@ -57,6 +57,6 @@ public class WelcomeScreen extends Activity {
                 WelcomeScreen.this.startActivity(mainIntent);
                 WelcomeScreen.this.finish();
             }
-        }, display_length);
+        }, displayLength);
     }
 }

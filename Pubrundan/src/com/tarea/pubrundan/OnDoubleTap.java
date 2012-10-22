@@ -34,48 +34,73 @@ import com.google.android.maps.MapView;
  */
 public class OnDoubleTap extends MapView {
 
-	  /** The last touch time. */
-  	private static long lastTouchTime = -1;
-  	
-  	private final static int millivalue = 250;
+	/** The last touch time. */
+	private static long lastTouchTime = -1;
 
-	  /**
-  	 * Instantiates a new on double tap.
-  	 *
-  	 * @param context the context
-  	 * @param attrs the attrs
-  	 */
-  	public OnDoubleTap(Context context, AttributeSet attrs) {
+	private final int milliValue = 250; // to make double tap, the next
+												// tap must tapped <250
+												// milliseconds after the first
+												// tap
 
-	    super(context, attrs);
-	  }
+	/**
+	 * Instantiates a new double tap.
+	 * 
+	 * @param context
+	 *            the context
+	 * @param attrs
+	 *            the attrs
+	 */
+	public OnDoubleTap(Context context, AttributeSet attrs) {
 
-	  /* (non-Javadoc)
-  	 * @see android.view.ViewGroup#onInterceptTouchEvent(android.view.MotionEvent)
-  	 * 
-  	 * @param ev
-  	 * 
-  	 * @return true, if successful
-  	 */
-  	@Override
-	  public boolean onInterceptTouchEvent(MotionEvent ev) {
-
-	    if (ev.getAction() == MotionEvent.ACTION_DOWN) {
-
-	      long thisTime = System.currentTimeMillis();
-	      if (thisTime - lastTouchTime < millivalue) {
-
-	        // Double tap
-	        this.getController().zoomInFixing((int) ev.getX(), (int) ev.getY());
-	        lastTouchTime = -1;
-
-	      } else {
-
-	        // Too slow 
-	        lastTouchTime = thisTime;
-	      }
-	    }
-
-	    return super.onInterceptTouchEvent(ev);
-	  }
+		super(context, attrs);	// passes parameters to superclass, context and attrs contructs a mapView object
 	}
+
+	/*
+	 * onInterceptTouchEvent, listen for any MotionEvent to happen
+	 * 
+	 * @param ev
+	 * 
+	 * @return true, if successful
+	 */
+	@Override
+	public boolean onInterceptTouchEvent(MotionEvent ev) {
+
+		if (ev.getAction() == MotionEvent.ACTION_DOWN) { // if user tap
+															// somewhere do
+															// things within
+															// braces
+
+			long thisTime = System.currentTimeMillis(); // sets thisTime to the
+														// systems current time
+														// in milliseconds
+			if (thisTime - lastTouchTime < milliValue) {	// if current time(msec) minus the value of lastTouchTime is less than 250 msec, zoom in one zoomlevel = a double tap
+
+				this.getController().zoomInFixing((int) ev.getX(), // get
+																	// controller
+																	// from
+																	// MapController
+																	// using
+																	// zoomInFixing()
+																	// to zoom
+																	// in one
+																	// zoomlevel
+																	// depending
+																	// on the
+																	// tapped
+																	// pixels on
+																	// the
+																	// device
+						(int) ev.getY());
+				// Double tap
+				lastTouchTime = -1;
+
+			} else {
+
+				lastTouchTime = thisTime; // Too slow
+			}
+		}
+
+		return super.onInterceptTouchEvent(ev); // return boolean true, if
+												// successful
+	}
+}
