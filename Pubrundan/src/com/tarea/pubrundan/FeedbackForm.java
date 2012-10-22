@@ -47,10 +47,10 @@ public class FeedbackForm extends Activity {
 		SendFeedback.setOnClickListener(new View.OnClickListener() {
 
 
-		// Get the context from the feedback form
+		
 			public void onClick(View v) {
 
-
+				// Get the context from the feedback form and turn it into strings
 				final EditText nameField = (EditText) findViewById(R.id.EditTextName);  
 				String name = nameField.getText().toString();
 
@@ -70,25 +70,24 @@ public class FeedbackForm extends Activity {
 				if(boxReqResponse){
 					response = "Requires a response";
 					if(email == null){
-						// Create dialogbox: "Du måste ange en mailadress"
+						// To be created: Dialogbox with message: "Du måste ange en mailadress!"
 					}
 				}
-				else {
-					if(name == null || feedback == null){
+				else if(name == null || feedback == null) {
 						Toast.makeText(getBaseContext(), "else i feedback", Toast.LENGTH_SHORT).show();
-						// Create dialogbox: "Namn och feedback måste fyllas i"
-					}
+						// To be created: Dialogbox with message: "Namn och feedback måste fyllas i"
 				}
+				
 				String person = (("Namn: ") + name + ("\nEmailadress: ") + email + ("\nMeddelande: "));
 				String feedbackMejlen = "feedbacktarea@gmail.com";
-
-				Intent sendMail = new Intent(Intent.ACTION_SEND);
+				
+				Intent sendMail = new Intent(Intent.ACTION_SEND);	// Creates the mail
 				sendMail.setType("message/rfc822");
 				sendMail.putExtra(Intent.EXTRA_EMAIL, new String[] {feedbackMejlen});
 				sendMail.putExtra(Intent.EXTRA_SUBJECT, feedbackSubject);
 				sendMail.putExtra(Intent.EXTRA_TEXT, person+feedback+response);
-				// Either launches a dialog box with available mail-apps or starts the users default choice
-				startActivity(sendMail);
+				
+				startActivity(sendMail); // Either launches a dialog box with available mail-apps or starts the users default choice
 			}
 		});
 

@@ -635,6 +635,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 			break;
 
 		case R.id.share:
+			// Creates a string with text and a link to the app to be shared via prefered app
 			Intent showShare = new Intent(Intent.ACTION_SEND);
 			showShare.setType("text/plain");
 			String title = (String) getResources().getText(R.string.shareTitle);

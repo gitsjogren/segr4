@@ -117,7 +117,7 @@
         android:autoLink="all"
         android:linksClickable="true"
         android:textAppearance="?android:attr/textAppearanceSmall" />
-
+    
     <TextView
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
