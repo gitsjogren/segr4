@@ -9,7 +9,7 @@ import android.view.WindowManager;
 
 public class WelcomeScreen extends Activity {
 
-    private final int SPLASH_DISPLAY_LENGHT = 2000;
+    private final static int display_length = 2000;
 
     /** Called when the activity is first created. */
     @Override
@@ -31,6 +31,6 @@ public class WelcomeScreen extends Activity {
                 WelcomeScreen.this.startActivity(mainIntent);
                 WelcomeScreen.this.finish();
             }
-        }, SPLASH_DISPLAY_LENGHT);
+        }, display_length);
     }
 }

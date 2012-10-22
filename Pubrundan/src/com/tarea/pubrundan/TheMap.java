@@ -38,6 +38,7 @@ import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -63,7 +64,6 @@ import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
 import com.google.android.maps.Projection;
 
-// TODO: Auto-generated Javadoc
 //### This class follows some code examples from http://eagle.phys.utk.edu/guidry/android/index.html  ###//
 
 /**
@@ -73,8 +73,7 @@ import com.google.android.maps.Projection;
  * 
  */
 public class TheMap extends MapActivity implements OnGestureListener,
-		OnDoubleTapListener {
-
+		OnDoubleTapListener, LocationListener {
 
 	private SharedPreferences sharedPrefs;
 
@@ -84,9 +83,22 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	 * Used for the 'Byt Campus'-button.
 	 */
 	private boolean activeCampus;
-
-	private String default_campus;
-	private int zoomLevel = 17;
+	
+	private String defaultCampus;
+	
+	private final int zoomLevel = 17;
+	
+	private final int closeZoom = 19;
+	
+	private final static int timeConstant = 200;
+	
+	private final static double lindholmenLat = 57705947;
+	
+	private final static double lindholmenLon = 11936642;
+	
+	private final static double johannebergLat = 57691144;
+	
+	private final static double johannebergLon = 11976078;
 	
 	private Projection projection;
 
@@ -112,6 +124,8 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	private MyLocationOverlay myLocationOverlay; // An Overlay showing a "point"
 	// on the map aka your
 	// current position
+	
+	public GeoPoint myLocation;
 
 	/** The map overlays. */
 
@@ -136,19 +150,11 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	 * integers, by default they are displayed in microdegrees
 	 */
 
-
-	/* The pubs in the array are listed and hardcoded from coordinates_of_the_pubs.txt */
-
-	// The pubs in the array are listed and hardcoded from
-	// coordinates_of_the_pubs.txt
-	/** The all pubs array. */
-
 	/*
 	 * The pubs in the array are listed and hardcoded from
-	 * coordinates_of_the_pubs.txt
-	 */
+	 * coordinates_of_the_pubs.txt	 */
 
-	private OverlayItem[] allPubsArray = {
+	public OverlayItem[] allPubsArray = {
 
 			// J.A. Pripps
 			new OverlayItem(new GeoPoint((int) (57.688984 * 1E6),
@@ -206,7 +212,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 					(int) (11.939596 * 1E6)), "Pub P", "Lindholmen"),
 			// 11:an
 			new OverlayItem(new GeoPoint((int) (57.706085 * 1E6),
-					(int) (11.936675 * 1E6)), "11:an", "Johanneberg"),
+					(int) (11.936675 * 1E6)), "Pub F", "Johanneberg"),
 			// Gangnam Style
 			new OverlayItem(new GeoPoint((int) (37.5175725 * 1E6),
 					(int) (127.047462 * 1E6)), "Gangnam Style", "Sydkorea"),
@@ -224,9 +230,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 
 		super.onCreate(savedInstanceState);
 
-
-		requestWindowFeature(Window.FEATURE_NO_TITLE); // Suppress title bar for
-														// more space
+		requestWindowFeature(Window.FEATURE_NO_TITLE); // Suppress title bar for more space
 		setContentView(R.layout.showthemap); // Use xml-layout showtomap.xml
 
 		// Add map controller with zoom controls
@@ -242,7 +246,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 																	// for later
 																	// use in
 																	// the code
-		// checkIfGpsIsEnabled(); // check if gps is enabled
+		checkIfGpsIsEnabled(); // check if gps is enabled
 
 		/*
 		 * If the application is running for the first time a dialog will pop up
@@ -317,9 +321,8 @@ public class TheMap extends MapActivity implements OnGestureListener,
 			 mapOverlays.add(myoverlay);
 		}
 
-
 	}
-
+	
 	public void animateToPubandSetZoom(final GeoPoint gp) {
 
 		// http://code.google.com/p/osmdroid/issues/detail?id=204
@@ -328,10 +331,10 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		new Handler().postDelayed(new Runnable() {
 			public void run() {
 				mc = mapView.getController();
-				mc.setZoom(19);
+				mc.setZoom(closeZoom);
 				mc.animateTo(gp);
 			}
-		}, 200);
+		}, timeConstant);
 	}
 
 	/*
@@ -376,22 +379,19 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		mapView.postInvalidate();
 	}
 
-	/**
-	 * Loading.
-	 */
-
 	/*
 	 * Method that gets the value for default campus if the
 	 * application itself has been closed.
 	 */
 	private void getDefaultCampus() {
-		default_campus = sharedPrefs.getString("defaultCampus", "0");
+		defaultCampus = sharedPrefs.getString("defaultCampus", "0");
 
-		if(default_campus.equals("0"))
+		if(defaultCampus.equals("0")){
 			activeCampus = true;
-
-		else if(default_campus.equals("1"))
+		}
+		else if(defaultCampus.equals("1")){
 			activeCampus = false;
+		}
 	}
 
 	/**
@@ -404,11 +404,11 @@ public class TheMap extends MapActivity implements OnGestureListener,
 				.setMessage("Var vänlig och välj standard campus för kartan.")
 				.setIcon(R.drawable.icon_warning)
 				.setCancelable(false)
-				.setNeutralButton("Johanneberg",
+				.setNeutralButton(R.string.johanneberg,
 						new android.content.DialogInterface.OnClickListener() {
 							public void onClick(final DialogInterface dialog,
 									final int id) {
-								default_campus = "0";
+								defaultCampus = "0";
 								SharedPreferences.Editor editor = sharedPrefs
 										.edit();
 								editor.putString("defaultCampus", "0");
@@ -418,11 +418,11 @@ public class TheMap extends MapActivity implements OnGestureListener,
 
 							}
 						})
-				.setNegativeButton("Lindholmen",
+				.setNegativeButton(R.string.lindholmen,
 						new DialogInterface.OnClickListener() {
 							public void onClick(final DialogInterface dialog,
 									final int id) {
-								default_campus = "1";
+								defaultCampus = "1";
 								SharedPreferences.Editor editor = sharedPrefs
 										.edit();
 								editor.putString("defaultCampus", "1");
@@ -438,7 +438,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	private void loading() {
 
 		final Object loadingDialog = ProgressDialog.show(this,
-				"Laddar pubbar...", "Vänta...", true);
+				"Laddar...", "Vänta...", true);
 		new Thread() {
 			public void run() {
 				try {
@@ -466,12 +466,12 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	 * Zooms into the campus that the user has chosen.
 	 */
 	protected void showDefaultCampus() {
-		if (default_campus.equals("0")){
+		if (defaultCampus.equals("0")){
 			changeToCampusJohanneberg();
 			activeCampus = true;
 		}
 
-		else if (default_campus.equals("1")){
+		else if (defaultCampus.equals("1")){
 			changeToCampusLindholmen();
 			activeCampus = false;
 
@@ -484,11 +484,12 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	 * depending on which campus you have as active.
 	 */
 	public void changeCampus(){
-		if(activeCampus)
+		if(activeCampus){
 			changeToCampusLindholmen();
-
-		else if(!activeCampus)
+		}
+		else if(!activeCampus){
 			changeToCampusJohanneberg();
+		}
 	}	
 
 
@@ -500,6 +501,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		myLocationOverlay = new MyLocationOverlay(this, mapView);
 		myLocationOverlay.enableMyLocation();
 		mapView.getOverlays().add(myLocationOverlay);
+		mapView.postInvalidate();
 
 		mc = mapView.getController();
 		myLocationOverlay.runOnFirstFix(new Runnable() {
@@ -518,12 +520,12 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	public void changeToCampusLindholmen() {
 
 		mc = mapView.getController();
-		gp = new GeoPoint((int) (57.705947 * 1e6), (int) (11.936642 * 1e6));
+		gp = new GeoPoint((int) (lindholmenLat), (int) (lindholmenLon));
 		mc.animateTo(gp);
 		mc.setCenter(gp);
 		mc.setZoom(zoomLevel);
 		Toast.makeText(TheMap.this,
-				"Campus Lindholmen",
+				R.string.campusLindholmen,
 				Toast.LENGTH_SHORT).show();
 		activeCampus = false;
 	}
@@ -536,22 +538,13 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	public void changeToCampusJohanneberg() {
 
 		mc = mapView.getController();
-		gp = new GeoPoint((int) (57.691144 * 1e6), (int) (11.976078 * 1e6));
+		gp = new GeoPoint((int) (johannebergLat), (int) (johannebergLon));
 		mc.animateTo(gp);
 		mc.setCenter(gp);
 		mc.setZoom(zoomLevel);
-		Toast.makeText(TheMap.this, "Campus Johanneberg", Toast.LENGTH_SHORT)
+		Toast.makeText(TheMap.this, R.string.campusJohanneberg, Toast.LENGTH_SHORT)
 				.show();
 		activeCampus = true;
-	}
-
-	public void animateToGeopoint(GeoPoint gp, int zoom){
-
-		mc = mapView.getController();
-		//gp = new GeoPoint((int) (57.689034 * 1e6), (int) (11.976468 * 1e6));
-		mc.animateTo(gp);
-		mc.setCenter(gp);
-		mc.setZoom(zoom);
 	}
 
 	/**
@@ -646,7 +639,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 			startActivity(Intent.createChooser(showShare, title));
 			break;
 		}
-		return false;
+		return true;
 		
 	}
 
@@ -720,14 +713,14 @@ public class TheMap extends MapActivity implements OnGestureListener,
 		final LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
 		if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-			NoGpsDialog();
+			noGpsDialog();
 		}
 	}
 
 	/**
 	 * No gps dialog.
 	 */
-	public void NoGpsDialog() {
+	public void noGpsDialog() {
 		final AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle("GPS avstängd")
 				.setMessage("Din GPS är avstängd, vill du starta den?")
@@ -757,10 +750,8 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	 * 
 	 * @param location
 	 *            the location
-	 */
-	public void onLocationChanged(Location location) {
-		// TODO Auto-generated method stub
-
+	 */	
+	public void onLocationChanged(Location location) {  
 	}
 
 	/**
@@ -976,9 +967,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 			mPaint.setStrokeCap(Paint.Cap.ROUND);
 			mPaint.setStrokeWidth(4);
 
-
-			//GeoPoint gp1 = allPubsArray[0].getPoint();	// starting point
-			GeoPoint gp1 = new GeoPoint((int) (57.689814 * 1E6), (int) (11.972988 * 1E6));  // for development, geopoint of chalmers entrance
+			GeoPoint gp1 = new GeoPoint((int) (57.689814 * 1E6), (int) (11.972988 * 1E6));  // for development, geopoint of chalmers entrance, starting point
 			GeoPoint gp2 = allPubsArray[endPoint].getPoint();	// End point
 
 			Path path1 = new Path();

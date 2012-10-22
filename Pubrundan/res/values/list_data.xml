@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pubs">
+        <item>J.A. Pripps</item>
+        <item>Gasquen</item>
+        <item>Bulten</item>
+        <item>Winden</item>
+        <item>Zaloonen</item>
+        <item>Club Avancez	</item>
+        <item>GoldenI</item>
+        <item>Hubben 2.1</item>
+        <item>Basen</item>
+        <item>Kajsabaren</item>
+        <item>Järnvägspub</item>
+        <item>GasTown</item>
+        <item>FortNOx</item>
+        <item>Spritköket</item>
+        <item>Focus</item>
+        <item>Röda rummet</item>
+        <item>Sigurd/A-fiket</item>
+        <item>Pub P</item>
+        <item>Pub F</item>
+    </string-array>
+</resources>

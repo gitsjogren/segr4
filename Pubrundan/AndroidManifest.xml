@@ -26,6 +26,7 @@
         <activity android:name=".SettingsMenu" android:screenOrientation="portrait"></activity>
         <activity android:name=".FeedbackForm" android:screenOrientation="portrait"></activity>
         <activity android:name=".AboutPage" android:screenOrientation="portrait"></activity>
+        <activity android:name=".SingleListItem" android:screenOrientation="portrait"></activity>
         <activity android:name=".GangnamStyle" android:screenOrientation="landscape"></activity>
     </application>
 </manifest>
