@@ -53,5 +53,7 @@
     <string name="developers">TAREA</string>
     <string name="licence">GPL</string>
     <string name="iconshock"><a href="http://www.iconshock.com" rel="nofollow">Original icon is made by Iconshock</a></string>
+    <string name="campusJohanneberg">Campus Johanneberg</string>
+    <string name="campusLindholmen">Campus Lindholmen</string>
 
 </resources>

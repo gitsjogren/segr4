@@ -31,7 +31,7 @@ public class SettingsMenu extends PreferenceActivity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		super.onCreate(savedInstanceState);
 		addPreferencesFromResource(R.xml.settings);
-		final SharedPreferences SP = PreferenceManager
+		final SharedPreferences sP = PreferenceManager
 				.getDefaultSharedPreferences(getBaseContext());
 
 		/**
@@ -43,9 +43,9 @@ public class SettingsMenu extends PreferenceActivity {
 				.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 
 					public boolean onPreferenceClick(Preference preference) {
-						Intent AboutActivity = new Intent(getBaseContext(),
+						Intent aboutPage = new Intent(getBaseContext(),
 								AboutPage.class);
-						startActivity(AboutActivity);
+						startActivity(aboutPage);
 						return true;
 					}
 
@@ -62,7 +62,7 @@ public class SettingsMenu extends PreferenceActivity {
 
 			public boolean onPreferenceChange(Preference preference, Object newValue) {
 
-				SharedPreferences.Editor editor = SP.edit();
+				SharedPreferences.Editor editor = sP.edit();
 				editor.putString("defaultCampus", (String) newValue);
 				editor.commit();
 				return true;
@@ -72,8 +72,8 @@ public class SettingsMenu extends PreferenceActivity {
 		/**
 		 * Get all options in res/xml/settings.xml
 		 */
-		SP.getString("defaultCampus", "0");
-		SP.getString("aboutPage", "");
+		sP.getString("defaultCampus", "0");
+		sP.getString("aboutPage", "");
 
 	}
 

@@ -162,6 +162,8 @@ public final class R {
         public static final int basen=0x7f07000a;
         public static final int bulten=0x7f07000b;
         public static final int campus=0x7f070004;
+        public static final int campusJohanneberg=0x7f070032;
+        public static final int campusLindholmen=0x7f070033;
         public static final int club_avancez=0x7f07000c;
         public static final int developers=0x7f07002f;
         public static final int feedbackbody=0x7f070029;
