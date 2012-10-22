@@ -35,7 +35,6 @@ import android.widget.TextView;
 
 public class AboutPage extends Activity {
 
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -46,7 +45,6 @@ public class AboutPage extends Activity {
 		TextView noteView = (TextView) findViewById(R.id.iconshock);
 		noteView.setText("http://www.iconshock.com");
 		Linkify.addLinks(noteView, Linkify.ALL);
-
 
 	}
 }

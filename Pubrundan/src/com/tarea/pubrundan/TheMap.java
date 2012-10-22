@@ -86,23 +86,27 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	
 	private String defaultCampus;
 	
-	private final int zoomLevel = 17;
+	private final int sleepTime = 3000;
 	
-	private final int closeZoom = 19;
+	private final static int strokeWidthIsFour = 4;
 	
-	private final static int timeConstant = 200;
+	private final static int zoomLevel = 17;
 	
-	private final static double lindholmenLat = 57705947;
+	private final static int closeZoom = 19;
 	
-	private final static double lindholmenLon = 11936642;
+	private final int timeConstant = 200;
 	
-	private final static double johannebergLat = 57691144;
+	private final double lindholmenLat = 57705947;
 	
-	private final static double johannebergLon = 11976078;
+	private final double lindholmenLon = 11936642;
 	
-	private final static double entranceOfChalmersLat = 57689814;
+	private final double johannebergLat = 57691144;
+	
+	private final double johannebergLon = 11976078;
+	
+	private final double entranceOfChalmersLat = 57689814;
 			
-	private final static double entranceOfChalmersLon = 11972988;
+	private final double entranceOfChalmersLon = 11972988;
 	
 	private Projection projection;
 
@@ -128,8 +132,6 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	private MyLocationOverlay myLocationOverlay; // An Overlay showing a "point"
 	// on the map aka your
 	// current position
-	
-	public GeoPoint myLocation;
 
 	/** The map overlays. */
 
@@ -158,7 +160,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	 * The pubs in the array are listed and hardcoded from
 	 * coordinates_of_the_pubs.txt	 */
 
-	public OverlayItem[] allPubsArray = {
+	private OverlayItem[] allPubsArray = {
 
 			// J.A. Pripps
 			new OverlayItem(new GeoPoint((int) (57688984),
@@ -455,7 +457,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 					// showTheCurrentPosition(); // navigate to users current
 					// location, inactive during development.
 
-					sleep(3000); // sleep the thread, 3000 milliseconds = 3
+					sleep(sleepTime); // sleep the thread, 3000 milliseconds = 3
 									// seconds.
 				} catch (Exception e) {
 				}
@@ -969,7 +971,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 			mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
 			mPaint.setStrokeJoin(Paint.Join.ROUND);
 			mPaint.setStrokeCap(Paint.Cap.ROUND);
-			mPaint.setStrokeWidth(4);
+			mPaint.setStrokeWidth(strokeWidthIsFour);
 
 			GeoPoint gp1 = new GeoPoint((int) (entranceOfChalmersLat), (int) (entranceOfChalmersLon));  // for development, geopoint of chalmers entrance, starting point
 			GeoPoint gp2 = allPubsArray[endPoint].getPoint();	// End point
