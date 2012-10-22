@@ -86,24 +86,31 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	
 	private String defaultCampus;
 	
-	private final int zoomLevel = 17;
+	private final int sleepTime = 3000;
 	
-	private final int closeZoom = 19;
+	private final static int strokeWidthIsFour = 4;
 	
-	private final static int timeConstant = 200;
+	private final static int zoomLevel = 17;
 	
-	private final static double lindholmenLat = 57705947;
+	private final static int closeZoom = 19;
 	
-	private final static double lindholmenLon = 11936642;
+	private final int timeConstant = 200;
 	
-	private final static double johannebergLat = 57691144;
+	private final double lindholmenLat = 57705947;
 	
-	private final static double johannebergLon = 11976078;
+	private final double lindholmenLon = 11936642;
 	
-	private final static double entranceOfChalmersLat = 57689814;
+<<<<<<< HEAD
+=======
+	private final double johannebergLat = 57691144;
+	
+	private final double johannebergLon = 11976078;
+	
+	private final double entranceOfChalmersLat = 57689814;
 			
-	private final static double entranceOfChalmersLon = 11972988;
+	private final double entranceOfChalmersLon = 11972988;
 	
+>>>>>>> 93b02a650f2df3966f1c1655821f429336d63125
 	private Projection projection;
 
 	private MyOverlay myoverlay;
@@ -128,8 +135,6 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	private MyLocationOverlay myLocationOverlay; // An Overlay showing a "point"
 	// on the map aka your
 	// current position
-	
-	public GeoPoint myLocation;
 
 	/** The map overlays. */
 
@@ -158,81 +163,79 @@ public class TheMap extends MapActivity implements OnGestureListener,
 	 * The pubs in the array are listed and hardcoded from
 	 * coordinates_of_the_pubs.txt	 */
 
-	public OverlayItem[] allPubsArray = {
+	private OverlayItem[] allPubsArray = {
 
 			// J.A. Pripps
-			new OverlayItem(new GeoPoint((int) (57688984),
-					(int) (11974389)), "J.A. Pripps", "Johanneberg"),
+			new OverlayItem(new GeoPoint((int) (57.688984 * 1E6),
+					(int) (11.974389 * 1E6)), "J.A. Pripps", "Johanneberg"),
 			// Gasquen
-			new OverlayItem(new GeoPoint((int) (57688725),
-					(int) (11975156)), "Gasquen", "Johanneberg"),
+			new OverlayItem(new GeoPoint((int) (57.688725 * 1E6),
+					(int) (11.975156 * 1E6)), "Gasquen", "Johanneberg"),
 			// Bulten
-			new OverlayItem(new GeoPoint((int) (57.689148),
-					(int) (11978496)), "Bulten", "Johanneberg"),
+			new OverlayItem(new GeoPoint((int) (57.689148 * 1E6),
+					(int) (11.978496 * 1E6)), "Bulten", "Johanneberg"),
 			// Winden
-			new OverlayItem(new GeoPoint((int) (57688961),
-					(int) (11978665)), "Winden", "Johanneberg"),
+			new OverlayItem(new GeoPoint((int) (57.688961 * 1E6),
+					(int) (11.978665 * 1E6)), "Winden", "Johanneberg"),
 			// Zaloonen
-			new OverlayItem(new GeoPoint((int) (57689097),
-					(int) (11979126)), "Zaloonen", "Johanneberg"),
+			new OverlayItem(new GeoPoint((int) (57.689097 * 1E6),
+					(int) (11.979126 * 1E6)), "Zaloonen", "Johanneberg"),
 			// Club Avancez
-			new OverlayItem(new GeoPoint((int) (57692219),
-					(int) (11976862)), "Club Avancez", "Johanneberg"),
+			new OverlayItem(new GeoPoint((int) (57.692219 * 1E6),
+					(int) (11.976862 * 1E6)), "Club Avancez", "Johanneberg"),
 			// GoldenI
-			new OverlayItem(new GeoPoint((int) (57692939),
-					(int) (11975242)), "GoldenI", "Johanneberg"),
+			new OverlayItem(new GeoPoint((int) (57.692939 * 1E6),
+					(int) (11.975242 * 1E6)), "GoldenI", "Johanneberg"),
 			// Hubben 2.1
-			new OverlayItem(new GeoPoint((int) (57688331),
-					(int) (11979217)), "Hubben 2.1", "Johanneberg"),
+			new OverlayItem(new GeoPoint((int) (57.688331 * 1E6),
+					(int) (11.979217 * 1E6)), "Hubben 2.1", "Johanneberg"),
 			// Basen
-			new OverlayItem(new GeoPoint((int) (57688776),
-					(int) (11978852)), "Basen", "Johanneberg"),
+			new OverlayItem(new GeoPoint((int) (57.688776 * 1E6),
+					(int) (11.978852 * 1E6)), "Basen", "Johanneberg"),
 			// Kajsabaren
-			new OverlayItem(new GeoPoint((int) (57688196),
-					(int) (11978573)), "Kajsabaren", "Johanneberg"),
+			new OverlayItem(new GeoPoint((int) (57.688196 * 1E6),
+					(int) (11.978573 * 1E6)), "Kajsabaren", "Johanneberg"),
 			// Järnvägspub
-			new OverlayItem(new GeoPoint((int) (57688317),
-					(int) (11975757)), "Järnvägspub", "Johanneberg"),
+			new OverlayItem(new GeoPoint((int) (57.688317 * 1E6),
+					(int) (11.975757 * 1E6)), "Järnvägspub", "Johanneberg"),
 			// GasTown
-			new OverlayItem(new GeoPoint((int) (57687935),
-					(int) (11975918)), "GasTown", "Johanneberg"),
+			new OverlayItem(new GeoPoint((int) (57.687935 * 1E6),
+					(int) (11.975918 * 1E6)), "GasTown", "Johanneberg"),
 			// FortNOx
-			new OverlayItem(new GeoPoint((int) (57687302),
-					(int) (11977237)), "FortNOx", "Johanneberg"),
+			new OverlayItem(new GeoPoint((int) (57.687302 * 1E6),
+					(int) (11.977237 * 1E6)), "FortNOx", "Johanneberg"),
 			// Spritköket
-			new OverlayItem(new GeoPoint((int) (57689587),
-					(int) (11977978)), "Spritköket", "Johanneberg"),
+			new OverlayItem(new GeoPoint((int) (57.689587 * 1E6),
+					(int) (11.977978 * 1E6)), "Spritköket", "Johanneberg"),
 			// Focus
-			new OverlayItem(new GeoPoint((int) (57691001),
-					(int) (11977591)), "Focus", "Johanneberg"),
+			new OverlayItem(new GeoPoint((int) (57.691001 * 1E6),
+					(int) (11.977591 * 1E6)), "Focus", "Johanneberg"),
 			// Röda rummet
-			new OverlayItem(new GeoPoint((int) (57689977),
-					(int) (11976862)), "Röda rummet", "Johanneberg"),
+			new OverlayItem(new GeoPoint((int) (57.689977 * 1E6),
+					(int) (11.976862 * 1E6)), "Röda rummet", "Johanneberg"),
 			// Sigurd/A-fiket
-			new OverlayItem(new GeoPoint((int) (57687563),
-					(int) (11976717)), "Sigurd/A-fiket", "Johanneberg"),
+			new OverlayItem(new GeoPoint((int) (57.687563 * 1E6),
+					(int) (11.976717 * 1E6)), "Sigurd/A-fiket", "Johanneberg"),
 			// Pub P
-			new OverlayItem(new GeoPoint((int) (57706463),
-					(int) (11939596)), "Pub P", "Lindholmen"),
+			new OverlayItem(new GeoPoint((int) (57.706463 * 1E6),
+					(int) (11.939596 * 1E6)), "Pub P", "Lindholmen"),
 			// 11:an
-			new OverlayItem(new GeoPoint((int) (57706085),
-					(int) (11936675)), "Pub F", "Johanneberg"),
+			new OverlayItem(new GeoPoint((int) (57.706085 * 1E6),
+					(int) (11.936675 * 1E6)), "Pub F", "Johanneberg"),
 			// Gangnam Style
-			new OverlayItem(new GeoPoint((int) (375175725),
-					(int) (127047462)), "Gangnam Style", "Sydkorea"),
+			new OverlayItem(new GeoPoint((int) (37.5175725 * 1E6),
+					(int) (127.047462 * 1E6)), "Gangnam Style", "Sydkorea"),
 
 	};
 
-	// standard onCreate method
 	/*
-	 * (non-Javadoc)
+	 * standard onCreate method
 	 * 
-	 * @see com.google.android.maps.MapActivity#onCreate(android.os.Bundle)
 	 */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 
-		super.onCreate(savedInstanceState);
+		super.onCreate(savedInstanceState);	// standard onCreate method
 
 		requestWindowFeature(Window.FEATURE_NO_TITLE); // Suppress title bar for more space
 		setContentView(R.layout.showthemap); // Use xml-layout showtomap.xml
@@ -455,7 +458,7 @@ public class TheMap extends MapActivity implements OnGestureListener,
 					// showTheCurrentPosition(); // navigate to users current
 					// location, inactive during development.
 
-					sleep(3000); // sleep the thread, 3000 milliseconds = 3
+					sleep(sleepTime); // sleep the thread, 3000 milliseconds = 3
 									// seconds.
 				} catch (Exception e) {
 				}
@@ -970,9 +973,9 @@ public class TheMap extends MapActivity implements OnGestureListener,
 			mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
 			mPaint.setStrokeJoin(Paint.Join.ROUND);
 			mPaint.setStrokeCap(Paint.Cap.ROUND);
-			mPaint.setStrokeWidth(4);
+			mPaint.setStrokeWidth(strokeWidthIsFour);
 
-			GeoPoint gp1 = new GeoPoint((int) (entranceOfChalmersLat), (int) (entranceOfChalmersLon));  // for development, geopoint of chalmers entrance, starting point
+			GeoPoint gp1 = new GeoPoint((int) (57.689814 * 1E6), (int) (11.972988 * 1E6));  // for development, geopoint of chalmers entrance, starting point
 			GeoPoint gp2 = allPubsArray[endPoint].getPoint();	// End point
 
 			Path path1 = new Path();

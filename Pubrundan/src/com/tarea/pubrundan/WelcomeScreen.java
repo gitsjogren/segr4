@@ -28,15 +28,14 @@ import android.view.Window;
 import android.view.WindowManager;
 
 /**
- * The class TheMap
+ * The Welcomescreen for the Pubrunda App.
  * 
- * @author Alexander Kurkimäki
- * 
+ * @author Alexander
+ *
  */
-
 public class WelcomeScreen extends Activity {
 
-    private final static int display_length = 2000;
+    private final int displayLength = 2000;
 
     /** Called when the activity is first created. */
     @Override
@@ -47,17 +46,17 @@ public class WelcomeScreen extends Activity {
         super.onCreate(icicle);
         setContentView(R.layout.welcome);
 
-        /* New Handler to start the MainActivity 
+        /** New Handler to start the MainActivity 
          * and close this WelcomeScreen after some seconds.*/
         new Handler().postDelayed(new Runnable(){
           
         	public void run() {
               
-        		/* Create an Intent that will start the MainActivity. */
+        		/** Create an Intent that will start the MainActivity. */
                 Intent mainIntent = new Intent(WelcomeScreen.this,TheMap.class);
                 WelcomeScreen.this.startActivity(mainIntent);
                 WelcomeScreen.this.finish();
             }
-        }, display_length);
+        }, displayLength);
     }
 }

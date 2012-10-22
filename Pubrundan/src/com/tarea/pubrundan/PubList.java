@@ -30,13 +30,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
  
-/**
- * The class PubList
- * 
- * @author Erik Sjögren
- * 
- */
-
 public class PubList extends ListActivity {
 	
     @Override
@@ -203,7 +196,7 @@ public class PubList extends ListActivity {
     			pubP.putExtra("Pub nr in array", position);
     			startActivity(pubP);
     			break;
-    		case 18:	// Start Pub F activity
+    		case 18:	// Start 11:an activity
     			Intent pubF = new Intent(getApplicationContext(), PubLayout.class);
     			pubF.putExtra("Pub layout", R.layout.pubf);
     			pubF.putExtra("Pub title", "Pub F");
@@ -216,3 +209,11 @@ public class PubList extends ListActivity {
         });
     }
 }
+
+
+//Intent jaPripps = new Intent(mContext, PubLayout.class);
+//jaPripps.putExtra("Pub layout", R.layout.japripps);
+//jaPripps.putExtra("Pub title", "J.A. Pripps");
+//jaPripps.putExtra("More info", R.string.ja_pripps_info);
+//jaPripps.putExtra("Pub nr in array", 0);
+//mContext.startActivity(jaPripps);

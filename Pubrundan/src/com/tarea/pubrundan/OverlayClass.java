@@ -37,16 +37,16 @@ import com.google.android.maps.OverlayItem;
  */
 public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 	
-	/** The my overlays. */
-	public ArrayList<OverlayItem> myOverlays;
+	/** ArrayList of Overlay items. */
+	private ArrayList<OverlayItem> myOverlays;
 	
-	/** The m context. */
+	/** The mContext. */
 	private Context mContext;
 	
-	/** The count. */
+	/** To keep count on added overlays. */
 	private int count = 0;
 	
-	/** The counter. */
+	/** ArrayList, storing count of overlays. */
 	private ArrayList<Integer> counter = new ArrayList<Integer>();
 
 	/**
@@ -62,7 +62,7 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 	}
 
 	/**
-	 * Adds the overlay.
+	 * method to add the overlay and update counter
 	 *
 	 * @param overlay the overlay
 	 */
@@ -80,8 +80,14 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 		populate();
 	}
 
-	/* (non-Javadoc)
+<<<<<<< HEAD
+	/** (non-Javadoc)
 	 * @see com.google.android.maps.ItemizedOverlay#createItem(int)
+=======
+	/*
+	 * method to return OverlayItem
+	 * 
+>>>>>>> 93b02a650f2df3966f1c1655821f429336d63125
 	 * @param i
 	 * 
 	 * @return, OverlayItem i
@@ -100,11 +106,24 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 		myOverlays.remove(i);
 		populate();
 	}
+	
+	/**
+	 * returns number of OverlayItems in myOverlays.
+	 *
+	 * @param i the i
+	 */
+	@Override
+	public int size() {
+		return myOverlays.size();
+	}
 
-	/* (non-Javadoc)
+<<<<<<< HEAD
+	/** (non-Javadoc)
+=======
+	/* 
+>>>>>>> 93b02a650f2df3966f1c1655821f429336d63125
 	 * Handle tap events on overlay icons
-	 * Start each pub as own class with xml
-	 * @see com.google.android.maps.ItemizedOverlay#onTap(int)
+	 * Pass correct layout info for each pub to PubLayout
 	 * 
 	 * @param i
 	 * 
@@ -114,7 +133,7 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 	protected boolean onTap(int i) {
 		switch (counter.get(i)) {
 
-		case 0:		// Start J.A. Pripps activity
+		case 0:		// Start J.A. Pripps activity with unique layout, title, info and geopoint
 			Intent jaPripps = new Intent(mContext, PubLayout.class);
 			jaPripps.putExtra("Pub layout", R.layout.japripps);
 			jaPripps.putExtra("Pub title", myOverlays.get(i).getTitle());
@@ -122,7 +141,7 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 			jaPripps.putExtra("Pub nr in array", counter.get(i).intValue());
 			mContext.startActivity(jaPripps);
 			break;
-		case 1:		// Start Gasquen activity
+		case 1:		// Start Gasquen activity with unique layout, title, info and geopoint
 			Intent gasquen = new Intent(mContext, PubLayout.class);
 			gasquen.putExtra("Pub layout", R.layout.gasquen);
 			gasquen.putExtra("Pub title", myOverlays.get(i).getTitle());
@@ -130,7 +149,7 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 			gasquen.putExtra("Pub nr in array", counter.get(i).intValue());
 			mContext.startActivity(gasquen);
 			break;
-		case 2:		// Start Bulten activity
+		case 2:		// Start Bulten activity with unique layout, title, info and geopoint
 			Intent bulten = new Intent(mContext, PubLayout.class);
 			bulten.putExtra("Pub layout", R.layout.bulten);
 			bulten.putExtra("Pub title", myOverlays.get(i).getTitle());
@@ -138,7 +157,7 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 			bulten.putExtra("Pub nr in array", counter.get(i).intValue());
 			mContext.startActivity(bulten);
 			break;
-		case 3:		// Start Winden activity
+		case 3:		// Start Winden activity with unique layout, title, info and geopoint
 			Intent winden = new Intent(mContext, PubLayout.class);
 			winden.putExtra("Pub layout", R.layout.winden);
 			winden.putExtra("Pub title", myOverlays.get(i).getTitle());
@@ -146,7 +165,7 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 			winden.putExtra("Pub nr in array", counter.get(i).intValue());
 			mContext.startActivity(winden);
 			break;
-		case 4:		// Start Zaloonen Pripps activity
+		case 4:		// Start Zaloonen Pripps activity with unique layout, title, info and geopoint
 			Intent zaloonen = new Intent(mContext, PubLayout.class);
 			zaloonen.putExtra("Pub layout", R.layout.zaloonen);
 			zaloonen.putExtra("Pub title", myOverlays.get(i).getTitle());
@@ -154,7 +173,7 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 			zaloonen.putExtra("Pub nr in array", counter.get(i).intValue());
 			mContext.startActivity(zaloonen);
 			break;
-		case 5:		// Start Club Avancez activity
+		case 5:		// Start Club Avancez activity with unique layout, title, info and geopoint
 			Intent clubAvancez = new Intent(mContext, PubLayout.class);
 			clubAvancez.putExtra("Pub layout", R.layout.clubavancez);
 			clubAvancez.putExtra("Pub title", myOverlays.get(i).getTitle());
@@ -162,7 +181,7 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 			clubAvancez.putExtra("Pub nr in array", counter.get(i).intValue());
 			mContext.startActivity(clubAvancez);
 			break;
-		case 6:		// Start GoldenI activity
+		case 6:		// Start GoldenI activity with unique layout, title, info and geopoint
 			Intent goldenI = new Intent(mContext, PubLayout.class);
 			goldenI.putExtra("Pub layout", R.layout.goldeni);
 			goldenI.putExtra("Pub title", myOverlays.get(i).getTitle());
@@ -170,7 +189,7 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 			goldenI.putExtra("Pub nr in array", counter.get(i).intValue());
 			mContext.startActivity(goldenI);
 			break;
-		case 7:		// Start Hubben 2.1 activity
+		case 7:		// Start Hubben 2.1 activity with unique layout, title, info and geopoint
 			Intent hubben = new Intent(mContext, PubLayout.class);
 			hubben.putExtra("Pub layout", R.layout.hubben);
 			hubben.putExtra("Pub title", myOverlays.get(i).getTitle());
@@ -178,7 +197,7 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 			hubben.putExtra("Pub nr in array", counter.get(i).intValue());
 			mContext.startActivity(hubben);
 			break;
-		case 8:		// Start Basen activity
+		case 8:		// Start Basen activity with unique layout, title, info and geopoint
 			Intent basen = new Intent(mContext, PubLayout.class);
 			basen.putExtra("Pub layout", R.layout.basen);
 			basen.putExtra("Pub title", myOverlays.get(i).getTitle());
@@ -186,7 +205,7 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 			basen.putExtra("Pub nr in array", counter.get(i).intValue());
 			mContext.startActivity(basen);
 			break;
-		case 9:		// Start Kajsabaren activity
+		case 9:		// Start Kajsabaren activity with unique layout, title, info and geopoint
 			Intent kajsaBaren = new Intent(mContext, PubLayout.class);
 			kajsaBaren.putExtra("Pub layout", R.layout.kajsabaren);
 			kajsaBaren.putExtra("Pub title", myOverlays.get(i).getTitle());
@@ -194,7 +213,7 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 			kajsaBaren.putExtra("Pub nr in array", counter.get(i).intValue());
 			mContext.startActivity(kajsaBaren);
 			break;
-		case 10:	// Start Järnvägspub activity
+		case 10:	// Start Järnvägspub activity with unique layout, title, info and geopoint
 			Intent jarnvagsPub = new Intent(mContext, PubLayout.class);
 			jarnvagsPub.putExtra("Pub layout", R.layout.jarnvagspub);
 			jarnvagsPub.putExtra("Pub title", myOverlays.get(i).getTitle());
@@ -202,7 +221,7 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 			jarnvagsPub.putExtra("Pub nr in array", counter.get(i).intValue());
 			mContext.startActivity(jarnvagsPub);
 			break;
-		case 11:	// Start GasTown activity
+		case 11:	// Start GasTown activity with unique layout, title, info and geopoint
 			Intent gasTown = new Intent(mContext, PubLayout.class);
 			gasTown.putExtra("Pub layout", R.layout.gastown);
 			gasTown.putExtra("Pub title", myOverlays.get(i).getTitle());
@@ -210,7 +229,7 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 			gasTown.putExtra("Pub nr in array", counter.get(i).intValue());
 			mContext.startActivity(gasTown);
 			break;
-		case 12:	// Start FortNOx activity
+		case 12:	// Start FortNOx activity with unique layout, title, info and geopoint
 			Intent fortNox = new Intent(mContext, PubLayout.class);
 			fortNox.putExtra("Pub layout", R.layout.fortnox);
 			fortNox.putExtra("Pub title", myOverlays.get(i).getTitle());
@@ -218,7 +237,7 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 			fortNox.putExtra("Pub nr in array", counter.get(i).intValue());
 			mContext.startActivity(fortNox);
 			break;
-		case 13:	// Start Spritköket activity
+		case 13:	// Start Spritköket activity with unique layout, title, info and geopoint
 			Intent spritkoket = new Intent(mContext, PubLayout.class);
 			spritkoket.putExtra("Pub layout", R.layout.spritkoket);
 			spritkoket.putExtra("Pub title", myOverlays.get(i).getTitle());
@@ -226,7 +245,7 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 			spritkoket.putExtra("Pub nr in array", counter.get(i).intValue());
 			mContext.startActivity(spritkoket);
 			break;
-		case 14:	// Start Focus activity
+		case 14:	// Start Focus activity with unique layout, title, info and geopoint
 			Intent focus = new Intent(mContext, PubLayout.class);
 			focus.putExtra("Pub layout", R.layout.focus);
 			focus.putExtra("Pub title", myOverlays.get(i).getTitle());
@@ -234,7 +253,7 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 			focus.putExtra("Pub nr in array", counter.get(i).intValue());
 			mContext.startActivity(focus);
 			break;
-		case 15:	// Start Röda rummet activity
+		case 15:	// Start Röda rummet activity with unique layout, title, info and geopoint
 			Intent rodaRummet = new Intent(mContext, PubLayout.class);
 			rodaRummet.putExtra("Pub layout", R.layout.rodarummet);
 			rodaRummet.putExtra("Pub title", myOverlays.get(i).getTitle());
@@ -242,7 +261,7 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 			rodaRummet.putExtra("Pub nr in array", counter.get(i).intValue());
 			mContext.startActivity(rodaRummet);
 			break;
-		case 16:	// Start Sigurd/A-fiket activity
+		case 16:	// Start Sigurd/A-fiket activity with unique layout, title, info and geopoint
 			Intent sigurdAfiket = new Intent(mContext, PubLayout.class);
 			sigurdAfiket.putExtra("Pub layout", R.layout.sigurdafiket);
 			sigurdAfiket.putExtra("Pub title", myOverlays.get(i).getTitle());
@@ -250,7 +269,7 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 			sigurdAfiket.putExtra("Pub nr in array", counter.get(i).intValue());
 			mContext.startActivity(sigurdAfiket);
 			break;
-		case 17:	// Start Pub P activity
+		case 17:	// Start Pub P activity with unique layout, title, info and geopoint
 			Intent pubP = new Intent(mContext, PubLayout.class);
 			pubP.putExtra("Pub layout", R.layout.pubp);
 			pubP.putExtra("Pub title", myOverlays.get(i).getTitle());
@@ -258,7 +277,7 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 			pubP.putExtra("Pub nr in array", counter.get(i).intValue());
 			mContext.startActivity(pubP);
 			break;
-		case 18:	// Start 11:an activity
+		case 18:	// Start 11:an activity with unique layout, title, info and geopoint
 			Intent pubF = new Intent(mContext, PubLayout.class);
 			pubF.putExtra("Pub layout", R.layout.pubf);
 			pubF.putExtra("Pub title", myOverlays.get(i).getTitle());
@@ -266,17 +285,12 @@ public class OverlayClass extends ItemizedOverlay<OverlayItem> {
 			pubF.putExtra("Pub nr in array", counter.get(i).intValue());
 			mContext.startActivity(pubF);
 			break;
-		case 19:	// Start Gangnam Style activity
+		case 19:	// Start Gangnam Style activity with unique layout, our easter egg
 			Intent gangnamstyle = new Intent(mContext, GangnamStyle.class);
 			mContext.startActivity(gangnamstyle);
 			break;
 		}
 		return true;
 
-	}
-
-	@Override
-	public int size() {
-		return myOverlays.size();
 	}
 }

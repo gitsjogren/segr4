@@ -27,6 +27,7 @@ import android.view.WindowManager;
 import com.tarea.pubrundan.R;
 
 /**
+
  * The Class GangnamStyle, our easter egg.
  * 
  * @author Erik Sjögren
@@ -36,13 +37,13 @@ public class GangnamStyle extends Activity {
 
 	public void onCreate(Bundle savedInstanceState) {
 
-			requestWindowFeature(Window.FEATURE_NO_TITLE); // Suppress title bar for
-															// more space
-			getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-		            WindowManager.LayoutParams.FLAG_FULLSCREEN);
-			super.onCreate(savedInstanceState);
-			setContentView(R.layout.gangnamstyle);
-		
+		requestWindowFeature(Window.FEATURE_NO_TITLE); // Suppress title bar for
+														// more space
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,	// Using WindowManager to set flags and change the view to fullscreen
+				WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		super.onCreate(savedInstanceState);	// standard onCreate method
+		setContentView(R.layout.gangnamstyle);	// set the layout for this class
+
 	}
 
 }

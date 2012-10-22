@@ -36,12 +36,6 @@ import android.view.Window;
  * the application itself and other features.
  */
 
-/**
- * The class SettingMenu
- * 
- * @author Alexander Kurkimäki
- * 
- */
 
 public class SettingsMenu extends PreferenceActivity {
 

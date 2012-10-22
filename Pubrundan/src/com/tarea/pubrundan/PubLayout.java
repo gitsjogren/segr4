@@ -40,7 +40,7 @@ public class PubLayout extends Activity {
 	private final int defaultIntValue = -1;
 
 	// standard onCreate method
-	/*
+	/**
 	 * (non-Javadoc)
 	 * 
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
@@ -56,7 +56,7 @@ public class PubLayout extends Activity {
 	}
 
 	// Initiating Menu XML file (menu.xml)
-	/*
+	/**
 	 * (non-Javadoc)
 	 * 
 	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
@@ -69,7 +69,7 @@ public class PubLayout extends Activity {
 		return true;
 	}
 	
-	/*
+	/**
 	 * (non-Javadoc)
 	 * 
 	 * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)

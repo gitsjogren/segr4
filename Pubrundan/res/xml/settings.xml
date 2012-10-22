@@ -10,13 +10,13 @@
             android:summary="Choose your default campus to show at startup."
             android:title="Default campus" />
     </PreferenceCategory>
+
      <PreferenceCategory android:title="Extras" >
         <Preference 
             android:key="feedback"
             android:title="Send feedback"
             android:summary="Bugs, suggestions or w/e" />
-        </PreferenceCategory>
-    <PreferenceCategory android:title="Other things" >
+
         <Preference
             android:key="aboutPage"
             android:summary="Information about the application"
